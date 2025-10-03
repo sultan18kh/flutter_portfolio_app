@@ -79,36 +79,49 @@ class _LandingPageState extends State<LandingPage> {
             }
 
             if (state is PortfolioLoaded) {
-              return SingleChildScrollView(
-                controller: _scrollController,
-                child: Column(
+              return SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                child: Stack(
+                  clipBehavior: Clip.hardEdge,
                   children: [
-                    // Navigation Bar
+                    // Main content
+                    SingleChildScrollView(
+                      controller: _scrollController,
+                      child: Column(
+                        children: [
+                          // Add top padding to account for floating navbar
+                          const SizedBox(height: 100),
+
+                          // Hero Section
+                          HeroSection(personalInfo: state.personalInfo),
+
+                          // About Section
+                          AboutSection(
+                            personalInfo: state.personalInfo,
+                            education: state.education,
+                          ),
+
+                          // Experience Section
+                          ExperienceSection(experience: state.experience),
+
+                          // Projects Section
+                          ProjectsSection(projects: state.projects),
+
+                          // Skills Section
+                          SkillsSection(skills: state.skills),
+
+                          // Contact Section
+                          ContactSection(
+                            personalInfo: state.personalInfo,
+                            certifications: state.certifications,
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Floating Navigation Bar
                     ModernNavbar(scrollController: _scrollController),
-
-                    // Hero Section
-                    HeroSection(personalInfo: state.personalInfo),
-
-                    // About Section
-                    AboutSection(
-                      personalInfo: state.personalInfo,
-                      education: state.education,
-                    ),
-
-                    // Experience Section
-                    ExperienceSection(experience: state.experience),
-
-                    // Projects Section
-                    ProjectsSection(projects: state.projects),
-
-                    // Skills Section
-                    SkillsSection(skills: state.skills),
-
-                    // Contact Section
-                    ContactSection(
-                      personalInfo: state.personalInfo,
-                      certifications: state.certifications,
-                    ),
                   ],
                 ),
               );

@@ -99,7 +99,7 @@ class SkillsSection extends StatelessWidget {
                 value: skill.proficiency / 5.0,
                 backgroundColor: AppTheme.surfaceColor,
                 valueColor:
-                    AlwaysStoppedAnimation<Color>(AppTheme.primaryColor),
+                    const AlwaysStoppedAnimation<Color>(AppTheme.primaryColor),
               ),
             ],
           ),

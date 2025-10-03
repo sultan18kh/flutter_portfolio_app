@@ -22,7 +22,7 @@ class PortfolioService {
         '+92-355-4776815',
         '+92-346-4333929',
       ],
-      profileImage: 'assets/images/profile.jpg',
+      profileImage: 'assets/Sultan.jpg',
     );
   }
 

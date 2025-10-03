@@ -37,13 +37,25 @@ class HeroSection extends StatelessWidget {
                 ),
               ],
             ),
-            child: CircleAvatar(
-              radius: 96,
-              backgroundColor: AppTheme.surfaceColor,
-              child: Icon(
-                Icons.person,
-                size: 100,
-                color: AppTheme.primaryColor,
+            child: ClipOval(
+              child: Image.asset(
+                personalInfo.profileImage,
+                width: 192,
+                height: 192,
+                fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  // Fallback if image doesn't exist
+                  return Container(
+                    width: 192,
+                    height: 192,
+                    color: AppTheme.surfaceColor,
+                    child: const Icon(
+                      Icons.person,
+                      size: 100,
+                      color: AppTheme.primaryColor,
+                    ),
+                  );
+                },
               ),
             ),
           ),
@@ -112,7 +124,7 @@ class HeroSection extends StatelessWidget {
                 },
                 style: OutlinedButton.styleFrom(
                   foregroundColor: AppTheme.primaryColor,
-                  side: BorderSide(color: AppTheme.primaryColor),
+                  side: const BorderSide(color: AppTheme.primaryColor),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 32,
                     vertical: 16,

@@ -64,7 +64,7 @@ class ProjectsSection extends StatelessWidget {
                 colors: [AppTheme.primaryColor, AppTheme.secondaryColor],
               ),
             ),
-            child: Center(
+            child: const Center(
               child: Icon(
                 Icons.code,
                 size: 60,
@@ -155,7 +155,7 @@ class ProjectsSection extends StatelessWidget {
                             label: const Text('Live'),
                             style: OutlinedButton.styleFrom(
                               foregroundColor: AppTheme.primaryColor,
-                              side: BorderSide(color: AppTheme.primaryColor),
+                              side: const BorderSide(color: AppTheme.primaryColor),
                               padding: const EdgeInsets.symmetric(vertical: 8),
                             ),
                           ),
