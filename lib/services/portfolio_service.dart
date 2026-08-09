@@ -10,19 +10,19 @@ class PortfolioService {
     // Mock data based on resume
     return const PersonalInfo(
       name: 'SULTAN KHAN',
-      title: 'SENIOR SOLUTION DEVELOPER',
+      title: 'SOLUTION DEVELOPER II @ AlphaBOLD',
       profile:
           'A motivated, adaptable and responsible Computer Scientist, seeking a position in an IT domain which will utilize my professional and technical skills developed through rigorous endeavors and experiences in this field.',
       email: 'sultan512@gmail.com',
       linkedin: 'linkedin.com/in/sultan-khan-278014121',
       github: 'https://github.com/sultan18kh',
-      home: 'Bedian Road, Lahore Cantt',
+      home: 'Lahore Cantt',
       phoneNumbers: [
-        '+92-300-1234567',
-        '+92-301-2345678',
-        '+92-302-3456789',
+        '+92-323-8788300',
+        '+92-355-4776815',
+        '+92-346-4333929',
       ],
-      profileImage: 'assets/images/profile.jpg',
+      profileImage: 'assets/Sultan.jpg',
     );
   }
 

@@ -1,0 +1,260 @@
+# Graph Report - .  (2026-08-09)
+
+## Corpus Check
+- Corpus is ~27,331 words - fits in a single context window. You may not need a graph.
+
+## Summary
+- 472 nodes · 607 edges · 55 communities (44 shown, 11 thin omitted)
+- Extraction: 97% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 15 edges (avg confidence: 0.78)
+- Token cost: 63,486 input · 0 output
+
+## Community Hubs (Navigation)
+- [[_COMMUNITY_Windows Win32 Runner|Windows Win32 Runner]]
+- [[_COMMUNITY_iOSmacOS App Delegate & Plugins|iOS/macOS App Delegate & Plugins]]
+- [[_COMMUNITY_Navbar Cubit State|Navbar Cubit State]]
+- [[_COMMUNITY_Floating Skill Icon Animation|Floating Skill Icon Animation]]
+- [[_COMMUNITY_Animated Background Painter|Animated Background Painter]]
+- [[_COMMUNITY_Linux GTK Runner|Linux GTK Runner]]
+- [[_COMMUNITY_Landing Page Shell|Landing Page Shell]]
+- [[_COMMUNITY_Portfolio Cubit States|Portfolio Cubit States]]
+- [[_COMMUNITY_App Theme Colors|App Theme Colors]]
+- [[_COMMUNITY_About & Hero Sections|About & Hero Sections]]
+- [[_COMMUNITY_PersonalInfo Model|PersonalInfo Model]]
+- [[_COMMUNITY_Windows Runner Utils|Windows Runner Utils]]
+- [[_COMMUNITY_Project Model|Project Model]]
+- [[_COMMUNITY_Web App Manifest|Web App Manifest]]
+- [[_COMMUNITY_Windows FlutterWindow|Windows FlutterWindow]]
+- [[_COMMUNITY_Portfolio Service|Portfolio Service]]
+- [[_COMMUNITY_Education Model|Education Model]]
+- [[_COMMUNITY_Contact Section|Contact Section]]
+- [[_COMMUNITY_Data Model Base (EquatableJSON)|Data Model Base (Equatable/JSON)]]
+- [[_COMMUNITY_Skills Grid Widget|Skills Grid Widget]]
+- [[_COMMUNITY_Certification Model|Certification Model]]
+- [[_COMMUNITY_Experience Model|Experience Model]]
+- [[_COMMUNITY_Projects Section|Projects Section]]
+- [[_COMMUNITY_Navbar State|Navbar State]]
+- [[_COMMUNITY_Experience Section|Experience Section]]
+- [[_COMMUNITY_Skill Model|Skill Model]]
+- [[_COMMUNITY_Skills Section|Skills Section]]
+- [[_COMMUNITY_Section Widgets Base|Section Widgets Base]]
+- [[_COMMUNITY_App Entry Point|App Entry Point]]
+- [[_COMMUNITY_Flutter LLDB Build Helper|Flutter LLDB Build Helper]]
+- [[_COMMUNITY_App Router (unused)|App Router (unused)]]
+- [[_COMMUNITY_Cross-Platform App Identity|Cross-Platform App Identity]]
+- [[_COMMUNITY_Flutter Engine Plugin Registrant|Flutter Engine Plugin Registrant]]
+- [[_COMMUNITY_iOS Launch Screen & Web Title|iOS Launch Screen & Web Title]]
+- [[_COMMUNITY_Windows FlutterWindow Header|Windows FlutterWindow Header]]
+- [[_COMMUNITY_Windows CMake Build Chain|Windows CMake Build Chain]]
+- [[_COMMUNITY_Android MainActivity|Android MainActivity]]
+- [[_COMMUNITY_iOS Generated Plugin Registrant|iOS Generated Plugin Registrant]]
+- [[_COMMUNITY_README Dependency Drift|README Dependency Drift]]
+- [[_COMMUNITY_Lint Config Dependency|Lint Config Dependency]]
+- [[_COMMUNITY_macOS Ephemeral Env Script|macOS Ephemeral Env Script]]
+- [[_COMMUNITY_Linux CMake Build Chain|Linux CMake Build Chain]]
+- [[_COMMUNITY_iOS Ephemeral Env Script|iOS Ephemeral Env Script]]
+- [[_COMMUNITY_DevTools Options Config|DevTools Options Config]]
+- [[_COMMUNITY_README Data Models Section|README Data Models Section]]
+- [[_COMMUNITY_README PortfolioService Section|README PortfolioService Section]]
+
+## God Nodes (most connected - your core abstractions)
+1. `PortfolioCubit` - 11 edges
+2. `Create()` - 10 edges
+3. `MessageHandler()` - 10 edges
+4. `WndProc()` - 9 edges
+5. `NavbarCubit` - 8 edges
+6. `PortfolioState` - 7 edges
+7. `HWND` - 7 edges
+8. `WindowClassRegistrar` - 7 edges
+9. `Destroy()` - 7 edges
+10. `_MyApplication` - 6 edges
+
+## Surprising Connections (you probably didn't know these)
+- `PortfolioBloc (documented state management)` --references--> `pubspec.yaml Runtime Dependencies`  [AMBIGUOUS]
+  README.md → pubspec.yaml
+- `README Documented Dependencies List` --references--> `pubspec.yaml Runtime Dependencies`  [AMBIGUOUS]
+  README.md → pubspec.yaml
+- `iOS Launch Screen Asset Customization` --conceptually_related_to--> `Sultan Khan Flutter Portfolio Application (README)`  [INFERRED]
+  ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md → README.md
+- `pubspec.yaml assets/skills/ asset declaration` --conceptually_related_to--> `Sultan Khan Flutter Portfolio Application (README)`  [INFERRED]
+  pubspec.yaml → README.md
+- `web/index.html Page Title & Meta (Sultan Khan - Full Stack Developer)` --references--> `Sultan Khan Flutter Portfolio Application (README)`  [INFERRED]
+  web/index.html → README.md
+
+## Import Cycles
+- None detected.
+
+## Hyperedges (group relationships)
+- **Cross-Platform Flutter Engine Embedding Build Pattern** — linux_cmakelists_flutter_subdir, flutter_cmakelists_linux_assemble, windows_cmakelists_subdirs, flutter_cmakelists_windows_assemble, runner_cmakelists_executable [INFERRED 0.85]
+- **Shared App Identity: portfolio_flutter / Sultan Khan Portfolio** — pubspec_project_name, linux_cmakelists_binary_name, windows_cmakelists_binary_name, web_index_title [INFERRED 0.85]
+- **README Documentation vs Actual pubspec.yaml Dependency Version Drift** — readme_dependencies, readme_portfoliobloc, pubspec_dependencies, pubspec_dev_dependencies [INFERRED 0.85]
+
+## Communities (55 total, 11 thin omitted)
+
+### Community 0 - "Windows Win32 Runner"
+Cohesion: 0.09
+Nodes (34): RegisterPlugins(), PluginRegistry, Point, RECT, OnCreate(), Create(), Destroy(), EnableFullDpiSupportIfAvailable() (+26 more)
+
+### Community 1 - "iOS/macOS App Delegate & Plugins"
+Cohesion: 0.07
+Nodes (23): Any, Cocoa, Flutter, RegisterGeneratedPlugins(), FlutterAppDelegate, FlutterMacOS, FlutterPluginRegistry, Foundation (+15 more)
+
+### Community 2 - "Navbar Cubit State"
+Cohesion: 0.07
+Nodes (32): ../blocs/navbar_bloc/navbar_cubit.dart, ../blocs/navbar_bloc/navbar_state.dart, Cubit, dart:ui, initializeScrollListener, NavbarCubit, reset, _scrollController (+24 more)
+
+### Community 3 - "Floating Skill Icon Animation"
+Cohesion: 0.09
+Nodes (23): AnimationController, Duration, package:flutter_svg/flutter_svg.dart, SingleTickerProviderStateMixin, animation, animationDuration, assetPath, build (+15 more)
+
+### Community 4 - "Animated Background Painter"
+Cohesion: 0.09
+Nodes (22): CustomPainter, dart:math, Widget, angle, build, child, color, createState (+14 more)
+
+### Community 5 - "Linux GTK Runner"
+Cohesion: 0.11
+Nodes (20): FlPluginRegistry, fl_register_plugins(), GApplication, gboolean, gchar, GObject, GtkApplication, main() (+12 more)
+
+### Community 6 - "Landing Page Shell"
+Cohesion: 0.11
+Nodes (21): build, createState, dispose, LandingPage, _LandingPageState, _scrollController, State, StatefulWidget (+13 more)
+
+### Community 7 - "Portfolio Cubit States"
+Cohesion: 0.16
+Nodes (17): certifications, education, experience, loadPortfolio, message, personalInfo, PortfolioCubit, PortfolioError (+9 more)
+
+### Community 8 - "App Theme Colors"
+Cohesion: 0.13
+Nodes (14): package:google_fonts/google_fonts.dart, static const Color, accentColor, AppTheme, backgroundColor, cardColor, gradientEnd, gradientStart (+6 more)
+
+### Community 9 - "About & Hero Sections"
+Cohesion: 0.17
+Nodes (11): ../../models/education.dart, ../../models/personal_info.dart, PersonalInfo, build, _buildEducationCard, _buildSectionTitle, education, personalInfo (+3 more)
+
+### Community 10 - "PersonalInfo Model"
+Cohesion: 0.15
+Nodes (12): email, fromJson, github, home, linkedin, name, phoneNumbers, profile (+4 more)
+
+### Community 11 - "Windows Runner Utils"
+Cohesion: 0.23
+Nodes (9): _In_, _In_opt_, wWinMain(), CreateAndAttachConsole(), GetCommandLineArguments(), Utf8FromUtf16(), vector, string (+1 more)
+
+### Community 12 - "Project Model"
+Cohesion: 0.18
+Nodes (10): description, features, fromJson, githubUrl, imageUrl, liveUrl, name, props (+2 more)
+
+### Community 13 - "Web App Manifest"
+Cohesion: 0.18
+Nodes (10): background_color, description, display, icons, name, orientation, prefer_related_applications, short_name (+2 more)
+
+### Community 14 - "Windows FlutterWindow"
+Cohesion: 0.22
+Nodes (8): DartProject, MessageHandler(), HWND, LPARAM, LRESULT, FlutterWindow(), UINT, WPARAM
+
+### Community 15 - "Portfolio Service"
+Cohesion: 0.22
+Nodes (8): ../../models/certification.dart, getCertifications, getEducation, getExperience, getPersonalInfo, getProjects, getSkills, PortfolioService
+
+### Community 16 - "Education Model"
+Cohesion: 0.22
+Nodes (8): degree, field, fromJson, institution, period, props, score, toJson
+
+### Community 17 - "Contact Section"
+Cohesion: 0.22
+Nodes (8): build, _buildCertificationCard, _buildContactItem, _buildSectionTitle, _buildSocialButton, certifications, _launchUrl, personalInfo
+
+### Community 18 - "Data Model Base (Equatable/JSON)"
+Cohesion: 0.43
+Nodes (8): @JsonSerializable, Equatable, Certification, Education, Experience, PersonalInfo, Project, Skill
+
+### Community 19 - "Skills Grid Widget"
+Cohesion: 0.25
+Nodes (7): floating_skill_icon.dart, static const List, build, _getCrossAxisCount, _getIconSize, skills, SkillsGrid
+
+### Community 20 - "Certification Model"
+Cohesion: 0.25
+Nodes (7): date, description, fromJson, issuer, name, props, toJson
+
+### Community 21 - "Experience Model"
+Cohesion: 0.25
+Nodes (7): company, fromJson, period, props, responsibilities, title, toJson
+
+### Community 22 - "Projects Section"
+Cohesion: 0.25
+Nodes (7): ../../models/project.dart, package:url_launcher/url_launcher.dart, build, _buildProjectCard, _buildSectionTitle, _launchUrl, projects
+
+### Community 23 - "Navbar State"
+Cohesion: 0.29
+Nodes (6): List, copyWith, isScrolled, isVisible, props, package:equatable/equatable.dart
+
+### Community 24 - "Experience Section"
+Cohesion: 0.29
+Nodes (6): ../../models/experience.dart, build, _buildExperienceCard, _buildSectionTitle, experience, ../../utils/app_theme.dart
+
+### Community 25 - "Skill Model"
+Cohesion: 0.29
+Nodes (6): fromJson, name, proficiency, props, toJson, package:json_annotation/json_annotation.dart
+
+### Community 26 - "Skills Section"
+Cohesion: 0.29
+Nodes (6): ../../models/skill.dart, package:auto_size_text/auto_size_text.dart, build, _buildSectionTitle, skills, ../skills_grid.dart
+
+### Community 27 - "Section Widgets Base"
+Cohesion: 0.29
+Nodes (7): AboutSection, ContactSection, ExperienceSection, ProjectsSection, SkillsSection, StatelessWidget, ModernNavbar
+
+### Community 28 - "App Entry Point"
+Cohesion: 0.33
+Nodes (5): ../blocs/portfolio_cubit.dart, build, main, MyApp, package:flutter/material.dart
+
+### Community 29 - "Flutter LLDB Build Helper"
+Cohesion: 0.33
+Nodes (5): handle_new_rx_page(), __lldb_init_module(), Intercept NOTIFY_DEBUGGER_ABOUT_RX_PAGES and touch the pages., SBDebugger, SBFrame
+
+### Community 30 - "App Router (unused)"
+Cohesion: 0.33
+Nodes (5): package:go_router/go_router.dart, ../pages/landing_page.dart, static final GoRouter, AppRouter, router
+
+### Community 31 - "Cross-Platform App Identity"
+Cohesion: 0.40
+Nodes (5): Linux BINARY_NAME portfolio_flutter, pubspec.yaml package name: portfolio_flutter, app_theme.dart theme configuration (as documented), flutter_bootstrap.js Bootstrap Script, Windows BINARY_NAME portfolio_flutter
+
+### Community 33 - "iOS Launch Screen & Web Title"
+Cohesion: 0.50
+Nodes (4): iOS Launch Screen Asset Customization, pubspec.yaml assets/skills/ asset declaration, Sultan Khan Flutter Portfolio Application (README), web/index.html Page Title & Meta (Sultan Khan - Full Stack Developer)
+
+### Community 35 - "Windows CMake Build Chain"
+Cohesion: 1.00
+Nodes (3): Windows flutter_assemble/flutter_wrapper Targets, Windows Runner Executable Target, Windows add_subdirectory(flutter, runner)
+
+### Community 38 - "README Dependency Drift"
+Cohesion: 0.67
+Nodes (3): pubspec.yaml Runtime Dependencies, README Documented Dependencies List, PortfolioBloc (documented state management)
+
+## Ambiguous Edges - Review These
+- `PortfolioBloc (documented state management)` → `pubspec.yaml Runtime Dependencies`  [AMBIGUOUS]
+  README.md · relation: references
+- `README Documented Dependencies List` → `pubspec.yaml Runtime Dependencies`  [AMBIGUOUS]
+  README.md · relation: references
+
+## Knowledge Gaps
+- **241 isolated node(s):** `SBFrame`, `SBDebugger`, `flutter_export_environment.sh script`, `UIApplication`, `Any` (+236 more)
+  These have ≤1 connection - possible missing edges or undocumented components.
+- **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+
+## Suggested Questions
+_Questions this graph is uniquely positioned to answer:_
+
+- **What is the exact relationship between `PortfolioBloc (documented state management)` and `pubspec.yaml Runtime Dependencies`?**
+  _Edge tagged AMBIGUOUS (relation: references) - confidence is low._
+- **What is the exact relationship between `README Documented Dependencies List` and `pubspec.yaml Runtime Dependencies`?**
+  _Edge tagged AMBIGUOUS (relation: references) - confidence is low._
+- **Why does `PortfolioCubit` connect `Portfolio Cubit States` to `Navbar Cubit State`, `App Entry Point`, `Landing Page Shell`?**
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **Why does `NavbarCubit` connect `Navbar Cubit State` to `Landing Page Shell`?**
+  _High betweenness centrality (0.009) - this node is a cross-community bridge._
+- **Why does `animation` connect `Floating Skill Icon Animation` to `Navbar Cubit State`, `Animated Background Painter`?**
+  _High betweenness centrality (0.005) - this node is a cross-community bridge._
+- **What connects `SBFrame`, `SBDebugger`, `Intercept NOTIFY_DEBUGGER_ABOUT_RX_PAGES and touch the pages.` to the rest of the system?**
+  _242 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `Windows Win32 Runner` be split into smaller, more focused modules?**
+  _Cohesion score 0.08658536585365853 - nodes in this community are weakly interconnected._
