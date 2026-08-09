@@ -102,14 +102,14 @@ class _LandingPageState extends State<LandingPage> {
                             education: state.education,
                           ),
 
+                          // Skills Section
+                          SkillsSection(skills: state.skills),
+
                           // Experience Section
                           ExperienceSection(experience: state.experience),
 
                           // Projects Section
                           ProjectsSection(projects: state.projects),
-
-                          // Skills Section
-                          SkillsSection(skills: state.skills),
 
                           // Contact Section
                           ContactSection(
