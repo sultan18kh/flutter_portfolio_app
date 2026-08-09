@@ -33,6 +33,16 @@ class _ModernNavbarView extends StatefulWidget {
 
 class _ModernNavbarViewState extends State<_ModernNavbarView>
     with TickerProviderStateMixin {
+  static const double _mobileBreakpoint = 800;
+  static const List<(String, String)> _navItems = [
+    ('Home', 'home'),
+    ('About', 'about'),
+    ('Experience', 'experience'),
+    ('Projects', 'projects'),
+    ('Skills', 'skills'),
+    ('Contact', 'contact'),
+  ];
+
   late AnimationController _slideController;
   late AnimationController _fadeController;
   late AnimationController _positionController;
@@ -40,6 +50,7 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
   late Animation<double> _fadeAnimation;
   late Animation<Offset> _positionSlideAnimation;
   late Animation<double> _positionFadeAnimation;
+  bool _mobileMenuOpen = false;
 
   @override
   void initState() {
@@ -189,11 +200,87 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
   }
 
   Widget _buildNavbarContent(bool isScrolled) {
+    final isMobile = MediaQuery.of(context).size.width < _mobileBreakpoint;
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        _buildGlassPanel(
+          isScrolled: isScrolled,
+          height: 70,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: Row(
+              children: [
+                // Logo/Name
+                AutoSizeText(
+                  'SK',
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                        color: AppTheme.primaryColor,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: -1,
+                      ),
+                ),
+                if (!isMobile) ...[
+                  const SizedBox(width: 8),
+                  AutoSizeText(
+                    'Sultan Khan',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w600,
+                          color: isScrolled
+                              ? AppTheme.textPrimaryColor
+                              : AppTheme.textPrimaryColor
+                                  .withValues(alpha: 0.9),
+                        ),
+                  ),
+                ],
+
+                const Spacer(),
+
+                if (isMobile)
+                  _buildMenuToggle(isScrolled)
+                else
+                  Row(
+                    children: [
+                      for (final (label, id) in _navItems)
+                        _buildNavItem(label, id, isScrolled),
+                    ],
+                  ),
+              ],
+            ),
+          ),
+        ),
+        if (isMobile && _mobileMenuOpen) ...[
+          const SizedBox(height: 12),
+          _buildGlassPanel(
+            isScrolled: isScrolled,
+            height: null,
+            forceScrim: true,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  for (final (label, id) in _navItems)
+                    _buildMobileNavItem(label, id, isScrolled),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _buildGlassPanel({
+    required bool isScrolled,
+    required double? height,
+    required Widget child,
+    bool forceScrim = false,
+  }) {
     return Container(
-      margin: isScrolled
-          ? const EdgeInsets.symmetric(vertical: 8, horizontal: 12)
-          : null,
-      height: 70,
+      height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         // * Liquid glass effect with primary color tint
@@ -201,13 +288,13 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
             ? AppTheme.primaryColor.withValues(alpha: 0.1)
             : Colors.transparent,
         border: Border.all(
-          color: isScrolled
+          color: isScrolled || forceScrim
               ? AppTheme.primaryColor.withValues(alpha: 0.3)
               : Colors.transparent,
           width: 1.5,
         ),
         // * Glass morphism effect
-        boxShadow: isScrolled
+        boxShadow: isScrolled || forceScrim
             ? [
                 BoxShadow(
                   color: AppTheme.primaryColor.withValues(alpha: 0.1),
@@ -243,50 +330,66 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
                       ],
                     )
                   : null,
+              color: (!isScrolled && forceScrim)
+                  ? AppTheme.backgroundColor.withValues(alpha: 0.85)
+                  : null,
             ),
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: Row(
-                children: [
-                  // Logo/Name
-                  AutoSizeText(
-                    'SK',
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                          color: AppTheme.primaryColor,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: -1,
-                        ),
-                  ),
+            child: child,
+          ),
+        ),
+      ),
+    );
+  }
 
-                  const SizedBox(width: 8),
-
-                  AutoSizeText(
-                    'Sultan Khan',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: isScrolled
-                              ? AppTheme.textPrimaryColor
-                              : AppTheme.textPrimaryColor
-                                  .withValues(alpha: 0.9),
-                        ),
-                  ),
-
-                  const Spacer(),
-
-                  // Navigation Items
-                  Row(
-                    children: [
-                      _buildNavItem('Home', 'home', isScrolled),
-                      _buildNavItem('About', 'about', isScrolled),
-                      _buildNavItem('Experience', 'experience', isScrolled),
-                      _buildNavItem('Projects', 'projects', isScrolled),
-                      _buildNavItem('Skills', 'skills', isScrolled),
-                      _buildNavItem('Contact', 'contact', isScrolled),
-                    ],
-                  ),
-                ],
-              ),
+  Widget _buildMenuToggle(bool isScrolled) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () => setState(() => _mobileMenuOpen = !_mobileMenuOpen),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          padding: const EdgeInsets.all(8),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            color: _mobileMenuOpen
+                ? AppTheme.primaryColor.withValues(alpha: 0.15)
+                : Colors.transparent,
+            border: Border.all(
+              color: AppTheme.primaryColor.withValues(alpha: 0.3),
+              width: 1,
             ),
+          ),
+          child: Icon(
+            _mobileMenuOpen ? Icons.close : Icons.menu,
+            color: AppTheme.primaryColor,
+            size: 22,
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildMobileNavItem(String label, String sectionId, bool isScrolled) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () {
+          context.read<NavbarCubit>().scrollToSection(sectionId);
+          setState(() => _mobileMenuOpen = false);
+        },
+        child: Container(
+          margin: const EdgeInsets.symmetric(vertical: 4),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(12),
+            color: AppTheme.primaryColor.withValues(alpha: 0.08),
+          ),
+          child: AutoSizeText(
+            label,
+            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                  fontWeight: FontWeight.w500,
+                  color: AppTheme.textPrimaryColor,
+                ),
           ),
         ),
       ),

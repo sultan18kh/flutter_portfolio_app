@@ -21,41 +21,57 @@ class HeroSection extends StatelessWidget {
         children: [
           // Profile Image
           Container(
-            width: 200,
-            height: 200,
+            width: 208,
+            height: 208,
+            padding: const EdgeInsets.all(4),
             decoration: BoxDecoration(
               shape: BoxShape.circle,
-              border: Border.all(
-                color: AppTheme.primaryColor,
-                width: 4,
+              gradient: const LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [AppTheme.primaryColor, AppTheme.accentColor],
               ),
               boxShadow: [
                 BoxShadow(
-                  color: AppTheme.primaryColor.withValues(alpha: 0.3),
-                  blurRadius: 20,
-                  spreadRadius: 5,
+                  color: AppTheme.primaryColor.withValues(alpha: 0.35),
+                  blurRadius: 24,
+                  spreadRadius: 2,
+                  offset: const Offset(-6, 0),
+                ),
+                BoxShadow(
+                  color: AppTheme.accentColor.withValues(alpha: 0.35),
+                  blurRadius: 24,
+                  spreadRadius: 2,
+                  offset: const Offset(6, 0),
                 ),
               ],
             ),
-            child: ClipOval(
-              child: Image.asset(
-                personalInfo.profileImage,
-                width: 192,
-                height: 192,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) {
-                  // Fallback if image doesn't exist
-                  return Container(
-                    width: 192,
-                    height: 192,
-                    color: AppTheme.surfaceColor,
-                    child: const Icon(
-                      Icons.person,
-                      size: 100,
-                      color: AppTheme.primaryColor,
-                    ),
-                  );
-                },
+            child: Container(
+              padding: const EdgeInsets.all(3),
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppTheme.backgroundColor,
+              ),
+              child: ClipOval(
+                child: Image.asset(
+                  personalInfo.profileImage,
+                  width: 192,
+                  height: 192,
+                  fit: BoxFit.cover,
+                  errorBuilder: (context, error, stackTrace) {
+                    // Fallback if image doesn't exist
+                    return Container(
+                      width: 192,
+                      height: 192,
+                      color: AppTheme.surfaceColor,
+                      child: const Icon(
+                        Icons.person,
+                        size: 100,
+                        color: AppTheme.primaryColor,
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
           ),

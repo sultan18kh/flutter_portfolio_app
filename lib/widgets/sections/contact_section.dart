@@ -24,105 +24,143 @@ class ContactSection extends StatelessWidget {
         children: [
           _buildSectionTitle('Get In Touch'),
           const SizedBox(height: 40),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Contact info
-              Expanded(
-                flex: 1,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AutoSizeText(
-                      'Let\'s work together!',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: AppTheme.primaryColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    const SizedBox(height: 16),
-                    AutoSizeText(
-                      'I\'m always interested in new opportunities and exciting projects. Feel free to reach out!',
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: AppTheme.textPrimaryColor
-                                .withValues(alpha: 0.8),
-                            height: 1.6,
-                          ),
-                    ),
-                    const SizedBox(height: 32),
-                    // Contact details
-                    _buildContactItem(
-                      context,
-                      Icons.email,
-                      'Email',
-                      personalInfo.email,
-                      () => _launchUrl('mailto:${personalInfo.email}'),
-                    ),
-                    const SizedBox(height: 16),
-                    _buildContactItem(
-                      context,
-                      Icons.phone,
-                      'Phone',
-                      personalInfo.phoneNumbers.isNotEmpty
-                          ? personalInfo.phoneNumbers.first
-                          : 'N/A',
-                      () => _launchUrl(
-                          'tel:${personalInfo.phoneNumbers.isNotEmpty ? personalInfo.phoneNumbers.first : ''}'),
-                    ),
-                    const SizedBox(height: 16),
-                    _buildContactItem(
-                      context,
-                      Icons.location_on,
-                      'Location',
-                      personalInfo.home,
-                      null,
-                    ),
-                    const SizedBox(height: 32),
-                    // Social links
-                    Row(
-                      children: [
-                        if (personalInfo.linkedin.isNotEmpty)
-                          _buildSocialButton(
-                            context,
-                            Icons.link,
-                            () => _launchUrl(personalInfo.linkedin),
-                          ),
-                        if (personalInfo.github.isNotEmpty) ...[
-                          const SizedBox(width: 16),
-                          _buildSocialButton(
-                            context,
-                            Icons.code,
-                            () => _launchUrl(personalInfo.github),
-                          ),
-                        ],
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final contactInfo = Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AutoSizeText(
+                    'Let\'s work together!',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: AppTheme.primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                  const SizedBox(height: 16),
+                  AutoSizeText(
+                    'I\'m always interested in new opportunities and exciting projects. Feel free to reach out!',
+                    style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color:
+                              AppTheme.textPrimaryColor.withValues(alpha: 0.8),
+                          height: 1.6,
+                        ),
+                  ),
+                  const SizedBox(height: 32),
+                  // Contact details
+                  _buildContactItem(
+                    context,
+                    Icons.email,
+                    'Email',
+                    personalInfo.email,
+                    () => _launchUrl('mailto:${personalInfo.email}'),
+                  ),
+                  const SizedBox(height: 16),
+                  _buildContactItem(
+                    context,
+                    Icons.phone,
+                    'Phone',
+                    personalInfo.phoneNumbers.isNotEmpty
+                        ? personalInfo.phoneNumbers.first
+                        : 'N/A',
+                    () => _launchUrl(
+                        'tel:${personalInfo.phoneNumbers.isNotEmpty ? personalInfo.phoneNumbers.first : ''}'),
+                  ),
+                  const SizedBox(height: 16),
+                  _buildContactItem(
+                    context,
+                    Icons.location_on,
+                    'Location',
+                    personalInfo.home,
+                    null,
+                  ),
+                  const SizedBox(height: 32),
+                  // Social links
+                  Row(
+                    children: [
+                      if (personalInfo.linkedin.isNotEmpty)
+                        _buildSocialButton(
+                          context,
+                          Icons.link,
+                          () => _launchUrl(personalInfo.linkedin),
+                        ),
+                      if (personalInfo.github.isNotEmpty) ...[
+                        const SizedBox(width: 16),
+                        _buildSocialButton(
+                          context,
+                          Icons.code,
+                          () => _launchUrl(personalInfo.github),
+                        ),
                       ],
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 60),
-              // Certifications
-              Expanded(
-                flex: 1,
-                child: Column(
+                    ],
+                  ),
+                ],
+              );
+              final certificationsColumn = Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AutoSizeText(
+                    'Certifications',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: AppTheme.primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                  const SizedBox(height: 20),
+                  ...certifications
+                      .map((cert) => _buildCertificationCard(context, cert)),
+                ],
+              );
+
+              if (constraints.maxWidth < 800) {
+                return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AutoSizeText(
-                      'Certifications',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: AppTheme.primaryColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    const SizedBox(height: 20),
-                    ...certifications
-                        .map((cert) => _buildCertificationCard(context, cert)),
+                    _buildPortrait(),
+                    const SizedBox(height: 32),
+                    contactInfo,
+                    const SizedBox(height: 48),
+                    certificationsColumn,
                   ],
-                ),
-              ),
-            ],
+                );
+              }
+
+              return Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildPortrait(),
+                  const SizedBox(width: 40),
+                  Expanded(flex: 1, child: contactInfo),
+                  const SizedBox(width: 60),
+                  Expanded(flex: 1, child: certificationsColumn),
+                ],
+              );
+            },
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildPortrait() {
+    return Container(
+      width: 140,
+      height: 140,
+      padding: const EdgeInsets.all(3),
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [AppTheme.primaryColor, AppTheme.accentColor],
+        ),
+      ),
+      child: ClipOval(
+        child: Image.asset(
+          'assets/sultan_side_rough.jpg',
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) =>
+              Container(color: AppTheme.surfaceColor),
+        ),
       ),
     );
   }
