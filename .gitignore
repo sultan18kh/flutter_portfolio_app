@@ -26,6 +26,10 @@ doc/api/
 .flutter-plugins
 .flutter-plugins-dependencies
 
+# Wrangler (Cloudflare deploy)
+.wrangler/
+node_modules/
+
 # .DS_Store files
 .DS_Store
 **/.DS_Store

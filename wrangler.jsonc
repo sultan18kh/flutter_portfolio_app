@@ -1,0 +1,12 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "flutter-portfolio-app",
+  "compatibility_date": "2026-08-20",
+  "assets": {
+    "directory": "build/web",
+    "not_found_handling": "single-page-application"
+  },
+  "observability": {
+    "enabled": true
+  }
+}
