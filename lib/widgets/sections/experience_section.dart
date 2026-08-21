@@ -35,7 +35,7 @@ class ExperienceSection extends StatelessWidget {
             final exp = entry.value;
             return RevealOnScroll(
               delay: Duration(milliseconds: index * 90),
-              child: _buildExperienceCard(context, exp, index),
+              child: _buildExperienceCard(context, exp),
             );
           }),
         ],
@@ -55,34 +55,41 @@ class ExperienceSection extends StatelessWidget {
     );
   }
 
-  Widget _buildCompanyLogo(String company) {
+  Widget _buildTimelineBadge(String company) {
     final path = _companyLogos[company];
-    if (path == null) return const SizedBox.shrink();
     return Container(
-      width: 44,
-      height: 44,
-      margin: const EdgeInsets.only(left: 12),
-      padding: const EdgeInsets.all(6),
+      width: 60,
+      height: 60,
+      padding: path != null ? const EdgeInsets.all(10) : EdgeInsets.zero,
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
+        color: path != null ? Colors.white : AppTheme.primaryColor,
+        shape: BoxShape.circle,
         border: Border.all(
-          color: AppTheme.primaryColor.withValues(alpha: 0.25),
+          color: AppTheme.primaryColor,
+          width: 2.5,
         ),
+        boxShadow: [
+          BoxShadow(
+            color: AppTheme.primaryColor.withValues(alpha: 0.35),
+            blurRadius: 16,
+            spreadRadius: 1,
+          ),
+        ],
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(6),
-        child: Image.asset(
-          path,
-          fit: BoxFit.contain,
-          errorBuilder: (context, error, stackTrace) =>
-              const SizedBox.shrink(),
-        ),
-      ),
+      child: path == null
+          ? const Icon(Icons.work_rounded, color: Colors.white, size: 26)
+          : ClipOval(
+              child: Image.asset(
+                path,
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) =>
+                    const Icon(Icons.work_rounded, color: AppTheme.primaryColor),
+              ),
+            ),
     );
   }
 
-  Widget _buildExperienceCard(BuildContext context, Experience exp, int index) {
+  Widget _buildExperienceCard(BuildContext context, Experience exp) {
     return Container(
       margin: const EdgeInsets.only(bottom: 32),
       child: Card(
@@ -91,25 +98,8 @@ class ExperienceSection extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Timeline indicator
-              Container(
-                width: 60,
-                height: 60,
-                decoration: const BoxDecoration(
-                  color: AppTheme.primaryColor,
-                  shape: BoxShape.circle,
-                ),
-                child: Center(
-                  child: AutoSizeText(
-                    '${index + 1}',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ),
+              // Timeline indicator — company logo instead of a number
+              _buildTimelineBadge(exp.company),
               const SizedBox(width: 30),
               // Experience content
               Expanded(
@@ -124,22 +114,12 @@ class ExperienceSection extends StatelessWidget {
                           ),
                     ),
                     const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Flexible(
-                          child: AutoSizeText(
-                            exp.company,
-                            style: Theme.of(context)
-                                .textTheme
-                                .titleMedium
-                                ?.copyWith(
-                                  color: AppTheme.textPrimaryColor,
-                                ),
-                            maxLines: 1,
+                    AutoSizeText(
+                      exp.company,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                            color: AppTheme.textPrimaryColor,
                           ),
-                        ),
-                        _buildCompanyLogo(exp.company),
-                      ],
+                      maxLines: 1,
                     ),
                     const SizedBox(height: 8),
                     AutoSizeText(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../models/personal_info.dart';
 import '../../utils/app_theme.dart';
 
@@ -14,7 +15,9 @@ class HeroSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
+      constraints: BoxConstraints(
+        minHeight: MediaQuery.of(context).size.height,
+      ),
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 80),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -113,13 +116,13 @@ class HeroSection extends StatelessWidget {
           const SizedBox(height: 40),
 
           // CTA Buttons
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Wrap(
+            alignment: WrapAlignment.center,
+            spacing: 16,
+            runSpacing: 16,
             children: [
               ElevatedButton(
-                onPressed: () {
-                  // Scroll to contact section
-                },
+                onPressed: _emailContact,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: AppTheme.primaryColor,
                   foregroundColor: Colors.white,
@@ -133,11 +136,8 @@ class HeroSection extends StatelessWidget {
                 ),
                 child: const Text('Get In Touch'),
               ),
-              const SizedBox(width: 16),
               OutlinedButton(
-                onPressed: () {
-                  // Download CV
-                },
+                onPressed: _downloadCv,
                 style: OutlinedButton.styleFrom(
                   foregroundColor: AppTheme.primaryColor,
                   side: const BorderSide(color: AppTheme.primaryColor),
@@ -156,5 +156,24 @@ class HeroSection extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> _emailContact() async {
+    final uri = Uri(
+      scheme: 'mailto',
+      path: personalInfo.email,
+      query:
+          'subject=${Uri.encodeComponent("Let's Connect")}&body=${Uri.encodeComponent("I love the work you're doing and wanna get in touch.")}',
+    );
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    }
+  }
+
+  Future<void> _downloadCv() async {
+    final uri = Uri.base.resolve('assets/docs/sultan-khan-cv.pdf');
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, webOnlyWindowName: '_blank');
+    }
   }
 }

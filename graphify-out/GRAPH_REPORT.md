@@ -1,16 +1,16 @@
-# Graph Report - portfolio_flutter  (2026-08-09)
+# Graph Report - portfolio_flutter  (2026-08-22)
 
 ## Corpus Check
-- 78 files · ~384,852 words
+- 78 files · ~384,907 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 583 nodes · 733 edges · 63 communities (47 shown, 16 thin omitted)
+- 587 nodes · 741 edges · 61 communities (45 shown, 16 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 10 edges (avg confidence: 0.79)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2363fbd5`
+- Built from commit: `1181b5d9`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -38,14 +38,12 @@
 - [[_COMMUNITY_Certification Model|Certification Model]]
 - [[_COMMUNITY_Experience Model|Experience Model]]
 - [[_COMMUNITY_Projects Section|Projects Section]]
-- [[_COMMUNITY_Navbar State|Navbar State]]
 - [[_COMMUNITY_Experience Section|Experience Section]]
 - [[_COMMUNITY_Skill Model|Skill Model]]
 - [[_COMMUNITY_Skills Section|Skills Section]]
 - [[_COMMUNITY_Section Widgets Base|Section Widgets Base]]
 - [[_COMMUNITY_App Entry Point|App Entry Point]]
 - [[_COMMUNITY_Flutter LLDB Build Helper|Flutter LLDB Build Helper]]
-- [[_COMMUNITY_App Router (unused)|App Router (unused)]]
 - [[_COMMUNITY_Cross-Platform App Identity|Cross-Platform App Identity]]
 - [[_COMMUNITY_Flutter Engine Plugin Registrant|Flutter Engine Plugin Registrant]]
 - [[_COMMUNITY_iOS Launch Screen & Web Title|iOS Launch Screen & Web Title]]
@@ -101,23 +99,23 @@
 - **Shared App Identity: portfolio_flutter / Sultan Khan Portfolio** — pubspec_project_name, linux_cmakelists_binary_name, windows_cmakelists_binary_name, web_index_title [INFERRED 0.85]
 - **README Documentation vs Actual pubspec.yaml Dependency Version Drift** — readme_dependencies, readme_portfoliobloc, pubspec_dependencies, pubspec_dev_dependencies [INFERRED 0.85]
 
-## Communities (63 total, 16 thin omitted)
+## Communities (61 total, 16 thin omitted)
 
 ### Community 0 - "Windows Win32 Runner"
-Cohesion: 0.09
-Nodes (34): RegisterPlugins(), PluginRegistry, Point, RECT, OnCreate(), Create(), Destroy(), EnableFullDpiSupportIfAvailable() (+26 more)
+Cohesion: 0.06
+Nodes (42): DartProject, RegisterPlugins(), PluginRegistry, Point, RECT, MessageHandler(), OnCreate(), Create() (+34 more)
 
 ### Community 1 - "iOS/macOS App Delegate & Plugins"
 Cohesion: 0.07
 Nodes (23): Any, Cocoa, Flutter, RegisterGeneratedPlugins(), FlutterAppDelegate, FlutterMacOS, FlutterPluginRegistry, Foundation (+15 more)
 
 ### Community 2 - "Navbar Cubit State"
-Cohesion: 0.06
-Nodes (38): ../blocs/navbar_bloc/navbar_cubit.dart, ../blocs/navbar_bloc/navbar_state.dart, Cubit, dart:ui, initializeScrollListener, NavbarCubit, reset, _scrollController (+30 more)
+Cohesion: 0.05
+Nodes (43): ../blocs/navbar_bloc/navbar_cubit.dart, ../blocs/navbar_bloc/navbar_state.dart, dart:ui, initializeScrollListener, NavbarCubit, reset, _scrollController, scrollToSection (+35 more)
 
 ### Community 3 - "Floating Skill Icon Animation"
-Cohesion: 0.06
-Nodes (35): AnimationController, Duration, GlobalKey, ScrollPosition?, Widget, animation, animationDuration, assetPath (+27 more)
+Cohesion: 0.10
+Nodes (19): AnimationController, Duration, animation, animationDuration, assetPath, build, _controller, createState (+11 more)
 
 ### Community 4 - "Animated Background Painter"
 Cohesion: 0.09
@@ -128,12 +126,12 @@ Cohesion: 0.11
 Nodes (20): FlPluginRegistry, fl_register_plugins(), GApplication, gboolean, gchar, GObject, GtkApplication, main() (+12 more)
 
 ### Community 6 - "Landing Page Shell"
-Cohesion: 0.08
-Nodes (30): build, createState, dispose, LandingPage, _LandingPageState, _scrollController, _ProjectCard, _ProjectCardState (+22 more)
+Cohesion: 0.24
+Nodes (12): _ProjectCard, _ProjectCardState, SingleTickerProviderStateMixin, State, StatefulWidget, TickerProviderStateMixin, AnimatedBackground, _AnimatedBackgroundState (+4 more)
 
 ### Community 7 - "Portfolio Cubit States"
-Cohesion: 0.16
-Nodes (17): certifications, education, experience, loadPortfolio, message, personalInfo, PortfolioCubit, PortfolioError (+9 more)
+Cohesion: 0.06
+Nodes (40): certifications, education, experience, loadPortfolio, message, personalInfo, PortfolioCubit, PortfolioError (+32 more)
 
 ### Community 8 - "App Theme Colors"
 Cohesion: 0.13
@@ -160,8 +158,8 @@ Cohesion: 0.18
 Nodes (10): background_color, description, display, icons, name, orientation, prefer_related_applications, short_name (+2 more)
 
 ### Community 14 - "Windows FlutterWindow"
-Cohesion: 0.22
-Nodes (8): DartProject, MessageHandler(), HWND, LPARAM, LRESULT, FlutterWindow(), UINT, WPARAM
+Cohesion: 0.10
+Nodes (19): Animation, GlobalKey, package:flutter/scheduler.dart, ScrollPosition?, Ticker?, Widget, build, _checkVisibility (+11 more)
 
 ### Community 15 - "Portfolio Service"
 Cohesion: 0.20
@@ -181,23 +179,19 @@ Nodes (8): @JsonSerializable, Equatable, Certification, Education, Experience, P
 
 ### Community 19 - "Skills Grid Widget"
 Cohesion: 0.14
-Nodes (13): floating_skill_icon.dart, ../reveal_on_scroll.dart, _badges, build, _buildCertificationCard, _buildSectionTitle, certifications, static const List (+5 more)
+Nodes (13): ../floating_skill_icon.dart, ../reveal_on_scroll.dart, _badges, build, _buildCertificationCard, _buildSectionTitle, certifications, static const List (+5 more)
 
 ### Community 20 - "Certification Model"
-Cohesion: 0.25
-Nodes (7): date, description, fromJson, issuer, name, props, toJson
+Cohesion: 0.22
+Nodes (8): List, date, description, fromJson, issuer, name, props, toJson
 
 ### Community 21 - "Experience Model"
-Cohesion: 0.25
-Nodes (7): company, fromJson, period, props, responsibilities, title, toJson
+Cohesion: 0.22
+Nodes (8): company, fromJson, period, props, responsibilities, title, toJson, package:json_annotation/json_annotation.dart
 
 ### Community 22 - "Projects Section"
 Cohesion: 0.14
 Nodes (13): Map, package:flutter_svg/flutter_svg.dart, Project, build, _buildSectionTitle, _buildTechChip, createState, headerStyle (+5 more)
-
-### Community 23 - "Navbar State"
-Cohesion: 0.29
-Nodes (6): List, copyWith, isScrolled, isVisible, props, package:equatable/equatable.dart
 
 ### Community 24 - "Experience Section"
 Cohesion: 0.22
@@ -205,7 +199,7 @@ Nodes (8): ../../models/experience.dart, build, _buildCompanyLogo, _buildExperie
 
 ### Community 25 - "Skill Model"
 Cohesion: 0.29
-Nodes (6): fromJson, name, proficiency, props, toJson, package:json_annotation/json_annotation.dart
+Nodes (6): fromJson, name, proficiency, props, toJson, package:equatable/equatable.dart
 
 ### Community 26 - "Skills Section"
 Cohesion: 0.17
@@ -222,10 +216,6 @@ Nodes (10): Acceptance Criteria, Changes, Commits, Dependencies & assets (`pubsp
 ### Community 29 - "Flutter LLDB Build Helper"
 Cohesion: 0.33
 Nodes (5): handle_new_rx_page(), __lldb_init_module(), Intercept NOTIFY_DEBUGGER_ABOUT_RX_PAGES and touch the pages., SBDebugger, SBFrame
-
-### Community 30 - "App Router (unused)"
-Cohesion: 0.33
-Nodes (5): package:go_router/go_router.dart, ../pages/landing_page.dart, static final GoRouter, AppRouter, router
 
 ### Community 33 - "iOS Launch Screen & Web Title"
 Cohesion: 0.67
@@ -252,24 +242,24 @@ Cohesion: 0.29
 Nodes (6): Build for web deployment, Other commands, Prerequisites, Run, Setup, Usage
 
 ## Knowledge Gaps
-- **316 isolated node(s):** `SBFrame`, `SBDebugger`, `flutter_export_environment.sh script`, `UIApplication`, `Any` (+311 more)
+- **316 isolated node(s):** `_scrollController`, `createState`, `dispose`, `build`, `assetPath` (+311 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `PortfolioCubit` connect `Portfolio Cubit States` to `Navbar Cubit State`, `Skills Section`, `Landing Page Shell`?**
+- **Why does `PortfolioCubit` connect `Portfolio Cubit States` to `Skills Section`?**
   _High betweenness centrality (0.011) - this node is a cross-community bridge._
-- **Why does `NavbarCubit` connect `Navbar Cubit State` to `Landing Page Shell`?**
+- **Why does `NavbarCubit` connect `Navbar Cubit State` to `Portfolio Cubit States`?**
   _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **Why does `animation` connect `Floating Skill Icon Animation` to `Navbar Cubit State`, `Animated Background Painter`?**
+- **Why does `animation` connect `Floating Skill Icon Animation` to `Navbar Cubit State`, `Animated Background Painter`, `Windows FlutterWindow`?**
   _High betweenness centrality (0.007) - this node is a cross-community bridge._
-- **What connects `SBFrame`, `SBDebugger`, `Intercept NOTIFY_DEBUGGER_ABOUT_RX_PAGES and touch the pages.` to the rest of the system?**
+- **What connects `_scrollController`, `createState`, `dispose` to the rest of the system?**
   _317 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Windows Win32 Runner` be split into smaller, more focused modules?**
-  _Cohesion score 0.08658536585365853 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06431372549019608 - nodes in this community are weakly interconnected._
 - **Should `iOS/macOS App Delegate & Plugins` be split into smaller, more focused modules?**
   _Cohesion score 0.06951871657754011 - nodes in this community are weakly interconnected._
 - **Should `Navbar Cubit State` be split into smaller, more focused modules?**
-  _Cohesion score 0.057692307692307696 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05314009661835749 - nodes in this community are weakly interconnected._

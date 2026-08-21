@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'navbar_state.dart';
+import '../../utils/section_keys.dart';
 
 class NavbarCubit extends Cubit<NavbarState> {
-  ScrollController? _scrollController;
-
   NavbarCubit() : super(const NavbarInitial());
 
   void updateScrollState({
@@ -33,7 +32,6 @@ class NavbarCubit extends Cubit<NavbarState> {
   }
 
   void initializeScrollListener(ScrollController scrollController) {
-    _scrollController = scrollController;
     scrollController.addListener(() {
       final offset = scrollController.offset;
       final isScrolled = offset > 100;
@@ -47,22 +45,14 @@ class NavbarCubit extends Cubit<NavbarState> {
   }
 
   void scrollToSection(String sectionId) {
-    if (_scrollController == null) return;
+    final targetContext = SectionKeys.keys[sectionId]?.currentContext;
+    if (targetContext == null) return;
 
-    final sections = {
-      'home': 0.0,
-      'about': 800.0,
-      'experience': 1600.0,
-      'projects': 2400.0,
-      'skills': 3200.0,
-      'contact': 4000.0,
-    };
-
-    final offset = sections[sectionId] ?? 0.0;
-    _scrollController!.animateTo(
-      offset,
+    Scrollable.ensureVisible(
+      targetContext,
       duration: const Duration(milliseconds: 800),
       curve: Curves.easeInOutCubic,
+      alignment: 0.0,
     );
   }
 }

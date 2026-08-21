@@ -15,8 +15,8 @@ class CertificationsSection extends StatelessWidget {
 
   static const List<Map<String, String>> _badges = [
     {'path': 'assets/certs/fundamentals.png', 'name': 'Azure Fundamentals'},
-    {'path': 'assets/certs/associate.png', 'name': 'Azure Administrator Associate'},
     {'path': 'assets/certs/applied_skills.png', 'name': 'Applied Skills'},
+    {'path': 'assets/certs/associate.png', 'name': 'AI-103 Associate'},
   ];
 
   @override
@@ -183,7 +183,8 @@ class CertificationsSection extends StatelessWidget {
                   AutoSizeText(
                     cert.date!,
                     style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          color: AppTheme.textPrimaryColor.withValues(alpha: 0.6),
+                          color:
+                              AppTheme.textPrimaryColor.withValues(alpha: 0.6),
                         ),
                   ),
                 ],

@@ -31,9 +31,13 @@ class ProjectsSection extends StatelessWidget {
   static const List<(IconData, List<Color>)> _headerStyles = [
     (Icons.groups_rounded, [AppTheme.primaryColor, AppTheme.accentColor]),
     (Icons.timer_rounded, [AppTheme.accentColor, AppTheme.primaryColor]),
-    (Icons.emoji_events_rounded, [AppTheme.primaryColor, AppTheme.secondaryColor]),
+    (
+      Icons.emoji_events_rounded,
+      [AppTheme.primaryColor, AppTheme.secondaryColor]
+    ),
     (Icons.task_alt_rounded, [AppTheme.secondaryColor, AppTheme.accentColor]),
     (Icons.shield_rounded, [AppTheme.accentColor, AppTheme.secondaryColor]),
+    (Icons.speed_rounded, [AppTheme.secondaryColor, AppTheme.primaryColor]),
   ];
 
   @override
@@ -47,24 +51,27 @@ class ProjectsSection extends StatelessWidget {
           LayoutBuilder(
             builder: (context, constraints) {
               final crossAxisCount = constraints.maxWidth < 700 ? 1 : 2;
-              return GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: crossAxisCount,
-                  crossAxisSpacing: 32,
-                  mainAxisSpacing: 32,
-                  childAspectRatio: crossAxisCount == 1 ? 1.1 : 0.8,
-                ),
-                itemCount: projects.length,
-                itemBuilder: (context, index) => RevealOnScroll(
-                  delay: Duration(milliseconds: index * 90),
-                  child: _ProjectCard(
-                    project: projects[index],
-                    headerStyle: _headerStyles[index % _headerStyles.length],
-                    techIcons: _techIcons,
-                  ),
-                ),
+              final width =
+                  (constraints.maxWidth - (32 * (crossAxisCount - 1))) /
+                      crossAxisCount;
+              return Wrap(
+                spacing: 32,
+                runSpacing: 32,
+                children: projects.asMap().entries.map((entry) {
+                  final index = entry.key;
+                  return SizedBox(
+                    width: width.clamp(280, constraints.maxWidth),
+                    child: RevealOnScroll(
+                      delay: Duration(milliseconds: index * 90),
+                      child: _ProjectCard(
+                        project: entry.value,
+                        headerStyle:
+                            _headerStyles[index % _headerStyles.length],
+                        techIcons: _techIcons,
+                      ),
+                    ),
+                  );
+                }).toList(),
               );
             },
           ),
@@ -133,6 +140,7 @@ class _ProjectCardState extends State<_ProjectCard> {
           child: Card(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
               children: [
                 // Project header
                 Container(
@@ -157,43 +165,41 @@ class _ProjectCardState extends State<_ProjectCard> {
                   ),
                 ),
                 // Project content
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        AutoSizeText(
-                          project.name,
-                          style:
-                              Theme.of(context).textTheme.titleLarge?.copyWith(
-                                    color: AppTheme.primaryColor,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                          maxLines: 1,
-                        ),
-                        const SizedBox(height: 8),
-                        AutoSizeText(
-                          project.description,
-                          style:
-                              Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                    color: AppTheme.textPrimaryColor
-                                        .withValues(alpha: 0.8),
-                                  ),
-                          maxLines: 3,
-                        ),
-                        const SizedBox(height: 16),
-                        // Technologies
-                        Expanded(
-                          child: Wrap(
-                            spacing: 6,
-                            runSpacing: 6,
-                            children: project.technologies
-                                .take(4)
-                                .map((tech) => _buildTechChip(context, tech))
-                                .toList(),
-                          ),
-                        ),
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      AutoSizeText(
+                        project.name,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                              color: AppTheme.primaryColor,
+                              fontWeight: FontWeight.bold,
+                            ),
+                        maxLines: 1,
+                      ),
+                      const SizedBox(height: 8),
+                      AutoSizeText(
+                        project.description,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: AppTheme.textPrimaryColor
+                                  .withValues(alpha: 0.8),
+                            ),
+                        maxLines: 3,
+                      ),
+                      const SizedBox(height: 16),
+                      // Technologies
+                      Wrap(
+                        spacing: 6,
+                        runSpacing: 6,
+                        children: project.technologies
+                            .take(4)
+                            .map((tech) => _buildTechChip(context, tech))
+                            .toList(),
+                      ),
+                      if (project.githubUrl != null ||
+                          project.liveUrl != null) ...[
                         const SizedBox(height: 16),
                         // Action buttons
                         Row(
@@ -234,7 +240,7 @@ class _ProjectCardState extends State<_ProjectCard> {
                           ],
                         ),
                       ],
-                    ),
+                    ],
                   ),
                 ),
               ],

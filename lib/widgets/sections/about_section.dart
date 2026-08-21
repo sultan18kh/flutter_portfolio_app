@@ -23,23 +23,10 @@ class AboutSection extends StatelessWidget {
         children: [
           _buildSectionTitle('About Me'),
           const SizedBox(height: 40),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: AspectRatio(
-              aspectRatio: 4 / 1,
-              child: Image.asset(
-                'assets/sultan_cover_4_1.PNG',
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) =>
-                    const SizedBox.shrink(),
-              ),
-            ),
-          ),
-          const SizedBox(height: 48),
           LayoutBuilder(
             builder: (context, constraints) {
               final aboutText = AutoSizeText(
-                personalInfo.profile,
+                personalInfo.aboutBio,
                 style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                       color: AppTheme.textPrimaryColor.withValues(alpha: 0.8),
                       height: 1.6,
@@ -73,19 +60,41 @@ class AboutSection extends StatelessWidget {
                 );
               }
 
-              return Row(
+              return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildPortrait(),
-                  const SizedBox(width: 40),
-                  Expanded(flex: 2, child: aboutText),
-                  const SizedBox(width: 60),
-                  Expanded(flex: 1, child: educationColumn),
+                  _buildCoverBanner(),
+                  const SizedBox(height: 48),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildPortrait(),
+                      const SizedBox(width: 40),
+                      Expanded(flex: 2, child: aboutText),
+                      const SizedBox(width: 60),
+                      Expanded(flex: 1, child: educationColumn),
+                    ],
+                  ),
                 ],
               );
             },
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildCoverBanner() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: AspectRatio(
+        aspectRatio: 4 / 1,
+        child: Image.asset(
+          'assets/sultan_cover.webp',
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) =>
+              const SizedBox.shrink(),
+        ),
       ),
     );
   }

@@ -1,12 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+
+/// Provides the page's single [ScrollController] to descendant
+/// [RevealOnScroll] widgets, so they all react to one scroll listener
+/// instead of each running its own per-frame poll.
+class RevealScrollScope extends InheritedWidget {
+  final ScrollController controller;
+
+  const RevealScrollScope({
+    super.key,
+    required this.controller,
+    required super.child,
+  });
+
+  static ScrollController? maybeOf(BuildContext context) {
+    return context
+        .dependOnInheritedWidgetOfExactType<RevealScrollScope>()
+        ?.controller;
+  }
+
+  @override
+  bool updateShouldNotify(RevealScrollScope oldWidget) =>
+      oldWidget.controller != controller;
+}
 
 /// Fades and slides [child] into place the first time it scrolls into view.
 ///
-/// Visibility is polled via a per-frame [Ticker] rather than an ancestor
-/// [Scrollable]'s position listener, since a reveal target nested inside its
-/// own scroll boundary (e.g. a shrink-wrapped GridView) would otherwise
-/// attach to that inner, never-moving position and never fire.
+/// Visibility is checked off the shared [RevealScrollScope] controller's
+/// scroll events (plus once on mount/dependency change), not a per-instance
+/// per-frame ticker, so having many of these on a page costs one listener
+/// each rather than N independent render loops.
 class RevealOnScroll extends StatefulWidget {
   final Widget child;
   final Duration delay;
@@ -22,12 +44,12 @@ class RevealOnScroll extends StatefulWidget {
 }
 
 class _RevealOnScrollState extends State<RevealOnScroll>
-    with TickerProviderStateMixin {
+    with SingleTickerProviderStateMixin {
   final GlobalKey _key = GlobalKey();
   late final AnimationController _controller;
   late final Animation<double> _fade;
   late final Animation<double> _dy;
-  Ticker? _visibilityTicker;
+  ScrollController? _scrollController;
   bool _revealed = false;
 
   @override
@@ -38,16 +60,25 @@ class _RevealOnScrollState extends State<RevealOnScroll>
       vsync: this,
     );
     _fade = CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic);
-    _dy = Tween<double>(begin: 32, end: 0)
-        .animate(CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic));
+    _dy = Tween<double>(begin: 32, end: 0).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.easeOutCubic),
+    );
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return;
-      _checkVisibility();
-      if (!_revealed) {
-        _visibilityTicker = createTicker((_) => _checkVisibility())..start();
-      }
+      if (mounted) _checkVisibility();
     });
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final controller = RevealScrollScope.maybeOf(context);
+    if (controller != _scrollController) {
+      _scrollController?.removeListener(_checkVisibility);
+      _scrollController = controller;
+      _scrollController?.addListener(_checkVisibility);
+    }
+    if (!_revealed) _checkVisibility();
   }
 
   void _checkVisibility() {
@@ -60,9 +91,6 @@ class _RevealOnScrollState extends State<RevealOnScroll>
 
     if (top < screenHeight * 0.88) {
       _revealed = true;
-      _visibilityTicker?.stop();
-      _visibilityTicker?.dispose();
-      _visibilityTicker = null;
       Future.delayed(widget.delay, () {
         if (mounted) _controller.forward();
       });
@@ -71,7 +99,7 @@ class _RevealOnScrollState extends State<RevealOnScroll>
 
   @override
   void dispose() {
-    _visibilityTicker?.dispose();
+    _scrollController?.removeListener(_checkVisibility);
     _controller.dispose();
     super.dispose();
   }

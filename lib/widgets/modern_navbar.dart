@@ -202,10 +202,20 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
   Widget _buildNavbarContent(bool isScrolled) {
     final isMobile = MediaQuery.of(context).size.width < _mobileBreakpoint;
 
+    final dropdownOpen = isMobile && _mobileMenuOpen;
+    // Bottom-anchored navbar: dropdown opens upward, above the pill, so it
+    // grows into open canvas space instead of squeezing toward the anchor.
+    final dropdownAbove = dropdownOpen && isScrolled;
+    final dropdownBelow = dropdownOpen && !isScrolled;
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        if (dropdownAbove) ...[
+          _buildDropdownPanel(isScrolled),
+          const SizedBox(height: 12),
+        ],
         _buildGlassPanel(
           isScrolled: isScrolled,
           height: 70,
@@ -251,25 +261,29 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
             ),
           ),
         ),
-        if (isMobile && _mobileMenuOpen) ...[
+        if (dropdownBelow) ...[
           const SizedBox(height: 12),
-          _buildGlassPanel(
-            isScrolled: isScrolled,
-            height: null,
-            forceScrim: true,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  for (final (label, id) in _navItems)
-                    _buildMobileNavItem(label, id, isScrolled),
-                ],
-              ),
-            ),
-          ),
+          _buildDropdownPanel(isScrolled),
         ],
       ],
+    );
+  }
+
+  Widget _buildDropdownPanel(bool isScrolled) {
+    return _buildGlassPanel(
+      isScrolled: isScrolled,
+      height: null,
+      forceScrim: true,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            for (final (label, id) in _navItems)
+              _buildMobileNavItem(label, id, isScrolled),
+          ],
+        ),
+      ),
     );
   }
 
@@ -342,27 +356,33 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
   }
 
   Widget _buildMenuToggle(bool isScrolled) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
-        onTap: () => setState(() => _mobileMenuOpen = !_mobileMenuOpen),
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            color: _mobileMenuOpen
-                ? AppTheme.primaryColor.withValues(alpha: 0.15)
-                : Colors.transparent,
-            border: Border.all(
-              color: AppTheme.primaryColor.withValues(alpha: 0.3),
-              width: 1,
+    return Semantics(
+      button: true,
+      label: _mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu',
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: () => setState(() => _mobileMenuOpen = !_mobileMenuOpen),
+          borderRadius: BorderRadius.circular(10),
+          mouseCursor: SystemMouseCursors.click,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 200),
+            padding: const EdgeInsets.all(11),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              color: _mobileMenuOpen
+                  ? AppTheme.primaryColor.withValues(alpha: 0.15)
+                  : Colors.transparent,
+              border: Border.all(
+                color: AppTheme.primaryColor.withValues(alpha: 0.3),
+                width: 1,
+              ),
             ),
-          ),
-          child: Icon(
-            _mobileMenuOpen ? Icons.close : Icons.menu,
-            color: AppTheme.primaryColor,
-            size: 22,
+            child: Icon(
+              _mobileMenuOpen ? Icons.close : Icons.menu,
+              color: AppTheme.primaryColor,
+              size: 22,
+            ),
           ),
         ),
       ),
@@ -370,13 +390,15 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
   }
 
   Widget _buildMobileNavItem(String label, String sectionId, bool isScrolled) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: GestureDetector(
+    return Material(
+      type: MaterialType.transparency,
+      child: InkWell(
         onTap: () {
           context.read<NavbarCubit>().scrollToSection(sectionId);
           setState(() => _mobileMenuOpen = false);
         },
+        borderRadius: BorderRadius.circular(12),
+        mouseCursor: SystemMouseCursors.click,
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 4),
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
@@ -399,10 +421,12 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
   Widget _buildNavItem(String label, String sectionId, bool isScrolled) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        child: GestureDetector(
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
           onTap: () => context.read<NavbarCubit>().scrollToSection(sectionId),
+          borderRadius: BorderRadius.circular(12),
+          mouseCursor: SystemMouseCursors.click,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),

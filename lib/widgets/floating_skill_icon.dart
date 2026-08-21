@@ -85,95 +85,103 @@ class _FloatingSkillIconState extends State<FloatingSkillIcon>
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onEnter: (_) => _onHoverChanged(true),
-      onExit: (_) => _onHoverChanged(false),
-      child: AnimatedBuilder(
-        animation: _controller,
-        builder: (context, child) {
-          return Transform.translate(
-            offset: _isHovered ? Offset.zero : Offset(0, _floatAnimation.value),
-            child: Transform.rotate(
-              angle: _isHovered ? 0 : _rotationAnimation.value,
-              child: Transform.scale(
-                scale: _isHovered ? 1.1 : _scaleAnimation.value,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      width: widget.size,
-                      height: widget.size,
-                      padding: const EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: _isHovered
-                            ? AppTheme.primaryColor.withValues(alpha: 0.1)
-                            : AppTheme.cardColor,
-                        borderRadius: BorderRadius.circular(16),
-                        border: _isHovered
-                            ? Border.all(
-                                color: AppTheme.primaryColor,
-                                width: 2,
-                              )
-                            : null,
-                        boxShadow: [
-                          BoxShadow(
-                            color: _isHovered
-                                ? AppTheme.primaryColor.withValues(alpha: 0.4)
-                                : AppTheme.primaryColor.withValues(alpha: 0.2),
-                            blurRadius: _isHovered ? 20 : 10,
-                            spreadRadius: _isHovered ? 4 : 2,
-                          ),
-                          if (_isHovered)
+    return Semantics(
+      label: widget.skillName,
+      child: MouseRegion(
+        onEnter: (_) => _onHoverChanged(true),
+        onExit: (_) => _onHoverChanged(false),
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (context, child) {
+            return Transform.translate(
+              offset:
+                  _isHovered ? Offset.zero : Offset(0, _floatAnimation.value),
+              child: Transform.rotate(
+                angle: _isHovered ? 0 : _rotationAnimation.value,
+                child: Transform.scale(
+                  scale: _isHovered ? 1.1 : _scaleAnimation.value,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                        width: widget.size,
+                        height: widget.size,
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: _isHovered
+                              ? AppTheme.primaryColor.withValues(alpha: 0.1)
+                              : AppTheme.cardColor,
+                          borderRadius: BorderRadius.circular(16),
+                          border: _isHovered
+                              ? Border.all(
+                                  color: AppTheme.primaryColor,
+                                  width: 2,
+                                )
+                              : null,
+                          boxShadow: [
                             BoxShadow(
-                              color:
-                                  AppTheme.primaryColor.withValues(alpha: 0.3),
-                              blurRadius: 30,
-                              spreadRadius: 8,
+                              color: _isHovered
+                                  ? AppTheme.primaryColor.withValues(alpha: 0.4)
+                                  : AppTheme.primaryColor
+                                      .withValues(alpha: 0.2),
+                              blurRadius: _isHovered ? 20 : 10,
+                              spreadRadius: _isHovered ? 4 : 2,
                             ),
-                        ],
+                            if (_isHovered)
+                              BoxShadow(
+                                color: AppTheme.primaryColor
+                                    .withValues(alpha: 0.3),
+                                blurRadius: 30,
+                                spreadRadius: 8,
+                              ),
+                          ],
+                        ),
+                        child: widget.assetPath.toLowerCase().endsWith('.svg')
+                            ? SvgPicture.asset(
+                                widget.assetPath,
+                                width: widget.size * 0.6,
+                                height: widget.size * 0.6,
+                                fit: BoxFit.contain,
+                              )
+                            : Image.asset(
+                                widget.assetPath,
+                                width: widget.size * 0.6,
+                                height: widget.size * 0.6,
+                                fit: BoxFit.contain,
+                              ),
                       ),
-                      child: widget.assetPath.toLowerCase().endsWith('.svg')
-                          ? SvgPicture.asset(
-                              widget.assetPath,
-                              width: widget.size * 0.6,
-                              height: widget.size * 0.6,
-                              fit: BoxFit.contain,
-                            )
-                          : Image.asset(
-                              widget.assetPath,
-                              width: widget.size * 0.6,
-                              height: widget.size * 0.6,
-                              fit: BoxFit.contain,
-                            ),
-                    ),
-                    Visibility(
-                      visible: _isHovered,
-                      child: Container(
-                        margin: const EdgeInsets.only(top: 8),
-                        child: SizedBox(
-                          width: widget.size,
-                          child: AutoSizeText(
-                            widget.skillName,
-                            textAlign: TextAlign.center,
-                            maxLines: 1,
-                            minFontSize: 10,
-                            style: TextStyle(
-                              color:
-                                  AppTheme.primaryColor.withValues(alpha: 0.7),
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Inter',
+                      Visibility(
+                        visible: _isHovered,
+                        maintainSize: true,
+                        maintainAnimation: true,
+                        maintainState: true,
+                        child: Container(
+                          margin: const EdgeInsets.only(top: 8),
+                          child: SizedBox(
+                            width: widget.size,
+                            child: AutoSizeText(
+                              widget.skillName,
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                              minFontSize: 10,
+                              style: TextStyle(
+                                color: AppTheme.primaryColor
+                                    .withValues(alpha: 0.7),
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                                fontFamily: 'Inter',
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

@@ -73,26 +73,6 @@ class ContactSection extends StatelessWidget {
                       personalInfo.home,
                       null,
                     ),
-                    const SizedBox(height: 32),
-                    // Social links
-                    Row(
-                      children: [
-                        if (personalInfo.linkedin.isNotEmpty)
-                          _buildSocialButton(
-                            context,
-                            Icons.link,
-                            () => _launchUrl(personalInfo.linkedin),
-                          ),
-                        if (personalInfo.github.isNotEmpty) ...[
-                          const SizedBox(width: 16),
-                          _buildSocialButton(
-                            context,
-                            Icons.code,
-                            () => _launchUrl(personalInfo.github),
-                          ),
-                        ],
-                      ],
-                    ),
                   ],
                 );
 
@@ -192,28 +172,6 @@ class ContactSection extends StatelessWidget {
             ],
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildSocialButton(
-      BuildContext context, IconData icon, VoidCallback onTap) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        width: 48,
-        height: 48,
-        decoration: BoxDecoration(
-          color: AppTheme.primaryColor.withValues(alpha: 0.1),
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            color: AppTheme.primaryColor.withValues(alpha: 0.3),
-          ),
-        ),
-        child: Icon(
-          icon,
-          color: AppTheme.primaryColor,
-        ),
       ),
     );
   }
