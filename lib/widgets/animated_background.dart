@@ -125,14 +125,15 @@ class Particle {
   });
 
   factory Particle.random(Size screenSize) {
+    final hue =
+        math.Random().nextBool() ? AppTheme.primaryColor : AppTheme.accentColor;
     return Particle(
       x: math.Random().nextDouble() * screenSize.width,
       y: math.Random().nextDouble() * screenSize.height,
       size: math.Random().nextDouble() * 3 + 1,
       speed: math.Random().nextDouble() * 0.5 + 0.1,
       angle: math.Random().nextDouble() * 2 * math.pi,
-      color: AppTheme.primaryColor
-          .withValues(alpha: math.Random().nextDouble() * 0.3 + 0.1),
+      color: hue.withValues(alpha: math.Random().nextDouble() * 0.3 + 0.1),
     );
   }
 }

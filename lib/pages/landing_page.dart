@@ -6,10 +6,14 @@ import '../widgets/modern_navbar.dart';
 import '../widgets/sections/hero_section.dart';
 import '../widgets/sections/about_section.dart';
 import '../widgets/sections/experience_section.dart';
+import '../widgets/sections/certifications_section.dart';
 import '../widgets/sections/projects_section.dart';
 import '../widgets/sections/skills_section.dart';
 import '../widgets/sections/contact_section.dart';
+import '../widgets/sections/socials_section.dart';
+import '../widgets/reveal_on_scroll.dart';
 import '../utils/app_theme.dart';
+import '../utils/section_keys.dart';
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -79,50 +83,82 @@ class _LandingPageState extends State<LandingPage> {
             }
 
             if (state is PortfolioLoaded) {
-              return SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                child: Stack(
-                  clipBehavior: Clip.hardEdge,
-                  children: [
-                    // Main content
-                    SingleChildScrollView(
-                      controller: _scrollController,
-                      child: Column(
-                        children: [
-                          // Add top padding to account for floating navbar
-                          const SizedBox(height: 100),
+              return RevealScrollScope(
+                controller: _scrollController,
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                  child: Stack(
+                    clipBehavior: Clip.hardEdge,
+                    children: [
+                      // Main content
+                      SingleChildScrollView(
+                        controller: _scrollController,
+                        child: Column(
+                          children: [
+                            // Add top padding to account for floating navbar
+                            const SizedBox(height: 100),
 
-                          // Hero Section
-                          HeroSection(personalInfo: state.personalInfo),
+                            // Hero Section
+                            HeroSection(
+                              key: SectionKeys.keys['home'],
+                              personalInfo: state.personalInfo,
+                            ),
 
-                          // About Section
-                          AboutSection(
-                            personalInfo: state.personalInfo,
-                            education: state.education,
-                          ),
+                            // About Section
+                            RevealOnScroll(
+                              child: AboutSection(
+                                key: SectionKeys.keys['about'],
+                                personalInfo: state.personalInfo,
+                                education: state.education,
+                              ),
+                            ),
 
-                          // Skills Section
-                          SkillsSection(skills: state.skills),
+                            // Skills Section
+                            RevealOnScroll(
+                              child: SkillsSection(
+                                key: SectionKeys.keys['skills'],
+                                skills: state.skills,
+                              ),
+                            ),
 
-                          // Experience Section
-                          ExperienceSection(experience: state.experience),
+                            // Experience Section
+                            ExperienceSection(
+                              key: SectionKeys.keys['experience'],
+                              experience: state.experience,
+                            ),
 
-                          // Projects Section
-                          ProjectsSection(projects: state.projects),
+                            // Certifications Section
+                            CertificationsSection(
+                              certifications: state.certifications,
+                            ),
 
-                          // Contact Section
-                          ContactSection(
-                            personalInfo: state.personalInfo,
-                            certifications: state.certifications,
-                          ),
-                        ],
+                            // Projects Section
+                            ProjectsSection(
+                              key: SectionKeys.keys['projects'],
+                              projects: state.projects,
+                            ),
+
+                            // Contact Section
+                            ContactSection(
+                              key: SectionKeys.keys['contact'],
+                              personalInfo: state.personalInfo,
+                            ),
+
+                            // Socials Section
+                            const SocialsSection(),
+
+                            // Reserve space so content never sits behind
+                            // the floating bottom navbar at max scroll.
+                            const SizedBox(height: 160),
+                          ],
+                        ),
                       ),
-                    ),
 
-                    // Floating Navigation Bar
-                    ModernNavbar(scrollController: _scrollController),
-                  ],
+                      // Floating Navigation Bar
+                      ModernNavbar(scrollController: _scrollController),
+                    ],
+                  ),
                 ),
               );
             }

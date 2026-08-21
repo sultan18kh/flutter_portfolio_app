@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import '../../models/experience.dart';
 import '../../utils/app_theme.dart';
+import '../reveal_on_scroll.dart';
 
 class ExperienceSection extends StatelessWidget {
   final List<Experience> experience;
@@ -11,6 +12,15 @@ class ExperienceSection extends StatelessWidget {
     required this.experience,
   });
 
+  static const Map<String, String> _companyLogos = {
+    'AlphaBOLD': 'assets/companies/alphabold.png',
+    'We > I': 'assets/companies/we_over_i.jpeg',
+    'Confiz Limited': 'assets/companies/confiz.jpeg',
+    'Finz Technologies': 'assets/companies/finz.jpeg',
+    'Fauji Fertilizer Company': 'assets/companies/ffc.png',
+    'Netsol Technologies': 'assets/companies/netsol.png',
+  };
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,12 +28,15 @@ class ExperienceSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildSectionTitle('Experience'),
+          RevealOnScroll(child: _buildSectionTitle('Experience')),
           const SizedBox(height: 60),
           ...experience.asMap().entries.map((entry) {
             final index = entry.key;
             final exp = entry.value;
-            return _buildExperienceCard(context, exp, index);
+            return RevealOnScroll(
+              delay: Duration(milliseconds: index * 90),
+              child: _buildExperienceCard(context, exp),
+            );
           }),
         ],
       ),
@@ -42,7 +55,41 @@ class ExperienceSection extends StatelessWidget {
     );
   }
 
-  Widget _buildExperienceCard(BuildContext context, Experience exp, int index) {
+  Widget _buildTimelineBadge(String company) {
+    final path = _companyLogos[company];
+    return Container(
+      width: 60,
+      height: 60,
+      padding: path != null ? const EdgeInsets.all(10) : EdgeInsets.zero,
+      decoration: BoxDecoration(
+        color: path != null ? Colors.white : AppTheme.primaryColor,
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: AppTheme.primaryColor,
+          width: 2.5,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: AppTheme.primaryColor.withValues(alpha: 0.35),
+            blurRadius: 16,
+            spreadRadius: 1,
+          ),
+        ],
+      ),
+      child: path == null
+          ? const Icon(Icons.work_rounded, color: Colors.white, size: 26)
+          : ClipOval(
+              child: Image.asset(
+                path,
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) =>
+                    const Icon(Icons.work_rounded, color: AppTheme.primaryColor),
+              ),
+            ),
+    );
+  }
+
+  Widget _buildExperienceCard(BuildContext context, Experience exp) {
     return Container(
       margin: const EdgeInsets.only(bottom: 32),
       child: Card(
@@ -51,25 +98,8 @@ class ExperienceSection extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Timeline indicator
-              Container(
-                width: 60,
-                height: 60,
-                decoration: const BoxDecoration(
-                  color: AppTheme.primaryColor,
-                  shape: BoxShape.circle,
-                ),
-                child: Center(
-                  child: AutoSizeText(
-                    '${index + 1}',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                ),
-              ),
+              // Timeline indicator — company logo instead of a number
+              _buildTimelineBadge(exp.company),
               const SizedBox(width: 30),
               // Experience content
               Expanded(
@@ -89,6 +119,7 @@ class ExperienceSection extends StatelessWidget {
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
                             color: AppTheme.textPrimaryColor,
                           ),
+                      maxLines: 1,
                     ),
                     const SizedBox(height: 8),
                     AutoSizeText(
@@ -107,9 +138,6 @@ class ExperienceSection extends StatelessWidget {
                             height: 1.6,
                           ),
                     ),
-                    const SizedBox(height: 16),
-                    // Note: Technologies not available in Experience model
-                    // This would need to be added to the model
                   ],
                 ),
               ),

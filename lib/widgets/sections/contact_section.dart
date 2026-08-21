@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../models/personal_info.dart';
-import '../../models/certification.dart';
 import '../../utils/app_theme.dart';
+import '../reveal_on_scroll.dart';
 
 class ContactSection extends StatelessWidget {
   final PersonalInfo personalInfo;
-  final List<Certification> certifications;
 
   const ContactSection({
     super.key,
     required this.personalInfo,
-    required this.certifications,
   });
 
   @override
@@ -22,15 +20,13 @@ class ContactSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildSectionTitle('Get In Touch'),
+          RevealOnScroll(child: _buildSectionTitle(context)),
           const SizedBox(height: 40),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Contact info
-              Expanded(
-                flex: 1,
-                child: Column(
+          RevealOnScroll(
+            delay: const Duration(milliseconds: 100),
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                final contactInfo = Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     AutoSizeText(
@@ -77,65 +73,67 @@ class ContactSection extends StatelessWidget {
                       personalInfo.home,
                       null,
                     ),
-                    const SizedBox(height: 32),
-                    // Social links
-                    Row(
-                      children: [
-                        if (personalInfo.linkedin.isNotEmpty)
-                          _buildSocialButton(
-                            context,
-                            Icons.link,
-                            () => _launchUrl(personalInfo.linkedin),
-                          ),
-                        if (personalInfo.github.isNotEmpty) ...[
-                          const SizedBox(width: 16),
-                          _buildSocialButton(
-                            context,
-                            Icons.code,
-                            () => _launchUrl(personalInfo.github),
-                          ),
-                        ],
-                      ],
-                    ),
                   ],
-                ),
-              ),
-              const SizedBox(width: 60),
-              // Certifications
-              Expanded(
-                flex: 1,
-                child: Column(
+                );
+
+                if (constraints.maxWidth < 800) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildPortrait(),
+                      const SizedBox(height: 32),
+                      contactInfo,
+                    ],
+                  );
+                }
+
+                return Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AutoSizeText(
-                      'Certifications',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: AppTheme.primaryColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    const SizedBox(height: 20),
-                    ...certifications
-                        .map((cert) => _buildCertificationCard(context, cert)),
+                    _buildPortrait(),
+                    const SizedBox(width: 48),
+                    Expanded(child: contactInfo),
                   ],
-                ),
-              ),
-            ],
+                );
+              },
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildSectionTitle(String title) {
-    return Builder(
-      builder: (context) => AutoSizeText(
-        title,
-        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              color: AppTheme.primaryColor,
-              fontWeight: FontWeight.bold,
-            ),
+  Widget _buildPortrait() {
+    return Container(
+      width: 160,
+      height: 160,
+      padding: const EdgeInsets.all(3),
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [AppTheme.primaryColor, AppTheme.accentColor],
+        ),
       ),
+      child: ClipOval(
+        child: Image.asset(
+          'assets/sultan_side_rough.jpg',
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) =>
+              Container(color: AppTheme.surfaceColor),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSectionTitle(BuildContext context) {
+    return AutoSizeText(
+      'Get In Touch',
+      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+            color: AppTheme.primaryColor,
+            fontWeight: FontWeight.bold,
+          ),
     );
   }
 
@@ -172,68 +170,6 @@ class ContactSection extends StatelessWidget {
                     ),
               ),
             ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildSocialButton(
-      BuildContext context, IconData icon, VoidCallback onTap) {
-    return InkWell(
-      onTap: onTap,
-      child: Container(
-        width: 48,
-        height: 48,
-        decoration: BoxDecoration(
-          color: AppTheme.primaryColor.withValues(alpha: 0.1),
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            color: AppTheme.primaryColor.withValues(alpha: 0.3),
-          ),
-        ),
-        child: Icon(
-          icon,
-          color: AppTheme.primaryColor,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildCertificationCard(BuildContext context, Certification cert) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppTheme.surfaceColor,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(
-          color: AppTheme.primaryColor.withValues(alpha: 0.2),
-        ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          AutoSizeText(
-            cert.name,
-            style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                  color: AppTheme.primaryColor,
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          const SizedBox(height: 4),
-          AutoSizeText(
-            cert.issuer ?? 'Unknown Issuer',
-            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  color: AppTheme.textPrimaryColor,
-                ),
-          ),
-          const SizedBox(height: 4),
-          AutoSizeText(
-            cert.date ?? 'Unknown Date',
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppTheme.textPrimaryColor.withValues(alpha: 0.7),
-                ),
           ),
         ],
       ),

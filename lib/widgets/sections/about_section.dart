@@ -23,50 +23,112 @@ class AboutSection extends StatelessWidget {
         children: [
           _buildSectionTitle('About Me'),
           const SizedBox(height: 40),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // About content
-              Expanded(
-                flex: 2,
-                child: Column(
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final aboutText = AutoSizeText(
+                personalInfo.aboutBio,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: AppTheme.textPrimaryColor.withValues(alpha: 0.8),
+                      height: 1.6,
+                    ),
+              );
+              final educationColumn = Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AutoSizeText(
+                    'Education',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          color: AppTheme.primaryColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                  ),
+                  const SizedBox(height: 20),
+                  ...education.map((edu) => _buildEducationCard(context, edu)),
+                ],
+              );
+
+              if (constraints.maxWidth < 800) {
+                return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AutoSizeText(
-                      personalInfo.profile,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: AppTheme.textPrimaryColor
-                                .withValues(alpha: 0.8),
-                            height: 1.6,
-                          ),
-                    ),
-                    const SizedBox(height: 24),
+                    _buildPortrait(),
+                    const SizedBox(height: 32),
+                    aboutText,
+                    const SizedBox(height: 40),
+                    educationColumn,
                   ],
-                ),
-              ),
-              const SizedBox(width: 60),
-              // Education
-              Expanded(
-                flex: 1,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AutoSizeText(
-                      'Education',
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: AppTheme.primaryColor,
-                            fontWeight: FontWeight.bold,
-                          ),
-                    ),
-                    const SizedBox(height: 20),
-                    ...education
-                        .map((edu) => _buildEducationCard(context, edu)),
-                  ],
-                ),
-              ),
-            ],
+                );
+              }
+
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _buildCoverBanner(),
+                  const SizedBox(height: 48),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      _buildPortrait(),
+                      const SizedBox(width: 40),
+                      Expanded(flex: 2, child: aboutText),
+                      const SizedBox(width: 60),
+                      Expanded(flex: 1, child: educationColumn),
+                    ],
+                  ),
+                ],
+              );
+            },
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildCoverBanner() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20),
+      child: AspectRatio(
+        aspectRatio: 4 / 1,
+        child: Image.asset(
+          'assets/sultan_cover.webp',
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) =>
+              const SizedBox.shrink(),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildPortrait() {
+    return Container(
+      width: 180,
+      padding: const EdgeInsets.all(3),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        gradient: const LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [AppTheme.primaryColor, AppTheme.accentColor],
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: AppTheme.primaryColor.withValues(alpha: 0.25),
+            blurRadius: 24,
+            offset: const Offset(-4, 8),
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(17),
+        child: AspectRatio(
+          aspectRatio: 3 / 4,
+          child: Image.asset(
+            'assets/sultan_side.jpg',
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) =>
+                Container(color: AppTheme.surfaceColor),
+          ),
+        ),
       ),
     );
   }
