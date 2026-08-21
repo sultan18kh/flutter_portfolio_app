@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import '../../models/experience.dart';
 import '../../utils/app_theme.dart';
+import '../reveal_on_scroll.dart';
 
 class ExperienceSection extends StatelessWidget {
   final List<Experience> experience;
@@ -11,6 +12,15 @@ class ExperienceSection extends StatelessWidget {
     required this.experience,
   });
 
+  static const Map<String, String> _companyLogos = {
+    'AlphaBOLD': 'assets/companies/alphabold.png',
+    'We > I': 'assets/companies/we_over_i.jpeg',
+    'Confiz Limited': 'assets/companies/confiz.jpeg',
+    'Finz Technologies': 'assets/companies/finz.jpeg',
+    'Fauji Fertilizer Company': 'assets/companies/ffc.png',
+    'Netsol Technologies': 'assets/companies/netsol.png',
+  };
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,12 +28,15 @@ class ExperienceSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildSectionTitle('Experience'),
+          RevealOnScroll(child: _buildSectionTitle('Experience')),
           const SizedBox(height: 60),
           ...experience.asMap().entries.map((entry) {
             final index = entry.key;
             final exp = entry.value;
-            return _buildExperienceCard(context, exp, index);
+            return RevealOnScroll(
+              delay: Duration(milliseconds: index * 90),
+              child: _buildExperienceCard(context, exp, index),
+            );
           }),
         ],
       ),
@@ -38,6 +51,33 @@ class ExperienceSection extends StatelessWidget {
               color: AppTheme.primaryColor,
               fontWeight: FontWeight.bold,
             ),
+      ),
+    );
+  }
+
+  Widget _buildCompanyLogo(String company) {
+    final path = _companyLogos[company];
+    if (path == null) return const SizedBox.shrink();
+    return Container(
+      width: 44,
+      height: 44,
+      margin: const EdgeInsets.only(left: 12),
+      padding: const EdgeInsets.all(6),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        border: Border.all(
+          color: AppTheme.primaryColor.withValues(alpha: 0.25),
+        ),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(6),
+        child: Image.asset(
+          path,
+          fit: BoxFit.contain,
+          errorBuilder: (context, error, stackTrace) =>
+              const SizedBox.shrink(),
+        ),
       ),
     );
   }
@@ -84,11 +124,22 @@ class ExperienceSection extends StatelessWidget {
                           ),
                     ),
                     const SizedBox(height: 8),
-                    AutoSizeText(
-                      exp.company,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: AppTheme.textPrimaryColor,
+                    Row(
+                      children: [
+                        Flexible(
+                          child: AutoSizeText(
+                            exp.company,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleMedium
+                                ?.copyWith(
+                                  color: AppTheme.textPrimaryColor,
+                                ),
+                            maxLines: 1,
                           ),
+                        ),
+                        _buildCompanyLogo(exp.company),
+                      ],
                     ),
                     const SizedBox(height: 8),
                     AutoSizeText(
@@ -107,9 +158,6 @@ class ExperienceSection extends StatelessWidget {
                             height: 1.6,
                           ),
                     ),
-                    const SizedBox(height: 16),
-                    // Note: Technologies not available in Experience model
-                    // This would need to be added to the model
                   ],
                 ),
               ),

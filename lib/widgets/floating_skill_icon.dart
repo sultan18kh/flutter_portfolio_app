@@ -132,18 +132,19 @@ class _FloatingSkillIconState extends State<FloatingSkillIcon>
                             ),
                         ],
                       ),
-                      child: SvgPicture.asset(
-                        widget.assetPath,
-                        width: widget.size * 0.6,
-                        height: widget.size * 0.6,
-                        fit: BoxFit.contain,
-                        // colorFilter: _isHovered
-                        //     ? ColorFilter.mode(
-                        //         AppTheme.primaryColor,
-                        //         BlendMode.srcIn,
-                        //       )
-                        //     : null,
-                      ),
+                      child: widget.assetPath.toLowerCase().endsWith('.svg')
+                          ? SvgPicture.asset(
+                              widget.assetPath,
+                              width: widget.size * 0.6,
+                              height: widget.size * 0.6,
+                              fit: BoxFit.contain,
+                            )
+                          : Image.asset(
+                              widget.assetPath,
+                              width: widget.size * 0.6,
+                              height: widget.size * 0.6,
+                              fit: BoxFit.contain,
+                            ),
                     ),
                     Visibility(
                       visible: _isHovered,

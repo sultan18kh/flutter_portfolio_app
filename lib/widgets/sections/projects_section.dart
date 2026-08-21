@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../models/project.dart';
 import '../../utils/app_theme.dart';
+import '../reveal_on_scroll.dart';
 
 class ProjectsSection extends StatelessWidget {
   final List<Project> projects;
@@ -12,26 +14,59 @@ class ProjectsSection extends StatelessWidget {
     required this.projects,
   });
 
+  static const Map<String, String> _techIcons = {
+    'flutter': 'assets/skills/flutter.svg',
+    'dart': 'assets/skills/dart.svg',
+    'node.js': 'assets/skills/node.svg',
+    'python': 'assets/skills/python.svg',
+    'git': 'assets/skills/git.svg',
+    'github': 'assets/skills/github.svg',
+    'firebase': 'assets/skills/firebase.svg',
+    'graphql': 'assets/skills/graphql.svg',
+    'azure': 'assets/skills/azure.svg',
+    'android': 'assets/skills/android.svg',
+    'ios': 'assets/skills/ios.svg',
+  };
+
+  static const List<(IconData, List<Color>)> _headerStyles = [
+    (Icons.groups_rounded, [AppTheme.primaryColor, AppTheme.accentColor]),
+    (Icons.timer_rounded, [AppTheme.accentColor, AppTheme.primaryColor]),
+    (Icons.emoji_events_rounded, [AppTheme.primaryColor, AppTheme.secondaryColor]),
+    (Icons.task_alt_rounded, [AppTheme.secondaryColor, AppTheme.accentColor]),
+    (Icons.shield_rounded, [AppTheme.accentColor, AppTheme.secondaryColor]),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 80),
       child: Column(
         children: [
-          _buildSectionTitle('Projects'),
+          RevealOnScroll(child: _buildSectionTitle('Projects')),
           const SizedBox(height: 60),
-          GridView.builder(
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 32,
-              mainAxisSpacing: 32,
-              childAspectRatio: 0.8,
-            ),
-            itemCount: projects.length,
-            itemBuilder: (context, index) =>
-                _buildProjectCard(context, projects[index]),
+          LayoutBuilder(
+            builder: (context, constraints) {
+              final crossAxisCount = constraints.maxWidth < 700 ? 1 : 2;
+              return GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: crossAxisCount,
+                  crossAxisSpacing: 32,
+                  mainAxisSpacing: 32,
+                  childAspectRatio: crossAxisCount == 1 ? 1.1 : 0.8,
+                ),
+                itemCount: projects.length,
+                itemBuilder: (context, index) => RevealOnScroll(
+                  delay: Duration(milliseconds: index * 90),
+                  child: _ProjectCard(
+                    project: projects[index],
+                    headerStyle: _headerStyles[index % _headerStyles.length],
+                    techIcons: _techIcons,
+                  ),
+                ),
+              );
+            },
           ),
         ],
       ),
@@ -49,122 +84,188 @@ class ProjectsSection extends StatelessWidget {
       ),
     );
   }
+}
 
-  Widget _buildProjectCard(BuildContext context, Project project) {
-    return Card(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          // Project header
-          Container(
-            width: double.infinity,
-            height: 160,
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [AppTheme.primaryColor, AppTheme.secondaryColor],
-              ),
-            ),
-            child: const Center(
-              child: Icon(
-                Icons.code,
-                size: 60,
-                color: Colors.white,
-              ),
-            ),
+class _ProjectCard extends StatefulWidget {
+  final Project project;
+  final (IconData, List<Color>) headerStyle;
+  final Map<String, String> techIcons;
+
+  const _ProjectCard({
+    required this.project,
+    required this.headerStyle,
+    required this.techIcons,
+  });
+
+  @override
+  State<_ProjectCard> createState() => _ProjectCardState();
+}
+
+class _ProjectCardState extends State<_ProjectCard> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final (icon, colors) = widget.headerStyle;
+    final project = widget.project;
+
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: AnimatedScale(
+        scale: _isHovered ? 1.02 : 1.0,
+        duration: const Duration(milliseconds: 200),
+        curve: Curves.easeOutCubic,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: _isHovered
+                ? [
+                    BoxShadow(
+                      color: colors.first.withValues(alpha: 0.3),
+                      blurRadius: 28,
+                      offset: const Offset(0, 12),
+                    ),
+                  ]
+                : [],
           ),
-          // Project content
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AutoSizeText(
-                    project.name,
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          color: AppTheme.primaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                    maxLines: 1,
-                  ),
-                  const SizedBox(height: 8),
-                  AutoSizeText(
-                    project.description,
-                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                          color:
-                              AppTheme.textPrimaryColor.withValues(alpha: 0.8),
-                        ),
-                    maxLines: 3,
-                  ),
-                  const SizedBox(height: 16),
-                  // Technologies
-                  Expanded(
-                    child: Wrap(
-                      spacing: 6,
-                      runSpacing: 6,
-                      children: project.technologies
-                          .take(4)
-                          .map((tech) => Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 8,
-                                  vertical: 4,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: AppTheme.primaryColor
-                                      .withValues(alpha: 0.1),
-                                  borderRadius: BorderRadius.circular(12),
-                                ),
-                                child: AutoSizeText(
-                                  tech,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall
-                                      ?.copyWith(
-                                        color: AppTheme.primaryColor,
-                                        fontSize: 10,
-                                      ),
-                                ),
-                              ))
-                          .toList(),
+          child: Card(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Project header
+                Container(
+                  width: double.infinity,
+                  height: 140,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: colors,
+                    ),
+                    borderRadius: const BorderRadius.vertical(
+                      top: Radius.circular(16),
                     ),
                   ),
-                  const SizedBox(height: 16),
-                  // Action buttons
-                  Row(
-                    children: [
-                      if (project.githubUrl != null)
-                        Expanded(
-                          child: ElevatedButton.icon(
-                            onPressed: () => _launchUrl(project.githubUrl!),
-                            icon: const Icon(Icons.code, size: 16),
-                            label: const Text('Code'),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: AppTheme.primaryColor,
-                              foregroundColor: Colors.white,
-                              padding: const EdgeInsets.symmetric(vertical: 8),
-                            ),
-                          ),
-                        ),
-                      if (project.githubUrl != null && project.liveUrl != null)
-                        const SizedBox(width: 8),
-                      if (project.liveUrl != null)
-                        Expanded(
-                          child: OutlinedButton.icon(
-                            onPressed: () => _launchUrl(project.liveUrl!),
-                            icon: const Icon(Icons.launch, size: 16),
-                            label: const Text('Live'),
-                            style: OutlinedButton.styleFrom(
-                              foregroundColor: AppTheme.primaryColor,
-                              side: const BorderSide(color: AppTheme.primaryColor),
-                              padding: const EdgeInsets.symmetric(vertical: 8),
-                            ),
-                          ),
-                        ),
-                    ],
+                  child: Center(
+                    child: Icon(
+                      icon,
+                      size: 56,
+                      color: Colors.white.withValues(alpha: 0.9),
+                    ),
                   ),
-                ],
-              ),
+                ),
+                // Project content
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AutoSizeText(
+                          project.name,
+                          style:
+                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                                    color: AppTheme.primaryColor,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                          maxLines: 1,
+                        ),
+                        const SizedBox(height: 8),
+                        AutoSizeText(
+                          project.description,
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: AppTheme.textPrimaryColor
+                                        .withValues(alpha: 0.8),
+                                  ),
+                          maxLines: 3,
+                        ),
+                        const SizedBox(height: 16),
+                        // Technologies
+                        Expanded(
+                          child: Wrap(
+                            spacing: 6,
+                            runSpacing: 6,
+                            children: project.technologies
+                                .take(4)
+                                .map((tech) => _buildTechChip(context, tech))
+                                .toList(),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        // Action buttons
+                        Row(
+                          children: [
+                            if (project.githubUrl != null)
+                              Expanded(
+                                child: ElevatedButton.icon(
+                                  onPressed: () =>
+                                      _launchUrl(project.githubUrl!),
+                                  icon: const Icon(Icons.code, size: 16),
+                                  label: const Text('Code'),
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppTheme.primaryColor,
+                                    foregroundColor: Colors.white,
+                                    padding:
+                                        const EdgeInsets.symmetric(vertical: 8),
+                                  ),
+                                ),
+                              ),
+                            if (project.githubUrl != null &&
+                                project.liveUrl != null)
+                              const SizedBox(width: 8),
+                            if (project.liveUrl != null)
+                              Expanded(
+                                child: OutlinedButton.icon(
+                                  onPressed: () => _launchUrl(project.liveUrl!),
+                                  icon: const Icon(Icons.launch, size: 16),
+                                  label: const Text('Live'),
+                                  style: OutlinedButton.styleFrom(
+                                    foregroundColor: AppTheme.primaryColor,
+                                    side: const BorderSide(
+                                        color: AppTheme.primaryColor),
+                                    padding:
+                                        const EdgeInsets.symmetric(vertical: 8),
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTechChip(BuildContext context, String tech) {
+    final iconPath = widget.techIcons[tech.toLowerCase()];
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: AppTheme.primaryColor.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (iconPath != null) ...[
+            SvgPicture.asset(iconPath, width: 12, height: 12),
+            const SizedBox(width: 4),
+          ],
+          AutoSizeText(
+            tech,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: AppTheme.primaryColor,
+                  fontSize: 10,
+                ),
           ),
         ],
       ),

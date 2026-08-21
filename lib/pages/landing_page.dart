@@ -6,9 +6,11 @@ import '../widgets/modern_navbar.dart';
 import '../widgets/sections/hero_section.dart';
 import '../widgets/sections/about_section.dart';
 import '../widgets/sections/experience_section.dart';
+import '../widgets/sections/certifications_section.dart';
 import '../widgets/sections/projects_section.dart';
 import '../widgets/sections/skills_section.dart';
 import '../widgets/sections/contact_section.dart';
+import '../widgets/reveal_on_scroll.dart';
 import '../utils/app_theme.dart';
 
 class LandingPage extends StatefulWidget {
@@ -97,16 +99,25 @@ class _LandingPageState extends State<LandingPage> {
                           HeroSection(personalInfo: state.personalInfo),
 
                           // About Section
-                          AboutSection(
-                            personalInfo: state.personalInfo,
-                            education: state.education,
+                          RevealOnScroll(
+                            child: AboutSection(
+                              personalInfo: state.personalInfo,
+                              education: state.education,
+                            ),
                           ),
 
                           // Skills Section
-                          SkillsSection(skills: state.skills),
+                          RevealOnScroll(
+                            child: SkillsSection(skills: state.skills),
+                          ),
 
                           // Experience Section
                           ExperienceSection(experience: state.experience),
+
+                          // Certifications Section
+                          CertificationsSection(
+                            certifications: state.certifications,
+                          ),
 
                           // Projects Section
                           ProjectsSection(projects: state.projects),
@@ -114,7 +125,6 @@ class _LandingPageState extends State<LandingPage> {
                           // Contact Section
                           ContactSection(
                             personalInfo: state.personalInfo,
-                            certifications: state.certifications,
                           ),
                         ],
                       ),

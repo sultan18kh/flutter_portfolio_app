@@ -527,7 +527,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "package_flutter_material_dart",
-      "community": 28,
+      "community": 26,
       "norm_label": "package:flutter/material.dart"
     },
     {
@@ -737,7 +737,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "models_project_dart",
-      "community": 22,
+      "community": 15,
       "norm_label": "../../models/project.dart"
     },
     {
@@ -907,7 +907,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "lib_main",
-      "community": 28,
+      "community": 26,
       "norm_label": "main.dart"
     },
     {
@@ -917,7 +917,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "lib_main_myapp",
-      "community": 28,
+      "community": 26,
       "norm_label": "myapp"
     },
     {
@@ -937,7 +937,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "lib_main_main",
-      "community": 28,
+      "community": 26,
       "norm_label": "main"
     },
     {
@@ -947,7 +947,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "lib_main_build",
-      "community": 28,
+      "community": 26,
       "norm_label": "build"
     },
     {
@@ -957,7 +957,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_dart",
-      "community": 28,
+      "community": 26,
       "norm_label": "../blocs/portfolio_cubit.dart"
     },
     {
@@ -977,7 +977,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "utils_app_theme_dart",
-      "community": 24,
+      "community": 26,
       "norm_label": "../../utils/app_theme.dart"
     },
     {
@@ -1761,6 +1761,16 @@
       "norm_label": "../widgets/sections/experience_section.dart"
     },
     {
+      "label": "../widgets/sections/certifications_section.dart",
+      "file_type": "code",
+      "source_file": null,
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_sections_certifications_section_dart",
+      "community": 6,
+      "norm_label": "../widgets/sections/certifications_section.dart"
+    },
+    {
       "label": "../widgets/sections/projects_section.dart",
       "file_type": "code",
       "source_file": null,
@@ -1789,6 +1799,16 @@
       "id": "widgets_sections_contact_section_dart",
       "community": 6,
       "norm_label": "../widgets/sections/contact_section.dart"
+    },
+    {
+      "label": "../widgets/reveal_on_scroll.dart",
+      "file_type": "code",
+      "source_file": null,
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_dart",
+      "community": 6,
+      "norm_label": "../widgets/reveal_on_scroll.dart"
     },
     {
       "label": "portfolio_service.dart",
@@ -2157,7 +2177,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "widget",
-      "community": 4,
+      "community": 3,
       "norm_label": "widget"
     },
     {
@@ -2367,7 +2387,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "widgets_floating_skill_icon_floatingskillicon",
-      "community": 3,
+      "community": 6,
       "norm_label": "floatingskillicon"
     },
     {
@@ -2377,7 +2397,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "widgets_floating_skill_icon_floatingskilliconstate",
-      "community": 3,
+      "community": 6,
       "norm_label": "_floatingskilliconstate"
     },
     {
@@ -2387,7 +2407,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "singletickerproviderstatemixin",
-      "community": 3,
+      "community": 6,
       "norm_label": "singletickerproviderstatemixin"
     },
     {
@@ -2567,7 +2587,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "package_flutter_svg_flutter_svg_dart",
-      "community": 3,
+      "community": 22,
       "norm_label": "package:flutter_svg/flutter_svg.dart"
     },
     {
@@ -2577,7 +2597,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "package_auto_size_text_auto_size_text_dart",
-      "community": 26,
+      "community": 9,
       "norm_label": "package:auto_size_text/auto_size_text.dart"
     },
     {
@@ -2629,6 +2649,26 @@
       "id": "widgets_modern_navbar_scrollcontroller",
       "community": 2,
       "norm_label": "scrollcontroller"
+    },
+    {
+      "label": "_mobileBreakpoint",
+      "file_type": "code",
+      "source_file": "lib/widgets/modern_navbar.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_modern_navbar_mobilebreakpoint",
+      "community": 2,
+      "norm_label": "_mobilebreakpoint"
+    },
+    {
+      "label": "static const double",
+      "file_type": "code",
+      "source_file": null,
+      "source_location": null,
+      "_origin": "ast",
+      "id": "static_const_double",
+      "community": 2,
+      "norm_label": "static const double"
     },
     {
       "label": "_slideController",
@@ -2701,6 +2741,16 @@
       "norm_label": "_positionfadeanimation"
     },
     {
+      "label": "_mobileMenuOpen",
+      "file_type": "code",
+      "source_file": "lib/widgets/modern_navbar.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_modern_navbar_mobilemenuopen",
+      "community": 2,
+      "norm_label": "_mobilemenuopen"
+    },
+    {
       "label": "build",
       "file_type": "code",
       "source_file": "lib/widgets/modern_navbar.dart",
@@ -2761,6 +2811,36 @@
       "norm_label": "_buildnavbarcontent"
     },
     {
+      "label": "_buildGlassPanel",
+      "file_type": "code",
+      "source_file": "lib/widgets/modern_navbar.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_modern_navbar_buildglasspanel",
+      "community": 2,
+      "norm_label": "_buildglasspanel"
+    },
+    {
+      "label": "_buildMenuToggle",
+      "file_type": "code",
+      "source_file": "lib/widgets/modern_navbar.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_modern_navbar_buildmenutoggle",
+      "community": 2,
+      "norm_label": "_buildmenutoggle"
+    },
+    {
+      "label": "_buildMobileNavItem",
+      "file_type": "code",
+      "source_file": "lib/widgets/modern_navbar.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_modern_navbar_buildmobilenavitem",
+      "community": 2,
+      "norm_label": "_buildmobilenavitem"
+    },
+    {
       "label": "_buildNavItem",
       "file_type": "code",
       "source_file": "lib/widgets/modern_navbar.dart",
@@ -2809,6 +2889,186 @@
       "id": "offset",
       "community": 2,
       "norm_label": "offset"
+    },
+    {
+      "label": "reveal_on_scroll.dart",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll",
+      "community": 3,
+      "norm_label": "reveal_on_scroll.dart"
+    },
+    {
+      "label": "RevealOnScroll",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_revealonscroll",
+      "community": 6,
+      "norm_label": "revealonscroll"
+    },
+    {
+      "label": "_RevealOnScrollState",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_revealonscrollstate",
+      "community": 6,
+      "norm_label": "_revealonscrollstate"
+    },
+    {
+      "label": "child",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_child",
+      "community": 3,
+      "norm_label": "child"
+    },
+    {
+      "label": "delay",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_delay",
+      "community": 3,
+      "norm_label": "delay"
+    },
+    {
+      "label": "_key",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_key",
+      "community": 3,
+      "norm_label": "_key"
+    },
+    {
+      "label": "GlobalKey",
+      "file_type": "code",
+      "source_file": null,
+      "source_location": null,
+      "_origin": "ast",
+      "id": "globalkey",
+      "community": 3,
+      "norm_label": "globalkey"
+    },
+    {
+      "label": "_controller",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_controller",
+      "community": 3,
+      "norm_label": "_controller"
+    },
+    {
+      "label": "_fade",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_fade",
+      "community": 3,
+      "norm_label": "_fade"
+    },
+    {
+      "label": "_dy",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_dy",
+      "community": 3,
+      "norm_label": "_dy"
+    },
+    {
+      "label": "_position",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_position",
+      "community": 3,
+      "norm_label": "_position"
+    },
+    {
+      "label": "ScrollPosition?",
+      "file_type": "code",
+      "source_file": null,
+      "source_location": null,
+      "_origin": "ast",
+      "id": "scrollposition",
+      "community": 3,
+      "norm_label": "scrollposition?"
+    },
+    {
+      "label": "_revealed",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_revealed",
+      "community": 3,
+      "norm_label": "_revealed"
+    },
+    {
+      "label": "createState",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_createstate",
+      "community": 3,
+      "norm_label": "createstate"
+    },
+    {
+      "label": "initState",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_initstate",
+      "community": 3,
+      "norm_label": "initstate"
+    },
+    {
+      "label": "_checkVisibility",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_checkvisibility",
+      "community": 3,
+      "norm_label": "_checkvisibility"
+    },
+    {
+      "label": "dispose",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_dispose",
+      "community": 3,
+      "norm_label": "dispose"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "widgets_reveal_on_scroll_build",
+      "community": 3,
+      "norm_label": "build"
     },
     {
       "label": "about_section.dart",
@@ -2861,6 +3121,16 @@
       "norm_label": "build"
     },
     {
+      "label": "_buildPortrait",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/about_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_about_section_buildportrait",
+      "community": 9,
+      "norm_label": "_buildportrait"
+    },
+    {
       "label": "_buildSectionTitle",
       "file_type": "code",
       "source_file": "lib/widgets/sections/about_section.dart",
@@ -2879,6 +3149,106 @@
       "id": "sections_about_section_buildeducationcard",
       "community": 9,
       "norm_label": "_buildeducationcard"
+    },
+    {
+      "label": "certifications_section.dart",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_certifications_section",
+      "community": 19,
+      "norm_label": "certifications_section.dart"
+    },
+    {
+      "label": "CertificationsSection",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_certifications_section_certificationssection",
+      "community": 27,
+      "norm_label": "certificationssection"
+    },
+    {
+      "label": "certifications",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_certifications_section_certifications",
+      "community": 19,
+      "norm_label": "certifications"
+    },
+    {
+      "label": "_badges",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_certifications_section_badges",
+      "community": 19,
+      "norm_label": "_badges"
+    },
+    {
+      "label": "static const List",
+      "file_type": "code",
+      "source_file": null,
+      "source_location": null,
+      "_origin": "ast",
+      "id": "static_const_list",
+      "community": 19,
+      "norm_label": "static const list"
+    },
+    {
+      "label": "build",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_certifications_section_build",
+      "community": 19,
+      "norm_label": "build"
+    },
+    {
+      "label": "_buildSectionTitle",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_certifications_section_buildsectiontitle",
+      "community": 19,
+      "norm_label": "_buildsectiontitle"
+    },
+    {
+      "label": "_buildCertificationCard",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_certifications_section_buildcertificationcard",
+      "community": 19,
+      "norm_label": "_buildcertificationcard"
+    },
+    {
+      "label": "floating_skill_icon.dart",
+      "file_type": "code",
+      "source_file": null,
+      "source_location": null,
+      "_origin": "ast",
+      "id": "floating_skill_icon_dart",
+      "community": 19,
+      "norm_label": "floating_skill_icon.dart"
+    },
+    {
+      "label": "../reveal_on_scroll.dart",
+      "file_type": "code",
+      "source_file": null,
+      "source_location": null,
+      "_origin": "ast",
+      "id": "reveal_on_scroll_dart",
+      "community": 19,
+      "norm_label": "../reveal_on_scroll.dart"
     },
     {
       "label": "contact_section.dart",
@@ -2911,16 +3281,6 @@
       "norm_label": "personalinfo"
     },
     {
-      "label": "certifications",
-      "file_type": "code",
-      "source_file": "lib/widgets/sections/contact_section.dart",
-      "source_location": null,
-      "_origin": "ast",
-      "id": "sections_contact_section_certifications",
-      "community": 17,
-      "norm_label": "certifications"
-    },
-    {
       "label": "build",
       "file_type": "code",
       "source_file": "lib/widgets/sections/contact_section.dart",
@@ -2929,6 +3289,16 @@
       "id": "sections_contact_section_build",
       "community": 17,
       "norm_label": "build"
+    },
+    {
+      "label": "_buildPortrait",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/contact_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_contact_section_buildportrait",
+      "community": 17,
+      "norm_label": "_buildportrait"
     },
     {
       "label": "_buildSectionTitle",
@@ -2961,16 +3331,6 @@
       "norm_label": "_buildsocialbutton"
     },
     {
-      "label": "_buildCertificationCard",
-      "file_type": "code",
-      "source_file": "lib/widgets/sections/contact_section.dart",
-      "source_location": null,
-      "_origin": "ast",
-      "id": "sections_contact_section_buildcertificationcard",
-      "community": 17,
-      "norm_label": "_buildcertificationcard"
-    },
-    {
       "label": "_launchUrl",
       "file_type": "code",
       "source_file": "lib/widgets/sections/contact_section.dart",
@@ -2987,7 +3347,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "package_url_launcher_url_launcher_dart",
-      "community": 22,
+      "community": 17,
       "norm_label": "package:url_launcher/url_launcher.dart"
     },
     {
@@ -3021,6 +3381,26 @@
       "norm_label": "experience"
     },
     {
+      "label": "_companyLogos",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/experience_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_experience_section_companylogos",
+      "community": 24,
+      "norm_label": "_companylogos"
+    },
+    {
+      "label": "static const Map",
+      "file_type": "code",
+      "source_file": null,
+      "source_location": null,
+      "_origin": "ast",
+      "id": "static_const_map",
+      "community": 24,
+      "norm_label": "static const map"
+    },
+    {
       "label": "build",
       "file_type": "code",
       "source_file": "lib/widgets/sections/experience_section.dart",
@@ -3039,6 +3419,16 @@
       "id": "sections_experience_section_buildsectiontitle",
       "community": 24,
       "norm_label": "_buildsectiontitle"
+    },
+    {
+      "label": "_buildCompanyLogo",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/experience_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_experience_section_buildcompanylogo",
+      "community": 24,
+      "norm_label": "_buildcompanylogo"
     },
     {
       "label": "_buildExperienceCard",
@@ -3111,6 +3501,26 @@
       "norm_label": "projectssection"
     },
     {
+      "label": "_ProjectCard",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_projects_section_projectcard",
+      "community": 6,
+      "norm_label": "_projectcard"
+    },
+    {
+      "label": "_ProjectCardState",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_projects_section_projectcardstate",
+      "community": 6,
+      "norm_label": "_projectcardstate"
+    },
+    {
       "label": "projects",
       "file_type": "code",
       "source_file": "lib/widgets/sections/projects_section.dart",
@@ -3119,6 +3529,66 @@
       "id": "sections_projects_section_projects",
       "community": 22,
       "norm_label": "projects"
+    },
+    {
+      "label": "_techIcons",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_projects_section_techicons",
+      "community": 22,
+      "norm_label": "_techicons"
+    },
+    {
+      "label": "project",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_projects_section_project",
+      "community": 22,
+      "norm_label": "project"
+    },
+    {
+      "label": "Project",
+      "file_type": "code",
+      "source_file": null,
+      "source_location": null,
+      "_origin": "ast",
+      "id": "project",
+      "community": 22,
+      "norm_label": "project"
+    },
+    {
+      "label": "headerStyle",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_projects_section_headerstyle",
+      "community": 22,
+      "norm_label": "headerstyle"
+    },
+    {
+      "label": "Map",
+      "file_type": "code",
+      "source_file": null,
+      "source_location": null,
+      "_origin": "ast",
+      "id": "map",
+      "community": 22,
+      "norm_label": "map"
+    },
+    {
+      "label": "_isHovered",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_projects_section_ishovered",
+      "community": 22,
+      "norm_label": "_ishovered"
     },
     {
       "label": "build",
@@ -3141,14 +3611,24 @@
       "norm_label": "_buildsectiontitle"
     },
     {
-      "label": "_buildProjectCard",
+      "label": "createState",
       "file_type": "code",
       "source_file": "lib/widgets/sections/projects_section.dart",
       "source_location": null,
       "_origin": "ast",
-      "id": "sections_projects_section_buildprojectcard",
+      "id": "sections_projects_section_createstate",
       "community": 22,
-      "norm_label": "_buildprojectcard"
+      "norm_label": "createstate"
+    },
+    {
+      "label": "_buildTechChip",
+      "file_type": "code",
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "_origin": "ast",
+      "id": "sections_projects_section_buildtechchip",
+      "community": 22,
+      "norm_label": "_buildtechchip"
     },
     {
       "label": "_launchUrl",
@@ -3251,16 +3731,6 @@
       "norm_label": "skills"
     },
     {
-      "label": "static const List",
-      "file_type": "code",
-      "source_file": null,
-      "source_location": null,
-      "_origin": "ast",
-      "id": "static_const_list",
-      "community": 19,
-      "norm_label": "static const list"
-    },
-    {
       "label": "build",
       "file_type": "code",
       "source_file": "lib/widgets/skills_grid.dart",
@@ -3289,16 +3759,6 @@
       "id": "widgets_skills_grid_geticonsize",
       "community": 19,
       "norm_label": "_geticonsize"
-    },
-    {
-      "label": "floating_skill_icon.dart",
-      "file_type": "code",
-      "source_file": null,
-      "source_location": null,
-      "_origin": "ast",
-      "id": "floating_skill_icon_dart",
-      "community": 19,
-      "norm_label": "floating_skill_icon.dart"
     },
     {
       "label": "generated_plugin_registrant.cc",
@@ -4574,6 +5034,716 @@
       "norm_label": "win32_window.h"
     },
     {
+      "label": "CLAUDE.md",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "claude",
+      "community": 55,
+      "norm_label": "claude.md"
+    },
+    {
+      "label": "CLAUDE.md",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "claude_claude_md",
+      "community": 55,
+      "norm_label": "claude.md"
+    },
+    {
+      "label": "Build & Development Commands",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "claude_build_development_commands",
+      "community": 55,
+      "norm_label": "build & development commands"
+    },
+    {
+      "label": "Architecture Overview",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "claude_architecture_overview",
+      "community": 55,
+      "norm_label": "architecture overview"
+    },
+    {
+      "label": "State Management Pattern",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L33",
+      "_origin": "ast",
+      "id": "claude_state_management_pattern",
+      "community": 55,
+      "norm_label": "state management pattern"
+    },
+    {
+      "label": "Data Flow",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L39",
+      "_origin": "ast",
+      "id": "claude_data_flow",
+      "community": 55,
+      "norm_label": "data flow"
+    },
+    {
+      "label": "Page Structure",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "claude_page_structure",
+      "community": 55,
+      "norm_label": "page structure"
+    },
+    {
+      "label": "Models",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "claude_models",
+      "community": 55,
+      "norm_label": "models"
+    },
+    {
+      "label": "Theme",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L58",
+      "_origin": "ast",
+      "id": "claude_theme",
+      "community": 55,
+      "norm_label": "theme"
+    },
+    {
+      "label": "Key Patterns",
+      "file_type": "document",
+      "source_file": "CLAUDE.md",
+      "source_location": "L64",
+      "_origin": "ast",
+      "id": "claude_key_patterns",
+      "community": 55,
+      "norm_label": "key patterns"
+    },
+    {
+      "label": "GEMINI.md",
+      "file_type": "document",
+      "source_file": "GEMINI.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "gemini",
+      "community": 57,
+      "norm_label": "gemini.md"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "readme",
+      "community": 38,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Sultan Khan - Flutter Portfolio Application",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "readme_sultan_khan_flutter_portfolio_application",
+      "community": 38,
+      "norm_label": "sultan khan - flutter portfolio application"
+    },
+    {
+      "label": "\ud83d\ude80 Features",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "readme_features",
+      "community": 38,
+      "norm_label": "\ud83d\ude80 features"
+    },
+    {
+      "label": "\ud83d\udcf1 Pages",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L16",
+      "_origin": "ast",
+      "id": "readme_pages",
+      "community": 38,
+      "norm_label": "\ud83d\udcf1 pages"
+    },
+    {
+      "label": "\ud83d\udee0\ufe0f Technology Stack",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "readme_technology_stack",
+      "community": 38,
+      "norm_label": "\ud83d\udee0\ufe0f technology stack"
+    },
+    {
+      "label": "\ud83d\udce6 Dependencies",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "readme_dependencies",
+      "community": 38,
+      "norm_label": "\ud83d\udce6 dependencies"
+    },
+    {
+      "label": "Core Dependencies",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "readme_core_dependencies",
+      "community": 38,
+      "norm_label": "core dependencies"
+    },
+    {
+      "label": "Development Dependencies",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "readme_development_dependencies",
+      "community": 38,
+      "norm_label": "development dependencies"
+    },
+    {
+      "label": "\ud83c\udfd7\ufe0f Architecture",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L50",
+      "_origin": "ast",
+      "id": "readme_architecture",
+      "community": 38,
+      "norm_label": "\ud83c\udfd7\ufe0f architecture"
+    },
+    {
+      "label": "Project Structure",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "readme_project_structure",
+      "community": 38,
+      "norm_label": "project structure"
+    },
+    {
+      "label": "State Management",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L64",
+      "_origin": "ast",
+      "id": "readme_state_management",
+      "community": 38,
+      "norm_label": "state management"
+    },
+    {
+      "label": "Data Models",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L69",
+      "_origin": "ast",
+      "id": "readme_data_models",
+      "community": 38,
+      "norm_label": "data models"
+    },
+    {
+      "label": "\ud83d\ude80 Getting Started",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L77",
+      "_origin": "ast",
+      "id": "readme_getting_started",
+      "community": 38,
+      "norm_label": "\ud83d\ude80 getting started"
+    },
+    {
+      "label": "Prerequisites",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L79",
+      "_origin": "ast",
+      "id": "readme_prerequisites",
+      "community": 38,
+      "norm_label": "prerequisites"
+    },
+    {
+      "label": "Installation",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L83",
+      "_origin": "ast",
+      "id": "readme_installation",
+      "community": 38,
+      "norm_label": "installation"
+    },
+    {
+      "label": "\ud83c\udf10 Web Deployment",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L106",
+      "_origin": "ast",
+      "id": "readme_web_deployment",
+      "community": 38,
+      "norm_label": "\ud83c\udf10 web deployment"
+    },
+    {
+      "label": "Build for Web",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L108",
+      "_origin": "ast",
+      "id": "readme_build_for_web",
+      "community": 38,
+      "norm_label": "build for web"
+    },
+    {
+      "label": "Deploy Options",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L113",
+      "_origin": "ast",
+      "id": "readme_deploy_options",
+      "community": 38,
+      "norm_label": "deploy options"
+    },
+    {
+      "label": "\ud83c\udfa8 Customization",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L119",
+      "_origin": "ast",
+      "id": "readme_customization",
+      "community": 38,
+      "norm_label": "\ud83c\udfa8 customization"
+    },
+    {
+      "label": "Colors",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L121",
+      "_origin": "ast",
+      "id": "readme_colors",
+      "community": 38,
+      "norm_label": "colors"
+    },
+    {
+      "label": "Data",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L128",
+      "_origin": "ast",
+      "id": "readme_data",
+      "community": 38,
+      "norm_label": "data"
+    },
+    {
+      "label": "Styling",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L137",
+      "_origin": "ast",
+      "id": "readme_styling",
+      "community": 38,
+      "norm_label": "styling"
+    },
+    {
+      "label": "\ud83d\udcca Performance",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L142",
+      "_origin": "ast",
+      "id": "readme_performance",
+      "community": 38,
+      "norm_label": "\ud83d\udcca performance"
+    },
+    {
+      "label": "\ud83d\udd27 Development",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L149",
+      "_origin": "ast",
+      "id": "readme_development",
+      "community": 38,
+      "norm_label": "\ud83d\udd27 development"
+    },
+    {
+      "label": "Code Generation",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L151",
+      "_origin": "ast",
+      "id": "readme_code_generation",
+      "community": 38,
+      "norm_label": "code generation"
+    },
+    {
+      "label": "Testing",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L161",
+      "_origin": "ast",
+      "id": "readme_testing",
+      "community": 38,
+      "norm_label": "testing"
+    },
+    {
+      "label": "Linting",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L166",
+      "_origin": "ast",
+      "id": "readme_linting",
+      "community": 38,
+      "norm_label": "linting"
+    },
+    {
+      "label": "\ud83d\udcdd License",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L171",
+      "_origin": "ast",
+      "id": "readme_license",
+      "community": 38,
+      "norm_label": "\ud83d\udcdd license"
+    },
+    {
+      "label": "\ud83d\udc68\u200d\ud83d\udcbb Author",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L175",
+      "_origin": "ast",
+      "id": "readme_author",
+      "community": 38,
+      "norm_label": "\ud83d\udc68\u200d\ud83d\udcbb author"
+    },
+    {
+      "label": "\ud83e\udd1d Contributing",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L182",
+      "_origin": "ast",
+      "id": "readme_contributing",
+      "community": 38,
+      "norm_label": "\ud83e\udd1d contributing"
+    },
+    {
+      "label": "\ud83d\udcde Contact",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L190",
+      "_origin": "ast",
+      "id": "readme_contact",
+      "community": 38,
+      "norm_label": "\ud83d\udcde contact"
+    },
+    {
+      "label": "USAGE.md",
+      "file_type": "document",
+      "source_file": "USAGE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "usage",
+      "community": 56,
+      "norm_label": "usage.md"
+    },
+    {
+      "label": "Usage",
+      "file_type": "document",
+      "source_file": "USAGE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "usage_usage",
+      "community": 56,
+      "norm_label": "usage"
+    },
+    {
+      "label": "Prerequisites",
+      "file_type": "document",
+      "source_file": "USAGE.md",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "usage_prerequisites",
+      "community": 56,
+      "norm_label": "prerequisites"
+    },
+    {
+      "label": "Setup",
+      "file_type": "document",
+      "source_file": "USAGE.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "usage_setup",
+      "community": 56,
+      "norm_label": "setup"
+    },
+    {
+      "label": "Run",
+      "file_type": "document",
+      "source_file": "USAGE.md",
+      "source_location": "L12",
+      "_origin": "ast",
+      "id": "usage_run",
+      "community": 56,
+      "norm_label": "run"
+    },
+    {
+      "label": "Build for web deployment",
+      "file_type": "document",
+      "source_file": "USAGE.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "usage_build_for_web_deployment",
+      "community": 56,
+      "norm_label": "build for web deployment"
+    },
+    {
+      "label": "Other commands",
+      "file_type": "document",
+      "source_file": "USAGE.md",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "usage_other_commands",
+      "community": 56,
+      "norm_label": "other commands"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "launchimage_imageset_readme",
+      "community": 63,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "Launch Screen Assets",
+      "file_type": "document",
+      "source_file": "ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "launchimage_imageset_readme_launch_screen_assets",
+      "community": 63,
+      "norm_label": "launch screen assets"
+    },
+    {
+      "label": "6-floating-icons-skills-section.md",
+      "file_type": "document",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "prs_6_floating_icons_skills_section",
+      "community": 28,
+      "norm_label": "6-floating-icons-skills-section.md"
+    },
+    {
+      "label": "feat: replace static skill cards with animated floating icon grid",
+      "file_type": "document",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "prs_6_floating_icons_skills_section_feat_replace_static_skill_cards_with_animated_floating_icon_grid",
+      "community": 28,
+      "norm_label": "feat: replace static skill cards with animated floating icon grid"
+    },
+    {
+      "label": "Summary",
+      "file_type": "document",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "prs_6_floating_icons_skills_section_summary",
+      "community": 28,
+      "norm_label": "summary"
+    },
+    {
+      "label": "Commits",
+      "file_type": "document",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "prs_6_floating_icons_skills_section_commits",
+      "community": 28,
+      "norm_label": "commits"
+    },
+    {
+      "label": "Changes",
+      "file_type": "document",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L17",
+      "_origin": "ast",
+      "id": "prs_6_floating_icons_skills_section_changes",
+      "community": 28,
+      "norm_label": "changes"
+    },
+    {
+      "label": "Skills UI (`lib/widgets/floating_skill_icon.dart`, `lib/widgets/skills_grid.dart`, `lib/widgets/sections/skills_section.dart`)",
+      "file_type": "document",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "prs_6_floating_icons_skills_section_skills_ui_lib_widgets_floating_skill_icon_dart_lib_widgets_skills_grid_dart_lib_widgets_sections_skills_section_dart",
+      "community": 28,
+      "norm_label": "skills ui (`lib/widgets/floating_skill_icon.dart`, `lib/widgets/skills_grid.dart`, `lib/widgets/sections/skills_section.dart`)"
+    },
+    {
+      "label": "Landing page (`lib/pages/landing_page.dart`)",
+      "file_type": "document",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "prs_6_floating_icons_skills_section_landing_page_lib_pages_landing_page_dart",
+      "community": 28,
+      "norm_label": "landing page (`lib/pages/landing_page.dart`)"
+    },
+    {
+      "label": "Dependencies & assets (`pubspec.yaml`, `assets/skills/`)",
+      "file_type": "document",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "prs_6_floating_icons_skills_section_dependencies_assets_pubspec_yaml_assets_skills",
+      "community": 28,
+      "norm_label": "dependencies & assets (`pubspec.yaml`, `assets/skills/`)"
+    },
+    {
+      "label": "Docs & tooling (`CLAUDE.md`, `USAGE.md`, `graphify-out/`, `.gitignore`)",
+      "file_type": "document",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L35",
+      "_origin": "ast",
+      "id": "prs_6_floating_icons_skills_section_docs_tooling_claude_md_usage_md_graphify_out_gitignore",
+      "community": 28,
+      "norm_label": "docs & tooling (`claude.md`, `usage.md`, `graphify-out/`, `.gitignore`)"
+    },
+    {
+      "label": "Acceptance Criteria",
+      "file_type": "document",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "prs_6_floating_icons_skills_section_acceptance_criteria",
+      "community": 28,
+      "norm_label": "acceptance criteria"
+    },
+    {
+      "label": "Test plan",
+      "file_type": "document",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L49",
+      "_origin": "ast",
+      "id": "prs_6_floating_icons_skills_section_test_plan",
+      "community": 28,
+      "norm_label": "test plan"
+    },
+    {
+      "label": "TEMPLATE.md",
+      "file_type": "document",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "prs_template",
+      "community": 50,
+      "norm_label": "template.md"
+    },
+    {
+      "label": "<type>: <short PR title>",
+      "file_type": "document",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "prs_template_type_short_pr_title",
+      "community": 50,
+      "norm_label": "<type>: <short pr title>"
+    },
+    {
+      "label": "Summary",
+      "file_type": "document",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L11",
+      "_origin": "ast",
+      "id": "prs_template_summary",
+      "community": 50,
+      "norm_label": "summary"
+    },
+    {
+      "label": "Commits",
+      "file_type": "document",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L15",
+      "_origin": "ast",
+      "id": "prs_template_commits",
+      "community": 50,
+      "norm_label": "commits"
+    },
+    {
+      "label": "Changes",
+      "file_type": "document",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "prs_template_changes",
+      "community": 50,
+      "norm_label": "changes"
+    },
+    {
+      "label": "<Area/Task 1> (`<file>`, `<file>`)",
+      "file_type": "document",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "prs_template_area_task_1_file_file",
+      "community": 50,
+      "norm_label": "<area/task 1> (`<file>`, `<file>`)"
+    },
+    {
+      "label": "<Area/Task 2> (`<file>`)",
+      "file_type": "document",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L27",
+      "_origin": "ast",
+      "id": "prs_template_area_task_2_file",
+      "community": 50,
+      "norm_label": "<area/task 2> (`<file>`)"
+    },
+    {
+      "label": "Acceptance Criteria",
+      "file_type": "document",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L31",
+      "_origin": "ast",
+      "id": "prs_template_acceptance_criteria",
+      "community": 50,
+      "norm_label": "acceptance criteria"
+    },
+    {
+      "label": "Test plan",
+      "file_type": "document",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L37",
+      "_origin": "ast",
+      "id": "prs_template_test_plan",
+      "community": 50,
+      "norm_label": "test plan"
+    },
+    {
       "label": "Sultan Khan Flutter Portfolio Application (README)",
       "file_type": "document",
       "source_file": "README.md",
@@ -4582,9 +5752,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "readme_portfolio_app",
       "community": 33,
-      "norm_label": "sultan khan flutter portfolio application (readme)"
+      "norm_label": "sultan khan flutter portfolio application (readme)",
+      "id": "readme_portfolio_app"
     },
     {
       "label": "PortfolioBloc (documented state management)",
@@ -4595,9 +5765,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "readme_portfoliobloc",
-      "community": 38,
-      "norm_label": "portfoliobloc (documented state management)"
+      "community": 59,
+      "norm_label": "portfoliobloc (documented state management)",
+      "id": "readme_portfoliobloc"
     },
     {
       "label": "app_theme.dart theme configuration (as documented)",
@@ -4608,9 +5778,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "readme_apptheme",
-      "community": 31,
-      "norm_label": "app_theme.dart theme configuration (as documented)"
+      "community": 58,
+      "norm_label": "app_theme.dart theme configuration (as documented)",
+      "id": "readme_apptheme"
     },
     {
       "label": "portfolio_service.dart data source (as documented)",
@@ -4621,35 +5791,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "readme_portfolioservice",
       "community": 51,
-      "norm_label": "portfolio_service.dart data source (as documented)"
-    },
-    {
-      "label": "Documented Data Models (PersonalInfo, Education, Experience, Skill, Project, Certification)",
-      "file_type": "concept",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "readme_data_models",
-      "community": 50,
-      "norm_label": "documented data models (personalinfo, education, experience, skill, project, certification)"
-    },
-    {
-      "label": "README Documented Dependencies List",
-      "file_type": "document",
-      "source_file": "README.md",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "readme_dependencies",
-      "community": 38,
-      "norm_label": "readme documented dependencies list"
+      "norm_label": "portfolio_service.dart data source (as documented)",
+      "id": "readme_portfolioservice"
     },
     {
       "label": "flutter_lints analyzer ruleset include",
@@ -4660,9 +5804,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "analysis_options_flutter_lints",
       "community": 39,
-      "norm_label": "flutter_lints analyzer ruleset include"
+      "norm_label": "flutter_lints analyzer ruleset include",
+      "id": "analysis_options_flutter_lints"
     },
     {
       "label": "DevTools Options Configuration",
@@ -4673,9 +5817,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "devtools_options_config",
       "community": 46,
-      "norm_label": "devtools options configuration"
+      "norm_label": "devtools options configuration",
+      "id": "devtools_options_config"
     },
     {
       "label": "iOS Launch Screen Asset Customization",
@@ -4686,9 +5830,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "launchimage_imageset_readme_launch_screen",
       "community": 33,
-      "norm_label": "ios launch screen asset customization"
+      "norm_label": "ios launch screen asset customization",
+      "id": "launchimage_imageset_readme_launch_screen"
     },
     {
       "label": "Linux BINARY_NAME portfolio_flutter",
@@ -4699,9 +5843,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "linux_cmakelists_binary_name",
       "community": 31,
-      "norm_label": "linux binary_name portfolio_flutter"
+      "norm_label": "linux binary_name portfolio_flutter",
+      "id": "linux_cmakelists_binary_name"
     },
     {
       "label": "Linux add_subdirectory(flutter) build integration",
@@ -4712,9 +5856,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "linux_cmakelists_flutter_subdir",
       "community": 41,
-      "norm_label": "linux add_subdirectory(flutter) build integration"
+      "norm_label": "linux add_subdirectory(flutter) build integration",
+      "id": "linux_cmakelists_flutter_subdir"
     },
     {
       "label": "Linux flutter_assemble Target (GTK/GLIB/GIO)",
@@ -4725,61 +5869,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "flutter_cmakelists_linux_assemble",
       "community": 41,
-      "norm_label": "linux flutter_assemble target (gtk/glib/gio)"
-    },
-    {
-      "label": "pubspec.yaml package name: portfolio_flutter",
-      "file_type": "code",
-      "source_file": "pubspec.yaml",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "pubspec_project_name",
-      "community": 31,
-      "norm_label": "pubspec.yaml package name: portfolio_flutter"
-    },
-    {
-      "label": "pubspec.yaml Runtime Dependencies",
-      "file_type": "code",
-      "source_file": "pubspec.yaml",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "pubspec_dependencies",
-      "community": 38,
-      "norm_label": "pubspec.yaml runtime dependencies"
-    },
-    {
-      "label": "pubspec.yaml Dev Dependencies (build_runner, json_serializable, flutter_lints)",
-      "file_type": "code",
-      "source_file": "pubspec.yaml",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "pubspec_dev_dependencies",
-      "community": 39,
-      "norm_label": "pubspec.yaml dev dependencies (build_runner, json_serializable, flutter_lints)"
-    },
-    {
-      "label": "pubspec.yaml assets/skills/ asset declaration",
-      "file_type": "code",
-      "source_file": "pubspec.yaml",
-      "source_location": null,
-      "source_url": null,
-      "captured_at": null,
-      "author": null,
-      "contributor": null,
-      "id": "pubspec_assets_skills",
-      "community": 33,
-      "norm_label": "pubspec.yaml assets/skills/ asset declaration"
+      "norm_label": "linux flutter_assemble target (gtk/glib/gio)",
+      "id": "flutter_cmakelists_linux_assemble"
     },
     {
       "label": "web/index.html Page Title & Meta (Sultan Khan - Full Stack Developer)",
@@ -4790,9 +5882,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "web_index_title",
       "community": 33,
-      "norm_label": "web/index.html page title & meta (sultan khan - full stack developer)"
+      "norm_label": "web/index.html page title & meta (sultan khan - full stack developer)",
+      "id": "web_index_title"
     },
     {
       "label": "flutter_bootstrap.js Bootstrap Script",
@@ -4803,9 +5895,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "web_index_bootstrap",
-      "community": 31,
-      "norm_label": "flutter_bootstrap.js bootstrap script"
+      "community": 60,
+      "norm_label": "flutter_bootstrap.js bootstrap script",
+      "id": "web_index_bootstrap"
     },
     {
       "label": "Windows BINARY_NAME portfolio_flutter",
@@ -4816,9 +5908,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "windows_cmakelists_binary_name",
-      "community": 31,
-      "norm_label": "windows binary_name portfolio_flutter"
+      "community": 61,
+      "norm_label": "windows binary_name portfolio_flutter",
+      "id": "windows_cmakelists_binary_name"
     },
     {
       "label": "Windows add_subdirectory(flutter, runner)",
@@ -4829,9 +5921,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "windows_cmakelists_subdirs",
       "community": 35,
-      "norm_label": "windows add_subdirectory(flutter, runner)"
+      "norm_label": "windows add_subdirectory(flutter, runner)",
+      "id": "windows_cmakelists_subdirs"
     },
     {
       "label": "Windows flutter_assemble/flutter_wrapper Targets",
@@ -4842,9 +5934,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "flutter_cmakelists_windows_assemble",
       "community": 35,
-      "norm_label": "windows flutter_assemble/flutter_wrapper targets"
+      "norm_label": "windows flutter_assemble/flutter_wrapper targets",
+      "id": "flutter_cmakelists_windows_assemble"
     },
     {
       "label": "Windows Runner Executable Target",
@@ -4855,9 +5947,9 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "id": "runner_cmakelists_executable",
       "community": 35,
-      "norm_label": "windows runner executable target"
+      "norm_label": "windows runner executable target",
+      "id": "runner_cmakelists_executable"
     }
   ],
   "links": [
@@ -4868,9 +5960,9 @@
       "source_file": "android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plugins_generatedpluginregistrant",
-      "target": "flutterengine",
-      "confidence_score": 1.0
+      "target": "flutterengine"
     },
     {
       "relation": "contains",
@@ -4878,9 +5970,9 @@
       "source_file": "android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plugins_generatedpluginregistrant",
-      "target": "plugins_generatedpluginregistrant_generatedpluginregistrant",
-      "confidence_score": 1.0
+      "target": "plugins_generatedpluginregistrant_generatedpluginregistrant"
     },
     {
       "relation": "method",
@@ -4888,9 +5980,9 @@
       "source_file": "android/app/src/main/java/io/flutter/plugins/GeneratedPluginRegistrant.java",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "plugins_generatedpluginregistrant_generatedpluginregistrant",
-      "target": "plugins_generatedpluginregistrant_generatedpluginregistrant_registerwith",
-      "confidence_score": 1.0
+      "target": "plugins_generatedpluginregistrant_generatedpluginregistrant_registerwith"
     },
     {
       "relation": "references",
@@ -4899,9 +5991,9 @@
       "source_location": "L17",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "plugins_generatedpluginregistrant_generatedpluginregistrant_registerwith",
-      "target": "flutterengine",
-      "confidence_score": 1.0
+      "target": "flutterengine"
     },
     {
       "relation": "contains",
@@ -4909,9 +6001,9 @@
       "source_file": "android/app/src/main/kotlin/com/example/portfolio_flutter/MainActivity.kt",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "portfolio_flutter_mainactivity",
-      "target": "portfolio_flutter_mainactivity_mainactivity",
-      "confidence_score": 1.0
+      "target": "portfolio_flutter_mainactivity_mainactivity"
     },
     {
       "relation": "inherits",
@@ -4919,9 +6011,9 @@
       "source_file": "android/app/src/main/kotlin/com/example/portfolio_flutter/MainActivity.kt",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "portfolio_flutter_mainactivity_mainactivity",
-      "target": "flutteractivity",
-      "confidence_score": 1.0
+      "target": "flutteractivity"
     },
     {
       "relation": "contains",
@@ -4929,9 +6021,9 @@
       "source_file": "ios/Flutter/ephemeral/flutter_lldb_helper.py",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ephemeral_flutter_lldb_helper",
-      "target": "ephemeral_flutter_lldb_helper_handle_new_rx_page",
-      "confidence_score": 1.0
+      "target": "ephemeral_flutter_lldb_helper_handle_new_rx_page"
     },
     {
       "relation": "contains",
@@ -4939,9 +6031,9 @@
       "source_file": "ios/Flutter/ephemeral/flutter_lldb_helper.py",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ephemeral_flutter_lldb_helper",
-      "target": "ephemeral_flutter_lldb_helper_lldb_init_module",
-      "confidence_score": 1.0
+      "target": "ephemeral_flutter_lldb_helper_lldb_init_module"
     },
     {
       "relation": "references",
@@ -4950,9 +6042,9 @@
       "source_file": "ios/Flutter/ephemeral/flutter_lldb_helper.py",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ephemeral_flutter_lldb_helper_handle_new_rx_page",
-      "target": "sbframe",
-      "confidence_score": 1.0
+      "target": "sbframe"
     },
     {
       "relation": "rationale_for",
@@ -4960,9 +6052,9 @@
       "source_file": "ios/Flutter/ephemeral/flutter_lldb_helper.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ephemeral_flutter_lldb_helper_rationale_8",
-      "target": "ephemeral_flutter_lldb_helper_handle_new_rx_page",
-      "confidence_score": 1.0
+      "target": "ephemeral_flutter_lldb_helper_handle_new_rx_page"
     },
     {
       "relation": "references",
@@ -4971,9 +6063,9 @@
       "source_file": "ios/Flutter/ephemeral/flutter_lldb_helper.py",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ephemeral_flutter_lldb_helper_lldb_init_module",
-      "target": "sbdebugger",
-      "confidence_score": 1.0
+      "target": "sbdebugger"
     },
     {
       "relation": "contains",
@@ -4981,9 +6073,9 @@
       "source_file": "ios/Flutter/flutter_export_environment.sh",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "flutter_flutter_export_environment",
-      "target": "users_mac_projects_dev_portfolio_flutter_portfolio_flutter_ios_flutter_flutter_export_environment_sh__entry",
-      "confidence_score": 1.0
+      "target": "users_mac_projects_dev_portfolio_flutter_portfolio_flutter_ios_flutter_flutter_export_environment_sh__entry"
     },
     {
       "relation": "imports",
@@ -4992,9 +6084,9 @@
       "source_file": "ios/Runner/AppDelegate.swift",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ios_runner_appdelegate_swift_runner_appdelegate",
-      "target": "flutter",
-      "confidence_score": 1.0
+      "target": "flutter"
     },
     {
       "relation": "contains",
@@ -5002,9 +6094,9 @@
       "source_file": "ios/Runner/AppDelegate.swift",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ios_runner_appdelegate_swift_runner_appdelegate",
-      "target": "ios_runner_appdelegate_swift_runner_appdelegate_appdelegate",
-      "confidence_score": 1.0
+      "target": "ios_runner_appdelegate_swift_runner_appdelegate_appdelegate"
     },
     {
       "relation": "imports",
@@ -5013,9 +6105,9 @@
       "source_file": "ios/Runner/AppDelegate.swift",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ios_runner_appdelegate_swift_runner_appdelegate",
-      "target": "uikit",
-      "confidence_score": 1.0
+      "target": "uikit"
     },
     {
       "relation": "imports",
@@ -5024,9 +6116,9 @@
       "source_file": "ios/RunnerTests/RunnerTests.swift",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ios_runnertests_runnertests_swift_runnertests_runnertests",
-      "target": "flutter",
-      "confidence_score": 1.0
+      "target": "flutter"
     },
     {
       "relation": "imports",
@@ -5035,9 +6127,9 @@
       "source_file": "ios/RunnerTests/RunnerTests.swift",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ios_runnertests_runnertests_swift_runnertests_runnertests",
-      "target": "uikit",
-      "confidence_score": 1.0
+      "target": "uikit"
     },
     {
       "relation": "inherits",
@@ -5045,9 +6137,9 @@
       "source_file": "ios/Runner/AppDelegate.swift",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ios_runner_appdelegate_swift_runner_appdelegate_appdelegate",
-      "target": "flutterappdelegate",
-      "confidence_score": 1.0
+      "target": "flutterappdelegate"
     },
     {
       "relation": "method",
@@ -5055,9 +6147,9 @@
       "source_file": "ios/Runner/AppDelegate.swift",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ios_runner_appdelegate_swift_runner_appdelegate_appdelegate",
-      "target": "runner_appdelegate_appdelegate_application",
-      "confidence_score": 1.0
+      "target": "runner_appdelegate_appdelegate_application"
     },
     {
       "relation": "inherits",
@@ -5065,9 +6157,9 @@
       "source_file": "macos/Runner/AppDelegate.swift",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "macos_runner_appdelegate_swift_runner_appdelegate_appdelegate",
-      "target": "flutterappdelegate",
-      "confidence_score": 1.0
+      "target": "flutterappdelegate"
     },
     {
       "relation": "references",
@@ -5076,9 +6168,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_appdelegate_appdelegate_application",
-      "target": "any",
-      "confidence_score": 1.0
+      "target": "any"
     },
     {
       "relation": "references",
@@ -5087,9 +6179,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "runner_appdelegate_appdelegate_application",
-      "target": "ios_runner_appdelegate_swift_bool",
-      "confidence_score": 1.0
+      "target": "ios_runner_appdelegate_swift_bool"
     },
     {
       "relation": "references",
@@ -5098,9 +6190,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_appdelegate_appdelegate_application",
-      "target": "uiapplication",
-      "confidence_score": 1.0
+      "target": "uiapplication"
     },
     {
       "relation": "contains",
@@ -5108,9 +6200,9 @@
       "source_file": "ios/Runner/GeneratedPluginRegistrant.m",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ios_runner_generatedpluginregistrant_m_runner_generatedpluginregistrant",
-      "target": "runner_generatedpluginregistrant_generatedpluginregistrant",
-      "confidence_score": 1.0
+      "target": "runner_generatedpluginregistrant_generatedpluginregistrant"
     },
     {
       "relation": "method",
@@ -5118,9 +6210,9 @@
       "source_file": "ios/Runner/GeneratedPluginRegistrant.m",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_generatedpluginregistrant_generatedpluginregistrant",
-      "target": "runner_generatedpluginregistrant_generatedpluginregistrant_registerwithregistry",
-      "confidence_score": 1.0
+      "target": "runner_generatedpluginregistrant_generatedpluginregistrant_registerwithregistry"
     },
     {
       "relation": "contains",
@@ -5128,9 +6220,9 @@
       "source_file": "ios/RunnerTests/RunnerTests.swift",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ios_runnertests_runnertests_swift_runnertests_runnertests",
-      "target": "ios_runnertests_runnertests_swift_runnertests_runnertests_runnertests",
-      "confidence_score": 1.0
+      "target": "ios_runnertests_runnertests_swift_runnertests_runnertests_runnertests"
     },
     {
       "relation": "imports",
@@ -5139,9 +6231,9 @@
       "source_file": "ios/RunnerTests/RunnerTests.swift",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ios_runnertests_runnertests_swift_runnertests_runnertests",
-      "target": "xctest",
-      "confidence_score": 1.0
+      "target": "xctest"
     },
     {
       "relation": "imports",
@@ -5150,9 +6242,9 @@
       "source_file": "macos/RunnerTests/RunnerTests.swift",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "macos_runnertests_runnertests_swift_runnertests_runnertests",
-      "target": "xctest",
-      "confidence_score": 1.0
+      "target": "xctest"
     },
     {
       "relation": "method",
@@ -5160,9 +6252,9 @@
       "source_file": "ios/RunnerTests/RunnerTests.swift",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ios_runnertests_runnertests_swift_runnertests_runnertests_runnertests",
-      "target": "ios_runnertests_runnertests_swift_runnertests_runnertests_runnertests_testexample",
-      "confidence_score": 1.0
+      "target": "ios_runnertests_runnertests_swift_runnertests_runnertests_runnertests_testexample"
     },
     {
       "relation": "inherits",
@@ -5170,9 +6262,9 @@
       "source_file": "ios/RunnerTests/RunnerTests.swift",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ios_runnertests_runnertests_swift_runnertests_runnertests_runnertests",
-      "target": "xctestcase",
-      "confidence_score": 1.0
+      "target": "xctestcase"
     },
     {
       "relation": "inherits",
@@ -5180,9 +6272,9 @@
       "source_file": "macos/RunnerTests/RunnerTests.swift",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "macos_runnertests_runnertests_swift_runnertests_runnertests_runnertests",
-      "target": "xctestcase",
-      "confidence_score": 1.0
+      "target": "xctestcase"
     },
     {
       "relation": "defines",
@@ -5346,6 +6438,17 @@
       "source_location": null,
       "weight": 1.0,
       "context": "bloc_lookup",
+      "source": "widgets_modern_navbar_buildmobilenavitem",
+      "target": "navbar_bloc_navbar_cubit_navbarcubit"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/modern_navbar.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "context": "bloc_lookup",
       "source": "widgets_modern_navbar_buildnavitem",
       "target": "navbar_bloc_navbar_cubit_navbarcubit"
     },
@@ -5420,6 +6523,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "sections_about_section",
+      "target": "package_flutter_material_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_certifications_section",
       "target": "package_flutter_material_dart"
     },
     {
@@ -5510,6 +6623,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "widgets_modern_navbar",
+      "target": "package_flutter_material_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
       "target": "package_flutter_material_dart"
     },
     {
@@ -5839,6 +6962,17 @@
       "weight": 1.0,
       "context": "variable_type",
       "source": "sections_about_section",
+      "target": "list"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "context": "variable_type",
+      "source": "sections_certifications_section",
       "target": "list"
     },
     {
@@ -6419,6 +7553,16 @@
       "relation": "imports",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_certifications_section",
+      "target": "models_certification_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "lib/widgets/sections/contact_section.dart",
       "source_location": null,
       "weight": 1.0,
@@ -6592,6 +7736,16 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_certifications_section_certificationssection",
+      "target": "statelesswidget"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "lib/widgets/sections/contact_section.dart",
       "source_location": null,
       "weight": 1.0,
@@ -6696,6 +7850,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "sections_about_section",
+      "target": "utils_app_theme_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_certifications_section",
       "target": "utils_app_theme_dart"
     },
     {
@@ -7509,12 +8673,13 @@
       "target": "pages_landing_page_landingpagestate"
     },
     {
-      "relation": "defines",
+      "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/pages/landing_page.dart",
       "source_location": null,
       "weight": 1.0,
+      "context": "variable_type",
       "source": "pages_landing_page",
       "target": "pages_landing_page_scrollcontroller"
     },
@@ -7546,7 +8711,27 @@
       "source_location": null,
       "weight": 1.0,
       "source": "pages_landing_page",
+      "target": "widgets_reveal_on_scroll_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/pages/landing_page.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "pages_landing_page",
       "target": "widgets_sections_about_section_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/pages/landing_page.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "pages_landing_page",
+      "target": "widgets_sections_certifications_section_dart"
     },
     {
       "relation": "imports",
@@ -7622,6 +8807,16 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_projects_section_projectcard",
+      "target": "statefulwidget"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "lib/widgets/animated_background.dart",
       "source_location": null,
       "weight": 1.0,
@@ -7652,10 +8847,30 @@
       "relation": "inherits",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll_revealonscroll",
+      "target": "statefulwidget"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "lib/pages/landing_page.dart",
       "source_location": null,
       "weight": 1.0,
       "source": "pages_landing_page_landingpagestate",
+      "target": "state"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_projects_section_projectcardstate",
       "target": "state"
     },
     {
@@ -7686,6 +8901,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "widgets_modern_navbar_modernnavbarviewstate",
+      "target": "state"
+    },
+    {
+      "relation": "inherits",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll_revealonscrollstate",
       "target": "state"
     },
     {
@@ -8237,6 +9462,17 @@
       "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "context": "variable_type",
+      "source": "widgets_reveal_on_scroll",
+      "target": "widget"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
       "source_file": "lib/widgets/floating_skill_icon.dart",
       "source_location": null,
       "weight": 1.0,
@@ -8253,6 +9489,17 @@
       "weight": 1.0,
       "context": "variable_type",
       "source": "widgets_modern_navbar",
+      "target": "animationcontroller"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "context": "variable_type",
+      "source": "widgets_reveal_on_scroll",
       "target": "animationcontroller"
     },
     {
@@ -8275,6 +9522,17 @@
       "weight": 1.0,
       "context": "variable_type",
       "source": "widgets_modern_navbar",
+      "target": "widgets_animated_background_animation"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "context": "variable_type",
+      "source": "widgets_reveal_on_scroll",
       "target": "widgets_animated_background_animation"
     },
     {
@@ -8509,6 +9767,37 @@
       "target": "singletickerproviderstatemixin"
     },
     {
+      "relation": "mixes_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll_revealonscrollstate",
+      "target": "singletickerproviderstatemixin"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "context": "variable_type",
+      "source": "widgets_reveal_on_scroll",
+      "target": "duration"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_projects_section",
+      "target": "package_flutter_svg_flutter_svg_dart"
+    },
+    {
       "relation": "imports",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -8516,6 +9805,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "sections_about_section",
+      "target": "package_auto_size_text_auto_size_text_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_certifications_section",
       "target": "package_auto_size_text_auto_size_text_dart"
     },
     {
@@ -8620,6 +9919,17 @@
       "target": "offset"
     },
     {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/modern_navbar.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "context": "variable_type",
+      "source": "widgets_modern_navbar",
+      "target": "static_const_double"
+    },
+    {
       "relation": "defines",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -8628,6 +9938,36 @@
       "weight": 1.0,
       "source": "widgets_modern_navbar",
       "target": "widgets_modern_navbar_build"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/modern_navbar.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_modern_navbar",
+      "target": "widgets_modern_navbar_buildglasspanel"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/modern_navbar.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_modern_navbar",
+      "target": "widgets_modern_navbar_buildmenutoggle"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/modern_navbar.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_modern_navbar",
+      "target": "widgets_modern_navbar_buildmobilenavitem"
     },
     {
       "relation": "defines",
@@ -8717,6 +10057,26 @@
       "source_location": null,
       "weight": 1.0,
       "source": "widgets_modern_navbar",
+      "target": "widgets_modern_navbar_mobilebreakpoint"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/modern_navbar.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_modern_navbar",
+      "target": "widgets_modern_navbar_mobilemenuopen"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/modern_navbar.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_modern_navbar",
       "target": "widgets_modern_navbar_modernnavbar"
     },
     {
@@ -8770,12 +10130,13 @@
       "target": "widgets_modern_navbar_positionslideanimation"
     },
     {
-      "relation": "defines",
+      "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/widgets/modern_navbar.dart",
       "source_location": null,
       "weight": 1.0,
+      "context": "variable_type",
       "source": "widgets_modern_navbar",
       "target": "widgets_modern_navbar_scrollcontroller"
     },
@@ -8808,6 +10169,188 @@
       "weight": 1.0,
       "source": "widgets_modern_navbar_modernnavbarviewstate",
       "target": "widgets_modern_navbar_modernnavbarview"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "context": "variable_type",
+      "source": "widgets_reveal_on_scroll",
+      "target": "globalkey"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "context": "variable_type",
+      "source": "widgets_reveal_on_scroll",
+      "target": "scrollposition"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_build"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_checkvisibility"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_child"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_controller"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_createstate"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_delay"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_dispose"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_dy"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_fade"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_initstate"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_key"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_position"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_revealed"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_revealonscroll"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll",
+      "target": "widgets_reveal_on_scroll_revealonscrollstate"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/reveal_on_scroll.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_reveal_on_scroll_revealonscrollstate",
+      "target": "widgets_reveal_on_scroll_revealonscroll"
     },
     {
       "relation": "defines",
@@ -8847,6 +10390,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "sections_about_section",
+      "target": "sections_about_section_buildportrait"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/about_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_about_section",
       "target": "sections_about_section_buildsectiontitle"
     },
     {
@@ -8868,6 +10421,148 @@
       "weight": 1.0,
       "source": "sections_about_section",
       "target": "sections_about_section_personalinfo"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_certifications_section",
+      "target": "floating_skill_icon_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_certifications_section",
+      "target": "reveal_on_scroll_dart"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_certifications_section",
+      "target": "sections_certifications_section_badges"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_certifications_section",
+      "target": "sections_certifications_section_build"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_certifications_section",
+      "target": "sections_certifications_section_buildcertificationcard"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_certifications_section",
+      "target": "sections_certifications_section_buildsectiontitle"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_certifications_section",
+      "target": "sections_certifications_section_certifications"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_certifications_section",
+      "target": "sections_certifications_section_certificationssection"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/certifications_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "context": "variable_type",
+      "source": "sections_certifications_section",
+      "target": "static_const_list"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/skills_grid.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "context": "variable_type",
+      "source": "widgets_skills_grid",
+      "target": "static_const_list"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/skills_grid.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "widgets_skills_grid",
+      "target": "floating_skill_icon_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/contact_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_contact_section",
+      "target": "reveal_on_scroll_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/experience_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_experience_section",
+      "target": "reveal_on_scroll_dart"
+    },
+    {
+      "relation": "imports",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_projects_section",
+      "target": "reveal_on_scroll_dart"
     },
     {
       "relation": "imports",
@@ -8897,7 +10592,7 @@
       "source_location": null,
       "weight": 1.0,
       "source": "sections_contact_section",
-      "target": "sections_contact_section_buildcertificationcard"
+      "target": "sections_contact_section_buildcontactitem"
     },
     {
       "relation": "defines",
@@ -8907,7 +10602,7 @@
       "source_location": null,
       "weight": 1.0,
       "source": "sections_contact_section",
-      "target": "sections_contact_section_buildcontactitem"
+      "target": "sections_contact_section_buildportrait"
     },
     {
       "relation": "defines",
@@ -8928,16 +10623,6 @@
       "weight": 1.0,
       "source": "sections_contact_section",
       "target": "sections_contact_section_buildsocialbutton"
-    },
-    {
-      "relation": "defines",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/widgets/sections/contact_section.dart",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "sections_contact_section",
-      "target": "sections_contact_section_certifications"
     },
     {
       "relation": "defines",
@@ -8997,6 +10682,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "sections_experience_section",
+      "target": "sections_experience_section_buildcompanylogo"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/experience_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_experience_section",
       "target": "sections_experience_section_buildexperiencecard"
     },
     {
@@ -9017,6 +10712,16 @@
       "source_location": null,
       "weight": 1.0,
       "source": "sections_experience_section",
+      "target": "sections_experience_section_companylogos"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/experience_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_experience_section",
       "target": "sections_experience_section_experience"
     },
     {
@@ -9028,6 +10733,28 @@
       "weight": 1.0,
       "source": "sections_experience_section",
       "target": "sections_experience_section_experiencesection"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/experience_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "context": "variable_type",
+      "source": "sections_experience_section",
+      "target": "static_const_map"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "context": "variable_type",
+      "source": "sections_projects_section",
+      "target": "static_const_map"
     },
     {
       "relation": "defines",
@@ -9060,14 +10787,26 @@
       "target": "sections_hero_section_personalinfo"
     },
     {
-      "relation": "defines",
+      "relation": "references",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/widgets/sections/projects_section.dart",
       "source_location": null,
       "weight": 1.0,
+      "context": "variable_type",
       "source": "sections_projects_section",
-      "target": "sections_projects_section_build"
+      "target": "map"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "context": "variable_type",
+      "source": "sections_projects_section",
+      "target": "project"
     },
     {
       "relation": "defines",
@@ -9077,7 +10816,7 @@
       "source_location": null,
       "weight": 1.0,
       "source": "sections_projects_section",
-      "target": "sections_projects_section_buildprojectcard"
+      "target": "sections_projects_section_build"
     },
     {
       "relation": "defines",
@@ -9097,7 +10836,77 @@
       "source_location": null,
       "weight": 1.0,
       "source": "sections_projects_section",
+      "target": "sections_projects_section_buildtechchip"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_projects_section",
+      "target": "sections_projects_section_createstate"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_projects_section",
+      "target": "sections_projects_section_headerstyle"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_projects_section",
+      "target": "sections_projects_section_ishovered"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_projects_section",
       "target": "sections_projects_section_launchurl"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_projects_section",
+      "target": "sections_projects_section_project"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_projects_section",
+      "target": "sections_projects_section_projectcard"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_projects_section",
+      "target": "sections_projects_section_projectcardstate"
     },
     {
       "relation": "defines",
@@ -9118,6 +10927,26 @@
       "weight": 1.0,
       "source": "sections_projects_section",
       "target": "sections_projects_section_projectssection"
+    },
+    {
+      "relation": "defines",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_projects_section",
+      "target": "sections_projects_section_techicons"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/widgets/sections/projects_section.dart",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "sections_projects_section_projectcardstate",
+      "target": "sections_projects_section_projectcard"
     },
     {
       "relation": "defines",
@@ -9168,27 +10997,6 @@
       "weight": 1.0,
       "source": "sections_skills_section",
       "target": "skills_grid_dart"
-    },
-    {
-      "relation": "imports",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/widgets/skills_grid.dart",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "widgets_skills_grid",
-      "target": "floating_skill_icon_dart"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/widgets/skills_grid.dart",
-      "source_location": null,
-      "weight": 1.0,
-      "context": "variable_type",
-      "source": "widgets_skills_grid",
-      "target": "static_const_list"
     },
     {
       "relation": "defines",
@@ -9246,9 +11054,9 @@
       "source_file": "linux/flutter/generated_plugin_registrant.cc",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "linux_flutter_generated_plugin_registrant_cc_flutter_generated_plugin_registrant",
-      "target": "flutter_generated_plugin_registrant_fl_register_plugins",
-      "confidence_score": 1.0
+      "target": "flutter_generated_plugin_registrant_fl_register_plugins"
     },
     {
       "relation": "imports",
@@ -9268,9 +11076,9 @@
       "source_location": "L11",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "flutter_generated_plugin_registrant_fl_register_plugins",
-      "target": "flpluginregistry",
-      "confidence_score": 1.0
+      "target": "flpluginregistry"
     },
     {
       "relation": "calls",
@@ -9289,9 +11097,9 @@
       "source_file": "linux/main.cc",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "linux_main",
-      "target": "linux_main_main",
-      "confidence_score": 1.0
+      "target": "linux_main_main"
     },
     {
       "relation": "calls",
@@ -9321,9 +11129,9 @@
       "source_file": "linux/my_application.cc",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "linux_my_application_cc_linux_my_application",
-      "target": "linux_my_application_my_application_activate",
-      "confidence_score": 1.0
+      "target": "linux_my_application_my_application_activate"
     },
     {
       "relation": "contains",
@@ -9331,9 +11139,9 @@
       "source_file": "linux/my_application.cc",
       "source_location": "L109",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "linux_my_application_cc_linux_my_application",
-      "target": "linux_my_application_my_application_class_init",
-      "confidence_score": 1.0
+      "target": "linux_my_application_my_application_class_init"
     },
     {
       "relation": "contains",
@@ -9341,9 +11149,9 @@
       "source_file": "linux/my_application.cc",
       "source_location": "L103",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "linux_my_application_cc_linux_my_application",
-      "target": "linux_my_application_my_application_dispose",
-      "confidence_score": 1.0
+      "target": "linux_my_application_my_application_dispose"
     },
     {
       "relation": "contains",
@@ -9351,9 +11159,9 @@
       "source_file": "linux/my_application.cc",
       "source_location": "L117",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "linux_my_application_cc_linux_my_application",
-      "target": "linux_my_application_my_application_init",
-      "confidence_score": 1.0
+      "target": "linux_my_application_my_application_init"
     },
     {
       "relation": "contains",
@@ -9361,9 +11169,9 @@
       "source_file": "linux/my_application.cc",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "linux_my_application_cc_linux_my_application",
-      "target": "linux_my_application_my_application_local_command_line",
-      "confidence_score": 1.0
+      "target": "linux_my_application_my_application_local_command_line"
     },
     {
       "relation": "contains",
@@ -9371,9 +11179,9 @@
       "source_file": "linux/my_application.cc",
       "source_location": "L119",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "linux_my_application_cc_linux_my_application",
-      "target": "linux_my_application_my_application_new",
-      "confidence_score": 1.0
+      "target": "linux_my_application_my_application_new"
     },
     {
       "relation": "contains",
@@ -9381,9 +11189,9 @@
       "source_file": "linux/my_application.cc",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "linux_my_application_cc_linux_my_application",
-      "target": "linux_my_application_my_application_shutdown",
-      "confidence_score": 1.0
+      "target": "linux_my_application_my_application_shutdown"
     },
     {
       "relation": "contains",
@@ -9391,9 +11199,9 @@
       "source_file": "linux/my_application.cc",
       "source_location": "L85",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "linux_my_application_cc_linux_my_application",
-      "target": "linux_my_application_my_application_startup",
-      "confidence_score": 1.0
+      "target": "linux_my_application_my_application_startup"
     },
     {
       "relation": "contains",
@@ -9401,9 +11209,9 @@
       "source_file": "linux/my_application.cc",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "linux_my_application_cc_linux_my_application",
-      "target": "linux_my_application_myapplication",
-      "confidence_score": 1.0
+      "target": "linux_my_application_myapplication"
     },
     {
       "relation": "references",
@@ -9412,9 +11220,9 @@
       "source_location": "L117",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "linux_my_application_my_application_init",
-      "target": "linux_my_application_myapplication",
-      "confidence_score": 1.0
+      "target": "linux_my_application_myapplication"
     },
     {
       "relation": "references",
@@ -9423,9 +11231,9 @@
       "source_location": "L119",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "linux_my_application_my_application_new",
-      "target": "linux_my_application_myapplication",
-      "confidence_score": 1.0
+      "target": "linux_my_application_myapplication"
     },
     {
       "relation": "references",
@@ -9434,9 +11242,9 @@
       "source_location": "L11",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "linux_my_application_myapplication",
-      "target": "gtkapplication",
-      "confidence_score": 1.0
+      "target": "gtkapplication"
     },
     {
       "relation": "defines",
@@ -9445,9 +11253,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "linux_my_application_myapplication",
-      "target": "linux_my_application_myapplication_dart_entrypoint_arguments",
-      "confidence_score": 1.0
+      "target": "linux_my_application_myapplication_dart_entrypoint_arguments"
     },
     {
       "relation": "defines",
@@ -9456,9 +11264,9 @@
       "source_location": "L11",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "linux_my_application_myapplication",
-      "target": "linux_my_application_myapplication_parent_instance",
-      "confidence_score": 1.0
+      "target": "linux_my_application_myapplication_parent_instance"
     },
     {
       "relation": "references",
@@ -9467,9 +11275,9 @@
       "source_location": "L18",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "linux_my_application_my_application_activate",
-      "target": "gapplication",
-      "confidence_score": 1.0
+      "target": "gapplication"
     },
     {
       "relation": "references",
@@ -9478,9 +11286,9 @@
       "source_location": "L66",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "linux_my_application_my_application_local_command_line",
-      "target": "gapplication",
-      "confidence_score": 1.0
+      "target": "gapplication"
     },
     {
       "relation": "references",
@@ -9489,9 +11297,9 @@
       "source_location": "L94",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "linux_my_application_my_application_shutdown",
-      "target": "gapplication",
-      "confidence_score": 1.0
+      "target": "gapplication"
     },
     {
       "relation": "references",
@@ -9500,9 +11308,9 @@
       "source_location": "L85",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "linux_my_application_my_application_startup",
-      "target": "gapplication",
-      "confidence_score": 1.0
+      "target": "gapplication"
     },
     {
       "relation": "references",
@@ -9511,9 +11319,9 @@
       "source_location": "L66",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "linux_my_application_my_application_local_command_line",
-      "target": "gboolean",
-      "confidence_score": 1.0
+      "target": "gboolean"
     },
     {
       "relation": "references",
@@ -9522,9 +11330,9 @@
       "source_location": "L66",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "linux_my_application_my_application_local_command_line",
-      "target": "gchar",
-      "confidence_score": 1.0
+      "target": "gchar"
     },
     {
       "relation": "references",
@@ -9533,9 +11341,9 @@
       "source_location": "L103",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "linux_my_application_my_application_dispose",
-      "target": "gobject",
-      "confidence_score": 1.0
+      "target": "gobject"
     },
     {
       "relation": "references",
@@ -9544,9 +11352,9 @@
       "source_location": "L109",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "linux_my_application_my_application_class_init",
-      "target": "myapplicationclass",
-      "confidence_score": 1.0
+      "target": "myapplicationclass"
     },
     {
       "relation": "contains",
@@ -9554,9 +11362,9 @@
       "source_file": "macos/Flutter/GeneratedPluginRegistrant.swift",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "flutter_generatedpluginregistrant",
-      "target": "flutter_generatedpluginregistrant_registergeneratedplugins",
-      "confidence_score": 1.0
+      "target": "flutter_generatedpluginregistrant_registergeneratedplugins"
     },
     {
       "relation": "imports",
@@ -9565,9 +11373,9 @@
       "source_file": "macos/Flutter/GeneratedPluginRegistrant.swift",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "flutter_generatedpluginregistrant",
-      "target": "fluttermacos",
-      "confidence_score": 1.0
+      "target": "fluttermacos"
     },
     {
       "relation": "imports",
@@ -9576,9 +11384,9 @@
       "source_file": "macos/Flutter/GeneratedPluginRegistrant.swift",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "flutter_generatedpluginregistrant",
-      "target": "foundation",
-      "confidence_score": 1.0
+      "target": "foundation"
     },
     {
       "relation": "imports",
@@ -9587,9 +11395,9 @@
       "source_file": "macos/Flutter/GeneratedPluginRegistrant.swift",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "flutter_generatedpluginregistrant",
-      "target": "path_provider_foundation",
-      "confidence_score": 1.0
+      "target": "path_provider_foundation"
     },
     {
       "relation": "imports",
@@ -9598,9 +11406,9 @@
       "source_file": "macos/Flutter/GeneratedPluginRegistrant.swift",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "flutter_generatedpluginregistrant",
-      "target": "url_launcher_macos",
-      "confidence_score": 1.0
+      "target": "url_launcher_macos"
     },
     {
       "relation": "imports",
@@ -9609,9 +11417,9 @@
       "source_file": "macos/Runner/AppDelegate.swift",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "macos_runner_appdelegate_swift_runner_appdelegate",
-      "target": "fluttermacos",
-      "confidence_score": 1.0
+      "target": "fluttermacos"
     },
     {
       "relation": "imports",
@@ -9620,9 +11428,9 @@
       "source_file": "macos/RunnerTests/RunnerTests.swift",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "macos_runnertests_runnertests_swift_runnertests_runnertests",
-      "target": "fluttermacos",
-      "confidence_score": 1.0
+      "target": "fluttermacos"
     },
     {
       "relation": "imports",
@@ -9631,9 +11439,9 @@
       "source_file": "macos/Runner/MainFlutterWindow.swift",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_mainflutterwindow",
-      "target": "fluttermacos",
-      "confidence_score": 1.0
+      "target": "fluttermacos"
     },
     {
       "relation": "references",
@@ -9642,9 +11450,9 @@
       "source_location": "L11",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "flutter_generatedpluginregistrant_registergeneratedplugins",
-      "target": "flutterpluginregistry",
-      "confidence_score": 1.0
+      "target": "flutterpluginregistry"
     },
     {
       "relation": "calls",
@@ -9663,9 +11471,9 @@
       "source_file": "macos/Flutter/ephemeral/flutter_export_environment.sh",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "ephemeral_flutter_export_environment",
-      "target": "users_mac_projects_dev_portfolio_flutter_portfolio_flutter_macos_flutter_ephemeral_flutter_export_environment_sh__entry",
-      "confidence_score": 1.0
+      "target": "users_mac_projects_dev_portfolio_flutter_portfolio_flutter_macos_flutter_ephemeral_flutter_export_environment_sh__entry"
     },
     {
       "relation": "imports",
@@ -9674,9 +11482,9 @@
       "source_file": "macos/Runner/AppDelegate.swift",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "macos_runner_appdelegate_swift_runner_appdelegate",
-      "target": "cocoa",
-      "confidence_score": 1.0
+      "target": "cocoa"
     },
     {
       "relation": "contains",
@@ -9684,9 +11492,9 @@
       "source_file": "macos/Runner/AppDelegate.swift",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "macos_runner_appdelegate_swift_runner_appdelegate",
-      "target": "macos_runner_appdelegate_swift_runner_appdelegate_appdelegate",
-      "confidence_score": 1.0
+      "target": "macos_runner_appdelegate_swift_runner_appdelegate_appdelegate"
     },
     {
       "relation": "imports",
@@ -9695,9 +11503,9 @@
       "source_file": "macos/RunnerTests/RunnerTests.swift",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "macos_runnertests_runnertests_swift_runnertests_runnertests",
-      "target": "cocoa",
-      "confidence_score": 1.0
+      "target": "cocoa"
     },
     {
       "relation": "imports",
@@ -9706,9 +11514,9 @@
       "source_file": "macos/Runner/MainFlutterWindow.swift",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_mainflutterwindow",
-      "target": "cocoa",
-      "confidence_score": 1.0
+      "target": "cocoa"
     },
     {
       "relation": "method",
@@ -9716,9 +11524,9 @@
       "source_file": "macos/Runner/AppDelegate.swift",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "macos_runner_appdelegate_swift_runner_appdelegate_appdelegate",
-      "target": "runner_appdelegate_appdelegate_applicationshouldterminateafterlastwindowclosed",
-      "confidence_score": 1.0
+      "target": "runner_appdelegate_appdelegate_applicationshouldterminateafterlastwindowclosed"
     },
     {
       "relation": "references",
@@ -9727,9 +11535,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "runner_appdelegate_appdelegate_applicationshouldterminateafterlastwindowclosed",
-      "target": "macos_runner_appdelegate_swift_bool",
-      "confidence_score": 1.0
+      "target": "macos_runner_appdelegate_swift_bool"
     },
     {
       "relation": "references",
@@ -9738,9 +11546,9 @@
       "source_location": "L6",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_appdelegate_appdelegate_applicationshouldterminateafterlastwindowclosed",
-      "target": "nsapplication",
-      "confidence_score": 1.0
+      "target": "nsapplication"
     },
     {
       "relation": "contains",
@@ -9748,9 +11556,9 @@
       "source_file": "macos/Runner/MainFlutterWindow.swift",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_mainflutterwindow",
-      "target": "runner_mainflutterwindow_mainflutterwindow",
-      "confidence_score": 1.0
+      "target": "runner_mainflutterwindow_mainflutterwindow"
     },
     {
       "relation": "inherits",
@@ -9758,9 +11566,9 @@
       "source_file": "macos/Runner/MainFlutterWindow.swift",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_mainflutterwindow_mainflutterwindow",
-      "target": "nswindow",
-      "confidence_score": 1.0
+      "target": "nswindow"
     },
     {
       "relation": "method",
@@ -9768,9 +11576,9 @@
       "source_file": "macos/Runner/MainFlutterWindow.swift",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_mainflutterwindow_mainflutterwindow",
-      "target": "runner_mainflutterwindow_mainflutterwindow_awakefromnib",
-      "confidence_score": 1.0
+      "target": "runner_mainflutterwindow_mainflutterwindow_awakefromnib"
     },
     {
       "relation": "contains",
@@ -9778,9 +11586,9 @@
       "source_file": "macos/RunnerTests/RunnerTests.swift",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "macos_runnertests_runnertests_swift_runnertests_runnertests",
-      "target": "macos_runnertests_runnertests_swift_runnertests_runnertests_runnertests",
-      "confidence_score": 1.0
+      "target": "macos_runnertests_runnertests_swift_runnertests_runnertests_runnertests"
     },
     {
       "relation": "method",
@@ -9788,9 +11596,9 @@
       "source_file": "macos/RunnerTests/RunnerTests.swift",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "macos_runnertests_runnertests_swift_runnertests_runnertests_runnertests",
-      "target": "macos_runnertests_runnertests_swift_runnertests_runnertests_runnertests_testexample",
-      "confidence_score": 1.0
+      "target": "macos_runnertests_runnertests_swift_runnertests_runnertests_runnertests_testexample"
     },
     {
       "relation": "contains",
@@ -9798,9 +11606,9 @@
       "source_file": "web/manifest.json",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "web_manifest",
-      "target": "web_manifest_background_color",
-      "confidence_score": 1.0
+      "target": "web_manifest_background_color"
     },
     {
       "relation": "contains",
@@ -9808,9 +11616,9 @@
       "source_file": "web/manifest.json",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "web_manifest",
-      "target": "web_manifest_description",
-      "confidence_score": 1.0
+      "target": "web_manifest_description"
     },
     {
       "relation": "contains",
@@ -9818,9 +11626,9 @@
       "source_file": "web/manifest.json",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "web_manifest",
-      "target": "web_manifest_display",
-      "confidence_score": 1.0
+      "target": "web_manifest_display"
     },
     {
       "relation": "contains",
@@ -9828,9 +11636,9 @@
       "source_file": "web/manifest.json",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "web_manifest",
-      "target": "web_manifest_icons",
-      "confidence_score": 1.0
+      "target": "web_manifest_icons"
     },
     {
       "relation": "contains",
@@ -9838,9 +11646,9 @@
       "source_file": "web/manifest.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "web_manifest",
-      "target": "web_manifest_name",
-      "confidence_score": 1.0
+      "target": "web_manifest_name"
     },
     {
       "relation": "contains",
@@ -9848,9 +11656,9 @@
       "source_file": "web/manifest.json",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "web_manifest",
-      "target": "web_manifest_orientation",
-      "confidence_score": 1.0
+      "target": "web_manifest_orientation"
     },
     {
       "relation": "contains",
@@ -9858,9 +11666,9 @@
       "source_file": "web/manifest.json",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "web_manifest",
-      "target": "web_manifest_prefer_related_applications",
-      "confidence_score": 1.0
+      "target": "web_manifest_prefer_related_applications"
     },
     {
       "relation": "contains",
@@ -9868,9 +11676,9 @@
       "source_file": "web/manifest.json",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "web_manifest",
-      "target": "web_manifest_short_name",
-      "confidence_score": 1.0
+      "target": "web_manifest_short_name"
     },
     {
       "relation": "contains",
@@ -9878,9 +11686,9 @@
       "source_file": "web/manifest.json",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "web_manifest",
-      "target": "web_manifest_start_url",
-      "confidence_score": 1.0
+      "target": "web_manifest_start_url"
     },
     {
       "relation": "contains",
@@ -9888,9 +11696,9 @@
       "source_file": "web/manifest.json",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "web_manifest",
-      "target": "web_manifest_theme_color",
-      "confidence_score": 1.0
+      "target": "web_manifest_theme_color"
     },
     {
       "relation": "contains",
@@ -9898,9 +11706,9 @@
       "source_file": "windows/flutter/generated_plugin_registrant.cc",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_flutter_generated_plugin_registrant_cc_flutter_generated_plugin_registrant",
-      "target": "flutter_generated_plugin_registrant_registerplugins",
-      "confidence_score": 1.0
+      "target": "flutter_generated_plugin_registrant_registerplugins"
     },
     {
       "relation": "imports",
@@ -9920,9 +11728,9 @@
       "source_location": "L11",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "flutter_generated_plugin_registrant_registerplugins",
-      "target": "pluginregistry",
-      "confidence_score": 1.0
+      "target": "pluginregistry"
     },
     {
       "relation": "calls",
@@ -9941,9 +11749,9 @@
       "source_file": "windows/runner/flutter_window.cpp",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_flutter_window_cpp_runner_flutter_window",
-      "target": "runner_flutter_window_messagehandler",
-      "confidence_score": 1.0
+      "target": "runner_flutter_window_messagehandler"
     },
     {
       "relation": "contains",
@@ -9951,9 +11759,9 @@
       "source_file": "windows/runner/flutter_window.cpp",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_flutter_window_cpp_runner_flutter_window",
-      "target": "runner_flutter_window_oncreate",
-      "confidence_score": 1.0
+      "target": "runner_flutter_window_oncreate"
     },
     {
       "relation": "contains",
@@ -9961,9 +11769,9 @@
       "source_file": "windows/runner/flutter_window.cpp",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_flutter_window_cpp_runner_flutter_window",
-      "target": "runner_flutter_window_ondestroy",
-      "confidence_score": 1.0
+      "target": "runner_flutter_window_ondestroy"
     },
     {
       "relation": "imports",
@@ -9982,9 +11790,9 @@
       "source_file": "windows/runner/flutter_window.cpp",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_flutter_window_cpp_runner_flutter_window",
-      "target": "windows_runner_flutter_window_cpp_runner_flutter_window_flutterwindow",
-      "confidence_score": 1.0
+      "target": "windows_runner_flutter_window_cpp_runner_flutter_window_flutterwindow"
     },
     {
       "relation": "references",
@@ -9993,9 +11801,9 @@
       "source_location": "L7",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "windows_runner_flutter_window_cpp_runner_flutter_window_flutterwindow",
-      "target": "dartproject",
-      "confidence_score": 1.0
+      "target": "dartproject"
     },
     {
       "relation": "calls",
@@ -10026,9 +11834,9 @@
       "source_location": "L50",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_flutter_window_messagehandler",
-      "target": "windows_runner_flutter_window_cpp_hwnd",
-      "confidence_score": 1.0
+      "target": "windows_runner_flutter_window_cpp_hwnd"
     },
     {
       "relation": "references",
@@ -10037,9 +11845,9 @@
       "source_location": "L50",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_flutter_window_messagehandler",
-      "target": "windows_runner_flutter_window_cpp_lparam",
-      "confidence_score": 1.0
+      "target": "windows_runner_flutter_window_cpp_lparam"
     },
     {
       "relation": "references",
@@ -10048,9 +11856,9 @@
       "source_location": "L50",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "runner_flutter_window_messagehandler",
-      "target": "windows_runner_flutter_window_cpp_lresult",
-      "confidence_score": 1.0
+      "target": "windows_runner_flutter_window_cpp_lresult"
     },
     {
       "relation": "references",
@@ -10059,9 +11867,9 @@
       "source_location": "L50",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_flutter_window_messagehandler",
-      "target": "windows_runner_flutter_window_cpp_uint",
-      "confidence_score": 1.0
+      "target": "windows_runner_flutter_window_cpp_uint"
     },
     {
       "relation": "references",
@@ -10070,9 +11878,9 @@
       "source_location": "L50",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_flutter_window_messagehandler",
-      "target": "windows_runner_flutter_window_cpp_wparam",
-      "confidence_score": 1.0
+      "target": "windows_runner_flutter_window_cpp_wparam"
     },
     {
       "relation": "contains",
@@ -10080,9 +11888,9 @@
       "source_file": "windows/runner/flutter_window.h",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_flutter_window_h_runner_flutter_window",
-      "target": "windows_runner_flutter_window_h_runner_flutter_window_flutterwindow",
-      "confidence_score": 1.0
+      "target": "windows_runner_flutter_window_h_runner_flutter_window_flutterwindow"
     },
     {
       "relation": "references",
@@ -10091,9 +11899,9 @@
       "source_location": "L12",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "windows_runner_flutter_window_h_runner_flutter_window_flutterwindow",
-      "target": "class",
-      "confidence_score": 1.0
+      "target": "class"
     },
     {
       "relation": "contains",
@@ -10101,9 +11909,9 @@
       "source_file": "windows/runner/main.cpp",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_main",
-      "target": "runner_main_wwinmain",
-      "confidence_score": 1.0
+      "target": "runner_main_wwinmain"
     },
     {
       "relation": "references",
@@ -10112,9 +11920,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_main_wwinmain",
-      "target": "in",
-      "confidence_score": 1.0
+      "target": "in"
     },
     {
       "relation": "references",
@@ -10123,9 +11931,9 @@
       "source_location": "L8",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_main_wwinmain",
-      "target": "in_opt",
-      "confidence_score": 1.0
+      "target": "in_opt"
     },
     {
       "relation": "calls",
@@ -10156,9 +11964,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_resource",
-      "confidence_score": 1.0
+      "target": "runner_resource"
     },
     {
       "relation": "contains",
@@ -10166,9 +11974,9 @@
       "source_file": "windows/runner/utils.cpp",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_utils_cpp_runner_utils",
-      "target": "runner_utils_createandattachconsole",
-      "confidence_score": 1.0
+      "target": "runner_utils_createandattachconsole"
     },
     {
       "relation": "contains",
@@ -10176,9 +11984,9 @@
       "source_file": "windows/runner/utils.cpp",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_utils_cpp_runner_utils",
-      "target": "runner_utils_getcommandlinearguments",
-      "confidence_score": 1.0
+      "target": "runner_utils_getcommandlinearguments"
     },
     {
       "relation": "contains",
@@ -10186,9 +11994,9 @@
       "source_file": "windows/runner/utils.cpp",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_utils_cpp_runner_utils",
-      "target": "runner_utils_utf8fromutf16",
-      "confidence_score": 1.0
+      "target": "runner_utils_utf8fromutf16"
     },
     {
       "relation": "imports",
@@ -10208,9 +12016,9 @@
       "source_file": "windows/runner/utils.cpp",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_utils_getcommandlinearguments",
-      "target": "runner_utils_utf8fromutf16",
-      "confidence_score": 1.0
+      "target": "runner_utils_utf8fromutf16"
     },
     {
       "relation": "references",
@@ -10219,9 +12027,9 @@
       "source_location": "L24",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "runner_utils_getcommandlinearguments",
-      "target": "vector",
-      "confidence_score": 1.0
+      "target": "vector"
     },
     {
       "relation": "references",
@@ -10230,9 +12038,9 @@
       "source_location": "L24",
       "weight": 1.0,
       "context": "generic_arg",
+      "confidence_score": 1.0,
       "source": "runner_utils_getcommandlinearguments",
-      "target": "windows_runner_utils_cpp_string",
-      "confidence_score": 1.0
+      "target": "windows_runner_utils_cpp_string"
     },
     {
       "relation": "imports",
@@ -10241,9 +12049,9 @@
       "source_file": "windows/runner/utils.h",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_utils_h_runner_utils",
-      "target": "vector",
-      "confidence_score": 1.0
+      "target": "vector"
     },
     {
       "relation": "references",
@@ -10252,9 +12060,9 @@
       "source_file": "windows/runner/utils.cpp",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_utils_utf8fromutf16",
-      "target": "windows_runner_utils_cpp_string",
-      "confidence_score": 1.0
+      "target": "windows_runner_utils_cpp_string"
     },
     {
       "relation": "references",
@@ -10263,9 +12071,9 @@
       "source_location": "L44",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_utils_utf8fromutf16",
-      "target": "windows_runner_utils_cpp_wchar_t",
-      "confidence_score": 1.0
+      "target": "windows_runner_utils_cpp_wchar_t"
     },
     {
       "relation": "contains",
@@ -10273,9 +12081,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L123",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_create",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_create"
     },
     {
       "relation": "contains",
@@ -10283,9 +12091,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L224",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_destroy",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_destroy"
     },
     {
       "relation": "contains",
@@ -10293,9 +12101,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L42",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_enablefulldpisupportifavailable",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_enablefulldpisupportifavailable"
     },
     {
       "relation": "contains",
@@ -10303,9 +12111,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L252",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_getclientarea",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_getclientarea"
     },
     {
       "relation": "contains",
@@ -10313,9 +12121,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L258",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_gethandle",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_gethandle"
     },
     {
       "relation": "contains",
@@ -10323,9 +12131,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L236",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_getthisfromhandle",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_getthisfromhandle"
     },
     {
       "relation": "contains",
@@ -10333,9 +12141,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L89",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_getwindowclass",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_getwindowclass"
     },
     {
       "relation": "contains",
@@ -10343,9 +12151,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L176",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_messagehandler",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_messagehandler"
     },
     {
       "relation": "contains",
@@ -10353,9 +12161,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L266",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_oncreate",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_oncreate"
     },
     {
       "relation": "contains",
@@ -10363,9 +12171,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L271",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_ondestroy",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_ondestroy"
     },
     {
       "relation": "contains",
@@ -10373,9 +12181,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_scale",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_scale"
     },
     {
       "relation": "contains",
@@ -10383,9 +12191,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L241",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_setchildcontent",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_setchildcontent"
     },
     {
       "relation": "contains",
@@ -10393,9 +12201,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L262",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_setquitonclose",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_setquitonclose"
     },
     {
       "relation": "contains",
@@ -10403,9 +12211,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L152",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_show",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_show"
     },
     {
       "relation": "contains",
@@ -10413,9 +12221,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L109",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_unregisterwindowclass",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_unregisterwindowclass"
     },
     {
       "relation": "contains",
@@ -10423,9 +12231,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L275",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_updatetheme",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_updatetheme"
     },
     {
       "relation": "contains",
@@ -10433,9 +12241,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L118",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_win32window",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_win32window"
     },
     {
       "relation": "contains",
@@ -10443,9 +12251,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_windowclassregistrar",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_windowclassregistrar"
     },
     {
       "relation": "contains",
@@ -10453,9 +12261,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L157",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "windows_runner_win32_window_cpp_runner_win32_window",
-      "target": "runner_win32_window_wndproc",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_wndproc"
     },
     {
       "relation": "imports",
@@ -10475,9 +12283,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L139",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_create",
-      "target": "runner_win32_window_scale",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_scale"
     },
     {
       "relation": "references",
@@ -10486,9 +12294,9 @@
       "source_location": "L42",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_enablefulldpisupportifavailable",
-      "target": "windows_runner_win32_window_cpp_hwnd",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_hwnd"
     },
     {
       "relation": "calls",
@@ -10497,9 +12305,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L167",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_wndproc",
-      "target": "runner_win32_window_enablefulldpisupportifavailable",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_enablefulldpisupportifavailable"
     },
     {
       "relation": "references",
@@ -10508,9 +12316,9 @@
       "source_location": "L258",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_gethandle",
-      "target": "windows_runner_win32_window_cpp_hwnd",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_hwnd"
     },
     {
       "relation": "references",
@@ -10519,9 +12327,9 @@
       "source_location": "L236",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_getthisfromhandle",
-      "target": "windows_runner_win32_window_cpp_hwnd",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_hwnd"
     },
     {
       "relation": "references",
@@ -10530,9 +12338,9 @@
       "source_location": "L176",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_messagehandler",
-      "target": "windows_runner_win32_window_cpp_hwnd",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_hwnd"
     },
     {
       "relation": "references",
@@ -10541,9 +12349,9 @@
       "source_location": "L241",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_setchildcontent",
-      "target": "windows_runner_win32_window_cpp_hwnd",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_hwnd"
     },
     {
       "relation": "references",
@@ -10552,9 +12360,9 @@
       "source_location": "L275",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_updatetheme",
-      "target": "windows_runner_win32_window_cpp_hwnd",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_hwnd"
     },
     {
       "relation": "references",
@@ -10563,9 +12371,9 @@
       "source_location": "L157",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_wndproc",
-      "target": "windows_runner_win32_window_cpp_hwnd",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_hwnd"
     },
     {
       "relation": "defines",
@@ -10574,9 +12382,9 @@
       "source_location": "L84",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_windowclassregistrar",
-      "target": "runner_win32_window_windowclassregistrar_class_registered",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_windowclassregistrar_class_registered"
     },
     {
       "relation": "references",
@@ -10585,9 +12393,9 @@
       "source_location": "L64",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_windowclassregistrar_getinstance",
-      "target": "runner_win32_window_windowclassregistrar",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_windowclassregistrar"
     },
     {
       "relation": "defines",
@@ -10596,9 +12404,9 @@
       "source_location": "L73",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_windowclassregistrar",
-      "target": "runner_win32_window_windowclassregistrar_getwindowclass",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_windowclassregistrar_getwindowclass"
     },
     {
       "relation": "defines",
@@ -10607,9 +12415,9 @@
       "source_location": "L82",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_windowclassregistrar",
-      "target": "runner_win32_window_windowclassregistrar_instance",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_windowclassregistrar_instance"
     },
     {
       "relation": "defines",
@@ -10618,9 +12426,9 @@
       "source_location": "L77",
       "weight": 1.0,
       "context": "field",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_windowclassregistrar",
-      "target": "runner_win32_window_windowclassregistrar_unregisterwindowclass",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_windowclassregistrar_unregisterwindowclass"
     },
     {
       "relation": "method",
@@ -10628,9 +12436,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L80",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_windowclassregistrar",
-      "target": "runner_win32_window_windowclassregistrar_windowclassregistrar",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_windowclassregistrar_windowclassregistrar"
     },
     {
       "relation": "calls",
@@ -10639,9 +12447,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L129",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_create",
-      "target": "runner_win32_window_windowclassregistrar_getinstance",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_windowclassregistrar_getinstance"
     },
     {
       "relation": "calls",
@@ -10650,9 +12458,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L232",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_destroy",
-      "target": "runner_win32_window_windowclassregistrar_getinstance",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_windowclassregistrar_getinstance"
     },
     {
       "relation": "calls",
@@ -10661,9 +12469,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L129",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_create",
-      "target": "runner_win32_window_getwindowclass",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_getwindowclass"
     },
     {
       "relation": "references",
@@ -10672,9 +12480,9 @@
       "source_location": "L89",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_getwindowclass",
-      "target": "windows_runner_win32_window_cpp_wchar_t",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_wchar_t"
     },
     {
       "relation": "calls",
@@ -10683,9 +12491,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L232",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_destroy",
-      "target": "runner_win32_window_unregisterwindowclass",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_unregisterwindowclass"
     },
     {
       "relation": "references",
@@ -10694,9 +12502,9 @@
       "source_location": "L236",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_getthisfromhandle",
-      "target": "runner_win32_window_win32window",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_win32window"
     },
     {
       "relation": "calls",
@@ -10705,9 +12513,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L120",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_win32window",
-      "target": "runner_win32_window_destroy",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_destroy"
     },
     {
       "relation": "references",
@@ -10716,9 +12524,9 @@
       "source_location": "L123",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_create",
-      "target": "point",
-      "confidence_score": 1.0
+      "target": "point"
     },
     {
       "relation": "calls",
@@ -10727,9 +12535,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L126",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_create",
-      "target": "runner_win32_window_destroy",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_destroy"
     },
     {
       "relation": "calls",
@@ -10738,9 +12546,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L149",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_create",
-      "target": "runner_win32_window_oncreate",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_oncreate"
     },
     {
       "relation": "calls",
@@ -10749,9 +12557,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L147",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_create",
-      "target": "runner_win32_window_updatetheme",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_updatetheme"
     },
     {
       "relation": "references",
@@ -10760,9 +12568,9 @@
       "source_location": "L123",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_create",
-      "target": "size",
-      "confidence_score": 1.0
+      "target": "size"
     },
     {
       "relation": "references",
@@ -10771,9 +12579,9 @@
       "source_location": "L123",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_create",
-      "target": "wstring",
-      "confidence_score": 1.0
+      "target": "wstring"
     },
     {
       "relation": "calls",
@@ -10782,9 +12590,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L169",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_wndproc",
-      "target": "runner_win32_window_getthisfromhandle",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_getthisfromhandle"
     },
     {
       "relation": "calls",
@@ -10793,9 +12601,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L170",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_wndproc",
-      "target": "runner_win32_window_messagehandler",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_messagehandler"
     },
     {
       "relation": "references",
@@ -10804,9 +12612,9 @@
       "source_location": "L157",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_wndproc",
-      "target": "windows_runner_win32_window_cpp_lparam",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_lparam"
     },
     {
       "relation": "references",
@@ -10815,9 +12623,9 @@
       "source_location": "L157",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_wndproc",
-      "target": "windows_runner_win32_window_cpp_lresult",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_lresult"
     },
     {
       "relation": "references",
@@ -10826,9 +12634,9 @@
       "source_location": "L157",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_wndproc",
-      "target": "windows_runner_win32_window_cpp_uint",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_uint"
     },
     {
       "relation": "references",
@@ -10837,9 +12645,9 @@
       "source_location": "L157",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_wndproc",
-      "target": "windows_runner_win32_window_cpp_wparam",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_wparam"
     },
     {
       "relation": "references",
@@ -10848,9 +12656,9 @@
       "source_location": "L176",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_messagehandler",
-      "target": "windows_runner_win32_window_cpp_lresult",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_lresult"
     },
     {
       "relation": "references",
@@ -10859,9 +12667,9 @@
       "source_location": "L176",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_messagehandler",
-      "target": "windows_runner_win32_window_cpp_uint",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_uint"
     },
     {
       "relation": "references",
@@ -10870,9 +12678,9 @@
       "source_location": "L176",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_messagehandler",
-      "target": "windows_runner_win32_window_cpp_wparam",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_wparam"
     },
     {
       "relation": "references",
@@ -10881,9 +12689,9 @@
       "source_location": "L176",
       "weight": 1.0,
       "context": "parameter_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_messagehandler",
-      "target": "windows_runner_win32_window_cpp_lparam",
-      "confidence_score": 1.0
+      "target": "windows_runner_win32_window_cpp_lparam"
     },
     {
       "relation": "calls",
@@ -10892,9 +12700,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L184",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_messagehandler",
-      "target": "runner_win32_window_destroy",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_destroy"
     },
     {
       "relation": "calls",
@@ -10903,9 +12711,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L201",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_messagehandler",
-      "target": "runner_win32_window_getclientarea",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_getclientarea"
     },
     {
       "relation": "calls",
@@ -10914,9 +12722,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L217",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_messagehandler",
-      "target": "runner_win32_window_updatetheme",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_updatetheme"
     },
     {
       "relation": "calls",
@@ -10925,9 +12733,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L225",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_destroy",
-      "target": "runner_win32_window_ondestroy",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_ondestroy"
     },
     {
       "relation": "calls",
@@ -10936,9 +12744,9 @@
       "source_file": "windows/runner/win32_window.cpp",
       "source_location": "L244",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "runner_win32_window_setchildcontent",
-      "target": "runner_win32_window_getclientarea",
-      "confidence_score": 1.0
+      "target": "runner_win32_window_getclientarea"
     },
     {
       "relation": "references",
@@ -10947,9 +12755,649 @@
       "source_location": "L252",
       "weight": 1.0,
       "context": "return_type",
+      "confidence_score": 1.0,
       "source": "runner_win32_window_getclientarea",
-      "target": "rect",
-      "confidence_score": 1.0
+      "target": "rect"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude",
+      "target": "claude_claude_md"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_claude_md",
+      "target": "claude_architecture_overview"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_claude_md",
+      "target": "claude_build_development_commands"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_architecture_overview",
+      "target": "claude_data_flow"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_architecture_overview",
+      "target": "claude_key_patterns"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_architecture_overview",
+      "target": "claude_models"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_architecture_overview",
+      "target": "claude_page_structure"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L33",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_architecture_overview",
+      "target": "claude_state_management_pattern"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "CLAUDE.md",
+      "source_location": "L58",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "claude_architecture_overview",
+      "target": "claude_theme"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme",
+      "target": "readme_sultan_khan_flutter_portfolio_application"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L50",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_sultan_khan_flutter_portfolio_application",
+      "target": "readme_architecture"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L175",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_sultan_khan_flutter_portfolio_application",
+      "target": "readme_author"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L190",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_sultan_khan_flutter_portfolio_application",
+      "target": "readme_contact"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L182",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_sultan_khan_flutter_portfolio_application",
+      "target": "readme_contributing"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L119",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_sultan_khan_flutter_portfolio_application",
+      "target": "readme_customization"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_sultan_khan_flutter_portfolio_application",
+      "target": "readme_dependencies"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L149",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_sultan_khan_flutter_portfolio_application",
+      "target": "readme_development"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_sultan_khan_flutter_portfolio_application",
+      "target": "readme_features"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L77",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_sultan_khan_flutter_portfolio_application",
+      "target": "readme_getting_started"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L171",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_sultan_khan_flutter_portfolio_application",
+      "target": "readme_license"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_sultan_khan_flutter_portfolio_application",
+      "target": "readme_pages"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L142",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_sultan_khan_flutter_portfolio_application",
+      "target": "readme_performance"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_sultan_khan_flutter_portfolio_application",
+      "target": "readme_technology_stack"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L106",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_sultan_khan_flutter_portfolio_application",
+      "target": "readme_web_deployment"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_dependencies",
+      "target": "readme_core_dependencies"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_dependencies",
+      "target": "readme_development_dependencies"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L69",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_architecture",
+      "target": "readme_data_models"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_architecture",
+      "target": "readme_project_structure"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_architecture",
+      "target": "readme_state_management"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L83",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_getting_started",
+      "target": "readme_installation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L79",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_getting_started",
+      "target": "readme_prerequisites"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L108",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_web_deployment",
+      "target": "readme_build_for_web"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L113",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_web_deployment",
+      "target": "readme_deploy_options"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L121",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_customization",
+      "target": "readme_colors"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L128",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_customization",
+      "target": "readme_data"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L137",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_customization",
+      "target": "readme_styling"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L151",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_development",
+      "target": "readme_code_generation"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L166",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_development",
+      "target": "readme_linting"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L161",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "readme_development",
+      "target": "readme_testing"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "USAGE.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "usage",
+      "target": "usage_usage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "USAGE.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "usage_usage",
+      "target": "usage_build_for_web_deployment"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "USAGE.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "usage_usage",
+      "target": "usage_other_commands"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "USAGE.md",
+      "source_location": "L3",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "usage_usage",
+      "target": "usage_prerequisites"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "USAGE.md",
+      "source_location": "L12",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "usage_usage",
+      "target": "usage_run"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "USAGE.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "usage_usage",
+      "target": "usage_setup"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "launchimage_imageset_readme",
+      "target": "launchimage_imageset_readme_launch_screen_assets"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_6_floating_icons_skills_section",
+      "target": "prs_6_floating_icons_skills_section_feat_replace_static_skill_cards_with_animated_floating_icon_grid"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_6_floating_icons_skills_section_feat_replace_static_skill_cards_with_animated_floating_icon_grid",
+      "target": "prs_6_floating_icons_skills_section_acceptance_criteria"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_6_floating_icons_skills_section_feat_replace_static_skill_cards_with_animated_floating_icon_grid",
+      "target": "prs_6_floating_icons_skills_section_changes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_6_floating_icons_skills_section_feat_replace_static_skill_cards_with_animated_floating_icon_grid",
+      "target": "prs_6_floating_icons_skills_section_commits"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_6_floating_icons_skills_section_feat_replace_static_skill_cards_with_animated_floating_icon_grid",
+      "target": "prs_6_floating_icons_skills_section_summary"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L49",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_6_floating_icons_skills_section_feat_replace_static_skill_cards_with_animated_floating_icon_grid",
+      "target": "prs_6_floating_icons_skills_section_test_plan"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_6_floating_icons_skills_section_changes",
+      "target": "prs_6_floating_icons_skills_section_dependencies_assets_pubspec_yaml_assets_skills"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L35",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_6_floating_icons_skills_section_changes",
+      "target": "prs_6_floating_icons_skills_section_docs_tooling_claude_md_usage_md_graphify_out_gitignore"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L25",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_6_floating_icons_skills_section_changes",
+      "target": "prs_6_floating_icons_skills_section_landing_page_lib_pages_landing_page_dart"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/6-floating-icons-skills-section.md",
+      "source_location": "L19",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_6_floating_icons_skills_section_changes",
+      "target": "prs_6_floating_icons_skills_section_skills_ui_lib_widgets_floating_skill_icon_dart_lib_widgets_skills_grid_dart_lib_widgets_sections_skills_section_dart"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_template",
+      "target": "prs_template_type_short_pr_title"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L31",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_template_type_short_pr_title",
+      "target": "prs_template_acceptance_criteria"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L20",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_template_type_short_pr_title",
+      "target": "prs_template_changes"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L15",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_template_type_short_pr_title",
+      "target": "prs_template_commits"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_template_type_short_pr_title",
+      "target": "prs_template_summary"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L37",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_template_type_short_pr_title",
+      "target": "prs_template_test_plan"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_template_changes",
+      "target": "prs_template_area_task_1_file_file"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/TEMPLATE.md",
+      "source_location": "L27",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "prs_template_changes",
+      "target": "prs_template_area_task_2_file"
     },
     {
       "relation": "conceptually_related_to",
@@ -10959,16 +13407,6 @@
       "source_location": null,
       "weight": 1.0,
       "source": "launchimage_imageset_readme_launch_screen",
-      "target": "readme_portfolio_app"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.55,
-      "source_file": "pubspec.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "pubspec_assets_skills",
       "target": "readme_portfolio_app"
     },
     {
@@ -10982,56 +13420,6 @@
       "target": "readme_portfolio_app"
     },
     {
-      "relation": "references",
-      "confidence": "AMBIGUOUS",
-      "confidence_score": 0.2,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_portfoliobloc",
-      "target": "pubspec_dependencies"
-    },
-    {
-      "relation": "conceptually_related_to",
-      "confidence": "INFERRED",
-      "confidence_score": 0.65,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_apptheme",
-      "target": "pubspec_project_name"
-    },
-    {
-      "relation": "references",
-      "confidence": "AMBIGUOUS",
-      "confidence_score": 0.2,
-      "source_file": "README.md",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "readme_dependencies",
-      "target": "pubspec_dependencies"
-    },
-    {
-      "relation": "references",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "analysis_options.yaml",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "analysis_options_flutter_lints",
-      "target": "pubspec_dev_dependencies"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "linux/CMakeLists.txt",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "linux_cmakelists_binary_name",
-      "target": "pubspec_project_name"
-    },
-    {
       "relation": "calls",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
@@ -11040,26 +13428,6 @@
       "weight": 1.0,
       "source": "linux_cmakelists_flutter_subdir",
       "target": "flutter_cmakelists_linux_assemble"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.75,
-      "source_file": "web/index.html",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "web_index_bootstrap",
-      "target": "pubspec_project_name"
-    },
-    {
-      "relation": "shares_data_with",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "source_file": "windows/CMakeLists.txt",
-      "source_location": null,
-      "weight": 1.0,
-      "source": "windows_cmakelists_binary_name",
-      "target": "pubspec_project_name"
     },
     {
       "relation": "calls",
@@ -11137,5 +13505,5 @@
       "source_file": "README.md"
     }
   ],
-  "built_at_commit": "c8aef047afcb9550aab58f898e5bbd7925f65b8b"
+  "built_at_commit": "2363fbd595f7c7f1808c7a9e028a8e609ecae9aa"
 }
