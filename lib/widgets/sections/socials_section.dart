@@ -16,9 +16,22 @@ class SocialsSection extends StatelessWidget {
       'https://linkedin.com/in/sultan-khan-278014121'
     ),
     ('GitHub', 'assets/skills/github.svg', 'https://github.com/sultan18kh'),
-    ('Instagram', 'assets/socials/instagram.svg', ''),
-    ('Facebook', 'assets/socials/facebook.svg', ''),
-    ('X', 'assets/socials/x.svg', ''),
+    (
+      'Microsoft Learn',
+      'assets/socials/microsoft-learn.svg',
+      'https://learn.microsoft.com/en-gb/users/sultankhan-6242/'
+    ),
+    (
+      'Instagram',
+      'assets/socials/instagram.svg',
+      'https://www.instagram.com/sultankh18/'
+    ),
+    (
+      'Facebook',
+      'assets/socials/facebook.svg',
+      'https://www.facebook.com/sultankh1895'
+    ),
+    ('X', 'assets/socials/x.svg', 'https://x.com/sultan18kh'),
   ];
 
   @override
