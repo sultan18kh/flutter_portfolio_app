@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'blocs/portfolio_bloc.dart';
+import 'blocs/portfolio_cubit.dart';
 import 'pages/landing_page.dart';
 import 'utils/app_theme.dart';
 
@@ -15,8 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider<PortfolioBloc>(
-          create: (context) => PortfolioBloc()..add(LoadPortfolio()),
+        BlocProvider<PortfolioCubit>(
+          create: (context) => PortfolioCubit(),
         ),
       ],
       child: MaterialApp(

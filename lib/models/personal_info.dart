@@ -8,6 +8,7 @@ class PersonalInfo extends Equatable {
   final String name;
   final String title;
   final String profile;
+  final String aboutBio;
   final String email;
   final String linkedin;
   final String github;
@@ -19,6 +20,7 @@ class PersonalInfo extends Equatable {
     required this.name,
     required this.title,
     required this.profile,
+    required this.aboutBio,
     required this.email,
     required this.linkedin,
     required this.github,
@@ -37,6 +39,7 @@ class PersonalInfo extends Equatable {
         name,
         title,
         profile,
+        aboutBio,
         email,
         linkedin,
         github,

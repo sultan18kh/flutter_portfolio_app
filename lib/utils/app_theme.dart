@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
-  // Modern Orange/Black Theme
-  static const Color primaryColor = Color(0xFFFF6B35); // Vibrant Orange
-  static const Color secondaryColor = Color(0xFFFF8A65); // Light Orange
-  static const Color accentColor = Color(0xFFFF5722); // Deep Orange
-  static const Color backgroundColor = Color(0xFF0A0A0A); // Deep Black
-  static const Color surfaceColor = Color(0xFF1A1A1A); // Dark Grey
-  static const Color cardColor = Color(0xFF2A2A2A); // Medium Grey
+  // Neon Magenta/Cyan Theme
+  static const Color primaryColor = Color(0xFFFF2E93); // Neon Magenta
+  static const Color secondaryColor = Color(0xFFFF6FB8); // Soft Pink
+  static const Color accentColor = Color(0xFF22D9FF); // Neon Cyan
+  static const Color backgroundColor = Color(0xFF07060B); // Near-Black Violet
+  static const Color surfaceColor = Color(0xFF14111C); // Dark Violet-Grey
+  static const Color cardColor = Color(0xFF201B2C); // Medium Violet-Grey
   static const Color textPrimaryColor = Color(0xFFFFFFFF); // White
-  static const Color textSecondaryColor = Color(0xFFB0B0B0); // Light Grey
-  static const Color textMutedColor = Color(0xFF808080); // Muted Grey
-  static const Color gradientStart = Color(0xFFFF6B35);
-  static const Color gradientEnd = Color(0xFFFF8A65);
+  static const Color textSecondaryColor = Color(0xFFC2B8D6); // Lavender-Grey
+  static const Color textMutedColor = Color(0xFF8A81A0); // Muted Lavender
+  static const Color gradientStart = Color(0xFFFF2E93);
+  static const Color gradientEnd = Color(0xFF22D9FF);
 
   static ThemeData get darkTheme {
     return ThemeData(

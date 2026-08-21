@@ -25,3 +25,15 @@ doc/api/
 
 .flutter-plugins
 .flutter-plugins-dependencies
+
+# .DS_Store files
+.DS_Store
+**/.DS_Store
+
+# graphify local/machine-specific files (keep report + graph outputs tracked)
+graphify-out/.graphify_python
+graphify-out/.graphify_root
+graphify-out/cache/
+graphify-out/cost.json
+graphify-out/manifest.json
+graphify-out/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/

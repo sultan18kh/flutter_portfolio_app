@@ -34,7 +34,8 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
       vsync: this,
     )..repeat();
 
-    _particles = List.generate(50, (index) => Particle.random());
+    // * Initialize particles with a placeholder size, will be updated in build
+    _particles = [];
   }
 
   @override
@@ -46,6 +47,13 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
 
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
+    // Generate particles based on actual screen size if not already generated
+    if (_particles.isEmpty) {
+      _particles = List.generate(50, (index) => Particle.random(screenSize));
+    }
+
     return Stack(
       children: [
         // Animated gradient background
@@ -60,12 +68,14 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
                   colors: const [
                     AppTheme.backgroundColor,
                     AppTheme.surfaceColor,
+                    AppTheme.surfaceColor,
                     AppTheme.backgroundColor,
                   ],
                   stops: [
-                    0.0,
+                    _gradientController.lowerBound,
                     _gradientController.value,
-                    1.0,
+                    _gradientController.value,
+                    _gradientController.upperBound,
                   ],
                 ),
               ),
@@ -77,12 +87,15 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
         AnimatedBuilder(
           animation: _particleController,
           builder: (context, child) {
-            return CustomPaint(
-              painter: ParticlePainter(
-                particles: _particles,
-                animation: _particleController.value,
+            return SizedBox(
+              width: screenSize.width,
+              height: screenSize.height,
+              child: CustomPaint(
+                painter: ParticlePainter(
+                  particles: _particles,
+                  animation: _particleController.value,
+                ),
               ),
-              size: Size.infinite,
             );
           },
         ),
@@ -111,15 +124,16 @@ class Particle {
     required this.color,
   });
 
-  factory Particle.random() {
+  factory Particle.random(Size screenSize) {
+    final hue =
+        math.Random().nextBool() ? AppTheme.primaryColor : AppTheme.accentColor;
     return Particle(
-      x: math.Random().nextDouble() * 100,
-      y: math.Random().nextDouble() * 100,
+      x: math.Random().nextDouble() * screenSize.width,
+      y: math.Random().nextDouble() * screenSize.height,
       size: math.Random().nextDouble() * 3 + 1,
       speed: math.Random().nextDouble() * 0.5 + 0.1,
       angle: math.Random().nextDouble() * 2 * math.pi,
-      color: AppTheme.primaryColor
-          .withValues(alpha: math.Random().nextDouble() * 0.3 + 0.1),
+      color: hue.withValues(alpha: math.Random().nextDouble() * 0.3 + 0.1),
     );
   }
 }
@@ -140,8 +154,13 @@ class ParticlePainter extends CustomPainter {
         ..color = particle.color
         ..style = PaintingStyle.fill;
 
-      final x = (particle.x + animation * particle.speed * 100) % size.width;
-      final y = (particle.y + animation * particle.speed * 50) % size.height;
+      // Calculate movement based on angle and speed
+      final dx = math.cos(particle.angle) * particle.speed * animation * 100;
+      final dy = math.sin(particle.angle) * particle.speed * animation * 100;
+
+      // Wrap particles around screen edges
+      final x = (particle.x + dx) % size.width;
+      final y = (particle.y + dy) % size.height;
 
       canvas.drawCircle(
         Offset(x, y),

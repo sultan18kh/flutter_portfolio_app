@@ -10,19 +10,19 @@ class PortfolioService {
     // Mock data based on resume
     return const PersonalInfo(
       name: 'SULTAN KHAN',
-      title: 'SENIOR SOLUTION DEVELOPER',
+      title: 'Senior AI Solutions Developer',
       profile:
-          'A motivated, adaptable and responsible Computer Scientist, seeking a position in an IT domain which will utilize my professional and technical skills developed through rigorous endeavors and experiences in this field.',
+          'Senior AI Solutions Developer specializing in Flutter, Azure AI, and agentic AI systems. Six-time Microsoft certified, currently extending depth in Azure AI Foundry, Model Context Protocol (MCP) tooling, and Claude Code agent workflows. Production track record across BLE/IoT mobile (SOBRsure, \$10M seed), AI-powered enterprise SaaS, and healthcare-compliance automation.',
+      aboutBio:
+          'I\'m a Senior AI Solutions Developer based in Lahore, building production Flutter and Azure AI systems for clients ranging from a \$10M-seed IoT safety platform to enterprise HR and CRM tooling. My recent focus has shifted deeper into agentic AI — Azure AI Foundry, the Model Context Protocol, and Claude Code workflows — while staying hands-on with Flutter across mobile and web. Six-time Microsoft certified, I write about agentic AI and Spec-Driven Development on LinkedIn and contribute to open source in my spare time.',
       email: 'sultan512@gmail.com',
       linkedin: 'linkedin.com/in/sultan-khan-278014121',
       github: 'https://github.com/sultan18kh',
-      home: 'Bedian Road, Lahore Cantt',
+      home: 'Lahore, Pakistan',
       phoneNumbers: [
-        '+92-300-1234567',
-        '+92-301-2345678',
-        '+92-302-3456789',
+        '+92 323 8788300',
       ],
-      profileImage: 'assets/images/profile.jpg',
+      profileImage: 'assets/sultan_angle.jpg',
     );
   }
 
@@ -55,13 +55,14 @@ class PortfolioService {
   static Future<List<Experience>> getExperience() async {
     return const [
       Experience(
-        title: 'Solution Developer II',
+        title: 'Senior AI Solutions Developer',
         company: 'AlphaBOLD',
         period: 'June 2021 - Present',
         responsibilities: [
-          'Senior Full-stack Developer',
-          'Flutter, MERN, Azure CosmosDB',
-          'Azure Cloud, AI Services, Data Analytics (Microsoft Certified)',
+          'Lead Flutter, Python, and Azure AI engineering for the Microsoft Dynamics CRM ecosystem',
+          'Built AI resume parser and AI score generator orchestrating Llama 3.2 and Claude AI via LangChain',
+          'Engineered NCCN healthcare-compliance automation: LLM preprocessing, deterministic rule lookup, webhook-gated enforcement',
+          'Delivered BLE-enabled IoT mobile platform for the \$10M-seed-funded SOBRsure',
         ],
       ),
       Experience(
@@ -69,9 +70,9 @@ class PortfolioService {
         company: 'We > I',
         period: 'January 2020 - June 2021',
         responsibilities: [
-          'Mobile Application Developer',
-          'Flutter, Android Studio',
-          'Google Cloud Services, AWS',
+          'Mobile tech lead, founding dev team of three at BridgeLinx (\$10M seed round)',
+          'Built client and driver Flutter apps with Mapbox and Google Maps navigation',
+          'Engineered Android foreground/background services for live location tracking',
         ],
       ),
       Experience(
@@ -79,9 +80,8 @@ class PortfolioService {
         company: 'Confiz Limited',
         period: 'February 2019 - January 2020',
         responsibilities: [
-          'Microsoft Dynamics R&D Team',
-          'D365FO, Dynamics AX R3 2012',
-          'Android studio applications, .NET Applications, SQL Server',
+          'Microsoft Dynamics R&D team for D365FO and Dynamics AX R3 2012',
+          'Authored FBR Connect, a C# .NET integration with the FBR POS API',
         ],
       ),
       Experience(
@@ -89,28 +89,23 @@ class PortfolioService {
         company: 'Finz Technologies',
         period: 'June 2018 - January 2019',
         responsibilities: [
-          'Unity 3D Developer',
-          'Specialized in 2.5D and 3D Fighting Games (UFE)',
+          'Unity 3D developer specializing in 2.5D and 3D fighting games (UFE)',
         ],
       ),
       Experience(
         title: 'IT Intern',
         company: 'Fauji Fertilizer Company',
-        period: 'August 2017 - September 2017',
+        period: '2017',
         responsibilities: [
-          'Mid-university internship',
-          'Learned Basics of Marketing, SAP',
-          'SQL Server 2012',
+          'Early-career internship in IT',
         ],
       ),
       Experience(
         title: 'Android Development Intern',
         company: 'Netsol Technologies',
-        period: 'July 2016 - August 2016',
+        period: '2016',
         responsibilities: [
-          'Mid-university internship',
-          'Android Studio, Java, XML',
-          'Developed Netsol Phonebook Application',
+          'Early-career internship in Android development',
         ],
       ),
     ];
@@ -138,6 +133,32 @@ class PortfolioService {
 
   static Future<List<Project>> getProjects() async {
     return const [
+      Project(
+        name: 'NCCN Healthcare Compliance Automation',
+        description:
+            'End-to-end NCCN medical guideline automation for a confidential healthcare client',
+        technologies: [
+          'Python',
+          'Azure Functions',
+          'Azure DevOps',
+          'OpenAI API'
+        ],
+        features: [
+          'PDF highlights and annotation extraction feeding an LLM preprocessing pipeline',
+          'Deterministic rule-based comment lookup across 30+ verbatim NCCN entries, zero runtime LLM cost',
+          'Metadata threading and webhook-gated rule enforcement',
+        ],
+      ),
+      Project(
+        name: 'SOBRSafe - SOBRsure',
+        description: 'Safety and compliance monitoring application',
+        technologies: ['Flutter', 'Bloc/Cubit', 'Google Maps API', 'Mapbox'],
+        features: [
+          'User profiles and device connection',
+          'Map integration with Google Maps API',
+          'Real-time safety monitoring',
+        ],
+      ),
       Project(
         name: 'BOLDHR',
         description: 'Flutter Web App (iOS/Android WIP) - HR Management System',
@@ -176,23 +197,13 @@ class PortfolioService {
         ],
       ),
       Project(
-        name: 'BOLDBuild',
-        description: 'Project management and task tracking application',
-        technologies: ['Flutter', 'Bloc/Cubit', 'Google Cloud Services'],
+        name: 'BOLDVelocity',
+        description: 'AlphaBOLD internal developer productivity dashboard',
+        technologies: ['Python', 'SQLite', 'Vue.js', 'Azure DevOps API'],
         features: [
-          'Task management interfaces',
-          'Progress indicators and tracking',
-          'Team collaboration tools',
-        ],
-      ),
-      Project(
-        name: 'SOBRSafe - SOBRsure',
-        description: 'Safety and compliance monitoring application',
-        technologies: ['Flutter', 'Bloc/Cubit', 'Google Maps API', 'Mapbox'],
-        features: [
-          'User profiles and device connection',
-          'Map integration with Google Maps API',
-          'Real-time safety monitoring',
+          'ETL pipeline normalizing Git, PR, Boards, and Copilot activity into commit, cycle-time, churn, and velocity metrics',
+          'Read-only stdlib Python API serving pre-aggregated SQLite metrics to a Vue 3 dashboard',
+          'Idempotent natural-key upserts, safe for a 3x/day cron pipeline; zero LLM calls by design',
         ],
       ),
     ];
@@ -201,28 +212,40 @@ class PortfolioService {
   static Future<List<Certification>> getCertifications() async {
     return const [
       Certification(
-        name: 'AZ-900: Microsoft Azure Fundamentals',
+        name: 'AI-900: Microsoft Azure AI Fundamentals',
         description:
-            'Demonstrated foundational knowledge of cloud services and how they are provided with Microsoft Azure.',
+            'Foundational knowledge of AI concepts and the capabilities of Microsoft Azure AI services.',
         issuer: 'Microsoft',
       ),
       Certification(
-        name: 'AI-900: Microsoft Azure AI Fundamentals',
+        name: 'AI-901: Microsoft Azure AI Fundamentals (Refresh)',
         description:
-            'Proficient in understanding AI concepts and the capabilities of Microsoft Azure AI services.',
+            'Refreshed certification covering current Azure AI fundamentals and services.',
+        issuer: 'Microsoft',
+      ),
+      Certification(
+        name: 'AZ-900: Microsoft Azure Fundamentals',
+        description:
+            'Foundational knowledge of cloud services and how they are provided with Microsoft Azure.',
         issuer: 'Microsoft',
       ),
       Certification(
         name: 'DP-900: Microsoft Azure Data Fundamentals',
         description:
-            'Skilled in core data concepts and how they are implemented using Microsoft Azure data services.',
+            'Core data concepts and how they are implemented using Microsoft Azure data services.',
         issuer: 'Microsoft',
       ),
       Certification(
-        name: 'English for Global Connectivity',
+        name: 'APL-7008: Build Agents with Microsoft Copilot Studio',
         description:
-            'An ambitious language training program meant to build learners\' English language skills through modeling, practice, and personalizing, using modern teaching methodologies.',
-        issuer: 'Muzammil Khan (CELTA/TEFL-CERT.UK)',
+            'Applied Skills credential for building and deploying agents with Microsoft Copilot Studio.',
+        issuer: 'Microsoft',
+      ),
+      Certification(
+        name: 'AI-103: Azure AI Engineer Associate',
+        description:
+            'Associate-level certification for designing and implementing AI solutions on Microsoft Azure.',
+        issuer: 'Microsoft',
       ),
     ];
   }
