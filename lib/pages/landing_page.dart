@@ -13,6 +13,7 @@ import '../widgets/sections/contact_section.dart';
 import '../widgets/sections/socials_section.dart';
 import '../widgets/reveal_on_scroll.dart';
 import '../widgets/hero_about_morph.dart';
+import '../widgets/scroll_progress_rail.dart';
 import '../utils/app_theme.dart';
 import '../utils/morph_keys.dart';
 import '../utils/photo_morph_progress.dart';
@@ -189,6 +190,20 @@ class _LandingPageState extends State<LandingPage> {
 
                       // Floating Navigation Bar
                       ModernNavbar(scrollController: _scrollController),
+
+                      // Whole-page scroll progress — a fixed rail at the
+                      // very top edge, independent of and above everything
+                      // else, so it never competes with a section's own
+                      // moment.
+                      Positioned(
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: 3,
+                        child: ScrollProgressRail(
+                          controller: _scrollController,
+                        ),
+                      ),
                     ],
                   ),
                 ),
