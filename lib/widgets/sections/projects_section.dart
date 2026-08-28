@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -28,18 +29,6 @@ class ProjectsSection extends StatelessWidget {
     'ios': 'assets/skills/ios.svg',
   };
 
-  static const List<(IconData, List<Color>)> _headerStyles = [
-    (Icons.groups_rounded, [AppTheme.primaryColor, AppTheme.accentColor]),
-    (Icons.timer_rounded, [AppTheme.accentColor, AppTheme.primaryColor]),
-    (
-      Icons.emoji_events_rounded,
-      [AppTheme.primaryColor, AppTheme.secondaryColor]
-    ),
-    (Icons.task_alt_rounded, [AppTheme.secondaryColor, AppTheme.accentColor]),
-    (Icons.shield_rounded, [AppTheme.accentColor, AppTheme.secondaryColor]),
-    (Icons.speed_rounded, [AppTheme.secondaryColor, AppTheme.primaryColor]),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -65,8 +54,6 @@ class ProjectsSection extends StatelessWidget {
                       delay: Duration(milliseconds: index * 90),
                       child: _ProjectCard(
                         project: entry.value,
-                        headerStyle:
-                            _headerStyles[index % _headerStyles.length],
                         techIcons: _techIcons,
                       ),
                     ),
@@ -95,12 +82,10 @@ class ProjectsSection extends StatelessWidget {
 
 class _ProjectCard extends StatefulWidget {
   final Project project;
-  final (IconData, List<Color>) headerStyle;
   final Map<String, String> techIcons;
 
   const _ProjectCard({
     required this.project,
-    required this.headerStyle,
     required this.techIcons,
   });
 
@@ -108,13 +93,42 @@ class _ProjectCard extends StatefulWidget {
   State<_ProjectCard> createState() => _ProjectCardState();
 }
 
-class _ProjectCardState extends State<_ProjectCard> {
+class _ProjectCardState extends State<_ProjectCard>
+    with SingleTickerProviderStateMixin {
   bool _isHovered = false;
+  late final AnimationController _pulseController;
+
+  @override
+  void initState() {
+    super.initState();
+    _pulseController = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    );
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (MediaQuery.of(context).disableAnimations) {
+      _pulseController.stop();
+    } else if (!_pulseController.isAnimating) {
+      _pulseController.repeat(reverse: true);
+    }
+  }
+
+  @override
+  void dispose() {
+    _pulseController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final (icon, colors) = widget.headerStyle;
     final project = widget.project;
+    final accentColor = _colorForTech(
+      project.technologies.isNotEmpty ? project.technologies.first : '',
+    );
 
     return MouseRegion(
       onEnter: (_) => setState(() => _isHovered = true),
@@ -130,7 +144,7 @@ class _ProjectCardState extends State<_ProjectCard> {
             boxShadow: _isHovered
                 ? [
                     BoxShadow(
-                      color: colors.first.withValues(alpha: 0.3),
+                      color: accentColor.withValues(alpha: 0.3),
                       blurRadius: 28,
                       offset: const Offset(0, 12),
                     ),
@@ -142,25 +156,30 @@ class _ProjectCardState extends State<_ProjectCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Project header
+                // Project header — a generative "fingerprint": one node
+                // per technology (deterministically colored, so the same
+                // tech reads as the same hue on every card), radiating
+                // from a slowly-breathing hub. Distinct per project by
+                // construction instead of a stock icon shared across all
+                // of them.
                 Container(
                   width: double.infinity,
                   height: 140,
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      begin: Alignment.topLeft,
-                      end: Alignment.bottomRight,
-                      colors: colors,
-                    ),
-                    borderRadius: const BorderRadius.vertical(
+                  clipBehavior: Clip.antiAlias,
+                  decoration: const BoxDecoration(
+                    color: AppTheme.surfaceColor,
+                    borderRadius: BorderRadius.vertical(
                       top: Radius.circular(16),
                     ),
                   ),
-                  child: Center(
-                    child: Icon(
-                      icon,
-                      size: 56,
-                      color: Colors.white.withValues(alpha: 0.9),
+                  child: AnimatedBuilder(
+                    animation: _pulseController,
+                    builder: (context, _) => CustomPaint(
+                      size: Size.infinite,
+                      painter: _ProjectFingerprintPainter(
+                        project: project,
+                        pulse: _pulseController.value,
+                      ),
                     ),
                   ),
                 ),
@@ -284,4 +303,127 @@ class _ProjectCardState extends State<_ProjectCard> {
       await launchUrl(uri);
     }
   }
+}
+
+// Deterministic per-tech hue so the same technology always reads as the
+// same color across every project card, not just within one. Walks the
+// full brand triad (not just a two-color lerp) so hashes spread across
+// visibly distinct hues instead of clustering in one narrow band.
+Color _colorForTech(String tech) {
+  if (tech.isEmpty) return AppTheme.primaryColor;
+  const stops = [
+    AppTheme.primaryColor,
+    AppTheme.accentColor,
+    AppTheme.secondaryColor,
+    AppTheme.primaryColor,
+  ];
+  final t = (tech.toLowerCase().hashCode % 1000) / 1000.0;
+  final scaled = t * (stops.length - 1);
+  final i = scaled.floor();
+  return Color.lerp(stops[i], stops[i + 1], scaled - i)!;
+}
+
+/// Paints one project's technology stack as a small hub-and-spoke
+/// constellation: a breathing hub node (the project itself) radiating one
+/// satellite per technology. Node layout is seeded from the project's
+/// name, so it's stable across rebuilds but distinct project to project —
+/// a real fingerprint of the work instead of a stock icon shared by all.
+class _ProjectFingerprintPainter extends CustomPainter {
+  final Project project;
+  final double pulse;
+
+  _ProjectFingerprintPainter({required this.project, required this.pulse});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final rnd = math.Random(project.name.hashCode);
+
+    // Background wash, tinted toward the project's lead technology.
+    final leadColor = _colorForTech(
+      project.technologies.isNotEmpty ? project.technologies.first : '',
+    );
+    final bg = Paint()
+      ..shader = LinearGradient(
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+        colors: [
+          AppTheme.surfaceColor,
+          Color.lerp(AppTheme.surfaceColor, leadColor, 0.28)!,
+        ],
+      ).createShader(Offset.zero & size);
+    canvas.drawRect(Offset.zero & size, bg);
+
+    // Ambient dust — ties the card into the page's particle motif without
+    // competing with the hub/satellite structure that carries the meaning.
+    final dust = Paint()..style = PaintingStyle.fill;
+    for (var i = 0; i < 16; i++) {
+      final p = Offset(
+        rnd.nextDouble() * size.width,
+        rnd.nextDouble() * size.height,
+      );
+      dust.color = Colors.white.withValues(alpha: 0.04 + rnd.nextDouble() * 0.05);
+      canvas.drawCircle(p, 1 + rnd.nextDouble() * 1.5, dust);
+    }
+
+    final hub = Offset(
+      size.width * (0.3 + rnd.nextDouble() * 0.4),
+      size.height * (0.32 + rnd.nextDouble() * 0.3),
+    );
+
+    final techs = project.technologies.take(6).toList();
+    final satellites = <Offset>[];
+    final linePaint = Paint()
+      ..strokeWidth = 1
+      ..style = PaintingStyle.stroke;
+
+    for (var i = 0; i < techs.length; i++) {
+      final angle =
+          (i / techs.length) * 2 * math.pi + rnd.nextDouble() * 0.4;
+      final radius = size.height * (0.42 + (i % 3) * 0.08);
+      final raw = hub +
+          Offset(math.cos(angle) * radius, math.sin(angle) * radius * 0.6);
+      final pos = Offset(
+        raw.dx.clamp(10, size.width - 10),
+        raw.dy.clamp(10, size.height - 10),
+      );
+      satellites.add(pos);
+
+      final color = _colorForTech(techs[i]);
+      linePaint.color = color.withValues(alpha: 0.35);
+      canvas.drawLine(hub, pos, linePaint);
+    }
+
+    for (var i = 0; i < satellites.length; i++) {
+      final color = _colorForTech(techs[i]);
+      final glow = Paint()
+        ..color = color.withValues(alpha: 0.3)
+        ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 6);
+      canvas.drawCircle(satellites[i], 7, glow);
+      final node = Paint()..color = color.withValues(alpha: 0.9);
+      canvas.drawCircle(satellites[i], 4, node);
+    }
+
+    // Hub: a slow breathing glow (pulse cycles 0..1..0 via the controller's
+    // reverse repeat) so the fingerprint reads as alive, not a static
+    // badge. Colored by the lead technology, not a fixed brand color, so
+    // the card's single brightest element also carries its identity.
+    final hubGlowRadius = 15 + pulse * 7;
+    final hubGlow = Paint()
+      ..shader = RadialGradient(colors: [
+        leadColor.withValues(alpha: 0.55),
+        leadColor.withValues(alpha: 0.0),
+      ]).createShader(Rect.fromCircle(center: hub, radius: hubGlowRadius));
+    canvas.drawCircle(hub, hubGlowRadius, hubGlow);
+
+    canvas.drawCircle(hub, 9, Paint()..color = leadColor);
+    canvas.drawCircle(
+      hub,
+      6,
+      Paint()..color = Colors.white.withValues(alpha: 0.95),
+    );
+  }
+
+  @override
+  bool shouldRepaint(covariant _ProjectFingerprintPainter oldDelegate) =>
+      oldDelegate.pulse != pulse || oldDelegate.project != project;
 }

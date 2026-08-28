@@ -93,6 +93,17 @@ class CertificationsSection extends StatelessWidget {
     );
   }
 
+  // Real Microsoft badge art per credential tier, not a generic icon.
+  String _badgeAssetFor(Certification cert) {
+    if (cert.name.startsWith('APL-7008')) {
+      return 'assets/certs/applied_skills.png';
+    }
+    if (cert.name.startsWith('AI-103')) {
+      return 'assets/certs/associate.png';
+    }
+    return 'assets/certs/fundamentals.png';
+  }
+
   Widget _buildCertificationCard(BuildContext context, Certification cert) {
     return Container(
       padding: const EdgeInsets.all(24),
@@ -114,18 +125,33 @@ class CertificationsSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 48,
-            height: 48,
+            width: 56,
+            height: 56,
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: const LinearGradient(
-                colors: [AppTheme.primaryColor, AppTheme.accentColor],
-              ),
+              boxShadow: [
+                BoxShadow(
+                  color: AppTheme.primaryColor.withValues(alpha: 0.25),
+                  blurRadius: 16,
+                  spreadRadius: 1,
+                ),
+              ],
             ),
-            child: const Icon(
-              Icons.workspace_premium,
-              color: Colors.white,
-              size: 24,
+            child: Image.asset(
+              _badgeAssetFor(cert),
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) => Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                    colors: [AppTheme.primaryColor, AppTheme.accentColor],
+                  ),
+                ),
+                child: const Icon(
+                  Icons.workspace_premium,
+                  color: Colors.white,
+                  size: 24,
+                ),
+              ),
             ),
           ),
           const SizedBox(width: 16),

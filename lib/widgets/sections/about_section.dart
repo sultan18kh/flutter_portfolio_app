@@ -48,7 +48,10 @@ class AboutSection extends StatelessWidget {
                 ),
               );
               final educationColumn = Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                // Stretch, not start — otherwise each card shrink-wraps to
+                // its own text width instead of matching the others (short
+                // "A Levels" ends up narrower than "Bachelor of Science...").
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   AutoSizeText(
                     'Education',

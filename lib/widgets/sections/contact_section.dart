@@ -117,11 +117,16 @@ class ContactSection extends StatelessWidget {
         ),
       ),
       child: ClipOval(
-        child: Image.asset(
-          'assets/sultan_side_rough.jpg',
-          fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) =>
-              Container(color: AppTheme.surfaceColor),
+        // Caricature crop has a transparent background — let the page's
+        // own dark surface show through rather than a jarring white box.
+        child: Container(
+          color: AppTheme.backgroundColor,
+          child: Image.asset(
+            'assets/sultan_caricature_portrait.png',
+            fit: BoxFit.cover,
+            errorBuilder: (context, error, stackTrace) =>
+                Container(color: AppTheme.surfaceColor),
+          ),
         ),
       ),
     );
