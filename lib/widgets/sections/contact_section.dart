@@ -144,34 +144,63 @@ class ContactSection extends StatelessWidget {
     String value,
     VoidCallback? onTap,
   ) {
-    return InkWell(
-      onTap: onTap,
-      child: Row(
-        children: [
-          Icon(
-            icon,
-            color: AppTheme.primaryColor,
-            size: 20,
+    return Material(
+      type: MaterialType.transparency,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        mouseCursor:
+            onTap != null ? SystemMouseCursors.click : MouseCursor.defer,
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+          decoration: BoxDecoration(
+            color: AppTheme.surfaceColor,
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: onTap != null
+                  ? AppTheme.primaryColor.withValues(alpha: 0.3)
+                  : AppTheme.primaryColor.withValues(alpha: 0.12),
+            ),
           ),
-          const SizedBox(width: 12),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
             children: [
-              AutoSizeText(
-                label,
-                style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                      color: AppTheme.textPrimaryColor.withValues(alpha: 0.7),
-                    ),
+              Icon(
+                icon,
+                color: AppTheme.primaryColor,
+                size: 20,
               ),
-              AutoSizeText(
-                value,
-                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: AppTheme.textPrimaryColor,
+              const SizedBox(width: 12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AutoSizeText(
+                      label,
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            color: AppTheme.textPrimaryColor
+                                .withValues(alpha: 0.7),
+                          ),
                     ),
+                    AutoSizeText(
+                      value,
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: AppTheme.textPrimaryColor,
+                            fontWeight: FontWeight.w600,
+                          ),
+                    ),
+                  ],
+                ),
               ),
+              if (onTap != null)
+                Icon(
+                  Icons.arrow_outward_rounded,
+                  color: AppTheme.primaryColor.withValues(alpha: 0.6),
+                  size: 18,
+                ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }

@@ -19,13 +19,15 @@ class ModernNavbar extends StatelessWidget {
     return BlocProvider(
       create: (context) =>
           NavbarCubit()..initializeScrollListener(scrollController),
-      child: const _ModernNavbarView(),
+      child: _ModernNavbarView(scrollController: scrollController),
     );
   }
 }
 
 class _ModernNavbarView extends StatefulWidget {
-  const _ModernNavbarView();
+  final ScrollController scrollController;
+
+  const _ModernNavbarView({required this.scrollController});
 
   @override
   State<_ModernNavbarView> createState() => _ModernNavbarViewState();
@@ -34,12 +36,15 @@ class _ModernNavbarView extends StatefulWidget {
 class _ModernNavbarViewState extends State<_ModernNavbarView>
     with TickerProviderStateMixin {
   static const double _mobileBreakpoint = 800;
+  // Ordered to match the page's actual scroll order, so "next" in the nav
+  // means "next" on the page.
   static const List<(String, String)> _navItems = [
     ('Home', 'home'),
     ('About', 'about'),
-    ('Experience', 'experience'),
-    ('Projects', 'projects'),
     ('Skills', 'skills'),
+    ('Experience', 'experience'),
+    ('Certifications', 'certifications'),
+    ('Projects', 'projects'),
     ('Contact', 'contact'),
   ];
 
@@ -109,14 +114,25 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
     // Start with navbar visible
     _slideController.forward();
     _fadeController.forward();
+
+    // Close the mobile dropdown on any scroll movement — it otherwise has
+    // no way to dismiss itself except picking an item.
+    widget.scrollController.addListener(_closeMobileMenuOnScroll);
   }
 
   @override
   void dispose() {
+    widget.scrollController.removeListener(_closeMobileMenuOnScroll);
     _slideController.dispose();
     _fadeController.dispose();
     _positionController.dispose();
     super.dispose();
+  }
+
+  void _closeMobileMenuOnScroll() {
+    if (_mobileMenuOpen) {
+      setState(() => _mobileMenuOpen = false);
+    }
   }
 
   void _handleStateChange(NavbarState state) {
@@ -160,6 +176,21 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
                 child: Stack(
                   clipBehavior: Clip.hardEdge,
                   children: [
+                    // Scrim: dismisses the mobile menu on outside tap and
+                    // darkens page content so menu text never has to share
+                    // the same pixels as content behind it.
+                    if (_mobileMenuOpen)
+                      Positioned.fill(
+                        child: GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () =>
+                              setState(() => _mobileMenuOpen = false),
+                          child: Container(
+                            color: Colors.black.withValues(alpha: 0.55),
+                          ),
+                        ),
+                      ),
+
                     // Top navbar
                     if (!isScrolled)
                       Positioned(
@@ -189,6 +220,27 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
                           ),
                         ),
                       ),
+
+                    // Mobile menu — opens on the open-canvas side of the
+                    // pill (above it when bottom-pinned, below it when
+                    // top-pinned) so the toggle button stays visible, but
+                    // is height-capped and internally scrollable so it can
+                    // never be clipped by screen edges the way an
+                    // unbounded grows-to-fit box could.
+                    if (_mobileMenuOpen)
+                      isScrolled
+                          ? Positioned(
+                              left: 20,
+                              right: 20,
+                              bottom: 182, // pill bottom(100) + height(70) + gap(12)
+                              child: _buildMobileMenuPanel(context, above: true),
+                            )
+                          : Positioned(
+                              left: 20,
+                              right: 20,
+                              top: 102, // pill top(20) + height(70) + gap(12)
+                              child: _buildMobileMenuPanel(context, above: false),
+                            ),
                   ],
                 ),
               );
@@ -202,86 +254,98 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
   Widget _buildNavbarContent(bool isScrolled) {
     final isMobile = MediaQuery.of(context).size.width < _mobileBreakpoint;
 
-    final dropdownOpen = isMobile && _mobileMenuOpen;
-    // Bottom-anchored navbar: dropdown opens upward, above the pill, so it
-    // grows into open canvas space instead of squeezing toward the anchor.
-    final dropdownAbove = dropdownOpen && isScrolled;
-    final dropdownBelow = dropdownOpen && !isScrolled;
-
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        if (dropdownAbove) ...[
-          _buildDropdownPanel(isScrolled),
-          const SizedBox(height: 12),
-        ],
-        _buildGlassPanel(
-          isScrolled: isScrolled,
-          height: 70,
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Row(
-              children: [
-                // Logo/Name
-                AutoSizeText(
-                  'SK',
-                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                        color: AppTheme.primaryColor,
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: -1,
-                      ),
-                ),
-                if (!isMobile) ...[
-                  const SizedBox(width: 8),
-                  AutoSizeText(
-                    'Sultan Khan',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                          fontWeight: FontWeight.w600,
-                          color: isScrolled
-                              ? AppTheme.textPrimaryColor
-                              : AppTheme.textPrimaryColor
-                                  .withValues(alpha: 0.9),
-                        ),
+    return _buildGlassPanel(
+      isScrolled: isScrolled,
+      height: 70,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 24),
+        child: Row(
+          children: [
+            // Logo/Name
+            AutoSizeText(
+              'SK',
+              style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: AppTheme.primaryColor,
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: -1,
                   ),
-                ],
-
-                const Spacer(),
-
-                if (isMobile)
-                  _buildMenuToggle(isScrolled)
-                else
-                  Row(
-                    children: [
-                      for (final (label, id) in _navItems)
-                        _buildNavItem(label, id, isScrolled),
-                    ],
-                  ),
-              ],
             ),
-          ),
+            if (!isMobile) ...[
+              const SizedBox(width: 8),
+              AutoSizeText(
+                'Sultan Khan',
+                style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: isScrolled
+                          ? AppTheme.textPrimaryColor
+                          : AppTheme.textPrimaryColor.withValues(alpha: 0.9),
+                    ),
+              ),
+            ],
+
+            const Spacer(),
+
+            if (isMobile)
+              _buildMenuToggle(isScrolled)
+            else
+              Row(
+                children: [
+                  for (final (label, id) in _navItems)
+                    _buildNavItem(label, id, isScrolled),
+                ],
+              ),
+          ],
         ),
-        if (dropdownBelow) ...[
-          const SizedBox(height: 12),
-          _buildDropdownPanel(isScrolled),
-        ],
-      ],
+      ),
     );
   }
 
-  Widget _buildDropdownPanel(bool isScrolled) {
-    return _buildGlassPanel(
-      isScrolled: isScrolled,
-      height: null,
-      forceScrim: true,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            for (final (label, id) in _navItems)
-              _buildMobileNavItem(label, id, isScrolled),
-          ],
+  Widget _buildMobileMenuPanel(BuildContext context, {required bool above}) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    // Matches the Positioned anchor this is built for (see build()), plus
+    // a safety margin on the open-canvas side — clamped so a very short
+    // viewport still gets a usable (scrollable) panel instead of a
+    // negative/degenerate height.
+    final reserved = above ? 182.0 : 102.0;
+    // ponytail: floor is a rendering safety net, not a UX target — a
+    // viewport this short (<~370px tall) is unrealistic for a real phone.
+    final maxHeight =
+        (screenHeight - reserved - 20).clamp(60.0, screenHeight * 0.7);
+    return Container(
+      constraints: BoxConstraints(maxHeight: maxHeight),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: AppTheme.primaryColor.withValues(alpha: 0.3),
+          width: 1.5,
+        ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: 0.4),
+            blurRadius: 24,
+            offset: const Offset(0, 12),
+          ),
+        ],
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(20),
+        child: BackdropFilter(
+          filter: ImageFilter.blur(sigmaX: 20, sigmaY: 20),
+          child: Container(
+            color: AppTheme.backgroundColor.withValues(alpha: 0.9),
+            child: SingleChildScrollView(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  for (final (label, id) in _navItems)
+                    _buildMobileNavItem(label, id),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
@@ -291,7 +355,6 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
     required bool isScrolled,
     required double? height,
     required Widget child,
-    bool forceScrim = false,
   }) {
     return Container(
       height: height,
@@ -302,13 +365,13 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
             ? AppTheme.primaryColor.withValues(alpha: 0.1)
             : Colors.transparent,
         border: Border.all(
-          color: isScrolled || forceScrim
+          color: isScrolled
               ? AppTheme.primaryColor.withValues(alpha: 0.3)
               : Colors.transparent,
           width: 1.5,
         ),
         // * Glass morphism effect
-        boxShadow: isScrolled || forceScrim
+        boxShadow: isScrolled
             ? [
                 BoxShadow(
                   color: AppTheme.primaryColor.withValues(alpha: 0.1),
@@ -343,9 +406,6 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
                         AppTheme.primaryColor.withValues(alpha: 0.15),
                       ],
                     )
-                  : null,
-              color: (!isScrolled && forceScrim)
-                  ? AppTheme.backgroundColor.withValues(alpha: 0.85)
                   : null,
             ),
             child: child,
@@ -389,7 +449,7 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
     );
   }
 
-  Widget _buildMobileNavItem(String label, String sectionId, bool isScrolled) {
+  Widget _buildMobileNavItem(String label, String sectionId) {
     return Material(
       type: MaterialType.transparency,
       child: InkWell(

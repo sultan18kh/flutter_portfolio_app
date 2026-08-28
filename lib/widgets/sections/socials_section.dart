@@ -37,12 +37,14 @@ class SocialsSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 80),
+      // Sits directly beneath Contact as its closing beat, not a fresh
+      // section — less top padding, no competing headline weight.
+      padding: const EdgeInsets.fromLTRB(40, 0, 40, 100),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           RevealOnScroll(child: _buildSectionTitle(context)),
-          const SizedBox(height: 32),
+          const SizedBox(height: 20),
           RevealOnScroll(
             delay: const Duration(milliseconds: 80),
             child: Wrap(
@@ -60,10 +62,10 @@ class SocialsSection extends StatelessWidget {
 
   Widget _buildSectionTitle(BuildContext context) {
     return AutoSizeText(
-      'Find Me Online',
-      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-            color: AppTheme.primaryColor,
-            fontWeight: FontWeight.bold,
+      'Find me online',
+      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+            color: AppTheme.textSecondaryColor,
+            fontWeight: FontWeight.w600,
           ),
     );
   }

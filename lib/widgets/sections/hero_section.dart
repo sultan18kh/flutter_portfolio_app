@@ -3,13 +3,17 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../models/personal_info.dart';
 import '../../utils/app_theme.dart';
+import '../../utils/morph_keys.dart';
+import '../../utils/photo_morph_progress.dart';
 
 class HeroSection extends StatelessWidget {
   final PersonalInfo personalInfo;
+  final PhotoMorphProgress? morphProgress;
 
   const HeroSection({
     super.key,
     required this.personalInfo,
+    this.morphProgress,
   });
 
   @override
@@ -22,58 +26,66 @@ class HeroSection extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          // Profile Image
-          Container(
-            width: 208,
-            height: 208,
-            padding: const EdgeInsets.all(4),
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: const LinearGradient(
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                colors: [AppTheme.primaryColor, AppTheme.accentColor],
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: AppTheme.primaryColor.withValues(alpha: 0.35),
-                  blurRadius: 24,
-                  spreadRadius: 2,
-                  offset: const Offset(-6, 0),
+          // Profile Image — the source end of the Hero→About photo morph
+          // (see HeroAboutMorph); keyed so its live position/size can be
+          // read during scroll, faded out once the morph takes over.
+          _buildMorphFade(
+            fadeOut: true,
+            child: KeyedSubtree(
+              key: MorphKeys.heroPhoto,
+              child: Container(
+                width: 208,
+                height: 208,
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: const LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [AppTheme.primaryColor, AppTheme.accentColor],
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: AppTheme.primaryColor.withValues(alpha: 0.35),
+                      blurRadius: 24,
+                      spreadRadius: 2,
+                      offset: const Offset(-6, 0),
+                    ),
+                    BoxShadow(
+                      color: AppTheme.accentColor.withValues(alpha: 0.35),
+                      blurRadius: 24,
+                      spreadRadius: 2,
+                      offset: const Offset(6, 0),
+                    ),
+                  ],
                 ),
-                BoxShadow(
-                  color: AppTheme.accentColor.withValues(alpha: 0.35),
-                  blurRadius: 24,
-                  spreadRadius: 2,
-                  offset: const Offset(6, 0),
-                ),
-              ],
-            ),
-            child: Container(
-              padding: const EdgeInsets.all(3),
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppTheme.backgroundColor,
-              ),
-              child: ClipOval(
-                child: Image.asset(
-                  personalInfo.profileImage,
-                  width: 192,
-                  height: 192,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    // Fallback if image doesn't exist
-                    return Container(
+                child: Container(
+                  padding: const EdgeInsets.all(3),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: AppTheme.backgroundColor,
+                  ),
+                  child: ClipOval(
+                    child: Image.asset(
+                      personalInfo.profileImage,
                       width: 192,
                       height: 192,
-                      color: AppTheme.surfaceColor,
-                      child: const Icon(
-                        Icons.person,
-                        size: 100,
-                        color: AppTheme.primaryColor,
-                      ),
-                    );
-                  },
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) {
+                        // Fallback if image doesn't exist
+                        return Container(
+                          width: 192,
+                          height: 192,
+                          color: AppTheme.surfaceColor,
+                          child: const Icon(
+                            Icons.person,
+                            size: 100,
+                            color: AppTheme.primaryColor,
+                          ),
+                        );
+                      },
+                    ),
+                  ),
                 ),
               ),
             ),
@@ -104,14 +116,24 @@ class HeroSection extends StatelessWidget {
           const SizedBox(height: 24),
 
           // Description
-          AutoSizeText(
-            personalInfo.profile,
-            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: AppTheme.textPrimaryColor.withValues(alpha: 0.8),
-                  height: 1.6,
-                ),
-            maxLines: 4,
-            textAlign: TextAlign.center,
+          LayoutBuilder(
+            builder: (context, constraints) {
+              // Narrow viewports wrap to more, shorter lines before the
+              // same text fits — give it more lines there rather than
+              // silently clipping the closing sentence (see AutoSizeText's
+              // overflow fallback below).
+              final maxLines = constraints.maxWidth < 500 ? 7 : 4;
+              return AutoSizeText(
+                personalInfo.profile,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: AppTheme.textPrimaryColor.withValues(alpha: 0.8),
+                      height: 1.6,
+                    ),
+                maxLines: maxLines,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+              );
+            },
           ),
           const SizedBox(height: 40),
 
@@ -155,6 +177,26 @@ class HeroSection extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  // Fades this photo out (fadeOut: true) or in as the Hero↔About morph
+  // (HeroAboutMorph) crosses its transition — hides fast on the hero
+  // side, reveals fast on the about side, so the traveling overlay is
+  // the only avatar visible mid-scroll.
+  Widget _buildMorphFade({required bool fadeOut, required Widget child}) {
+    final progress = morphProgress;
+    if (progress == null) return child;
+    return AnimatedBuilder(
+      animation: progress,
+      builder: (context, _) {
+        final t = progress.t;
+        final opacity = fadeOut
+            ? (1 - t / 0.15).clamp(0.0, 1.0)
+            : ((t - 0.85) / 0.15).clamp(0.0, 1.0);
+        return Opacity(opacity: opacity, child: child);
+      },
+      child: child,
     );
   }
 

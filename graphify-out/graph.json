@@ -517,7 +517,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "package_flutter_bloc_flutter_bloc_dart",
-      "community": 7,
+      "community": 15,
       "norm_label": "package:flutter_bloc/flutter_bloc.dart"
     },
     {
@@ -657,7 +657,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit",
-      "community": 7,
+      "community": 15,
       "norm_label": "portfolio_cubit.dart"
     },
     {
@@ -667,7 +667,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_portfoliocubit",
-      "community": 7,
+      "community": 15,
       "norm_label": "portfoliocubit"
     },
     {
@@ -677,7 +677,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_loadportfolio",
-      "community": 7,
+      "community": 15,
       "norm_label": "loadportfolio"
     },
     {
@@ -717,7 +717,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "models_skill_dart",
-      "community": 7,
+      "community": 26,
       "norm_label": "../../models/skill.dart"
     },
     {
@@ -747,7 +747,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "services_portfolio_service_dart",
-      "community": 7,
+      "community": 15,
       "norm_label": "../services/portfolio_service.dart"
     },
     {
@@ -757,7 +757,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_portfoliostate",
-      "community": 7,
+      "community": 15,
       "norm_label": "portfoliostate"
     },
     {
@@ -767,7 +767,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_portfolioinitial",
-      "community": 7,
+      "community": 15,
       "norm_label": "portfolioinitial"
     },
     {
@@ -777,7 +777,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_portfolioloading",
-      "community": 7,
+      "community": 15,
       "norm_label": "portfolioloading"
     },
     {
@@ -787,7 +787,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_portfolioloaded",
-      "community": 7,
+      "community": 15,
       "norm_label": "portfolioloaded"
     },
     {
@@ -797,7 +797,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_portfolioerror",
-      "community": 7,
+      "community": 15,
       "norm_label": "portfolioerror"
     },
     {
@@ -807,7 +807,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_props",
-      "community": 7,
+      "community": 15,
       "norm_label": "props"
     },
     {
@@ -817,7 +817,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_personalinfo",
-      "community": 7,
+      "community": 15,
       "norm_label": "personalinfo"
     },
     {
@@ -827,7 +827,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "personalinfo",
-      "community": 9,
+      "community": 17,
       "norm_label": "personalinfo"
     },
     {
@@ -837,7 +837,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_education",
-      "community": 7,
+      "community": 15,
       "norm_label": "education"
     },
     {
@@ -847,7 +847,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_experience",
-      "community": 7,
+      "community": 15,
       "norm_label": "experience"
     },
     {
@@ -857,7 +857,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_skills",
-      "community": 7,
+      "community": 15,
       "norm_label": "skills"
     },
     {
@@ -867,7 +867,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_projects",
-      "community": 7,
+      "community": 15,
       "norm_label": "projects"
     },
     {
@@ -877,7 +877,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_certifications",
-      "community": 7,
+      "community": 15,
       "norm_label": "certifications"
     },
     {
@@ -887,7 +887,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_message",
-      "community": 7,
+      "community": 15,
       "norm_label": "message"
     },
     {
@@ -897,7 +897,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "lib_main",
-      "community": 7,
+      "community": 69,
       "norm_label": "main.dart"
     },
     {
@@ -907,7 +907,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "lib_main_myapp",
-      "community": 7,
+      "community": 69,
       "norm_label": "myapp"
     },
     {
@@ -927,7 +927,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "lib_main_main",
-      "community": 7,
+      "community": 69,
       "norm_label": "main"
     },
     {
@@ -937,7 +937,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "lib_main_build",
-      "community": 7,
+      "community": 69,
       "norm_label": "build"
     },
     {
@@ -947,7 +947,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "blocs_portfolio_cubit_dart",
-      "community": 7,
+      "community": 69,
       "norm_label": "../blocs/portfolio_cubit.dart"
     },
     {
@@ -957,7 +957,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "pages_landing_page_dart",
-      "community": 7,
+      "community": 70,
       "norm_label": "../pages/landing_page.dart"
     },
     {
@@ -967,7 +967,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "utils_app_theme_dart",
-      "community": 23,
+      "community": 69,
       "norm_label": "../../utils/app_theme.dart"
     },
     {
@@ -1627,7 +1627,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "pages_landing_page_landingpage",
-      "community": 6,
+      "community": 15,
       "norm_label": "landingpage"
     },
     {
@@ -1647,7 +1647,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "pages_landing_page_landingpagestate",
-      "community": 6,
+      "community": 15,
       "norm_label": "_landingpagestate"
     },
     {
@@ -1697,7 +1697,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "pages_landing_page_initstate",
-      "community": 7,
+      "community": 15,
       "norm_label": "initstate"
     },
     {
@@ -1917,7 +1917,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "utils_app_router",
-      "community": 7,
+      "community": 70,
       "norm_label": "app_router.dart"
     },
     {
@@ -1927,7 +1927,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "utils_app_router_approuter",
-      "community": 7,
+      "community": 70,
       "norm_label": "approuter"
     },
     {
@@ -1937,7 +1937,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "utils_app_router_router",
-      "community": 7,
+      "community": 70,
       "norm_label": "router"
     },
     {
@@ -1947,7 +1947,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "static_final_gorouter",
-      "community": 7,
+      "community": 70,
       "norm_label": "static final gorouter"
     },
     {
@@ -1957,7 +1957,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "package_go_router_go_router_dart",
-      "community": 7,
+      "community": 70,
       "norm_label": "package:go_router/go_router.dart"
     },
     {
@@ -2687,7 +2687,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "widgets_modern_navbar_modernnavbarview",
-      "community": 6,
+      "community": 2,
       "norm_label": "_modernnavbarview"
     },
     {
@@ -2697,7 +2697,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "widgets_modern_navbar_modernnavbarviewstate",
-      "community": 6,
+      "community": 2,
       "norm_label": "_modernnavbarviewstate"
     },
     {
@@ -3287,7 +3287,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "sections_certifications_section_certificationssection",
-      "community": 27,
+      "community": 19,
       "norm_label": "certificationssection"
     },
     {
@@ -3367,7 +3367,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "reveal_on_scroll_dart",
-      "community": 19,
+      "community": 23,
       "norm_label": "../reveal_on_scroll.dart"
     },
     {
@@ -3457,7 +3457,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "package_url_launcher_url_launcher_dart",
-      "community": 23,
+      "community": 17,
       "norm_label": "package:url_launcher/url_launcher.dart"
     },
     {
@@ -3557,7 +3557,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "sections_hero_section",
-      "community": 23,
+      "community": 17,
       "norm_label": "hero_section.dart"
     },
     {
@@ -3577,7 +3577,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "sections_hero_section_personalinfo",
-      "community": 23,
+      "community": 17,
       "norm_label": "personalinfo"
     },
     {
@@ -3587,7 +3587,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "sections_hero_section_build",
-      "community": 23,
+      "community": 17,
       "norm_label": "build"
     },
     {
@@ -3597,7 +3597,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "sections_hero_section_emailcontact",
-      "community": 23,
+      "community": 17,
       "norm_label": "_emailcontact"
     },
     {
@@ -3607,7 +3607,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "sections_hero_section_downloadcv",
-      "community": 23,
+      "community": 17,
       "norm_label": "_downloadcv"
     },
     {
@@ -3787,7 +3787,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "sections_skills_section_skillssection",
-      "community": 26,
+      "community": 27,
       "norm_label": "skillssection"
     },
     {
@@ -3847,7 +3847,7 @@
       "source_location": null,
       "_origin": "ast",
       "id": "sections_socials_section_socialssection",
-      "community": 27,
+      "community": 23,
       "norm_label": "socialssection"
     },
     {
@@ -5224,6 +5224,96 @@
       "norm_label": "win32_window.h"
     },
     {
+      "label": "2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "file_type": "document",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart",
+      "community": 68,
+      "norm_label": "2026-08-28t13-14-18z__lib-pages-landing-page-dart.md"
+    },
+    {
+      "label": "Design Health Score",
+      "file_type": "document",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_design_health_score",
+      "community": 68,
+      "norm_label": "design health score"
+    },
+    {
+      "label": "Design Specificity Verdict",
+      "file_type": "document",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_design_specificity_verdict",
+      "community": 68,
+      "norm_label": "design specificity verdict"
+    },
+    {
+      "label": "Overall Impression",
+      "file_type": "document",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L41",
+      "_origin": "ast",
+      "id": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_overall_impression",
+      "community": 68,
+      "norm_label": "overall impression"
+    },
+    {
+      "label": "What's Working",
+      "file_type": "document",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_what_s_working",
+      "community": 68,
+      "norm_label": "what's working"
+    },
+    {
+      "label": "Priority Issues",
+      "file_type": "document",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L51",
+      "_origin": "ast",
+      "id": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_priority_issues",
+      "community": 68,
+      "norm_label": "priority issues"
+    },
+    {
+      "label": "Persona Red Flags",
+      "file_type": "document",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L78",
+      "_origin": "ast",
+      "id": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_persona_red_flags",
+      "community": 68,
+      "norm_label": "persona red flags"
+    },
+    {
+      "label": "Minor Observations",
+      "file_type": "document",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L86",
+      "_origin": "ast",
+      "id": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_minor_observations",
+      "community": 68,
+      "norm_label": "minor observations"
+    },
+    {
+      "label": "Questions to Consider",
+      "file_type": "document",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L95",
+      "_origin": "ast",
+      "id": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_questions_to_consider",
+      "community": 68,
+      "norm_label": "questions to consider"
+    },
+    {
       "label": "CLAUDE.md",
       "file_type": "document",
       "source_file": "CLAUDE.md",
@@ -5322,6 +5412,176 @@
       "id": "claude_key_patterns",
       "community": 55,
       "norm_label": "key patterns"
+    },
+    {
+      "label": "DEPLOYMENT.md",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "deployment",
+      "community": 66,
+      "norm_label": "deployment.md"
+    },
+    {
+      "label": "Deployment Guide \u2014 sultankhan.me on Cloudflare Pages",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "deployment_deployment_guide_sultankhan_me_on_cloudflare_pages",
+      "community": 66,
+      "norm_label": "deployment guide \u2014 sultankhan.me on cloudflare pages"
+    },
+    {
+      "label": "Why Cloudflare Pages (not GitHub Pages)",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L6",
+      "_origin": "ast",
+      "id": "deployment_why_cloudflare_pages_not_github_pages",
+      "community": 66,
+      "norm_label": "why cloudflare pages (not github pages)"
+    },
+    {
+      "label": "Prerequisites",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L21",
+      "_origin": "ast",
+      "id": "deployment_prerequisites",
+      "community": 66,
+      "norm_label": "prerequisites"
+    },
+    {
+      "label": "Step 1 \u2014 Move the domain's DNS to Cloudflare",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "deployment_step_1_move_the_domain_s_dns_to_cloudflare",
+      "community": 66,
+      "norm_label": "step 1 \u2014 move the domain's dns to cloudflare"
+    },
+    {
+      "label": "Step 2 \u2014 Create the Cloudflare Pages project",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L46",
+      "_origin": "ast",
+      "id": "deployment_step_2_create_the_cloudflare_pages_project",
+      "community": 66,
+      "norm_label": "step 2 \u2014 create the cloudflare pages project"
+    },
+    {
+      "label": "Build command (installs Flutter, then builds)",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L56",
+      "_origin": "ast",
+      "id": "deployment_build_command_installs_flutter_then_builds",
+      "community": 66,
+      "norm_label": "build command (installs flutter, then builds)"
+    },
+    {
+      "label": "Step 3 (recommended alternative) \u2014 Build in GitHub Actions, deploy via Wrangler",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L75",
+      "_origin": "ast",
+      "id": "deployment_step_3_recommended_alternative_build_in_github_actions_deploy_via_wrangler",
+      "community": 66,
+      "norm_label": "step 3 (recommended alternative) \u2014 build in github actions, deploy via wrangler"
+    },
+    {
+      "label": "3a. Create a Cloudflare API token",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L82",
+      "_origin": "ast",
+      "id": "deployment_3a_create_a_cloudflare_api_token",
+      "community": 66,
+      "norm_label": "3a. create a cloudflare api token"
+    },
+    {
+      "label": "3b. Add repo secrets",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L89",
+      "_origin": "ast",
+      "id": "deployment_3b_add_repo_secrets",
+      "community": 66,
+      "norm_label": "3b. add repo secrets"
+    },
+    {
+      "label": "3c. Workflow file",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L96",
+      "_origin": "ast",
+      "id": "deployment_3c_workflow_file",
+      "community": 66,
+      "norm_label": "3c. workflow file"
+    },
+    {
+      "label": "Required: commit `wrangler.jsonc`",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L138",
+      "_origin": "ast",
+      "id": "deployment_required_commit_wrangler_jsonc",
+      "community": 66,
+      "norm_label": "required: commit `wrangler.jsonc`"
+    },
+    {
+      "label": "Step 4 \u2014 Connect the custom domain",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L165",
+      "_origin": "ast",
+      "id": "deployment_step_4_connect_the_custom_domain",
+      "community": 66,
+      "norm_label": "step 4 \u2014 connect the custom domain"
+    },
+    {
+      "label": "Step 5 \u2014 SSL/TLS",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L178",
+      "_origin": "ast",
+      "id": "deployment_step_5_ssl_tls",
+      "community": 66,
+      "norm_label": "step 5 \u2014 ssl/tls"
+    },
+    {
+      "label": "Step 6 \u2014 Security & caching headers (best practice)",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L196",
+      "_origin": "ast",
+      "id": "deployment_step_6_security_caching_headers_best_practice",
+      "community": 66,
+      "norm_label": "step 6 \u2014 security & caching headers (best practice)"
+    },
+    {
+      "label": "Step 7 \u2014 Verify",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L217",
+      "_origin": "ast",
+      "id": "deployment_step_7_verify",
+      "community": 66,
+      "norm_label": "step 7 \u2014 verify"
+    },
+    {
+      "label": "Ongoing",
+      "file_type": "document",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L228",
+      "_origin": "ast",
+      "id": "deployment_ongoing",
+      "community": 66,
+      "norm_label": "ongoing"
     },
     {
       "label": "GEMINI.md",
@@ -5732,6 +5992,116 @@
       "id": "launchimage_imageset_readme_launch_screen_assets",
       "community": 63,
       "norm_label": "launch screen assets"
+    },
+    {
+      "label": "11-cloudflare-deployment.md",
+      "file_type": "document",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "prs_11_cloudflare_deployment",
+      "community": 67,
+      "norm_label": "11-cloudflare-deployment.md"
+    },
+    {
+      "label": "feat: neon rebrand, certs/socials sections, UI polish, and deployment setup",
+      "file_type": "document",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "prs_11_cloudflare_deployment_feat_neon_rebrand_certs_socials_sections_ui_polish_and_deployment_setup",
+      "community": 67,
+      "norm_label": "feat: neon rebrand, certs/socials sections, ui polish, and deployment setup"
+    },
+    {
+      "label": "Summary",
+      "file_type": "document",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L9",
+      "_origin": "ast",
+      "id": "prs_11_cloudflare_deployment_summary",
+      "community": 67,
+      "norm_label": "summary"
+    },
+    {
+      "label": "Commits",
+      "file_type": "document",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L13",
+      "_origin": "ast",
+      "id": "prs_11_cloudflare_deployment_commits",
+      "community": 67,
+      "norm_label": "commits"
+    },
+    {
+      "label": "Changes",
+      "file_type": "document",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "prs_11_cloudflare_deployment_changes",
+      "community": 67,
+      "norm_label": "changes"
+    },
+    {
+      "label": "Architecture (`portfolio_cubit.dart`, `navbar_cubit.dart`, `landing_page.dart`)",
+      "file_type": "document",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "prs_11_cloudflare_deployment_architecture_portfolio_cubit_dart_navbar_cubit_dart_landing_page_dart",
+      "community": 67,
+      "norm_label": "architecture (`portfolio_cubit.dart`, `navbar_cubit.dart`, `landing_page.dart`)"
+    },
+    {
+      "label": "Theme & content (`app_theme.dart`, `hero/about/contact_section.dart`, `portfolio_service.dart`)",
+      "file_type": "document",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L29",
+      "_origin": "ast",
+      "id": "prs_11_cloudflare_deployment_theme_content_app_theme_dart_hero_about_contact_section_dart_portfolio_service_dart",
+      "community": 67,
+      "norm_label": "theme & content (`app_theme.dart`, `hero/about/contact_section.dart`, `portfolio_service.dart`)"
+    },
+    {
+      "label": "Craft & accessibility polish",
+      "file_type": "document",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L34",
+      "_origin": "ast",
+      "id": "prs_11_cloudflare_deployment_craft_accessibility_polish",
+      "community": 67,
+      "norm_label": "craft & accessibility polish"
+    },
+    {
+      "label": "Deployment (`DEPLOYMENT.md`, GitHub issue #11)",
+      "file_type": "document",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L40",
+      "_origin": "ast",
+      "id": "prs_11_cloudflare_deployment_deployment_deployment_md_github_issue_11",
+      "community": 67,
+      "norm_label": "deployment (`deployment.md`, github issue #11)"
+    },
+    {
+      "label": "Acceptance Criteria",
+      "file_type": "document",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L45",
+      "_origin": "ast",
+      "id": "prs_11_cloudflare_deployment_acceptance_criteria",
+      "community": 67,
+      "norm_label": "acceptance criteria"
+    },
+    {
+      "label": "Test plan",
+      "file_type": "document",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L52",
+      "_origin": "ast",
+      "id": "prs_11_cloudflare_deployment_test_plan",
+      "community": 67,
+      "norm_label": "test plan"
     },
     {
       "label": "6-floating-icons-skills-section.md",
@@ -13376,6 +13746,86 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart",
+      "target": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_design_health_score",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart",
+      "target": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_design_specificity_verdict",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart",
+      "target": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_minor_observations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart",
+      "target": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_overall_impression",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart",
+      "target": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_persona_red_flags",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart",
+      "target": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_priority_issues",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L95",
+      "weight": 1.0,
+      "source": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart",
+      "target": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_questions_to_consider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": ".impeccable/critique/2026-08-28T13-14-18Z__lib-pages-landing-page-dart.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart",
+      "target": "critique_2026_08_28t13_14_18z_lib_pages_landing_page_dart_what_s_working",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "CLAUDE.md",
       "source_location": "L1",
       "weight": 1.0,
@@ -13462,6 +13912,166 @@
       "confidence_score": 1.0,
       "source": "claude_architecture_overview",
       "target": "claude_theme"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "deployment",
+      "target": "deployment_deployment_guide_sultankhan_me_on_cloudflare_pages",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L228",
+      "weight": 1.0,
+      "source": "deployment_deployment_guide_sultankhan_me_on_cloudflare_pages",
+      "target": "deployment_ongoing",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "deployment_deployment_guide_sultankhan_me_on_cloudflare_pages",
+      "target": "deployment_prerequisites",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "deployment_deployment_guide_sultankhan_me_on_cloudflare_pages",
+      "target": "deployment_step_1_move_the_domain_s_dns_to_cloudflare",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "deployment_deployment_guide_sultankhan_me_on_cloudflare_pages",
+      "target": "deployment_step_2_create_the_cloudflare_pages_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L75",
+      "weight": 1.0,
+      "source": "deployment_deployment_guide_sultankhan_me_on_cloudflare_pages",
+      "target": "deployment_step_3_recommended_alternative_build_in_github_actions_deploy_via_wrangler",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L165",
+      "weight": 1.0,
+      "source": "deployment_deployment_guide_sultankhan_me_on_cloudflare_pages",
+      "target": "deployment_step_4_connect_the_custom_domain",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L178",
+      "weight": 1.0,
+      "source": "deployment_deployment_guide_sultankhan_me_on_cloudflare_pages",
+      "target": "deployment_step_5_ssl_tls",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L196",
+      "weight": 1.0,
+      "source": "deployment_deployment_guide_sultankhan_me_on_cloudflare_pages",
+      "target": "deployment_step_6_security_caching_headers_best_practice",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L217",
+      "weight": 1.0,
+      "source": "deployment_deployment_guide_sultankhan_me_on_cloudflare_pages",
+      "target": "deployment_step_7_verify",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "deployment_deployment_guide_sultankhan_me_on_cloudflare_pages",
+      "target": "deployment_why_cloudflare_pages_not_github_pages",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L56",
+      "weight": 1.0,
+      "source": "deployment_step_2_create_the_cloudflare_pages_project",
+      "target": "deployment_build_command_installs_flutter_then_builds",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "deployment_step_3_recommended_alternative_build_in_github_actions_deploy_via_wrangler",
+      "target": "deployment_3a_create_a_cloudflare_api_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L89",
+      "weight": 1.0,
+      "source": "deployment_step_3_recommended_alternative_build_in_github_actions_deploy_via_wrangler",
+      "target": "deployment_3b_add_repo_secrets",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "deployment_step_3_recommended_alternative_build_in_github_actions_deploy_via_wrangler",
+      "target": "deployment_3c_workflow_file",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "DEPLOYMENT.md",
+      "source_location": "L138",
+      "weight": 1.0,
+      "source": "deployment_step_3_recommended_alternative_build_in_github_actions_deploy_via_wrangler",
+      "target": "deployment_required_commit_wrangler_jsonc",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -13836,6 +14446,106 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "prs_11_cloudflare_deployment",
+      "target": "prs_11_cloudflare_deployment_feat_neon_rebrand_certs_socials_sections_ui_polish_and_deployment_setup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "prs_11_cloudflare_deployment_feat_neon_rebrand_certs_socials_sections_ui_polish_and_deployment_setup",
+      "target": "prs_11_cloudflare_deployment_acceptance_criteria",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "prs_11_cloudflare_deployment_feat_neon_rebrand_certs_socials_sections_ui_polish_and_deployment_setup",
+      "target": "prs_11_cloudflare_deployment_changes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "prs_11_cloudflare_deployment_feat_neon_rebrand_certs_socials_sections_ui_polish_and_deployment_setup",
+      "target": "prs_11_cloudflare_deployment_commits",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "prs_11_cloudflare_deployment_feat_neon_rebrand_certs_socials_sections_ui_polish_and_deployment_setup",
+      "target": "prs_11_cloudflare_deployment_summary",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L52",
+      "weight": 1.0,
+      "source": "prs_11_cloudflare_deployment_feat_neon_rebrand_certs_socials_sections_ui_polish_and_deployment_setup",
+      "target": "prs_11_cloudflare_deployment_test_plan",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "prs_11_cloudflare_deployment_changes",
+      "target": "prs_11_cloudflare_deployment_architecture_portfolio_cubit_dart_navbar_cubit_dart_landing_page_dart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "prs_11_cloudflare_deployment_changes",
+      "target": "prs_11_cloudflare_deployment_craft_accessibility_polish",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "prs_11_cloudflare_deployment_changes",
+      "target": "prs_11_cloudflare_deployment_deployment_deployment_md_github_issue_11",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "prs/11-cloudflare-deployment.md",
+      "source_location": "L29",
+      "weight": 1.0,
+      "source": "prs_11_cloudflare_deployment_changes",
+      "target": "prs_11_cloudflare_deployment_theme_content_app_theme_dart_hero_about_contact_section_dart_portfolio_service_dart",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "prs/6-floating-icons-skills-section.md",
       "source_location": "L7",
       "weight": 1.0,
@@ -13939,9 +14649,9 @@
       "source_file": "prs/9-certs-companies-projects-ui.md",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prs_9_certs_companies_projects_ui",
-      "target": "prs_9_certs_companies_projects_ui_feat_neon_theme_certifications_socials_sections_and_ui_craft_polish",
-      "confidence_score": 1.0
+      "target": "prs_9_certs_companies_projects_ui_feat_neon_theme_certifications_socials_sections_and_ui_craft_polish"
     },
     {
       "relation": "contains",
@@ -13949,9 +14659,9 @@
       "source_file": "prs/9-certs-companies-projects-ui.md",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prs_9_certs_companies_projects_ui_feat_neon_theme_certifications_socials_sections_and_ui_craft_polish",
-      "target": "prs_9_certs_companies_projects_ui_acceptance_criteria",
-      "confidence_score": 1.0
+      "target": "prs_9_certs_companies_projects_ui_acceptance_criteria"
     },
     {
       "relation": "contains",
@@ -13959,9 +14669,9 @@
       "source_file": "prs/9-certs-companies-projects-ui.md",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prs_9_certs_companies_projects_ui_feat_neon_theme_certifications_socials_sections_and_ui_craft_polish",
-      "target": "prs_9_certs_companies_projects_ui_changes",
-      "confidence_score": 1.0
+      "target": "prs_9_certs_companies_projects_ui_changes"
     },
     {
       "relation": "contains",
@@ -13969,9 +14679,9 @@
       "source_file": "prs/9-certs-companies-projects-ui.md",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prs_9_certs_companies_projects_ui_feat_neon_theme_certifications_socials_sections_and_ui_craft_polish",
-      "target": "prs_9_certs_companies_projects_ui_commits",
-      "confidence_score": 1.0
+      "target": "prs_9_certs_companies_projects_ui_commits"
     },
     {
       "relation": "contains",
@@ -13979,9 +14689,9 @@
       "source_file": "prs/9-certs-companies-projects-ui.md",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prs_9_certs_companies_projects_ui_feat_neon_theme_certifications_socials_sections_and_ui_craft_polish",
-      "target": "prs_9_certs_companies_projects_ui_summary",
-      "confidence_score": 1.0
+      "target": "prs_9_certs_companies_projects_ui_summary"
     },
     {
       "relation": "contains",
@@ -13989,9 +14699,9 @@
       "source_file": "prs/9-certs-companies-projects-ui.md",
       "source_location": "L63",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prs_9_certs_companies_projects_ui_feat_neon_theme_certifications_socials_sections_and_ui_craft_polish",
-      "target": "prs_9_certs_companies_projects_ui_test_plan",
-      "confidence_score": 1.0
+      "target": "prs_9_certs_companies_projects_ui_test_plan"
     },
     {
       "relation": "contains",
@@ -13999,9 +14709,9 @@
       "source_file": "prs/9-certs-companies-projects-ui.md",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prs_9_certs_companies_projects_ui_changes",
-      "target": "prs_9_certs_companies_projects_ui_certifications_experience_certifications_section_dart_experience_section_dart_floating_skill_icon_dart",
-      "confidence_score": 1.0
+      "target": "prs_9_certs_companies_projects_ui_certifications_experience_certifications_section_dart_experience_section_dart_floating_skill_icon_dart"
     },
     {
       "relation": "contains",
@@ -14009,9 +14719,9 @@
       "source_file": "prs/9-certs-companies-projects-ui.md",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prs_9_certs_companies_projects_ui_changes",
-      "target": "prs_9_certs_companies_projects_ui_content_updates_portfolio_service_dart_about_section_dart",
-      "confidence_score": 1.0
+      "target": "prs_9_certs_companies_projects_ui_content_updates_portfolio_service_dart_about_section_dart"
     },
     {
       "relation": "contains",
@@ -14019,9 +14729,9 @@
       "source_file": "prs/9-certs-companies-projects-ui.md",
       "source_location": "L43",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prs_9_certs_companies_projects_ui_changes",
-      "target": "prs_9_certs_companies_projects_ui_layout_perf_fixes_reveal_on_scroll_dart_projects_section_dart_floating_skill_icon_dart_hero_section_dart",
-      "confidence_score": 1.0
+      "target": "prs_9_certs_companies_projects_ui_layout_perf_fixes_reveal_on_scroll_dart_projects_section_dart_floating_skill_icon_dart_hero_section_dart"
     },
     {
       "relation": "contains",
@@ -14029,9 +14739,9 @@
       "source_file": "prs/9-certs-companies-projects-ui.md",
       "source_location": "L37",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prs_9_certs_companies_projects_ui_changes",
-      "target": "prs_9_certs_companies_projects_ui_nav_routing_accessibility_navbar_cubit_dart_section_keys_dart_modern_navbar_dart",
-      "confidence_score": 1.0
+      "target": "prs_9_certs_companies_projects_ui_nav_routing_accessibility_navbar_cubit_dart_section_keys_dart_modern_navbar_dart"
     },
     {
       "relation": "contains",
@@ -14039,9 +14749,9 @@
       "source_file": "prs/9-certs-companies-projects-ui.md",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prs_9_certs_companies_projects_ui_changes",
-      "target": "prs_9_certs_companies_projects_ui_socials_resume_socials_section_dart_hero_section_dart_docs",
-      "confidence_score": 1.0
+      "target": "prs_9_certs_companies_projects_ui_socials_resume_socials_section_dart_hero_section_dart_docs"
     },
     {
       "relation": "contains",
@@ -14049,9 +14759,9 @@
       "source_file": "prs/9-certs-companies-projects-ui.md",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "prs_9_certs_companies_projects_ui_changes",
-      "target": "prs_9_certs_companies_projects_ui_theme_branding_app_theme_dart_animated_background_dart_hero_about_contact_section_dart_modern_navbar_dart_web",
-      "confidence_score": 1.0
+      "target": "prs_9_certs_companies_projects_ui_theme_branding_app_theme_dart_animated_background_dart_hero_about_contact_section_dart_modern_navbar_dart_web"
     },
     {
       "relation": "contains",
@@ -14239,5 +14949,5 @@
       "source_file": "README.md"
     }
   ],
-  "built_at_commit": "c011724b5a27188beba7504184e63c3598aeacb4"
+  "built_at_commit": "035868fc764070f4b98269d18b40c32e21afdf2b"
 }

@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
+  // Space reserved above content for the floating navbar, and the offset
+  // scroll-to-section subtracts so a landed section isn't hidden under it.
+  static const double navbarClearance = 110.0;
+
   // Neon Magenta/Cyan Theme
   static const Color primaryColor = Color(0xFFFF2E93); // Neon Magenta
   static const Color secondaryColor = Color(0xFFFF6FB8); // Soft Pink

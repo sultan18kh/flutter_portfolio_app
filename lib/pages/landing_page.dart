@@ -12,7 +12,10 @@ import '../widgets/sections/skills_section.dart';
 import '../widgets/sections/contact_section.dart';
 import '../widgets/sections/socials_section.dart';
 import '../widgets/reveal_on_scroll.dart';
+import '../widgets/hero_about_morph.dart';
 import '../utils/app_theme.dart';
+import '../utils/morph_keys.dart';
+import '../utils/photo_morph_progress.dart';
 import '../utils/section_keys.dart';
 
 class LandingPage extends StatefulWidget {
@@ -24,11 +27,13 @@ class LandingPage extends StatefulWidget {
 
 class _LandingPageState extends State<LandingPage> {
   late ScrollController _scrollController;
+  final PhotoMorphProgress _morphProgress = PhotoMorphProgress();
 
   @override
   void initState() {
     super.initState();
     _scrollController = ScrollController();
+    _scrollController.addListener(_onScrollForMorph);
 
     // Load portfolio data after the widget is initialized
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -38,9 +43,13 @@ class _LandingPageState extends State<LandingPage> {
     });
   }
 
+  void _onScrollForMorph() => _morphProgress.recompute(_scrollController);
+
   @override
   void dispose() {
+    _scrollController.removeListener(_onScrollForMorph);
     _scrollController.dispose();
+    _morphProgress.dispose();
     super.dispose();
   }
 
@@ -48,6 +57,7 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: AnimatedBackground(
+        scrollController: _scrollController,
         child: BlocBuilder<PortfolioCubit, PortfolioState>(
           builder: (context, state) {
             // Safety check to prevent rendering when widget is disposed
@@ -77,6 +87,12 @@ class _LandingPageState extends State<LandingPage> {
                       'Error: ${state.message}',
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
+                    const SizedBox(height: 24),
+                    ElevatedButton(
+                      onPressed: () =>
+                          context.read<PortfolioCubit>().loadPortfolio(),
+                      child: const Text('Retry'),
+                    ),
                   ],
                 ),
               );
@@ -89,6 +105,7 @@ class _LandingPageState extends State<LandingPage> {
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height,
                   child: Stack(
+                    key: MorphKeys.stackOrigin,
                     clipBehavior: Clip.hardEdge,
                     children: [
                       // Main content
@@ -97,12 +114,13 @@ class _LandingPageState extends State<LandingPage> {
                         child: Column(
                           children: [
                             // Add top padding to account for floating navbar
-                            const SizedBox(height: 100),
+                            const SizedBox(height: AppTheme.navbarClearance),
 
                             // Hero Section
                             HeroSection(
                               key: SectionKeys.keys['home'],
                               personalInfo: state.personalInfo,
+                              morphProgress: _morphProgress,
                             ),
 
                             // About Section
@@ -111,6 +129,7 @@ class _LandingPageState extends State<LandingPage> {
                                 key: SectionKeys.keys['about'],
                                 personalInfo: state.personalInfo,
                                 education: state.education,
+                                morphProgress: _morphProgress,
                               ),
                             ),
 
@@ -130,6 +149,7 @@ class _LandingPageState extends State<LandingPage> {
 
                             // Certifications Section
                             CertificationsSection(
+                              key: SectionKeys.keys['certifications'],
                               certifications: state.certifications,
                             ),
 
@@ -139,20 +159,32 @@ class _LandingPageState extends State<LandingPage> {
                               projects: state.projects,
                             ),
 
-                            // Contact Section
-                            ContactSection(
+                            // Contact Section — the page's closing beat, so
+                            // socials render right beneath it instead of
+                            // trailing off as an unreachable, disconnected
+                            // section of their own.
+                            Column(
                               key: SectionKeys.keys['contact'],
-                              personalInfo: state.personalInfo,
+                              children: [
+                                ContactSection(
+                                  personalInfo: state.personalInfo,
+                                ),
+                                const SocialsSection(),
+                              ],
                             ),
-
-                            // Socials Section
-                            const SocialsSection(),
 
                             // Reserve space so content never sits behind
                             // the floating bottom navbar at max scroll.
                             const SizedBox(height: 160),
                           ],
                         ),
+                      ),
+
+                      // Traveling avatar for the Hero→About photo morph —
+                      // above the scrolling content, below the navbar.
+                      HeroAboutMorph(
+                        progress: _morphProgress,
+                        personalInfo: state.personalInfo,
                       ),
 
                       // Floating Navigation Bar

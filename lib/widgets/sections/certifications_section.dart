@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import '../../models/certification.dart';
 import '../../utils/app_theme.dart';
-import '../floating_skill_icon.dart';
 import '../reveal_on_scroll.dart';
 
 class CertificationsSection extends StatelessWidget {
@@ -12,12 +11,6 @@ class CertificationsSection extends StatelessWidget {
     super.key,
     required this.certifications,
   });
-
-  static const List<Map<String, String>> _badges = [
-    {'path': 'assets/certs/fundamentals.png', 'name': 'Azure Fundamentals'},
-    {'path': 'assets/certs/applied_skills.png', 'name': 'Applied Skills'},
-    {'path': 'assets/certs/associate.png', 'name': 'AI-103 Associate'},
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -41,29 +34,6 @@ class CertificationsSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 48),
-
-          // Real credential badges
-          RevealOnScroll(
-            delay: const Duration(milliseconds: 120),
-            child: Wrap(
-              spacing: 32,
-              runSpacing: 24,
-              children: List.generate(_badges.length, (index) {
-                final badge = _badges[index];
-                return FloatingSkillIcon(
-                  assetPath: badge['path']!,
-                  skillName: badge['name']!,
-                  size: 110,
-                  floatingRange: 12,
-                  animationDuration: Duration(
-                    milliseconds: 2800 + (index % 3) * 400,
-                  ),
-                  delay: Duration(milliseconds: index * 120),
-                );
-              }),
-            ),
-          ),
-          const SizedBox(height: 56),
 
           // Certification list
           LayoutBuilder(
@@ -171,13 +141,15 @@ class CertificationsSection extends StatelessWidget {
                       ),
                   maxLines: 2,
                 ),
-                const SizedBox(height: 6),
-                AutoSizeText(
-                  cert.issuer ?? 'Unknown Issuer',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppTheme.primaryColor,
-                      ),
-                ),
+                if (cert.issuer != null) ...[
+                  const SizedBox(height: 6),
+                  AutoSizeText(
+                    cert.issuer!,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: AppTheme.primaryColor,
+                        ),
+                  ),
+                ],
                 if (cert.date != null) ...[
                   const SizedBox(height: 4),
                   AutoSizeText(

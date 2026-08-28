@@ -150,27 +150,24 @@ class _FloatingSkillIconState extends State<FloatingSkillIcon>
                                 fit: BoxFit.contain,
                               ),
                       ),
-                      Visibility(
-                        visible: _isHovered,
-                        maintainSize: true,
-                        maintainAnimation: true,
-                        maintainState: true,
-                        child: Container(
-                          margin: const EdgeInsets.only(top: 8),
-                          child: SizedBox(
-                            width: widget.size,
-                            child: AutoSizeText(
-                              widget.skillName,
-                              textAlign: TextAlign.center,
-                              maxLines: 1,
-                              minFontSize: 10,
-                              style: TextStyle(
-                                color: AppTheme.primaryColor
-                                    .withValues(alpha: 0.7),
-                                fontSize: 14,
-                                fontWeight: FontWeight.bold,
-                                fontFamily: 'Inter',
-                              ),
+                      // Always visible (not hover-only) — keyboard and
+                      // touch users without a mouse never trigger hover, so
+                      // a hover-gated label would never reach them.
+                      Container(
+                        margin: const EdgeInsets.only(top: 8),
+                        child: SizedBox(
+                          width: widget.size,
+                          child: AutoSizeText(
+                            widget.skillName,
+                            textAlign: TextAlign.center,
+                            maxLines: 1,
+                            minFontSize: 10,
+                            style: TextStyle(
+                              color: AppTheme.primaryColor
+                                  .withValues(alpha: _isHovered ? 1.0 : 0.7),
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: 'Inter',
                             ),
                           ),
                         ),

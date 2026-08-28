@@ -33,9 +33,16 @@ class ExperienceSection extends StatelessWidget {
           ...experience.asMap().entries.map((entry) {
             final index = entry.key;
             final exp = entry.value;
+            // A single-bullet entry (an early-career internship) doesn't
+            // carry the same weight as a multi-bullet role — give it a
+            // compact row instead of the same full-size card, so seniority
+            // reads at a glance instead of being flattened.
+            final isCompact = exp.responsibilities.length <= 1;
             return RevealOnScroll(
               delay: Duration(milliseconds: index * 90),
-              child: _buildExperienceCard(context, exp),
+              child: isCompact
+                  ? _buildCompactExperienceRow(context, exp)
+                  : _buildExperienceCard(context, exp),
             );
           }),
         ],
@@ -55,29 +62,35 @@ class ExperienceSection extends StatelessWidget {
     );
   }
 
-  Widget _buildTimelineBadge(String company) {
+  Widget _buildTimelineBadge(String company, {bool compact = false}) {
     final path = _companyLogos[company];
+    final size = compact ? 34.0 : 60.0;
     return Container(
-      width: 60,
-      height: 60,
-      padding: path != null ? const EdgeInsets.all(10) : EdgeInsets.zero,
+      width: size,
+      height: size,
+      padding: path != null
+          ? EdgeInsets.all(compact ? 5 : 10)
+          : EdgeInsets.zero,
       decoration: BoxDecoration(
         color: path != null ? Colors.white : AppTheme.primaryColor,
         shape: BoxShape.circle,
         border: Border.all(
           color: AppTheme.primaryColor,
-          width: 2.5,
+          width: compact ? 1.5 : 2.5,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: AppTheme.primaryColor.withValues(alpha: 0.35),
-            blurRadius: 16,
-            spreadRadius: 1,
-          ),
-        ],
+        boxShadow: compact
+            ? null
+            : [
+                BoxShadow(
+                  color: AppTheme.primaryColor.withValues(alpha: 0.35),
+                  blurRadius: 16,
+                  spreadRadius: 1,
+                ),
+              ],
       ),
       child: path == null
-          ? const Icon(Icons.work_rounded, color: Colors.white, size: 26)
+          ? Icon(Icons.work_rounded,
+              color: Colors.white, size: compact ? 16 : 26)
           : ClipOval(
               child: Image.asset(
                 path,
@@ -86,6 +99,55 @@ class ExperienceSection extends StatelessWidget {
                     const Icon(Icons.work_rounded, color: AppTheme.primaryColor),
               ),
             ),
+    );
+  }
+
+  Widget _buildCompactExperienceRow(BuildContext context, Experience exp) {
+    return Container(
+      margin: const EdgeInsets.only(bottom: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 14),
+      decoration: BoxDecoration(
+        color: AppTheme.surfaceColor.withValues(alpha: 0.5),
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(
+          color: AppTheme.primaryColor.withValues(alpha: 0.12),
+        ),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 34,
+            height: 34,
+            child: _buildTimelineBadge(exp.company, compact: true),
+          ),
+          const SizedBox(width: 16),
+          Expanded(
+            child: Wrap(
+              crossAxisAlignment: WrapCrossAlignment.center,
+              spacing: 8,
+              children: [
+                AutoSizeText(
+                  '${exp.title} · ${exp.company}',
+                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: AppTheme.textPrimaryColor,
+                        fontWeight: FontWeight.w600,
+                      ),
+                  maxLines: 1,
+                ),
+                AutoSizeText(
+                  exp.period,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                        color: AppTheme.textPrimaryColor
+                            .withValues(alpha: 0.6),
+                      ),
+                  maxLines: 1,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 
