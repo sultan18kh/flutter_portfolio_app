@@ -29,6 +29,8 @@ doc/api/
 # Wrangler (Cloudflare deploy)
 .wrangler/
 node_modules/
+# Local secrets for Cloudflare Pages Functions (wrangler pages dev reads this)
+.dev.vars
 
 # .DS_Store files
 .DS_Store

@@ -5,6 +5,7 @@ import '../../models/education.dart';
 import '../../utils/app_theme.dart';
 import '../../utils/morph_keys.dart';
 import '../../utils/photo_morph_progress.dart';
+import '../now_cards.dart';
 import '../section_heading.dart';
 
 class AboutSection extends StatelessWidget {
@@ -65,6 +66,26 @@ class AboutSection extends StatelessWidget {
                 ],
               );
 
+              // "Top tracks" (Spotify embed, compact height) / "Reading
+              // right now" — side by side sharing the bio column's width on
+              // desktop, stacked full-width on mobile.
+              final nowCards = constraints.maxWidth < 800
+                  ? const Column(
+                      children: [
+                        SpotifyTopTracksCard(),
+                        SizedBox(height: 16),
+                        ReadingRightNowCard(),
+                      ],
+                    )
+                  : const Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(child: SpotifyTopTracksCard()),
+                        SizedBox(width: 20),
+                        Expanded(child: ReadingRightNowCard()),
+                      ],
+                    );
+
               if (constraints.maxWidth < 800) {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,11 +93,31 @@ class AboutSection extends StatelessWidget {
                     _buildPortrait(),
                     const SizedBox(height: 32),
                     aboutText,
+                    const SizedBox(height: 24),
+                    nowCards,
                     const SizedBox(height: 40),
                     educationColumn,
                   ],
                 );
               }
+
+              // Fixed width (not flex) for the whole left block — portrait,
+              // bio, and now-cards all stack in one self-contained Column
+              // here, sized to the same proportion the old 2:1 flex split
+              // gave the bio card. Education sits in a separate Expanded
+              // sibling below, so its own height (three stacked cards,
+              // taller than the bio) never pushes the now-cards row down —
+              // that mismatch was the gap: when the Row above held both
+              // columns, its height matched Education's tallest column,
+              // and anything placed after that Row inherited that same
+              // tall bottom edge instead of following the shorter column.
+              const asideWidth = 180.0;
+              const asideGap = 40.0;
+              const educationGap = 60.0;
+              final availableForFlex =
+                  constraints.maxWidth - asideWidth - asideGap - educationGap;
+              final leftColumnWidth =
+                  asideWidth + asideGap + availableForFlex * 2 / 3;
 
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,11 +127,26 @@ class AboutSection extends StatelessWidget {
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      _buildPortrait(),
-                      const SizedBox(width: 40),
-                      Expanded(flex: 2, child: aboutText),
-                      const SizedBox(width: 60),
-                      Expanded(flex: 1, child: educationColumn),
+                      SizedBox(
+                        width: leftColumnWidth,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                _buildPortrait(),
+                                const SizedBox(width: asideGap),
+                                Expanded(child: aboutText),
+                              ],
+                            ),
+                            const SizedBox(height: 24),
+                            nowCards,
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: educationGap),
+                      Expanded(child: educationColumn),
                     ],
                   ),
                 ],

@@ -21,10 +21,25 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
   late AnimationController _particleController;
   late AnimationController _gradientController;
   late AnimationController _smokeController;
+  late DateTime _smokeStartTime;
   late List<Particle> _particles;
   late List<SmokeWisp> _smokeWisps;
   double _smoothedScrollOffset = 0;
   bool _reduceMotion = false;
+
+  // Real seconds one full crossing takes once the burst has settled —
+  // matches _smokeController's own duration, kept as a named constant
+  // since the controller's value is no longer read directly for position.
+  static const double _smokeCycleSeconds = 18;
+
+  // Smoke bursts in fast on load, then eases down to that steady cruising
+  // speed. Modeled as extra "virtual" distance added on top of real
+  // elapsed time, front-loaded by an exponential decay — velocity starts
+  // at 1 + boost/decay (a multiple of normal speed) and relaxes toward 1
+  // as elapsed time passes a few multiples of decaySeconds. No state
+  // machine, no reset: the boost term just fades below noticeability.
+  static const double _smokeBurstBoostSeconds = 6;
+  static const double _smokeBurstDecaySeconds = 2.5;
 
   @override
   void initState() {
@@ -48,6 +63,7 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
       duration: const Duration(seconds: 18),
       vsync: this,
     );
+    _smokeStartTime = DateTime.now();
 
     // * Initialize particles with a placeholder size, will be updated in build
     _particles = [];
@@ -154,16 +170,25 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
 
         // Smoke: each wisp continuously crosses the screen from its home
         // edge to the far one and loops — never settles, never stops.
+        // _smokeController itself is just the per-frame pulse here; actual
+        // position comes from wall-clock elapsed time so the burst-then-
+        // settle speed ramp below can run smoothly across the whole
+        // session instead of resetting every time the controller loops.
         AnimatedBuilder(
           animation: _smokeController,
           builder: (context, child) {
+            final elapsed =
+                DateTime.now().difference(_smokeStartTime).inMicroseconds / 1e6;
+            final warpedElapsed = elapsed +
+                _smokeBurstBoostSeconds *
+                    (1 - math.exp(-elapsed / _smokeBurstDecaySeconds));
             return SizedBox(
               width: screenSize.width,
               height: screenSize.height,
               child: CustomPaint(
                 painter: SmokeBurstPainter(
                   wisps: _smokeWisps,
-                  progress: _smokeController.value,
+                  progress: warpedElapsed / _smokeCycleSeconds,
                 ),
               ),
             );

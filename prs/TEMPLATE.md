@@ -1,4 +1,5 @@
 ---
+pr:
 branch:
 target:
 commits:
