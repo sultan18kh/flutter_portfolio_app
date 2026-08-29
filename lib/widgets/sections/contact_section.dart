@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../models/personal_info.dart';
 import '../../utils/app_theme.dart';
 import '../reveal_on_scroll.dart';
+import '../section_heading.dart';
 
 class ContactSection extends StatelessWidget {
   final PersonalInfo personalInfo;
@@ -22,7 +23,7 @@ class ContactSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          RevealOnScroll(child: _buildSectionTitle(context)),
+          const RevealOnScroll(child: SectionHeading('Get In Touch')),
           const SizedBox(height: 40),
           RevealOnScroll(
             delay: const Duration(milliseconds: 100),
@@ -138,16 +139,6 @@ class ContactSection extends StatelessWidget {
     );
   }
 
-  Widget _buildSectionTitle(BuildContext context) {
-    return AutoSizeText(
-      'Get In Touch',
-      style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-            color: AppTheme.primaryColor,
-            fontWeight: FontWeight.bold,
-          ),
-    );
-  }
-
   Future<void> _launchUrl(String url) async {
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
@@ -239,8 +230,7 @@ class _ContactItemButtonState extends State<_ContactItemButton> {
                 child: Icon(
                   _copied ? Icons.check_circle_rounded : widget.icon,
                   key: ValueKey(_copied),
-                  color:
-                      _copied ? AppTheme.accentColor : AppTheme.primaryColor,
+                  color: _copied ? AppTheme.accentColor : AppTheme.primaryColor,
                   size: 20,
                 ),
               ),
@@ -272,10 +262,7 @@ class _ContactItemButtonState extends State<_ContactItemButton> {
                     ? Text(
                         widget.copiedText,
                         key: const ValueKey('copied'),
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodySmall
-                            ?.copyWith(
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
                               color: AppTheme.accentColor,
                               fontWeight: FontWeight.w600,
                             ),

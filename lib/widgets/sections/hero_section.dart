@@ -452,14 +452,22 @@ class _RotatingHalo extends StatefulWidget {
 }
 
 class _RotatingHaloState extends State<_RotatingHalo>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
+    with TickerProviderStateMixin {
+  late final AnimationController _outerController;
+  late final AnimationController _innerController;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-      duration: const Duration(seconds: 14),
+    // Randomized once per load and opposite in direction, so the two arcs
+    // drift independently instead of reading as one rigid spinning ring.
+    final random = math.Random();
+    _outerController = AnimationController(
+      duration: Duration(milliseconds: 12000 + random.nextInt(8000)),
+      vsync: this,
+    );
+    _innerController = AnimationController(
+      duration: Duration(milliseconds: 7000 + random.nextInt(6000)),
       vsync: this,
     );
   }
@@ -468,15 +476,18 @@ class _RotatingHaloState extends State<_RotatingHalo>
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (MediaQuery.of(context).disableAnimations) {
-      _controller.stop();
-    } else if (!_controller.isAnimating) {
-      _controller.repeat();
+      _outerController.stop();
+      _innerController.stop();
+    } else {
+      if (!_outerController.isAnimating) _outerController.repeat();
+      if (!_innerController.isAnimating) _innerController.repeat();
     }
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _outerController.dispose();
+    _innerController.dispose();
     super.dispose();
   }
 
@@ -484,12 +495,13 @@ class _RotatingHaloState extends State<_RotatingHalo>
   Widget build(BuildContext context) {
     return IgnorePointer(
       child: AnimatedBuilder(
-        animation: _controller,
-        builder: (context, _) => Transform.rotate(
-          angle: _controller.value * 2 * math.pi,
-          child: CustomPaint(
-            size: Size.square(widget.size),
-            painter: _HaloPainter(),
+        animation: Listenable.merge([_outerController, _innerController]),
+        builder: (context, _) => CustomPaint(
+          size: Size.square(widget.size),
+          painter: _HaloPainter(
+            outerAngle: _outerController.value * 2 * math.pi,
+            // Negated: spins the opposite way from the outer arc.
+            innerAngle: -_innerController.value * 2 * math.pi,
           ),
         ),
       ),
@@ -498,6 +510,11 @@ class _RotatingHaloState extends State<_RotatingHalo>
 }
 
 class _HaloPainter extends CustomPainter {
+  final double outerAngle;
+  final double innerAngle;
+
+  _HaloPainter({required this.outerAngle, required this.innerAngle});
+
   @override
   void paint(Canvas canvas, Size size) {
     final center = size.center(Offset.zero);
@@ -518,7 +535,12 @@ class _HaloPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..shader = gradient.createShader(outerRect)
       ..color = Colors.white.withValues(alpha: 0.75);
+    canvas.save();
+    canvas.translate(center.dx, center.dy);
+    canvas.rotate(outerAngle);
+    canvas.translate(-center.dx, -center.dy);
     canvas.drawArc(outerRect, 0, math.pi * 1.1, false, outerPaint);
+    canvas.restore();
 
     final innerRadius = outerRadius - 16;
     final innerRect = Rect.fromCircle(center: center, radius: innerRadius);
@@ -528,12 +550,19 @@ class _HaloPainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..shader = gradient.createShader(innerRect)
       ..color = Colors.white.withValues(alpha: 0.4);
+    canvas.save();
+    canvas.translate(center.dx, center.dy);
+    canvas.rotate(innerAngle);
+    canvas.translate(-center.dx, -center.dy);
     canvas.drawArc(
         innerRect, math.pi * 0.85, math.pi * 0.65, false, innerPaint);
+    canvas.restore();
   }
 
   @override
-  bool shouldRepaint(covariant _HaloPainter oldDelegate) => false;
+  bool shouldRepaint(covariant _HaloPainter oldDelegate) =>
+      oldDelegate.outerAngle != outerAngle ||
+      oldDelegate.innerAngle != innerAngle;
 }
 
 /// Replaces the removed CTA row with an implicit next action: the visitor

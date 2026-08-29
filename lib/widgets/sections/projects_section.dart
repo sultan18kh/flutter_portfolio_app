@@ -6,6 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../models/project.dart';
 import '../../utils/app_theme.dart';
 import '../reveal_on_scroll.dart';
+import '../section_heading.dart';
 
 class ProjectsSection extends StatelessWidget {
   final List<Project> projects;
@@ -35,7 +36,7 @@ class ProjectsSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 80),
       child: Column(
         children: [
-          RevealOnScroll(child: _buildSectionTitle('Projects')),
+          const RevealOnScroll(child: SectionHeading('Projects')),
           const SizedBox(height: 60),
           LayoutBuilder(
             builder: (context, constraints) {
@@ -63,18 +64,6 @@ class ProjectsSection extends StatelessWidget {
             },
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildSectionTitle(String title) {
-    return Builder(
-      builder: (context) => AutoSizeText(
-        title,
-        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              color: AppTheme.primaryColor,
-              fontWeight: FontWeight.bold,
-            ),
       ),
     );
   }
@@ -361,7 +350,8 @@ class _ProjectFingerprintPainter extends CustomPainter {
         rnd.nextDouble() * size.width,
         rnd.nextDouble() * size.height,
       );
-      dust.color = Colors.white.withValues(alpha: 0.04 + rnd.nextDouble() * 0.05);
+      dust.color =
+          Colors.white.withValues(alpha: 0.04 + rnd.nextDouble() * 0.05);
       canvas.drawCircle(p, 1 + rnd.nextDouble() * 1.5, dust);
     }
 
@@ -377,8 +367,7 @@ class _ProjectFingerprintPainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
     for (var i = 0; i < techs.length; i++) {
-      final angle =
-          (i / techs.length) * 2 * math.pi + rnd.nextDouble() * 0.4;
+      final angle = (i / techs.length) * 2 * math.pi + rnd.nextDouble() * 0.4;
       final radius = size.height * (0.42 + (i % 3) * 0.08);
       final raw = hub +
           Offset(math.cos(angle) * radius, math.sin(angle) * radius * 0.6);
