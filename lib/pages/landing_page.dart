@@ -122,6 +122,7 @@ class _LandingPageState extends State<LandingPage> {
                               key: SectionKeys.keys['home'],
                               personalInfo: state.personalInfo,
                               morphProgress: _morphProgress,
+                              scrollController: _scrollController,
                             ),
 
                             // About Section

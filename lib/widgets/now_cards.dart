@@ -7,24 +7,26 @@ import 'package:url_launcher/url_launcher.dart';
 import '../utils/app_theme.dart';
 import 'spotify_embed.dart';
 
-// Shared by both cards so their backgrounds always match — a fixed height
-// is simpler and more robust here than IntrinsicHeight, which silently
-// breaks on any AutoSizeText descendant (AutoSizeText measures itself with
-// an internal LayoutBuilder, and LayoutBuilder can't report intrinsic
-// dimensions).
+// Fallback shown until AboutSection measures the Education column and
+// passes down a matching height (and always used on mobile, which stacks
+// instead of running the two columns side by side) — IntrinsicHeight is
+// not an option here, it silently breaks on any AutoSizeText descendant
+// (AutoSizeText measures itself with an internal LayoutBuilder, and
+// LayoutBuilder can't report intrinsic dimensions).
 const double _kNowCardHeight = 228;
 
 /// Shared card chrome for the "Listening to" / "Reading right now" pair —
 /// same bordered-surface treatment as the About bio and Education cards.
 class _NowCard extends StatelessWidget {
   final Widget child;
+  final double? height;
 
-  const _NowCard({required this.child});
+  const _NowCard({required this.child, this.height});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: _kNowCardHeight,
+      height: height ?? _kNowCardHeight,
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: AppTheme.surfaceColor,
@@ -69,7 +71,9 @@ Widget _label(BuildContext context, IconData icon, String text) {
 /// backend). The Spotify logo signals it's a real, connected embed rather
 /// than a static claim.
 class SpotifyTopTracksCard extends StatelessWidget {
-  const SpotifyTopTracksCard({super.key});
+  final double? height;
+
+  const SpotifyTopTracksCard({super.key, this.height});
 
   // Replace with your own Top Tracks / On Repeat playlist ID (Spotify app
   // → playlist → Share → Copy link, the ID is the last path segment).
@@ -78,6 +82,7 @@ class SpotifyTopTracksCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return _NowCard(
+      height: height,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -103,10 +108,16 @@ class SpotifyTopTracksCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-          // 152px is Spotify's own documented "compact" embed height — below
-          // it the player drops the full tracklist and shows just the
-          // featured track + controls, which is what fits this slot.
-          const SpotifyEmbed(playlistId: _playlistId, height: 152),
+          // Spotify's compact embed is 152px; anything taller reveals more
+          // of the actual tracklist rather than leaving dead space, so this
+          // fills whatever room the matched card height leaves rather than
+          // staying pinned at 152.
+          const Expanded(
+            child: SpotifyEmbed(
+              playlistId: _playlistId,
+              height: double.infinity,
+            ),
+          ),
         ],
       ),
     );
@@ -119,7 +130,9 @@ class SpotifyTopTracksCard extends StatelessWidget {
 /// book's Open Library URL). Empty slots below just don't render — never a
 /// fabricated placeholder title.
 class ReadingRightNowCard extends StatefulWidget {
-  const ReadingRightNowCard({super.key});
+  final double? height;
+
+  const ReadingRightNowCard({super.key, this.height});
 
   // Fill in a Work ID per month (index 0 = January). Leave '' for months
   // without a pick.
@@ -236,20 +249,29 @@ class _ReadingRightNowCardState extends State<ReadingRightNowCard> {
     // a dead-end link.
     final body = _buildBody(context);
     return _NowCard(
+      height: widget.height,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _label(context, Icons.menu_book_rounded, 'READING RIGHT NOW'),
           const SizedBox(height: 12),
-          _title == null
-              ? body
-              : InkWell(
-                  onTap: () => launchUrl(
-                    Uri.parse('https://openlibrary.org/works/$_workId'),
-                  ),
-                  borderRadius: BorderRadius.circular(8),
-                  child: body,
-                ),
+          // Expanded + Center, not a bare child — otherwise the row of
+          // content (cover + title/author/blurb) sits pinned to the top of
+          // whatever height this card ends up matching, leaving a dead gap
+          // below it instead of sitting in the middle of the card.
+          Expanded(
+            child: Center(
+              child: _title == null
+                  ? body
+                  : InkWell(
+                      onTap: () => launchUrl(
+                        Uri.parse('https://openlibrary.org/works/$_workId'),
+                      ),
+                      borderRadius: BorderRadius.circular(8),
+                      child: body,
+                    ),
+            ),
+          ),
         ],
       ),
     );
@@ -306,6 +328,31 @@ class _ReadingRightNowCardState extends State<ReadingRightNowCard> {
                       (90 * MediaQuery.of(context).devicePixelRatio).round(),
                   cacheHeight:
                       (130 * MediaQuery.of(context).devicePixelRatio).round(),
+                  // Without this, the slot is just blank while the JPG
+                  // streams in — the JSON fetch above finishing only means
+                  // the cover *URL* is known, not that the image has loaded.
+                  loadingBuilder: (context, child, progress) {
+                    if (progress == null) return child;
+                    return Container(
+                      width: 90,
+                      height: 130,
+                      color: AppTheme.backgroundColor,
+                      child: Center(
+                        child: SizedBox(
+                          width: 18,
+                          height: 18,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            color: AppTheme.primaryColor,
+                            value: progress.expectedTotalBytes != null
+                                ? progress.cumulativeBytesLoaded /
+                                    progress.expectedTotalBytes!
+                                : null,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                   errorBuilder: (context, error, stackTrace) => Container(
                     width: 90,
                     height: 130,

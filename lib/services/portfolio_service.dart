@@ -148,6 +148,7 @@ class PortfolioService {
           'Deterministic rule-based comment lookup across 30+ verbatim NCCN entries, zero runtime LLM cost',
           'Metadata threading and webhook-gated rule enforcement',
         ],
+        imageUrl: 'assets/projects/nccn-01.webp',
       ),
       Project(
         name: 'SOBRSafe - SOBRsure',
@@ -158,6 +159,7 @@ class PortfolioService {
           'Map integration with Google Maps API',
           'Real-time safety monitoring',
         ],
+        imageUrl: 'assets/projects/sobrsafe-01.webp',
       ),
       Project(
         name: 'BOLDHR',
@@ -175,6 +177,7 @@ class PortfolioService {
           'Implemented Beamer for nested routing',
           'BE powered by Node.js Express APIs',
         ],
+        imageUrl: 'assets/projects/boldhr-01.webp',
       ),
       Project(
         name: 'BOLDAgimble',
@@ -185,6 +188,7 @@ class PortfolioService {
           'Time entry forms and calendar views',
           'Real-time tracking and analytics',
         ],
+        imageUrl: 'assets/projects/boldagimble-01.webp',
       ),
       Project(
         name: 'BOLDRewards',
@@ -195,6 +199,7 @@ class PortfolioService {
           'Redemption options and transaction history',
           'Gamified employee engagement',
         ],
+        imageUrl: 'assets/projects/boldrewards-01.webp',
       ),
       Project(
         name: 'BOLDVelocity',
@@ -205,6 +210,7 @@ class PortfolioService {
           'Read-only stdlib Python API serving pre-aggregated SQLite metrics to a Vue 3 dashboard',
           'Idempotent natural-key upserts, safe for a 3x/day cron pipeline; zero LLM calls by design',
         ],
+        imageUrl: 'assets/projects/boldvelocity-01.webp',
       ),
     ];
   }

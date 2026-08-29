@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -36,7 +37,7 @@ class ProjectsSection extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 80),
       child: Column(
         children: [
-          const RevealOnScroll(child: SectionHeading('Projects')),
+          const RevealOnScroll(child: SectionHeading('Portfolio')),
           const SizedBox(height: 60),
           LayoutBuilder(
             builder: (context, constraints) {
@@ -87,6 +88,12 @@ class _ProjectCardState extends State<_ProjectCard>
   bool _isHovered = false;
   late final AnimationController _pulseController;
 
+  // Hover-intent preview (desktop): a short delay before the centered
+  // enlarged-image preview appears, so a mouse merely passing over the
+  // card on its way elsewhere doesn't pop it open.
+  final _previewController = OverlayPortalController();
+  Timer? _hoverIntentTimer;
+
   @override
   void initState() {
     super.initState();
@@ -109,7 +116,47 @@ class _ProjectCardState extends State<_ProjectCard>
   @override
   void dispose() {
     _pulseController.dispose();
+    _hoverIntentTimer?.cancel();
     super.dispose();
+  }
+
+  void _scheduleImagePreview() {
+    _hoverIntentTimer?.cancel();
+    _hoverIntentTimer = Timer(const Duration(milliseconds: 220), () {
+      if (mounted) _previewController.show();
+    });
+  }
+
+  void _cancelImagePreview() {
+    _hoverIntentTimer?.cancel();
+    if (_previewController.isShowing) _previewController.hide();
+  }
+
+  void _openLightbox(BuildContext context, String imagePath, Color accent) {
+    // The hover-intent preview (desktop) and the tap target overlap on
+    // hybrid mouse+touch input — always clear it before going full-screen
+    // so it can never linger, ghosted, under the lightbox.
+    _cancelImagePreview();
+    final reduceMotion = MediaQuery.of(context).disableAnimations;
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: true,
+      barrierLabel: 'Close',
+      barrierColor: Colors.black.withValues(alpha: 0.85),
+      transitionDuration:
+          reduceMotion ? Duration.zero : const Duration(milliseconds: 220),
+      pageBuilder: (context, _, __) =>
+          _ImageLightbox(imagePath: imagePath, accentColor: accent),
+      transitionBuilder: (context, animation, _, child) => FadeTransition(
+        opacity: animation,
+        child: ScaleTransition(
+          scale: Tween(begin: 0.94, end: 1.0).animate(
+            CurvedAnimation(parent: animation, curve: Curves.easeOutCubic),
+          ),
+          child: child,
+        ),
+      ),
+    );
   }
 
   @override
@@ -145,64 +192,99 @@ class _ProjectCardState extends State<_ProjectCard>
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                // Project header — a generative "fingerprint": one node
-                // per technology (deterministically colored, so the same
-                // tech reads as the same hue on every card), radiating
-                // from a slowly-breathing hub. Distinct per project by
-                // construction instead of a stock icon shared across all
-                // of them.
-                Container(
-                  width: double.infinity,
-                  height: 140,
-                  clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(
-                    color: AppTheme.surfaceColor,
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(16),
-                    ),
-                  ),
-                  child: AnimatedBuilder(
-                    animation: _pulseController,
-                    builder: (context, _) => CustomPaint(
-                      size: Size.infinite,
-                      painter: _ProjectFingerprintPainter(
-                        project: project,
-                        pulse: _pulseController.value,
+                // Project header: a real screenshot when one exists — framed
+                // with the card's accent glow, hoverable (desktop) or
+                // tappable (any input) to see it centered and full-size.
+                // Cropped shorter than the source image's own aspect ratio
+                // so the card stays compact; the preview/lightbox always
+                // shows the uncropped original. Falls back to the
+                // generative "fingerprint" (one node per technology,
+                // deterministically colored, radiating from a
+                // slowly-breathing hub) for any project without media yet.
+                MouseRegion(
+                  onEnter: (_) {
+                    if (project.imageUrl != null) _scheduleImagePreview();
+                  },
+                  onExit: (_) => _cancelImagePreview(),
+                  child: GestureDetector(
+                    onTap: project.imageUrl == null
+                        ? null
+                        : () => _openLightbox(
+                              context,
+                              project.imageUrl!,
+                              accentColor,
+                            ),
+                    child: OverlayPortal(
+                      controller: _previewController,
+                      overlayChildBuilder: (context) =>
+                          _buildHoverPreview(context, accentColor),
+                      child: AspectRatio(
+                        aspectRatio: 2 / 1,
+                        child: Container(
+                          width: double.infinity,
+                          clipBehavior: Clip.antiAlias,
+                          decoration: BoxDecoration(
+                            color: AppTheme.surfaceColor,
+                            borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(16),
+                            ),
+                            border: Border.all(
+                              color: accentColor.withValues(alpha: 0.25),
+                            ),
+                          ),
+                          child: project.imageUrl != null
+                              ? Image.asset(
+                                  project.imageUrl!,
+                                  fit: BoxFit.cover,
+                                )
+                              : AnimatedBuilder(
+                                  animation: _pulseController,
+                                  builder: (context, _) => CustomPaint(
+                                    size: Size.infinite,
+                                    painter: _ProjectFingerprintPainter(
+                                      project: project,
+                                      pulse: _pulseController.value,
+                                    ),
+                                  ),
+                                ),
+                        ),
                       ),
                     ),
                   ),
                 ),
-                // Project content
+                // Project content — kept light on purpose: the screenshot
+                // is the evidence now, this is just enough text to name
+                // and place it.
                 Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.fromLTRB(16, 14, 16, 16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       AutoSizeText(
                         project.name,
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                              color: AppTheme.primaryColor,
-                              fontWeight: FontWeight.bold,
-                            ),
+                        style:
+                            Theme.of(context).textTheme.titleMedium?.copyWith(
+                                  color: AppTheme.primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
                         maxLines: 1,
                       ),
-                      const SizedBox(height: 8),
+                      const SizedBox(height: 6),
                       AutoSizeText(
                         project.description,
-                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                              color: AppTheme.textPrimaryColor
-                                  .withValues(alpha: 0.8),
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              color: AppTheme.textSecondaryColor,
                             ),
-                        maxLines: 3,
+                        maxLines: 2,
                       ),
-                      const SizedBox(height: 16),
+                      const SizedBox(height: 12),
                       // Technologies
                       Wrap(
                         spacing: 6,
                         runSpacing: 6,
                         children: project.technologies
-                            .take(4)
+                            .take(3)
                             .map((tech) => _buildTechChip(context, tech))
                             .toList(),
                       ),
@@ -259,6 +341,59 @@ class _ProjectCardState extends State<_ProjectCard>
     );
   }
 
+  // Centered enlarged preview (desktop hover): the full, uncropped
+  // screenshot in the middle of the viewport — same position a tap-opened
+  // lightbox would use, just non-modal. Moving off the thumbnail
+  // (`_cancelImagePreview`) dismisses it, no click needed, and it never
+  // intercepts pointer events so the page stays fully interactive under it.
+  Widget _buildHoverPreview(BuildContext context, Color accent) {
+    final reduceMotion = MediaQuery.of(context).disableAnimations;
+    final size = MediaQuery.sizeOf(context);
+
+    return Positioned.fill(
+      child: IgnorePointer(
+        child: Center(
+          child: TweenAnimationBuilder<double>(
+            tween: Tween(begin: 0, end: 1),
+            duration: reduceMotion
+                ? Duration.zero
+                : const Duration(milliseconds: 200),
+            curve: Curves.easeOutCubic,
+            builder: (context, t, child) => Opacity(
+              opacity: t,
+              child: Transform.scale(scale: 0.96 + (0.04 * t), child: child),
+            ),
+            child: Material(
+              color: Colors.transparent,
+              child: Container(
+                constraints: BoxConstraints(
+                  maxWidth: math.min(1000, size.width - 96),
+                  maxHeight: size.height * 0.8,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  border: Border.all(color: accent.withValues(alpha: 0.5)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: accent.withValues(alpha: 0.35),
+                      blurRadius: 40,
+                      offset: const Offset(0, 16),
+                    ),
+                  ],
+                ),
+                clipBehavior: Clip.antiAlias,
+                child: Image.asset(
+                  widget.project.imageUrl!,
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _buildTechChip(BuildContext context, String tech) {
     final iconPath = widget.techIcons[tech.toLowerCase()];
     return Container(
@@ -291,6 +426,76 @@ class _ProjectCardState extends State<_ProjectCard>
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
     }
+  }
+}
+
+// Full-size image view, opened by tapping a project screenshot (the
+// primary interaction on touch, and available on desktop too). Tap
+// anywhere outside the framed image, tap the close button, or use the
+// dialog barrier to dismiss.
+class _ImageLightbox extends StatelessWidget {
+  final String imagePath;
+  final Color accentColor;
+
+  const _ImageLightbox({required this.imagePath, required this.accentColor});
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
+    return GestureDetector(
+      onTap: () => Navigator.of(context).pop(),
+      child: Material(
+        type: MaterialType.transparency,
+        child: SizedBox.expand(
+          child: Stack(
+            children: [
+              Center(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: math.min(1100, size.width - 48),
+                    maxHeight: size.height * 0.85,
+                  ),
+                  child: GestureDetector(
+                    onTap: () {}, // absorb taps on the image itself
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        border: Border.all(
+                          color: accentColor.withValues(alpha: 0.4),
+                          width: 1.5,
+                        ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: accentColor.withValues(alpha: 0.35),
+                            blurRadius: 40,
+                            offset: const Offset(0, 16),
+                          ),
+                        ],
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                      child: Image.asset(imagePath, fit: BoxFit.contain),
+                    ),
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 24,
+                right: 24,
+                child: IconButton.filled(
+                  onPressed: () => Navigator.of(context).pop(),
+                  icon: const Icon(Icons.close),
+                  style: IconButton.styleFrom(
+                    backgroundColor:
+                        AppTheme.surfaceColor.withValues(alpha: 0.8),
+                    foregroundColor: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 

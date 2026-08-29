@@ -9,25 +9,33 @@ import '../../utils/photo_morph_progress.dart';
 class HeroSection extends StatefulWidget {
   final PersonalInfo personalInfo;
   final PhotoMorphProgress? morphProgress;
+  final ScrollController scrollController;
 
   // Short, factual signal tags — re-expressing claims already made in
   // personalInfo.profile (Flutter/Azure AI/agentic AI, six-time certified),
   // not new copy, just scannable instead of a paragraph.
   static const List<String> _signals = [
+    '8+ Years Experience',
+    '6× Microsoft Certified',
     'Flutter',
     'Python',
-    'Azure AI',
+    'Azure AI Agents',
     'Agentic AI Systems',
-    '6× Microsoft Certified',
   ];
 
   // Matches ModernNavbar's own mobile breakpoint, so the two sections
   // switch layout at the same width.
   static const double _mobileBreakpoint = 800;
 
+  // Same threshold ModernNavbar/NavbarCubit uses to flip between its
+  // top-pinned and bottom-pinned states — the scroll cue hides/shows on
+  // that exact same scroll position, not one of its own.
+  static const double _scrollCueHideOffset = 100;
+
   const HeroSection({
     super.key,
     required this.personalInfo,
+    required this.scrollController,
     this.morphProgress,
   });
 
@@ -42,6 +50,7 @@ class _HeroSectionState extends State<HeroSection>
   // mount, never replays on rebuild or scroll.
   late final AnimationController _entrance;
   bool _entranceStarted = false;
+  bool _hideScrollCue = false;
 
   @override
   void initState() {
@@ -50,6 +59,13 @@ class _HeroSectionState extends State<HeroSection>
       duration: const Duration(milliseconds: 1100),
       vsync: this,
     );
+    widget.scrollController.addListener(_onScroll);
+  }
+
+  void _onScroll() {
+    final hide =
+        widget.scrollController.offset > HeroSection._scrollCueHideOffset;
+    if (hide != _hideScrollCue) setState(() => _hideScrollCue = hide);
   }
 
   @override
@@ -66,6 +82,7 @@ class _HeroSectionState extends State<HeroSection>
 
   @override
   void dispose() {
+    widget.scrollController.removeListener(_onScroll);
     _entrance.dispose();
     super.dispose();
   }
@@ -317,7 +334,18 @@ class _HeroSectionState extends State<HeroSection>
               ),
             ),
             const SizedBox(height: 8),
-            _riseIn(0.8, 1.0, const _ScrollCue(), by: 8),
+            _riseIn(
+              0.8,
+              1.0,
+              AnimatedOpacity(
+                opacity: _hideScrollCue ? 0 : 1,
+                duration: MediaQuery.of(context).disableAnimations
+                    ? Duration.zero
+                    : const Duration(milliseconds: 200),
+                child: const _ScrollCue(),
+              ),
+              by: 8,
+            ),
           ],
         ),
       ),

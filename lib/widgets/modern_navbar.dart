@@ -35,7 +35,10 @@ class _ModernNavbarView extends StatefulWidget {
 
 class _ModernNavbarViewState extends State<_ModernNavbarView>
     with TickerProviderStateMixin {
-  static const double _mobileBreakpoint = 800;
+  // Raised from the original 800 once Skills and Certifications joined the
+  // nav (5 items -> 7): the desktop item Row has no flex/scroll, so it
+  // just overflows once the viewport can't fit all 7 items' natural width.
+  static const double _mobileBreakpoint = 1100;
   // Ordered to match the page's actual scroll order, so "next" in the nav
   // means "next" on the page.
   static const List<(String, String)> _navItems = [
@@ -44,7 +47,7 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
     ('Skills', 'skills'),
     ('Experience', 'experience'),
     ('Certifications', 'certifications'),
-    ('Projects', 'projects'),
+    ('Portfolio', 'projects'),
     ('Contact', 'contact'),
   ];
 
@@ -183,8 +186,7 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
                       Positioned.fill(
                         child: GestureDetector(
                           behavior: HitTestBehavior.opaque,
-                          onTap: () =>
-                              setState(() => _mobileMenuOpen = false),
+                          onTap: () => setState(() => _mobileMenuOpen = false),
                           child: Container(
                             color: Colors.black.withValues(alpha: 0.55),
                           ),
@@ -232,14 +234,17 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
                           ? Positioned(
                               left: 20,
                               right: 20,
-                              bottom: 182, // pill bottom(100) + height(70) + gap(12)
-                              child: _buildMobileMenuPanel(context, above: true),
+                              bottom:
+                                  182, // pill bottom(100) + height(70) + gap(12)
+                              child:
+                                  _buildMobileMenuPanel(context, above: true),
                             )
                           : Positioned(
                               left: 20,
                               right: 20,
                               top: 102, // pill top(20) + height(70) + gap(12)
-                              child: _buildMobileMenuPanel(context, above: false),
+                              child:
+                                  _buildMobileMenuPanel(context, above: false),
                             ),
                   ],
                 ),
@@ -334,8 +339,7 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
           child: Container(
             color: AppTheme.backgroundColor.withValues(alpha: 0.9),
             child: SingleChildScrollView(
-              padding:
-                  const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -480,7 +484,7 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
 
   Widget _buildNavItem(String label, String sectionId, bool isScrolled) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 6),
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
@@ -489,7 +493,7 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
           mouseCursor: SystemMouseCursors.click,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 200),
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: isScrolled
