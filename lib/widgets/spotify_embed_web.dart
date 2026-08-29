@@ -34,6 +34,7 @@ class _SpotifyEmbedState extends State<SpotifyEmbed> {
         ..style.border = 'none'
         ..style.width = '100%'
         ..style.height = '100%'
+        ..loading = 'lazy'
         ..allow =
             'autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture';
       return iframe;

@@ -296,10 +296,16 @@ class _ReadingRightNowCardState extends State<ReadingRightNowCard> {
                       color: AppTheme.primaryColor, size: 28),
                 )
               : Image.network(
-                  'https://covers.openlibrary.org/b/id/$_coverId-L.jpg',
+                  // "-M" (~180px tall) is plenty for a 90x130 slot — "-L"
+                  // (~500px) was shipping ~8x the pixels ever displayed.
+                  'https://covers.openlibrary.org/b/id/$_coverId-M.jpg',
                   width: 90,
                   height: 130,
                   fit: BoxFit.cover,
+                  cacheWidth:
+                      (90 * MediaQuery.of(context).devicePixelRatio).round(),
+                  cacheHeight:
+                      (130 * MediaQuery.of(context).devicePixelRatio).round(),
                   errorBuilder: (context, error, stackTrace) => Container(
                     width: 90,
                     height: 130,
