@@ -123,49 +123,56 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
 
     return Stack(
       children: [
-        // Animated gradient background
-        AnimatedBuilder(
-          animation: _gradientController,
-          builder: (context, child) {
-            return Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topLeft,
-                  end: Alignment.bottomRight,
-                  colors: const [
-                    AppTheme.backgroundColor,
-                    AppTheme.surfaceColor,
-                    AppTheme.surfaceColor,
-                    AppTheme.backgroundColor,
-                  ],
-                  stops: [
-                    _gradientController.lowerBound,
-                    _gradientController.value,
-                    _gradientController.value,
-                    _gradientController.upperBound,
-                  ],
+        // Each animated layer gets its own RepaintBoundary: without one,
+        // Stack children share the nearest ancestor layer, so every tick
+        // of these perpetual controllers would repaint the whole page
+        // (including widget.child) instead of just this layer.
+        RepaintBoundary(
+          child: AnimatedBuilder(
+            animation: _gradientController,
+            builder: (context, child) {
+              return Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: const [
+                      AppTheme.backgroundColor,
+                      AppTheme.surfaceColor,
+                      AppTheme.surfaceColor,
+                      AppTheme.backgroundColor,
+                    ],
+                    stops: [
+                      _gradientController.lowerBound,
+                      _gradientController.value,
+                      _gradientController.value,
+                      _gradientController.upperBound,
+                    ],
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
 
         // Floating particles
-        AnimatedBuilder(
-          animation: _particleController,
-          builder: (context, child) {
-            return SizedBox(
-              width: screenSize.width,
-              height: screenSize.height,
-              child: CustomPaint(
-                painter: ParticlePainter(
-                  particles: _particles,
-                  animation: _particleController.value,
-                  scrollOffset: _smoothedScrollOffset,
+        RepaintBoundary(
+          child: AnimatedBuilder(
+            animation: _particleController,
+            builder: (context, child) {
+              return SizedBox(
+                width: screenSize.width,
+                height: screenSize.height,
+                child: CustomPaint(
+                  painter: ParticlePainter(
+                    particles: _particles,
+                    animation: _particleController.value,
+                    scrollOffset: _smoothedScrollOffset,
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
 
         // Smoke: each wisp continuously crosses the screen from its home
@@ -174,29 +181,33 @@ class _AnimatedBackgroundState extends State<AnimatedBackground>
         // position comes from wall-clock elapsed time so the burst-then-
         // settle speed ramp below can run smoothly across the whole
         // session instead of resetting every time the controller loops.
-        AnimatedBuilder(
-          animation: _smokeController,
-          builder: (context, child) {
-            final elapsed =
-                DateTime.now().difference(_smokeStartTime).inMicroseconds / 1e6;
-            final warpedElapsed = elapsed +
-                _smokeBurstBoostSeconds *
-                    (1 - math.exp(-elapsed / _smokeBurstDecaySeconds));
-            return SizedBox(
-              width: screenSize.width,
-              height: screenSize.height,
-              child: CustomPaint(
-                painter: SmokeBurstPainter(
-                  wisps: _smokeWisps,
-                  progress: warpedElapsed / _smokeCycleSeconds,
+        RepaintBoundary(
+          child: AnimatedBuilder(
+            animation: _smokeController,
+            builder: (context, child) {
+              final elapsed =
+                  DateTime.now().difference(_smokeStartTime).inMicroseconds /
+                      1e6;
+              final warpedElapsed = elapsed +
+                  _smokeBurstBoostSeconds *
+                      (1 - math.exp(-elapsed / _smokeBurstDecaySeconds));
+              return SizedBox(
+                width: screenSize.width,
+                height: screenSize.height,
+                child: CustomPaint(
+                  painter: SmokeBurstPainter(
+                    wisps: _smokeWisps,
+                    progress: warpedElapsed / _smokeCycleSeconds,
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
 
-        // Content
-        widget.child,
+        // Content — isolated so it never repaints just because a
+        // background layer above ticked.
+        RepaintBoundary(child: widget.child),
       ],
     );
   }
