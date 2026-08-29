@@ -47,6 +47,8 @@ dependencies:
 
   # Utilities
   json_annotation: ^4.8.1
+  http: ^1.2.2
+  web: ^1.1.0
 
 dev_dependencies:
   flutter_test:
