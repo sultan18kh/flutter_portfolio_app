@@ -1,16 +1,16 @@
 # Graph Report - portfolio_flutter  (2026-08-29)
 
 ## Corpus Check
-- 96 files · ~440,350 words
+- 96 files · ~440,441 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 881 nodes · 1125 edges · 80 communities (63 shown, 17 thin omitted)
+- 881 nodes · 1126 edges · 78 communities (61 shown, 17 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 9 edges (avg confidence: 0.78)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `cf277c1b`
+- Built from commit: `d6607fa8`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -77,11 +77,9 @@
 - [[_COMMUNITY_Community 69|Community 69]]
 - [[_COMMUNITY_Community 70|Community 70]]
 - [[_COMMUNITY_Community 71|Community 71]]
-- [[_COMMUNITY_Community 72|Community 72]]
 - [[_COMMUNITY_Community 73|Community 73]]
 - [[_COMMUNITY_Community 74|Community 74]]
 - [[_COMMUNITY_Community 75|Community 75]]
-- [[_COMMUNITY_Community 76|Community 76]]
 - [[_COMMUNITY_Community 77|Community 77]]
 - [[_COMMUNITY_Community 78|Community 78]]
 - [[_COMMUNITY_Community 79|Community 79]]
@@ -118,7 +116,7 @@
 - **Shared App Identity: portfolio_flutter / Sultan Khan Portfolio** — pubspec_project_name, linux_cmakelists_binary_name, windows_cmakelists_binary_name, web_index_title [INFERRED 0.85]
 - **README Documentation vs Actual pubspec.yaml Dependency Version Drift** — readme_dependencies, readme_portfoliobloc, pubspec_dependencies, pubspec_dev_dependencies [INFERRED 0.85]
 
-## Communities (80 total, 17 thin omitted)
+## Communities (78 total, 17 thin omitted)
 
 ### Community 0 - "Windows Win32 Runner"
 Cohesion: 0.09
@@ -129,8 +127,8 @@ Cohesion: 0.07
 Nodes (23): Any, Cocoa, Flutter, RegisterGeneratedPlugins(), FlutterAppDelegate, FlutterMacOS, FlutterPluginRegistry, Foundation (+15 more)
 
 ### Community 2 - "Navbar Cubit State"
-Cohesion: 0.07
-Nodes (31): ../blocs/navbar_bloc/navbar_state.dart, Cubit, NavbarCubit, NavbarInitial, NavbarState, NavbarUpdated, Offset, build (+23 more)
+Cohesion: 0.05
+Nodes (45): ../blocs/navbar_bloc/navbar_cubit.dart, ../blocs/navbar_bloc/navbar_state.dart, Cubit, morph_keys.dart, initializeScrollListener, NavbarCubit, reset, restingOffsetFor (+37 more)
 
 ### Community 3 - "Floating Skill Icon Animation"
 Cohesion: 0.05
@@ -273,8 +271,8 @@ Cohesion: 0.22
 Nodes (8): DartProject, MessageHandler(), HWND, LPARAM, LRESULT, FlutterWindow(), UINT, WPARAM
 
 ### Community 64 - "Community 64"
-Cohesion: 0.14
-Nodes (23): _ContactItemButton, _ContactItemButtonState, HeroSection, _HeroSectionState, _RotatingHalo, _RotatingHaloState, _ScrollCue, _ScrollCueState (+15 more)
+Cohesion: 0.17
+Nodes (20): _ContactItemButton, _ContactItemButtonState, HeroSection, _HeroSectionState, _RotatingHalo, _RotatingHaloState, _ScrollCue, _ScrollCueState (+12 more)
 
 ### Community 65 - "Community 65"
 Cohesion: 0.18
@@ -293,8 +291,8 @@ Cohesion: 0.22
 Nodes (8): Design Health Score, Design Specificity Verdict, Minor Observations, Overall Impression, Persona Red Flags, Priority Issues, Questions to Consider, What's Working
 
 ### Community 69 - "Community 69"
-Cohesion: 0.22
-Nodes (8): dart:ui_web, package:web/web.dart, build, createState, height, initState, playlistId, _viewType
+Cohesion: 0.18
+Nodes (11): dart:ui_web, package:web/web.dart, SpotifyEmbed, build, createState, height, initState, playlistId (+3 more)
 
 ### Community 70 - "Community 70"
 Cohesion: 0.25
@@ -303,10 +301,6 @@ Nodes (7): package:flutter_svg/flutter_svg.dart, ../reveal_on_scroll.dart, build
 ### Community 71 - "Community 71"
 Cohesion: 0.29
 Nodes (6): List, copyWith, isScrolled, isVisible, props, package:equatable/equatable.dart
-
-### Community 72 - "Community 72"
-Cohesion: 0.22
-Nodes (8): initializeScrollListener, reset, restingOffsetFor, scrollToSection, updateScrollState, navbar_state.dart, ScrollController?, ../utils/section_keys.dart
 
 ### Community 73 - "Community 73"
 Cohesion: 0.18
@@ -320,10 +314,6 @@ Nodes (10): ../blocs/portfolio_cubit.dart, build, main, MyApp, package:flutter_b
 Cohesion: 0.17
 Nodes (11): ../models/skill.dart, package:auto_size_text/auto_size_text.dart, ../section_heading.dart, build, skills, SkillsSection, ../skills_grid.dart, ../utils/app_theme.dart (+3 more)
 
-### Community 76 - "Community 76"
-Cohesion: 0.29
-Nodes (6): ../blocs/navbar_bloc/navbar_cubit.dart, morph_keys.dart, package:flutter/rendering.dart, section_keys.dart, recompute, t
-
 ### Community 77 - "Community 77"
 Cohesion: 0.18
 Nodes (10): Acceptance Criteria, Changes, Commits, feat: add listening-to and reading-right-now widgets to About, Misc, Reading card (`now_cards.dart`), Spotify embed (`spotify_embed.dart`, `spotify_embed_web.dart`, `spotify_embed_stub.dart`), Summary (+2 more)
@@ -333,7 +323,7 @@ Cohesion: 0.33
 Nodes (5): package:url_launcher/url_launcher.dart, build, height, playlistId, SpotifyEmbed
 
 ## Knowledge Gaps
-- **518 isolated node(s):** `Summary`, `Commits`, `Spotify embed (`spotify_embed.dart`, `spotify_embed_web.dart`, `spotify_embed_stub.dart`)`, `Reading card (`now_cards.dart`)`, `Wiring (`about_section.dart`, `pubspec.yaml`)` (+513 more)
+- **518 isolated node(s):** `Particle`, `SmokeWisp`, `child`, `scrollController`, `_particleController` (+513 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -344,13 +334,13 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.007) - this node is a cross-community bridge._
 - **Why does `animation` connect `Floating Skill Icon Animation` to `Navbar Cubit State`, `Animated Background Painter`, `Portfolio Cubit States`?**
   _High betweenness centrality (0.006) - this node is a cross-community bridge._
-- **Why does `NavbarCubit` connect `Navbar Cubit State` to `Community 72`?**
-  _High betweenness centrality (0.005) - this node is a cross-community bridge._
-- **What connects `Summary`, `Commits`, `Spotify embed (`spotify_embed.dart`, `spotify_embed_web.dart`, `spotify_embed_stub.dart`)` to the rest of the system?**
+- **What connects `Particle`, `SmokeWisp`, `child` to the rest of the system?**
   _519 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Windows Win32 Runner` be split into smaller, more focused modules?**
   _Cohesion score 0.08658536585365853 - nodes in this community are weakly interconnected._
 - **Should `iOS/macOS App Delegate & Plugins` be split into smaller, more focused modules?**
   _Cohesion score 0.06951871657754011 - nodes in this community are weakly interconnected._
 - **Should `Navbar Cubit State` be split into smaller, more focused modules?**
-  _Cohesion score 0.07459677419354839 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.04875886524822695 - nodes in this community are weakly interconnected._
+- **Should `Floating Skill Icon Animation` be split into smaller, more focused modules?**
+  _Cohesion score 0.052564102564102565 - nodes in this community are weakly interconnected._

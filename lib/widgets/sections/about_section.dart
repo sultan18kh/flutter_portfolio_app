@@ -8,7 +8,7 @@ import '../../utils/photo_morph_progress.dart';
 import '../now_cards.dart';
 import '../section_heading.dart';
 
-class AboutSection extends StatelessWidget {
+class AboutSection extends StatefulWidget {
   final PersonalInfo personalInfo;
   final List<Education> education;
   final PhotoMorphProgress? morphProgress;
@@ -21,7 +21,52 @@ class AboutSection extends StatelessWidget {
   });
 
   @override
+  State<AboutSection> createState() => _AboutSectionState();
+}
+
+class _AboutSectionState extends State<AboutSection> {
+  // Desktop only: the now-cards row (Spotify/Reading) has no natural height
+  // of its own to match Education by — it's measured after each layout and
+  // fed back in as an explicit height. Not circular: Education's height
+  // depends only on its own content and column width, never on
+  // _nowCardsHeight, so this always settles within one extra frame instead
+  // of oscillating.
+  final GlobalKey _bioRowKey = GlobalKey();
+  final GlobalKey _educationKey = GlobalKey();
+  double? _nowCardsHeight;
+
+  @override
+  void didUpdateWidget(covariant AboutSection oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.education != widget.education) {
+      WidgetsBinding.instance.addPostFrameCallback(_measure);
+    }
+  }
+
+  void _measure([Duration? _]) {
+    final bioBox = _bioRowKey.currentContext?.findRenderObject() as RenderBox?;
+    final eduBox =
+        _educationKey.currentContext?.findRenderObject() as RenderBox?;
+    if (bioBox == null || eduBox == null || !bioBox.hasSize) return;
+
+    const bioToNowCardsGap = 24.0;
+    final computed = eduBox.size.height - bioBox.size.height - bioToNowCardsGap;
+    // Sane floor/ceiling — a real layout should never hit either, this is
+    // just a guard against a degenerate first-frame measurement.
+    final clamped = computed.clamp(160.0, 900.0);
+    if (_nowCardsHeight == null || (clamped - _nowCardsHeight!).abs() > 0.5) {
+      setState(() => _nowCardsHeight = clamped);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final personalInfo = widget.personalInfo;
+    final education = widget.education;
+    // Re-measure after every build (window resize, content/font-load
+    // reflow) — cheap, and the only reliable way to keep the two columns
+    // matched since IntrinsicHeight can't be used here (see now_cards.dart).
+    WidgetsBinding.instance.addPostFrameCallback(_measure);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 80),
       child: Column(
@@ -49,6 +94,7 @@ class AboutSection extends StatelessWidget {
                 ),
               );
               final educationColumn = Column(
+                key: _educationKey,
                 // Stretch, not start — otherwise each card shrink-wraps to
                 // its own text width instead of matching the others (short
                 // "A Levels" ends up narrower than "Bachelor of Science...").
@@ -66,27 +112,10 @@ class AboutSection extends StatelessWidget {
                 ],
               );
 
-              // "Top tracks" (Spotify embed, compact height) / "Reading
-              // right now" — side by side sharing the bio column's width on
-              // desktop, stacked full-width on mobile.
-              final nowCards = constraints.maxWidth < 800
-                  ? const Column(
-                      children: [
-                        SpotifyTopTracksCard(),
-                        SizedBox(height: 16),
-                        ReadingRightNowCard(),
-                      ],
-                    )
-                  : const Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(child: SpotifyTopTracksCard()),
-                        SizedBox(width: 20),
-                        Expanded(child: ReadingRightNowCard()),
-                      ],
-                    );
-
               if (constraints.maxWidth < 800) {
+                // Mobile stacks Education below the now-cards instead of
+                // beside them, so there's nothing to height-match here —
+                // each card just uses its own default height.
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -94,23 +123,46 @@ class AboutSection extends StatelessWidget {
                     const SizedBox(height: 32),
                     aboutText,
                     const SizedBox(height: 24),
-                    nowCards,
+                    const Column(
+                      children: [
+                        SpotifyTopTracksCard(),
+                        SizedBox(height: 16),
+                        ReadingRightNowCard(),
+                      ],
+                    ),
                     const SizedBox(height: 40),
                     educationColumn,
                   ],
                 );
               }
 
+              // Matches the Education column's actual rendered height
+              // (measured post-frame, see _measure) so both columns end
+              // flush — null on the very first frame, before anything has
+              // been measured yet, in which case the cards just fall back
+              // to their own default height for one frame.
+              final nowCards = Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: SpotifyTopTracksCard(height: _nowCardsHeight),
+                  ),
+                  const SizedBox(width: 20),
+                  Expanded(
+                    child: ReadingRightNowCard(height: _nowCardsHeight),
+                  ),
+                ],
+              );
+
               // Fixed width (not flex) for the whole left block — portrait,
               // bio, and now-cards all stack in one self-contained Column
               // here, sized to the same proportion the old 2:1 flex split
               // gave the bio card. Education sits in a separate Expanded
-              // sibling below, so its own height (three stacked cards,
-              // taller than the bio) never pushes the now-cards row down —
-              // that mismatch was the gap: when the Row above held both
-              // columns, its height matched Education's tallest column,
-              // and anything placed after that Row inherited that same
-              // tall bottom edge instead of following the shorter column.
+              // sibling below with its own independent height (three
+              // stacked cards, taller than the bio+now-cards block); the
+              // now-cards row is deliberately sized to match it exactly
+              // (see _nowCardsHeight/_measure) so the two columns end flush
+              // at the bottom instead of Education just trailing off lower.
               const asideWidth = 180.0;
               const asideGap = 40.0;
               const educationGap = 60.0;
@@ -133,6 +185,7 @@ class AboutSection extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
+                              key: _bioRowKey,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 _buildPortrait(),
@@ -210,7 +263,7 @@ class AboutSection extends StatelessWidget {
 
     // Reveals fast once the Hero→About morph (HeroAboutMorph) lands here,
     // so the traveling overlay hands off to the real portrait seamlessly.
-    final progress = morphProgress;
+    final progress = widget.morphProgress;
     if (progress == null) return portrait;
     return AnimatedBuilder(
       animation: progress,
@@ -257,6 +310,16 @@ class AboutSection extends StatelessWidget {
                   color: AppTheme.textPrimaryColor.withValues(alpha: 0.7),
                 ),
           ),
+          if (education.score.isNotEmpty) ...[
+            const SizedBox(height: 4),
+            AutoSizeText(
+              education.score,
+              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: AppTheme.accentColor,
+                    fontWeight: FontWeight.w600,
+                  ),
+            ),
+          ],
         ],
       ),
     );

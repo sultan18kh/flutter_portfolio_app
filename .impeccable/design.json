@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-29T00:00:00.000Z",
+  "title": "Design System: Sultan Khan — Portfolio",
+  "extensions": {
+    "colorMeta": {
+      "neon-magenta": { "role": "primary", "displayName": "Neon Magenta", "canonical": "#FF2E93", "tonalRamp": ["#4D0E2C", "#8F1A52", "#CC2576", "#FF3697", "#FF60AD", "#FF8AC3", "#FFB8DA", "#FFEAF4"] },
+      "neon-cyan": { "role": "secondary", "displayName": "Neon Cyan", "canonical": "#22D9FF", "tonalRamp": ["#0A414D", "#137A8F", "#1BAECC", "#2BDBFF", "#57E2FF", "#83EAFF", "#B4F2FF", "#E9FBFF"] },
+      "soft-pink": { "role": "tertiary", "displayName": "Soft Pink", "canonical": "#FF6FB8", "tonalRamp": ["#4D2137", "#8F3E67", "#CC5993", "#FF75BB", "#FF92C9", "#FFAED7", "#FFCEE7", "#FFF1F8"] },
+      "near-black-violet": { "role": "neutral", "displayName": "Near-Black Violet", "canonical": "#07060B", "tonalRamp": ["#020203", "#040306", "#060509", "#111015", "#434246", "#747476", "#ABAAAC", "#E6E6E7"] },
+      "dark-violet-grey": { "role": "neutral", "displayName": "Dark Violet-Grey", "canonical": "#14111C", "tonalRamp": ["#060508", "#0B0A10", "#100E16", "#1D1B25", "#4C4A52", "#7B7A80", "#AFAEB2", "#E7E7E8"] },
+      "medium-violet-grey": { "role": "neutral", "displayName": "Medium Violet-Grey", "canonical": "#201B2C", "tonalRamp": ["#0A080D", "#120F19", "#1A1623", "#292434", "#56525F", "#827F89", "#B3B1B7", "#E9E8EA"] },
+      "text-white": { "role": "neutral", "displayName": "White", "canonical": "#FFFFFF", "tonalRamp": ["#4D4D4D", "#8F8F8F", "#CCCCCC", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF", "#FFFFFF"] },
+      "lavender-grey": { "role": "neutral", "displayName": "Lavender-Grey", "canonical": "#C2B8D6", "tonalRamp": ["#3A3740", "#6D6778", "#9B93AB", "#C4BBD8", "#D1C9E0", "#DDD7E8", "#EAE7F1", "#F9F8FB"] },
+      "muted-lavender": { "role": "neutral", "displayName": "Muted Lavender", "canonical": "#8A81A0", "tonalRamp": ["#292730", "#4D485A", "#6E6780", "#8F86A4", "#A69FB7", "#BDB8CA", "#D7D4DF", "#F3F2F6"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Largest single statement on the page; reserved, not yet used at full scale." },
+      "headline": { "displayName": "Headline", "purpose": "Hero name, navbar wordmark, top section emphasis." },
+      "title": { "displayName": "Title", "purpose": "Section sub-heads, card titles, role/project names." },
+      "body": { "displayName": "Body", "purpose": "Paragraph copy, descriptions, contact text." },
+      "label": { "displayName": "Label", "purpose": "Eyebrow captions and the smallest UI text (e.g. 'READING RIGHT NOW')." }
+    },
+    "shadows": [
+      { "name": "resting-glow", "value": "0 0 10px rgba(255,46,147,0.2)", "purpose": "Default always-on glow on floating skill icons and similar ambient accents." },
+      { "name": "hover-glow", "value": "0 0 20px rgba(255,46,147,0.4), 0 0 30px 8px rgba(255,46,147,0.3)", "purpose": "Amplified two-layer glow on hover/active state." },
+      { "name": "dual-pole-glow", "value": "-6px 0 24px 2px rgba(255,46,147,0.35), 6px 0 24px 2px rgba(34,217,255,0.35)", "purpose": "Hero/about portrait ring — lit from two colored sources at once." },
+      { "name": "chrome-shadow", "value": "0 12px 24px rgba(0,0,0,0.4)", "purpose": "Mobile nav menu panel and scrim only — the deliberate neutral exception, used to recede rather than signal." }
+    ],
+    "motion": [
+      { "name": "reveal-cascade", "value": "700ms cubic-bezier(0.215,0.61,0.355,1), translateY 32px→0, opacity 0→1", "purpose": "Scroll-triggered entrance for every section/card, staggered ~80-160ms per sibling." },
+      { "name": "hero-entrance", "value": "1100ms cubic-bezier(0.16,1,0.3,1), segmented timeline", "purpose": "Hero's one-time load-in: photo scale-in, then name/title/tags rise-in staggered." },
+      { "name": "idle-float", "value": "2500-3500ms ease-in-out loop, translateY ±15-20px + rotate ±0.05rad + scale 0.95-1.05", "purpose": "Floating skill icon perpetual idle motion; freezes and lifts to 1.1x on hover." },
+      { "name": "ambient-background", "value": "gradient wash 10s loop, particles 20s loop, smoke wisps 18s loop with burst-then-settle easing", "purpose": "Persistent three-layer animated background; always running, honors reduced-motion." },
+      { "name": "nav-dock-transition", "value": "600ms, slide+fade, easeOutCubic/easeInOut", "purpose": "Navbar's animated move from top-of-page to bottom-pinned pill on scroll." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "800px" },
+      { "name": "grid-2col", "value": "700px" },
+      { "name": "skills-sm", "value": "600px" },
+      { "name": "skills-md", "value": "900px" },
+      { "name": "skills-lg", "value": "1200px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Filled magenta CTA (e.g. project card 'Code' link).",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><polyline points=\"16 18 22 12 16 6\"/><polyline points=\"8 6 2 12 8 18\"/></svg>Code</button>",
+      "css": ".ds-btn-primary { display:inline-flex; align-items:center; gap:8px; background:#FF2E93; color:#fff; padding:16px 32px; border:none; border-radius:12px; font-family:'Inter',sans-serif; font-weight:600; font-size:16px; cursor:pointer; transition:filter 0.2s; } .ds-btn-primary:hover { filter:brightness(1.1); } .ds-btn-primary:focus-visible { outline:2px solid #22D9FF; outline-offset:2px; }"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Transparent secondary action (e.g. project card 'Live' link).",
+      "html": "<button class=\"ds-btn-outline\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6\"/><polyline points=\"15 3 21 3 21 9\"/><line x1=\"10\" y1=\"14\" x2=\"21\" y2=\"3\"/></svg>Live</button>",
+      "css": ".ds-btn-outline { display:inline-flex; align-items:center; gap:8px; background:transparent; color:#FF2E93; padding:14px 30px; border:2px solid #FF2E93; border-radius:12px; font-family:'Inter',sans-serif; font-weight:600; font-size:16px; cursor:pointer; transition:background 0.2s; } .ds-btn-outline:hover { background:rgba(255,46,147,0.1); }"
+    },
+    {
+      "name": "Surface Card",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "The common bordered card (bio, education, now-cards, contact rows).",
+      "html": "<div class=\"ds-card-surface\"><div class=\"ds-card-title\">Bachelor of Science in Computer Science</div><div class=\"ds-card-body\">University of Management and Technology</div></div>",
+      "css": ".ds-card-surface { background:#14111C; border:1px solid rgba(255,46,147,0.2); border-radius:12px; padding:20px; font-family:'Inter',sans-serif; transition:border-color 0.2s; } .ds-card-surface:hover { border-color:rgba(255,46,147,0.4); } .ds-card-title { color:#FF2E93; font-weight:700; font-size:18px; margin-bottom:8px; } .ds-card-body { color:#FFFFFF; font-size:14px; }"
+    },
+    {
+      "name": "Tag Chip",
+      "kind": "chip",
+      "refersTo": "chip-tag",
+      "description": "Pill-shaped informational tag (hero signal tags).",
+      "html": "<span class=\"ds-chip-tag\">6× Microsoft Certified</span>",
+      "css": ".ds-chip-tag { display:inline-block; background:rgba(255,46,147,0.1); color:#FFFFFF; border:1px solid rgba(255,46,147,0.3); border-radius:20px; padding:10px 16px; font-family:'Inter',sans-serif; font-weight:600; font-size:14px; }"
+    },
+    {
+      "name": "Floating Skill Icon",
+      "kind": "custom",
+      "refersTo": "skill-icon",
+      "description": "Signature component: idle-floating icon tile that lifts and glows brighter on hover.",
+      "html": "<div class=\"ds-skill-icon\"><div class=\"ds-skill-icon-tile\"><svg width=\"28\" height=\"28\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><circle cx=\"12\" cy=\"12\" r=\"10\"/></svg></div><span class=\"ds-skill-icon-label\">Flutter</span></div>",
+      "css": ".ds-skill-icon { display:flex; flex-direction:column; align-items:center; gap:8px; animation: ds-float 3s ease-in-out infinite; } @keyframes ds-float { 0%,100% { transform:translateY(-15px) rotate(-0.05rad); } 50% { transform:translateY(15px) rotate(0.05rad); } } .ds-skill-icon-tile { width:80px; height:80px; display:flex; align-items:center; justify-content:center; background:#201B2C; color:#FF2E93; border-radius:16px; box-shadow:0 0 10px 2px rgba(255,46,147,0.2); transition:all 0.2s; } .ds-skill-icon:hover { animation-play-state:paused; } .ds-skill-icon:hover .ds-skill-icon-tile { background:rgba(255,46,147,0.1); border:2px solid #FF2E93; box-shadow:0 0 20px 4px rgba(255,46,147,0.4), 0 0 30px 8px rgba(255,46,147,0.3); transform:scale(1.1); } .ds-skill-icon-label { color:rgba(255,46,147,0.7); font-family:'Inter',sans-serif; font-weight:700; font-size:14px; } .ds-skill-icon:hover .ds-skill-icon-label { color:#FF2E93; }"
+    },
+    {
+      "name": "Section Heading",
+      "kind": "custom",
+      "refersTo": "section-heading",
+      "description": "Signature component: gradient accent bar + bold left-aligned title, identical across every major section.",
+      "html": "<div class=\"ds-section-heading\"><div class=\"ds-section-heading-bar\"></div><h2 class=\"ds-section-heading-title\">Projects</h2></div>",
+      "css": ".ds-section-heading { display:flex; align-items:center; gap:16px; } .ds-section-heading-bar { width:6px; height:40px; border-radius:3px; background:linear-gradient(180deg,#FF2E93,#22D9FF); } .ds-section-heading-title { color:#FF2E93; font-family:'Inter',sans-serif; font-weight:700; font-size:36px; margin:0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Neon Terminal",
+    "overview": "This is a dev-tool's confidence rendered as a portfolio, not a design agency's restraint. The palette is a two-color signal (Neon Magenta and Neon Cyan) burning against a near-black violet void — the same instinct as a terminal prompt or a status LED, not a corporate brand system. Nothing sits inert: a three-layer animated background (drifting gradient, floating dust, crossing smoke) keeps the whole page breathing even when the visitor isn't touching anything, and every interactive surface answers a hover or tap with a brighter, wider glow rather than a static color change.\n\nThe system rejects the generic \"clean minimalist portfolio\" reference entirely — flat white cards, muted pastels, and gentle drop-shadows have no place here. Depth is never gray; it's colored light. Density stays generous (wide padding, roomy type scale) so the neon reads as confident, not cluttered.",
+    "keyCharacteristics": [
+      "Two-color neon signal (magenta + cyan) on near-black violet, never neutral gray or black surfaces",
+      "Glow is the only depth cue — no plain black box-shadows anywhere in the system",
+      "Persistent animated ambient background (gradient wash, particles, smoke) — always running, respects reduced-motion",
+      "Scroll-triggered reveal cascade on every section; idle float/rotate/pulse loops on hero and skill icons",
+      "Generous whitespace and a bold, confident type scale (Inter, weights 300–900)"
+    ],
+    "rules": [
+      { "name": "The No Neutral Rule", "body": "No surface, border, or text color in this system is true gray or true black. Backgrounds and text neutrals are all violet-tinted; shadows and glows are always magenta or cyan, never Colors.black alone (the one exception — the mobile nav menu's drop shadow and scrim — stays black specifically because it needs to read as \"recede,\" not \"signal\").", "section": "colors" },
+      { "name": "The Triad Rule", "body": "Any place the system needs to color something dynamically (per-technology chips, generative project fingerprints) draws from the same three stops — Magenta → Cyan → Soft Pink → Magenta — via deterministic hash, never an arbitrary or expanding palette.", "section": "colors" },
+      { "name": "The Weight-Carries-Hierarchy Rule", "body": "Don't introduce a second typeface for emphasis — every hierarchy shift in this system is size + weight + tracking on Inter alone.", "section": "typography" },
+      { "name": "The Signal, Not Shadow Rule", "body": "There is no \"flat vs. lifted\" surface language independent of color. Depth is glow: every BoxShadow is tinted magenta or cyan, and its presence or intensity is a state signal, not a static resting elevation. Never flatten a glow to a plain black shadow.", "section": "elevation" },
+      { "name": "The Amplify-On-Interaction Rule", "body": "Hover/active states never introduce a new visual language — they turn the same glow up (wider blur, more spread, sometimes a second shadow layer), never swap in a different effect.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do keep the animated background (gradient wash, particles, smoke) running everywhere — it's core identity, not optional chrome — while always respecting reduced-motion.",
+      "Do tint every shadow and glow magenta or cyan (or both, as a dual-pole glow); depth is color, never gray.",
+      "Do amplify existing glow on hover/focus rather than introducing a new effect.",
+      "Do stagger multi-item reveals and idle loops so groups never move as one rigid block.",
+      "Do derive any dynamically-colored element from the Magenta → Cyan → Soft-Pink triad via deterministic hash."
+    ],
+    "donts": [
+      "Don't introduce a light theme or a light-mode surface — #07060B is the only background this system has.",
+      "Don't add a fourth brand hue outside the magenta/cyan/soft-pink triad.",
+      "Don't flatten a glow into a plain neutral box-shadow/black elevation.",
+      "Don't use pure black or pure gray for text, borders, or surfaces.",
+      "Don't add a second display typeface."
+    ]
+  }
+}
