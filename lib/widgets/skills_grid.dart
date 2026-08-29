@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import '../models/skill.dart';
 import 'floating_skill_icon.dart';
 
 class SkillsGrid extends StatelessWidget {
+  // Proficiency ratings (from the portfolio data) for the icons below that
+  // have a matching named entry; icons with no match use the default size.
+  final List<Skill> proficiencies;
+
   // Skill data with icon paths and names
   static const List<Map<String, String>> skills = [
     {'path': 'assets/skills/flutter.svg', 'name': 'Flutter'},
@@ -20,7 +25,7 @@ class SkillsGrid extends StatelessWidget {
     // {'path': 'assets/skills/vercel.svg', 'name': 'Vercel'},
   ];
 
-  const SkillsGrid({super.key});
+  const SkillsGrid({super.key, this.proficiencies = const []});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +34,7 @@ class SkillsGrid extends StatelessWidget {
         // Responsive grid configuration
         final double width = constraints.maxWidth;
         final int crossAxisCount = _getCrossAxisCount(width);
-        final double iconSize = _getIconSize(width, crossAxisCount);
+        final double baseIconSize = _getIconSize(width, crossAxisCount);
 
         return Wrap(
           spacing: 24,
@@ -40,7 +45,7 @@ class SkillsGrid extends StatelessWidget {
             (index) => FloatingSkillIcon(
               assetPath: skills[index]['path']!,
               skillName: skills[index]['name']!,
-              size: iconSize,
+              size: baseIconSize * _proficiencyScale(skills[index]['name']!),
               floatingRange: 15.0,
               animationDuration: Duration(
                 milliseconds: 2500 + (index % 3) * 500,
@@ -53,6 +58,17 @@ class SkillsGrid extends StatelessWidget {
         );
       },
     );
+  }
+
+  // Scales an icon by its rated proficiency (1-5) when one is on record;
+  // icons with no matching rating (e.g. iOS, GitHub) stay at base size.
+  double _proficiencyScale(String skillName) {
+    for (final skill in proficiencies) {
+      if (skill.name.toLowerCase() == skillName.toLowerCase()) {
+        return 0.8 + (skill.proficiency.clamp(1, 5) / 5) * 0.3;
+      }
+    }
+    return 1.0;
   }
 
   int _getCrossAxisCount(double width) {

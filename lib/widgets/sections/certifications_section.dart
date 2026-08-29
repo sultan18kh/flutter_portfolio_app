@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import '../../models/certification.dart';
 import '../../utils/app_theme.dart';
-import '../floating_skill_icon.dart';
 import '../reveal_on_scroll.dart';
 
 class CertificationsSection extends StatelessWidget {
@@ -12,12 +11,6 @@ class CertificationsSection extends StatelessWidget {
     super.key,
     required this.certifications,
   });
-
-  static const List<Map<String, String>> _badges = [
-    {'path': 'assets/certs/fundamentals.png', 'name': 'Azure Fundamentals'},
-    {'path': 'assets/certs/applied_skills.png', 'name': 'Applied Skills'},
-    {'path': 'assets/certs/associate.png', 'name': 'AI-103 Associate'},
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -41,29 +34,6 @@ class CertificationsSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 48),
-
-          // Real credential badges
-          RevealOnScroll(
-            delay: const Duration(milliseconds: 120),
-            child: Wrap(
-              spacing: 32,
-              runSpacing: 24,
-              children: List.generate(_badges.length, (index) {
-                final badge = _badges[index];
-                return FloatingSkillIcon(
-                  assetPath: badge['path']!,
-                  skillName: badge['name']!,
-                  size: 110,
-                  floatingRange: 12,
-                  animationDuration: Duration(
-                    milliseconds: 2800 + (index % 3) * 400,
-                  ),
-                  delay: Duration(milliseconds: index * 120),
-                );
-              }),
-            ),
-          ),
-          const SizedBox(height: 56),
 
           // Certification list
           LayoutBuilder(
@@ -123,6 +93,17 @@ class CertificationsSection extends StatelessWidget {
     );
   }
 
+  // Real Microsoft badge art per credential tier, not a generic icon.
+  String _badgeAssetFor(Certification cert) {
+    if (cert.name.startsWith('APL-7008')) {
+      return 'assets/certs/applied_skills.png';
+    }
+    if (cert.name.startsWith('AI-103')) {
+      return 'assets/certs/associate.png';
+    }
+    return 'assets/certs/fundamentals.png';
+  }
+
   Widget _buildCertificationCard(BuildContext context, Certification cert) {
     return Container(
       padding: const EdgeInsets.all(24),
@@ -144,18 +125,33 @@ class CertificationsSection extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            width: 48,
-            height: 48,
+            width: 56,
+            height: 56,
             decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: const LinearGradient(
-                colors: [AppTheme.primaryColor, AppTheme.accentColor],
-              ),
+              boxShadow: [
+                BoxShadow(
+                  color: AppTheme.primaryColor.withValues(alpha: 0.25),
+                  blurRadius: 16,
+                  spreadRadius: 1,
+                ),
+              ],
             ),
-            child: const Icon(
-              Icons.workspace_premium,
-              color: Colors.white,
-              size: 24,
+            child: Image.asset(
+              _badgeAssetFor(cert),
+              fit: BoxFit.contain,
+              errorBuilder: (context, error, stackTrace) => Container(
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                    colors: [AppTheme.primaryColor, AppTheme.accentColor],
+                  ),
+                ),
+                child: const Icon(
+                  Icons.workspace_premium,
+                  color: Colors.white,
+                  size: 24,
+                ),
+              ),
             ),
           ),
           const SizedBox(width: 16),
@@ -171,13 +167,15 @@ class CertificationsSection extends StatelessWidget {
                       ),
                   maxLines: 2,
                 ),
-                const SizedBox(height: 6),
-                AutoSizeText(
-                  cert.issuer ?? 'Unknown Issuer',
-                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppTheme.primaryColor,
-                      ),
-                ),
+                if (cert.issuer != null) ...[
+                  const SizedBox(height: 6),
+                  AutoSizeText(
+                    cert.issuer!,
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: AppTheme.primaryColor,
+                        ),
+                  ),
+                ],
                 if (cert.date != null) ...[
                   const SizedBox(height: 4),
                   AutoSizeText(

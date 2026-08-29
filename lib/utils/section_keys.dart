@@ -10,6 +10,7 @@ class SectionKeys {
     'about': GlobalKey(debugLabel: 'about'),
     'experience': GlobalKey(debugLabel: 'experience'),
     'skills': GlobalKey(debugLabel: 'skills'),
+    'certifications': GlobalKey(debugLabel: 'certifications'),
     'projects': GlobalKey(debugLabel: 'projects'),
     'contact': GlobalKey(debugLabel: 'contact'),
   };

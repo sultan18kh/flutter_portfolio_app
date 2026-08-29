@@ -21,7 +21,7 @@ class SkillsSection extends StatelessWidget {
         children: [
           _buildSectionTitle('Skills'),
           const SizedBox(height: 60),
-          const SkillsGrid(),
+          SkillsGrid(proficiencies: skills),
         ],
       ),
     );
