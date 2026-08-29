@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
+import 'package:url_launcher/url_launcher.dart';
 import '../utils/app_theme.dart';
 import 'spotify_embed.dart';
 
@@ -147,15 +148,16 @@ class _ReadingRightNowCardState extends State<ReadingRightNowCard> {
   String? _description;
   int? _coverId;
   bool _loading = true;
+  late final String _workId;
 
   @override
   void initState() {
     super.initState();
-    final workId = ReadingRightNowCard._workIds[DateTime.now().month - 1];
-    if (workId.isEmpty) {
+    _workId = ReadingRightNowCard._workIds[DateTime.now().month - 1];
+    if (_workId.isEmpty) {
       _loading = false;
     } else {
-      _fetch(workId);
+      _fetch(_workId);
     }
   }
 
@@ -229,13 +231,25 @@ class _ReadingRightNowCardState extends State<ReadingRightNowCard> {
 
   @override
   Widget build(BuildContext context) {
+    // Human book page, not the .json API endpoint — tappable once a title
+    // has actually loaded, so a failed fetch or an unset month never opens
+    // a dead-end link.
+    final body = _buildBody(context);
     return _NowCard(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _label(context, Icons.menu_book_rounded, 'READING RIGHT NOW'),
           const SizedBox(height: 12),
-          _buildBody(context),
+          _title == null
+              ? body
+              : InkWell(
+                  onTap: () => launchUrl(
+                    Uri.parse('https://openlibrary.org/works/$_workId'),
+                  ),
+                  borderRadius: BorderRadius.circular(8),
+                  child: body,
+                ),
         ],
       ),
     );
