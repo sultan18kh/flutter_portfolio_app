@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import '../../models/experience.dart';
 import '../../utils/app_theme.dart';
 import '../reveal_on_scroll.dart';
+import '../section_heading.dart';
 
 class ExperienceSection extends StatefulWidget {
   final List<Experience> experience;
@@ -79,7 +80,7 @@ class _ExperienceSectionState extends State<ExperienceSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          RevealOnScroll(child: _buildSectionTitle('Experience')),
+          const RevealOnScroll(child: SectionHeading('Experience')),
           const SizedBox(height: 60),
           Stack(
             key: _railKey,
@@ -151,27 +152,14 @@ class _ExperienceSectionState extends State<ExperienceSection> {
     );
   }
 
-  Widget _buildSectionTitle(String title) {
-    return Builder(
-      builder: (context) => AutoSizeText(
-        title,
-        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              color: AppTheme.primaryColor,
-              fontWeight: FontWeight.bold,
-            ),
-      ),
-    );
-  }
-
   Widget _buildTimelineBadge(String company, {bool compact = false}) {
     final path = _companyLogos[company];
     final size = compact ? 34.0 : 60.0;
     return Container(
       width: size,
       height: size,
-      padding: path != null
-          ? EdgeInsets.all(compact ? 5 : 10)
-          : EdgeInsets.zero,
+      padding:
+          path != null ? EdgeInsets.all(compact ? 5 : 10) : EdgeInsets.zero,
       decoration: BoxDecoration(
         color: path != null ? Colors.white : AppTheme.primaryColor,
         shape: BoxShape.circle,
@@ -196,8 +184,9 @@ class _ExperienceSectionState extends State<ExperienceSection> {
               child: Image.asset(
                 path,
                 fit: BoxFit.contain,
-                errorBuilder: (context, error, stackTrace) =>
-                    const Icon(Icons.work_rounded, color: AppTheme.primaryColor),
+                errorBuilder: (context, error, stackTrace) => const Icon(
+                    Icons.work_rounded,
+                    color: AppTheme.primaryColor),
               ),
             ),
     );
@@ -244,8 +233,7 @@ class _ExperienceSectionState extends State<ExperienceSection> {
                 AutoSizeText(
                   exp.period,
                   style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                        color: AppTheme.textPrimaryColor
-                            .withValues(alpha: 0.6),
+                        color: AppTheme.textPrimaryColor.withValues(alpha: 0.6),
                       ),
                   maxLines: 1,
                 ),
@@ -258,56 +246,69 @@ class _ExperienceSectionState extends State<ExperienceSection> {
   }
 
   Widget _buildExperienceCard(BuildContext context, Experience exp) {
+    // Header (badge + title/company/period) stays a fixed-width Row so the
+    // badge lines up with the rail behind it at every screen size. The
+    // description drops below instead of squeezing into that same narrow
+    // remaining column — on mobile, badge+gap was eating ~40% of the
+    // card's width before any text started, forcing the description into
+    // a column barely wide enough for a few words per line and stretching
+    // the card's height far beyond what the content needs.
     return Container(
       margin: const EdgeInsets.only(bottom: 32),
       child: Card(
         child: Padding(
           padding: const EdgeInsets.all(40),
-          child: Row(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Timeline indicator — company logo instead of a number
-              _buildTimelineBadge(exp.company),
-              const SizedBox(width: 30),
-              // Experience content
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AutoSizeText(
-                      exp.title,
-                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: AppTheme.primaryColor,
-                            fontWeight: FontWeight.bold,
-                          ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Timeline indicator — company logo instead of a number
+                  _buildTimelineBadge(exp.company),
+                  const SizedBox(width: 30),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AutoSizeText(
+                          exp.title,
+                          style:
+                              Theme.of(context).textTheme.titleLarge?.copyWith(
+                                    color: AppTheme.primaryColor,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                        ),
+                        const SizedBox(height: 8),
+                        AutoSizeText(
+                          exp.company,
+                          style:
+                              Theme.of(context).textTheme.titleMedium?.copyWith(
+                                    color: AppTheme.textPrimaryColor,
+                                  ),
+                          maxLines: 1,
+                        ),
+                        const SizedBox(height: 8),
+                        AutoSizeText(
+                          exp.period,
+                          style:
+                              Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: AppTheme.textPrimaryColor
+                                        .withValues(alpha: 0.7),
+                                  ),
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 8),
-                    AutoSizeText(
-                      exp.company,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            color: AppTheme.textPrimaryColor,
-                          ),
-                      maxLines: 1,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              AutoSizeText(
+                exp.responsibilities.join('\n• '),
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                      color: AppTheme.textPrimaryColor.withValues(alpha: 0.8),
+                      height: 1.6,
                     ),
-                    const SizedBox(height: 8),
-                    AutoSizeText(
-                      exp.period,
-                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                            color: AppTheme.textPrimaryColor
-                                .withValues(alpha: 0.7),
-                          ),
-                    ),
-                    const SizedBox(height: 16),
-                    AutoSizeText(
-                      exp.responsibilities.join('\n• '),
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: AppTheme.textPrimaryColor
-                                .withValues(alpha: 0.8),
-                            height: 1.6,
-                          ),
-                    ),
-                  ],
-                ),
               ),
             ],
           ),

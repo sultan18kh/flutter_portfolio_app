@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import '../../models/certification.dart';
 import '../../utils/app_theme.dart';
 import '../reveal_on_scroll.dart';
+import '../section_heading.dart';
 
 class CertificationsSection extends StatelessWidget {
   final List<Certification> certifications;
@@ -19,8 +20,8 @@ class CertificationsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          RevealOnScroll(
-            child: _buildSectionTitle(context),
+          const RevealOnScroll(
+            child: SectionHeading('Certifications'),
           ),
           const SizedBox(height: 16),
           RevealOnScroll(
@@ -63,33 +64,6 @@ class CertificationsSection extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-
-  Widget _buildSectionTitle(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 6,
-          height: 40,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(3),
-            gradient: const LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [AppTheme.primaryColor, AppTheme.accentColor],
-            ),
-          ),
-        ),
-        const SizedBox(width: 16),
-        AutoSizeText(
-          'Certifications',
-          style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                color: AppTheme.primaryColor,
-                fontWeight: FontWeight.bold,
-              ),
-        ),
-      ],
     );
   }
 

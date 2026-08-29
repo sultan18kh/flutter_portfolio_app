@@ -5,6 +5,7 @@ import '../../models/education.dart';
 import '../../utils/app_theme.dart';
 import '../../utils/morph_keys.dart';
 import '../../utils/photo_morph_progress.dart';
+import '../section_heading.dart';
 
 class AboutSection extends StatelessWidget {
   final PersonalInfo personalInfo;
@@ -25,7 +26,7 @@ class AboutSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          _buildSectionTitle('About Me'),
+          const SectionHeading('About Me'),
           const SizedBox(height: 40),
           LayoutBuilder(
             builder: (context, constraints) {
@@ -41,8 +42,7 @@ class AboutSection extends StatelessWidget {
                 child: AutoSizeText(
                   personalInfo.aboutBio,
                   style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color:
-                            AppTheme.textPrimaryColor.withValues(alpha: 0.8),
+                        color: AppTheme.textPrimaryColor.withValues(alpha: 0.8),
                         height: 1.6,
                       ),
                 ),
@@ -110,8 +110,7 @@ class AboutSection extends StatelessWidget {
         child: Image.asset(
           'assets/sultan_cover.webp',
           fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) =>
-              const SizedBox.shrink(),
+          errorBuilder: (context, error, stackTrace) => const SizedBox.shrink(),
         ),
       ),
     );
@@ -164,18 +163,6 @@ class AboutSection extends StatelessWidget {
         return Opacity(opacity: opacity, child: child);
       },
       child: portrait,
-    );
-  }
-
-  Widget _buildSectionTitle(String title) {
-    return Builder(
-      builder: (context) => AutoSizeText(
-        title,
-        style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-              color: AppTheme.primaryColor,
-              fontWeight: FontWeight.bold,
-            ),
-      ),
     );
   }
 

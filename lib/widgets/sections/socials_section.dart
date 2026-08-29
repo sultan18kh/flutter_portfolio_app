@@ -21,10 +21,16 @@ class SocialsSection extends StatelessWidget {
       'assets/socials/microsoft-learn.svg',
       'https://learn.microsoft.com/en-gb/users/sultankhan-6242/'
     ),
+    ('WhatsApp', 'assets/socials/whatsapp.svg', 'https://wa.me/923554776815'),
     (
       'Instagram',
       'assets/socials/instagram.svg',
       'https://www.instagram.com/sultankh18/'
+    ),
+    (
+      'Threads',
+      'assets/socials/threads.svg',
+      'https://www.threads.com/@sultankh18'
     ),
     (
       'Facebook',
