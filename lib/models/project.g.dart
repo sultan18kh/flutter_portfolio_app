@@ -14,9 +14,14 @@ Project _$ProjectFromJson(Map<String, dynamic> json) => Project(
           .toList(),
       features:
           (json['features'] as List<dynamic>).map((e) => e as String).toList(),
+      platforms: (json['platforms'] as List<dynamic>?)
+              ?.map((e) => $enumDecode(_$ProjectPlatformEnumMap, e))
+              .toList() ??
+          const [],
       imageUrl: json['imageUrl'] as String?,
-      githubUrl: json['githubUrl'] as String?,
-      liveUrl: json['liveUrl'] as String?,
+      appStoreUrl: json['appStoreUrl'] as String?,
+      playStoreUrl: json['playStoreUrl'] as String?,
+      siteUrl: json['siteUrl'] as String?,
     );
 
 Map<String, dynamic> _$ProjectToJson(Project instance) => <String, dynamic>{
@@ -24,7 +29,17 @@ Map<String, dynamic> _$ProjectToJson(Project instance) => <String, dynamic>{
       'description': instance.description,
       'technologies': instance.technologies,
       'features': instance.features,
+      'platforms':
+          instance.platforms.map((e) => _$ProjectPlatformEnumMap[e]!).toList(),
       'imageUrl': instance.imageUrl,
-      'githubUrl': instance.githubUrl,
-      'liveUrl': instance.liveUrl,
+      'appStoreUrl': instance.appStoreUrl,
+      'playStoreUrl': instance.playStoreUrl,
+      'siteUrl': instance.siteUrl,
     };
+
+const _$ProjectPlatformEnumMap = {
+  ProjectPlatform.ios: 'ios',
+  ProjectPlatform.android: 'android',
+  ProjectPlatform.web: 'web',
+  ProjectPlatform.aiAgent: 'aiAgent',
+};

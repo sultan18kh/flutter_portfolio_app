@@ -132,6 +132,33 @@ class _ProjectCardState extends State<_ProjectCard>
     if (_previewController.isShowing) _previewController.hide();
   }
 
+  void _openDetails(BuildContext context, Color accent) {
+    _cancelImagePreview();
+    final reduceMotion = MediaQuery.of(context).disableAnimations;
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: true,
+      barrierLabel: 'Close',
+      barrierColor: Colors.black.withValues(alpha: 0.75),
+      transitionDuration:
+          reduceMotion ? Duration.zero : const Duration(milliseconds: 220),
+      pageBuilder: (context, _, __) => _ProjectDetailsDialog(
+        project: widget.project,
+        accentColor: accent,
+        techIcons: widget.techIcons,
+      ),
+      transitionBuilder: (context, animation, _, child) => FadeTransition(
+        opacity: animation,
+        child: ScaleTransition(
+          scale: Tween(begin: 0.94, end: 1.0).animate(
+            CurvedAnimation(parent: animation, curve: Curves.easeOutCubic),
+          ),
+          child: child,
+        ),
+      ),
+    );
+  }
+
   void _openLightbox(BuildContext context, String imagePath, Color accent) {
     // The hover-intent preview (desktop) and the tap target overlap on
     // hybrid mouse+touch input — always clear it before going full-screen
@@ -261,14 +288,31 @@ class _ProjectCardState extends State<_ProjectCard>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      AutoSizeText(
-                        project.name,
-                        style:
-                            Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  color: AppTheme.primaryColor,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                        maxLines: 1,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: AutoSizeText(
+                              project.name,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                    color: AppTheme.primaryColor,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                              maxLines: 1,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          _PlatformBadges(platforms: project.platforms),
+                          if (project.features.isNotEmpty) ...[
+                            const SizedBox(width: 6),
+                            _InfoButton(
+                              onTap: () => _openDetails(context, accentColor),
+                            ),
+                          ],
+                        ],
                       ),
                       const SizedBox(height: 6),
                       AutoSizeText(
@@ -285,51 +329,15 @@ class _ProjectCardState extends State<_ProjectCard>
                         runSpacing: 6,
                         children: project.technologies
                             .take(3)
-                            .map((tech) => _buildTechChip(context, tech))
+                            .map((tech) => _TechChip(
+                                  tech: tech,
+                                  iconPath:
+                                      widget.techIcons[tech.toLowerCase()],
+                                ))
                             .toList(),
                       ),
-                      if (project.githubUrl != null ||
-                          project.liveUrl != null) ...[
-                        const SizedBox(height: 16),
-                        // Action buttons
-                        Row(
-                          children: [
-                            if (project.githubUrl != null)
-                              Expanded(
-                                child: ElevatedButton.icon(
-                                  onPressed: () =>
-                                      _launchUrl(project.githubUrl!),
-                                  icon: const Icon(Icons.code, size: 16),
-                                  label: const Text('Code'),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: AppTheme.primaryColor,
-                                    foregroundColor: Colors.white,
-                                    padding:
-                                        const EdgeInsets.symmetric(vertical: 8),
-                                  ),
-                                ),
-                              ),
-                            if (project.githubUrl != null &&
-                                project.liveUrl != null)
-                              const SizedBox(width: 8),
-                            if (project.liveUrl != null)
-                              Expanded(
-                                child: OutlinedButton.icon(
-                                  onPressed: () => _launchUrl(project.liveUrl!),
-                                  icon: const Icon(Icons.launch, size: 16),
-                                  label: const Text('Live'),
-                                  style: OutlinedButton.styleFrom(
-                                    foregroundColor: AppTheme.primaryColor,
-                                    side: const BorderSide(
-                                        color: AppTheme.primaryColor),
-                                    padding:
-                                        const EdgeInsets.symmetric(vertical: 8),
-                                  ),
-                                ),
-                              ),
-                          ],
-                        ),
-                      ],
+                      const SizedBox(height: 16),
+                      _ProjectLinkActions(project: project),
                     ],
                   ),
                 ),
@@ -394,38 +402,297 @@ class _ProjectCardState extends State<_ProjectCard>
     );
   }
 
-  Widget _buildTechChip(BuildContext context, String tech) {
-    final iconPath = widget.techIcons[tech.toLowerCase()];
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        color: AppTheme.primaryColor.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (iconPath != null) ...[
-            SvgPicture.asset(iconPath, width: 12, height: 12),
-            const SizedBox(width: 4),
-          ],
-          AutoSizeText(
-            tech,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppTheme.primaryColor,
-                  fontSize: 10,
+}
+
+Future<void> _launchUrl(String url) async {
+  final uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
+  }
+}
+
+// Platform-type badges shown next to a project's name — pure identity
+// signal (what kind of product this is), never tappable. All four platforms
+// share one chip treatment (same size, same cyan tint, same Material icon
+// family already used throughout the app for contact rows and nav) so the
+// row reads as one coherent set instead of a mismatched brand-color lineup.
+class _PlatformBadges extends StatelessWidget {
+  final List<ProjectPlatform> platforms;
+
+  const _PlatformBadges({required this.platforms});
+
+  @override
+  Widget build(BuildContext context) {
+    if (platforms.isEmpty) return const SizedBox.shrink();
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: platforms
+          .map((platform) => Padding(
+                padding: const EdgeInsets.only(left: 6),
+                child: Tooltip(
+                  message: _label(platform),
+                  child: Container(
+                    width: 24,
+                    height: 24,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppTheme.accentColor.withValues(alpha: 0.12),
+                      border: Border.all(
+                        color: AppTheme.accentColor.withValues(alpha: 0.3),
+                      ),
+                    ),
+                    child: Icon(
+                      _iconData(platform),
+                      size: 14,
+                      color: AppTheme.accentColor,
+                    ),
+                  ),
                 ),
-          ),
-        ],
-      ),
+              ))
+          .toList(),
     );
   }
 
-  Future<void> _launchUrl(String url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
+  String _label(ProjectPlatform platform) {
+    switch (platform) {
+      case ProjectPlatform.ios:
+        return 'iOS';
+      case ProjectPlatform.android:
+        return 'Android';
+      case ProjectPlatform.web:
+        return 'Web App';
+      case ProjectPlatform.aiAgent:
+        return 'AI Agent';
     }
+  }
+
+  IconData _iconData(ProjectPlatform platform) {
+    switch (platform) {
+      case ProjectPlatform.ios:
+        return Icons.apple;
+      case ProjectPlatform.android:
+        return Icons.android;
+      case ProjectPlatform.web:
+        return Icons.public;
+      case ProjectPlatform.aiAgent:
+        return Icons.smart_toy_outlined;
+    }
+  }
+}
+
+// Opens the full technical write-up (project.features) that the compact
+// card has no room for — same circular-chip footprint as the platform
+// badges next to it. Always the brand pink, not the card's own (hash-derived,
+// so it varies project to project) accent — a consistent color here reads as
+// "this control always does the same thing," where an accent tint would
+// wrongly imply it means something different per card.
+class _InfoButton extends StatefulWidget {
+  final VoidCallback onTap;
+
+  const _InfoButton({required this.onTap});
+
+  @override
+  State<_InfoButton> createState() => _InfoButtonState();
+}
+
+class _InfoButtonState extends State<_InfoButton> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: 'View technical details',
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        onEnter: (_) => setState(() => _isHovered = true),
+        onExit: (_) => setState(() => _isHovered = false),
+        child: GestureDetector(
+          onTap: widget.onTap,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 150),
+            width: 24,
+            height: 24,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppTheme.primaryColor
+                  .withValues(alpha: _isHovered ? 0.24 : 0.12),
+              border: Border.all(
+                color: AppTheme.primaryColor
+                    .withValues(alpha: _isHovered ? 0.7 : 0.3),
+              ),
+            ),
+            child: const Icon(
+              Icons.info_outline_rounded,
+              size: 14,
+              color: AppTheme.primaryColor,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// Per-project link action(s): store buttons, a site link, or — for anything
+// with no shareable link — a confidential indicator. Compact, naturally-sized
+// pills wrapped left (never a stretched full-width button) — the same
+// left-flush, intrinsic-width rhythm as the tech chips directly above them.
+class _ProjectLinkActions extends StatelessWidget {
+  final Project project;
+
+  const _ProjectLinkActions({required this.project});
+
+  @override
+  Widget build(BuildContext context) {
+    final hasStoreLink =
+        project.appStoreUrl != null || project.playStoreUrl != null;
+
+    if (hasStoreLink) {
+      return Wrap(
+        spacing: 8,
+        runSpacing: 8,
+        children: [
+          if (project.appStoreUrl != null)
+            _LinkButton(
+              icon: Icons.apple,
+              label: 'App Store',
+              onPressed: () => _launchUrl(project.appStoreUrl!),
+            ),
+          if (project.playStoreUrl != null)
+            _LinkButton(
+              icon: Icons.play_circle_outline_rounded,
+              label: 'Google Play',
+              onPressed: () => _launchUrl(project.playStoreUrl!),
+            ),
+        ],
+      );
+    }
+
+    if (project.siteUrl != null) {
+      return _LinkButton(
+        icon: Icons.public,
+        label: 'Visit Site',
+        onPressed: () => _launchUrl(project.siteUrl!),
+      );
+    }
+
+    return const _ConfidentialChip();
+  }
+}
+
+// A compact glass pill — the system's resting-glow/amplify-on-hover
+// vocabulary (see DESIGN.md Elevation & Depth, and _ContactItemButton /
+// _AlphaBoldCredit for the same treatment) instead of a generic Material
+// OutlinedButton, which reads flat and dated next to the rest of the page.
+class _LinkButton extends StatefulWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onPressed;
+
+  const _LinkButton({
+    required this.icon,
+    required this.label,
+    required this.onPressed,
+  });
+
+  @override
+  State<_LinkButton> createState() => _LinkButtonState();
+}
+
+class _LinkButtonState extends State<_LinkButton> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: GestureDetector(
+        onTap: widget.onPressed,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          decoration: BoxDecoration(
+            color: AppTheme.primaryColor
+                .withValues(alpha: _isHovered ? 0.16 : 0.08),
+            borderRadius: BorderRadius.circular(999),
+            border: Border.all(
+              color: AppTheme.primaryColor
+                  .withValues(alpha: _isHovered ? 0.6 : 0.25),
+            ),
+            boxShadow: _isHovered
+                ? [
+                    BoxShadow(
+                      color: AppTheme.primaryColor.withValues(alpha: 0.3),
+                      blurRadius: 16,
+                      spreadRadius: 1,
+                    ),
+                  ]
+                : const [],
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(widget.icon, size: 15, color: AppTheme.primaryColor),
+              const SizedBox(width: 6),
+              Text(
+                widget.label,
+                style: const TextStyle(
+                  color: AppTheme.primaryColor,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 12.5,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// Deliberately NOT a disabled button — a plain button that looks disabled
+// still signals "you could try this," which is the wrong message for a
+// link that will never work. This reads instead as a quiet inline status
+// indicator: same compact pill shape as _LinkButton for family consistency,
+// but static and muted-lavender (DESIGN.md's own "quietest text tier") —
+// never gains a hover glow, since it isn't interactive-relevant.
+class _ConfidentialChip extends StatelessWidget {
+  const _ConfidentialChip();
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: 'Confidential — link cannot be shared',
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        decoration: BoxDecoration(
+          color: AppTheme.textMutedColor.withValues(alpha: 0.08),
+          borderRadius: BorderRadius.circular(999),
+          border: Border.all(
+            color: AppTheme.textMutedColor.withValues(alpha: 0.25),
+          ),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.lock_rounded, size: 15, color: AppTheme.textMutedColor),
+            const SizedBox(width: 6),
+            Text(
+              'Confidential',
+              style: TextStyle(
+                color: AppTheme.textMutedColor,
+                fontWeight: FontWeight.w600,
+                fontSize: 12.5,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -494,6 +761,222 @@ class _ImageLightbox extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+// The full technical write-up for one project — everything the compact
+// card's 2-line description and 3-chip tech row can't fit: the untruncated
+// description, every technology, and the full `features` bullet list. Same
+// glass/accent-glow dialog language as `_ImageLightbox`.
+class _ProjectDetailsDialog extends StatelessWidget {
+  final Project project;
+  final Color accentColor;
+  final Map<String, String> techIcons;
+
+  const _ProjectDetailsDialog({
+    required this.project,
+    required this.accentColor,
+    required this.techIcons,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
+    return GestureDetector(
+      onTap: () => Navigator.of(context).pop(),
+      child: Material(
+        type: MaterialType.transparency,
+        child: SizedBox.expand(
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: math.min(640, size.width - 48),
+                maxHeight: size.height * 0.85,
+              ),
+              child: GestureDetector(
+                onTap: () {}, // absorb taps on the panel itself
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppTheme.surfaceColor,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: accentColor.withValues(alpha: 0.4),
+                      width: 1.5,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: accentColor.withValues(alpha: 0.3),
+                        blurRadius: 40,
+                        offset: const Offset(0, 16),
+                      ),
+                    ],
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(24, 20, 16, 0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                project.name,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(
+                                      color: accentColor,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ),
+                            _PlatformBadges(platforms: project.platforms),
+                            IconButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              icon: const Icon(Icons.close),
+                              color: AppTheme.textSecondaryColor,
+                              visualDensity: VisualDensity.compact,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Flexible(
+                        child: SingleChildScrollView(
+                          padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                project.description,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(
+                                      color: AppTheme.textSecondaryColor,
+                                      height: 1.5,
+                                    ),
+                              ),
+                              const SizedBox(height: 16),
+                              Wrap(
+                                spacing: 6,
+                                runSpacing: 6,
+                                children: project.technologies
+                                    .map((tech) => _TechChip(
+                                          tech: tech,
+                                          iconPath:
+                                              techIcons[tech.toLowerCase()],
+                                        ))
+                                    .toList(),
+                              ),
+                              if (project.features.isNotEmpty) ...[
+                                const SizedBox(height: 20),
+                                Text(
+                                  'Under the hood',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelLarge
+                                      ?.copyWith(
+                                        color: accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                ),
+                                const SizedBox(height: 10),
+                                ...project.features.map(
+                                  (feature) => Padding(
+                                    padding:
+                                        const EdgeInsets.only(bottom: 10),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 6),
+                                          child: Container(
+                                            width: 5,
+                                            height: 5,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: accentColor,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 10),
+                                        Expanded(
+                                          child: Text(
+                                            feature,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium
+                                                ?.copyWith(
+                                                  color: AppTheme
+                                                      .textPrimaryColor
+                                                      .withValues(alpha: 0.85),
+                                                  height: 1.5,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                              const SizedBox(height: 16),
+                              _ProjectLinkActions(project: project),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// Standalone tech chip (not tied to a hoverable card) used in the details
+// dialog's full technology list — same look as `_ProjectCard`'s chip, minus
+// the card-state dependency.
+class _TechChip extends StatelessWidget {
+  final String tech;
+  final String? iconPath;
+
+  const _TechChip({required this.tech, required this.iconPath});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: AppTheme.primaryColor.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (iconPath != null) ...[
+            SvgPicture.asset(iconPath!, width: 12, height: 12),
+            const SizedBox(width: 4),
+          ],
+          Text(
+            tech,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: AppTheme.primaryColor,
+                  fontSize: 10,
+                ),
+          ),
+        ],
       ),
     );
   }

@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../models/personal_info.dart';
 import '../../models/education.dart';
 import '../../utils/app_theme.dart';
@@ -34,6 +36,28 @@ class _AboutSectionState extends State<AboutSection> {
   final GlobalKey _bioRowKey = GlobalKey();
   final GlobalKey _educationKey = GlobalKey();
   double? _nowCardsHeight;
+
+  static const _alphaBoldUrl = 'https://www.alphabold.com/author/sultan-khan/';
+  late final TapGestureRecognizer _alphaBoldRecognizer;
+
+  @override
+  void initState() {
+    super.initState();
+    _alphaBoldRecognizer = TapGestureRecognizer()..onTap = _openAlphaBold;
+  }
+
+  @override
+  void dispose() {
+    _alphaBoldRecognizer.dispose();
+    super.dispose();
+  }
+
+  Future<void> _openAlphaBold() async {
+    final uri = Uri.parse(_alphaBoldUrl);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
 
   @override
   void didUpdateWidget(covariant AboutSection oldWidget) {
@@ -72,7 +96,7 @@ class _AboutSectionState extends State<AboutSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SectionHeading('About Me'),
+          const SectionHeading('Background'),
           const SizedBox(height: 40),
           LayoutBuilder(
             builder: (context, constraints) {
@@ -85,13 +109,7 @@ class _AboutSectionState extends State<AboutSection> {
                     color: AppTheme.primaryColor.withValues(alpha: 0.2),
                   ),
                 ),
-                child: AutoSizeText(
-                  personalInfo.aboutBio,
-                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                        color: AppTheme.textPrimaryColor.withValues(alpha: 0.8),
-                        height: 1.6,
-                      ),
-                ),
+                child: _buildBioText(context, personalInfo.aboutBio),
               );
               final educationColumn = Column(
                 key: _educationKey,
@@ -174,8 +192,6 @@ class _AboutSectionState extends State<AboutSection> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildCoverBanner(),
-                  const SizedBox(height: 48),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -211,16 +227,60 @@ class _AboutSectionState extends State<AboutSection> {
     );
   }
 
-  Widget _buildCoverBanner() {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(20),
-      child: AspectRatio(
-        aspectRatio: 4 / 1,
-        child: Image.asset(
-          'assets/sultan_cover.webp',
-          fit: BoxFit.cover,
-          errorBuilder: (context, error, stackTrace) => const SizedBox.shrink(),
-        ),
+  // Splits the bio at "Senior AI Solutions Developer" to weave the AlphaBOLD
+  // credit into the sentence itself (icon + tappable name), in the exact
+  // spot the old "based in Lahore" clause used to sit — a real inline
+  // credit, not a bolted-on chip below the paragraph.
+  Widget _buildBioText(BuildContext context, String bio) {
+    const anchor = 'Senior AI Solutions Developer';
+    final baseStyle = Theme.of(context).textTheme.bodyLarge?.copyWith(
+          color: AppTheme.textPrimaryColor.withValues(alpha: 0.8),
+          height: 1.6,
+        );
+    final linkStyle = baseStyle?.copyWith(
+      color: AppTheme.primaryColor,
+      fontWeight: FontWeight.w700,
+      decoration: TextDecoration.underline,
+      decorationColor: AppTheme.primaryColor.withValues(alpha: 0.5),
+    );
+
+    final anchorIndex = bio.indexOf(anchor);
+    if (anchorIndex < 0) {
+      return AutoSizeText(bio, style: baseStyle);
+    }
+    final before = bio.substring(0, anchorIndex + anchor.length);
+    final after = bio.substring(anchorIndex + anchor.length);
+
+    // Text.rich, not AutoSizeText.rich — AutoSizeText's internal remeasure
+    // pass can't lay out a WidgetSpan (asserts on `dimensions != null`).
+    // No autosize-shrink here, but this paragraph only wraps, never clips.
+    return Text.rich(
+      TextSpan(
+        style: baseStyle,
+        children: [
+          TextSpan(text: before),
+          const TextSpan(text: ', employed at '),
+          WidgetSpan(
+            alignment: PlaceholderAlignment.middle,
+            child: Padding(
+              padding: const EdgeInsets.only(right: 4),
+              child: Image.asset(
+                'assets/companies/alphabold_02.png',
+                width: 18,
+                height: 18,
+                fit: BoxFit.contain,
+                errorBuilder: (context, error, stackTrace) =>
+                    const SizedBox(width: 18, height: 18),
+              ),
+            ),
+          ),
+          TextSpan(
+            text: 'AlphaBOLD',
+            style: linkStyle,
+            recognizer: _alphaBoldRecognizer,
+          ),
+          TextSpan(text: ',$after'),
+        ],
       ),
     );
   }

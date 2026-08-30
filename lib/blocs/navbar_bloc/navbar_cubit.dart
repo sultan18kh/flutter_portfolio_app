@@ -76,6 +76,9 @@ class NavbarCubit extends Cubit<NavbarState> {
       position.maxScrollExtent,
     );
 
+    // animateTo drives a DrivenScrollActivity, not a ballistic one, so
+    // LandingPage's section-snap ScrollPhysics (createBallisticSimulation)
+    // is never consulted during this jump — no cross-component guard needed.
     position.animateTo(
       targetOffset,
       duration: const Duration(milliseconds: 800),

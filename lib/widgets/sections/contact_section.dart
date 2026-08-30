@@ -79,6 +79,14 @@ class ContactSection extends StatelessWidget {
                       label: 'Location',
                       value: personalInfo.home,
                       copiedText: 'Copied!',
+                      // AlphaBOLD's Google Maps CID, decoded from the
+                      // place's share link — an exact permalink to this one
+                      // listing, unlike a text search (which can resolve to
+                      // an unrelated same-named place depending on the
+                      // viewer's account/location bias).
+                      onTap: () => _launchUrl(
+                        'https://www.google.com/maps?cid=13263899117268670564',
+                      ),
                     ),
                   ],
                 );

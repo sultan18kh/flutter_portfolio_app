@@ -14,11 +14,11 @@ class PortfolioService {
       profile:
           'Senior AI Solutions Developer specializing in Flutter, Azure AI, and agentic AI systems. Six-time Microsoft certified, currently extending depth in Azure AI Foundry, Model Context Protocol (MCP) tooling, and Claude Code agent workflows. Production track record across BLE/IoT mobile (SOBRsure, \$10M seed), AI-powered enterprise SaaS, and healthcare-compliance automation.',
       aboutBio:
-          'I\'m a Senior AI Solutions Developer based in Lahore, building production Flutter and Azure AI systems for clients ranging from a \$10M-seed IoT safety platform to enterprise HR and CRM tooling. My recent focus has shifted deeper into agentic AI — Azure AI Foundry, the Model Context Protocol, and Claude Code workflows — while staying hands-on with Flutter across mobile and web. Six-time Microsoft certified, I write about agentic AI and Spec-Driven Development on LinkedIn and contribute to open source in my spare time.',
+          'I\'m a Senior AI Solutions Developer building production Flutter and Azure AI systems for clients ranging from a \$10M-seed IoT safety platform to enterprise HR and CRM tooling. My recent focus has shifted deeper into agentic AI — Azure AI Foundry, the Model Context Protocol, and Claude Code workflows — while staying hands-on with Flutter across mobile and web. Six-time Microsoft certified, I write about agentic AI and Spec-Driven Development on LinkedIn and contribute to open source in my spare time.',
       email: 'sultan512@gmail.com',
       linkedin: 'linkedin.com/in/sultan-khan-278014121',
       github: 'https://github.com/sultan18kh',
-      home: 'Lahore, Pakistan',
+      home: 'AlphaBOLD, Carlsbad, CA',
       phoneNumbers: [
         '+92 323 8788300',
       ],
@@ -134,9 +134,8 @@ class PortfolioService {
   static Future<List<Project>> getProjects() async {
     return const [
       Project(
-        name: 'NCCN Healthcare Compliance Automation',
-        description:
-            'End-to-end NCCN medical guideline automation for a confidential healthcare client',
+        name: 'Healthcare Trademark Compliance Automation Agent',
+        description: 'AI agent for healthcare trademark-compliance review',
         technologies: [
           'Python',
           'Azure Functions',
@@ -144,22 +143,34 @@ class PortfolioService {
           'OpenAI API'
         ],
         features: [
-          'PDF highlights and annotation extraction feeding an LLM preprocessing pipeline',
-          'Deterministic rule-based comment lookup across 30+ verbatim NCCN entries, zero runtime LLM cost',
-          'Metadata threading and webhook-gated rule enforcement',
+          'PDF text and annotation extraction feeds an LLM preprocessing pass that classifies each submission type (abstract, poster, manuscript, etc.)',
+          'Deterministic rule-lookup engine matches the classified type against 30+ verbatim trademark-usage entries, so enforcement stays consistent and auditable rather than left to LLM judgment alone',
+          'Webhook-gated enforcement blocks non-compliant submissions before publication, with zero runtime LLM cost on the rule-check path',
         ],
+        platforms: [ProjectPlatform.aiAgent],
         imageUrl: 'assets/projects/nccn-01.webp',
       ),
       Project(
         name: 'SOBRSafe - SOBRsure',
         description: 'Safety and compliance monitoring application',
-        technologies: ['Flutter', 'Bloc/Cubit', 'Google Maps API', 'Mapbox'],
-        features: [
-          'User profiles and device connection',
-          'Map integration with Google Maps API',
-          'Real-time safety monitoring',
+        technologies: [
+          'Flutter',
+          'Bloc/Cubit',
+          'BLE',
+          'Google Maps API',
+          'Mapbox'
         ],
+        features: [
+          'BLE communication protocol integration streaming live breath-alcohol readings from the SOBRsure hardware device',
+          'Spike-detection and false-positive-filtering algorithms distinguishing genuine intoxication events from sensor noise and interference',
+          'iOS and Android Live Activities surfacing real-time monitoring status on the lock screen without opening the app',
+          'Background process handling keeping BLE data streaming and monitoring alive outside the foreground app lifecycle',
+          'Multi-admin role management for family/organizational oversight of monitored users',
+          'Map integration with Google Maps API for real-time location tracking',
+        ],
+        platforms: [ProjectPlatform.ios, ProjectPlatform.android],
         imageUrl: 'assets/projects/sobrsafe-01.webp',
+        siteUrl: 'https://sobrsafe.com/pages/sobrsure',
       ),
       Project(
         name: 'BOLDHR',
@@ -169,48 +180,80 @@ class PortfolioService {
           'Node.js',
           'Express',
           'OpenAI API',
-          'LangChain'
+          'LangChain',
+          'Azure AAD'
         ],
         features: [
-          'AI-Powered Resume Parser leveraging OpenAI APIs',
-          'AI Score Generator integrating Llama 3.2 and Claude AI models',
+          'Automated resume parsing extracting structured candidate fields (skills, experience, education) from unstructured resume documents',
+          'AI scoring engine that cross-analyzes a job description against a candidate\'s resume, integrating Llama 3.2 and Claude AI models',
+          'Azure AAD OAuth single sign-on and CRM-embedded APIs integrating BOLDHR into AlphaBOLD\'s internal identity and CRM systems',
           'Implemented Beamer for nested routing',
           'BE powered by Node.js Express APIs',
         ],
+        platforms: [ProjectPlatform.web],
         imageUrl: 'assets/projects/boldhr-01.webp',
-      ),
-      Project(
-        name: 'BOLDAgimble',
-        description: 'Time tracking and productivity management application',
-        technologies: ['Flutter', 'Bloc/Cubit', 'Google Cloud Services'],
-        features: [
-          'Bar charts for data visualization',
-          'Time entry forms and calendar views',
-          'Real-time tracking and analytics',
-        ],
-        imageUrl: 'assets/projects/boldagimble-01.webp',
-      ),
-      Project(
-        name: 'BOLDRewards',
-        description: 'Employee rewards and recognition platform',
-        technologies: ['Flutter', 'Bloc/Cubit', 'Google Cloud Services'],
-        features: [
-          'Reward points system',
-          'Redemption options and transaction history',
-          'Gamified employee engagement',
-        ],
-        imageUrl: 'assets/projects/boldrewards-01.webp',
       ),
       Project(
         name: 'BOLDVelocity',
         description: 'AlphaBOLD internal developer productivity dashboard',
-        technologies: ['Python', 'SQLite', 'Vue.js', 'Azure DevOps API'],
-        features: [
-          'ETL pipeline normalizing Git, PR, Boards, and Copilot activity into commit, cycle-time, churn, and velocity metrics',
-          'Read-only stdlib Python API serving pre-aggregated SQLite metrics to a Vue 3 dashboard',
-          'Idempotent natural-key upserts, safe for a 3x/day cron pipeline; zero LLM calls by design',
+        technologies: [
+          'Python',
+          'SQLite',
+          'Vue.js',
+          'Azure DevOps API',
+          'LLM RAG'
         ],
+        features: [
+          'ETL pipeline fetching and compiling data from the Azure DevOps API, Microsoft Copilot analytics API, and Claude analytics API into commit, cycle-time, churn, and velocity metrics',
+          'Chat agent answering ad-hoc user queries over the metrics store via an LLM wrapper backed by Text-to-SQL RAG',
+          'Read-only stdlib Python API serving pre-aggregated SQLite metrics to a Vue 3 dashboard',
+          'Azure AAD OAuth and CRM-embedded APIs integrating BOLDVelocity into AlphaBOLD\'s internal identity and CRM systems',
+          'Idempotent natural-key upserts, safe for a 3x/day cron pipeline',
+        ],
+        platforms: [ProjectPlatform.web],
         imageUrl: 'assets/projects/boldvelocity-01.webp',
+      ),
+      Project(
+        name: 'BOLDAgimble',
+        description: 'Time tracking and productivity management application',
+        technologies: [
+          'Flutter',
+          'Bloc/Cubit',
+          'Google Cloud Services',
+          'Azure AAD'
+        ],
+        features: [
+          'Automated extraction of expense invoice elements (vendor, amount, date, line items) from uploaded receipts',
+          'Automated time-entry generation, pre-filling entries from tracked activity instead of fully manual logging',
+          'Azure AAD OAuth and CRM-embedded APIs integrating BOLDAgimble into AlphaBOLD\'s internal identity and CRM systems',
+          'Bar charts for data visualization',
+          'Time entry forms and calendar views',
+        ],
+        platforms: [ProjectPlatform.ios, ProjectPlatform.android],
+        imageUrl: 'assets/projects/boldagimble-01.webp',
+        appStoreUrl: 'https://apps.apple.com/us/app/boldagimble/id1590827447',
+        playStoreUrl:
+            'https://play.google.com/store/apps/details?id=com.alphabold.boldagimble&hl=en',
+      ),
+      Project(
+        name: 'BOLDRewards',
+        description: 'Employee rewards and recognition platform',
+        technologies: [
+          'Flutter',
+          'Bloc/Cubit',
+          'Google Cloud Services',
+          'Azure AAD'
+        ],
+        features: [
+          'Real-time social feed with live peer-to-peer reward reactions',
+          'Intuitive, animated redemption flow for reward points',
+          'Azure AAD OAuth and CRM-embedded APIs integrating BOLDRewards into AlphaBOLD\'s internal identity and CRM systems',
+          'Reward points system with redemption options and transaction history',
+          'Gamified employee engagement',
+        ],
+        platforms: [ProjectPlatform.ios, ProjectPlatform.android],
+        imageUrl: 'assets/projects/boldrewards-01.webp',
+        appStoreUrl: 'https://apps.apple.com/us/app/boldreward/id1529437438',
       ),
     ];
   }
