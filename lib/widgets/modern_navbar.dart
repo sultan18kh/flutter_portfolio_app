@@ -43,7 +43,7 @@ class _ModernNavbarViewState extends State<_ModernNavbarView>
   // means "next" on the page.
   static const List<(String, String)> _navItems = [
     ('Home', 'home'),
-    ('About', 'about'),
+    ('Background', 'about'),
     ('Skills', 'skills'),
     ('Experience', 'experience'),
     ('Certifications', 'certifications'),

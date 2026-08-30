@@ -261,14 +261,25 @@ class _ProjectCardState extends State<_ProjectCard>
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      AutoSizeText(
-                        project.name,
-                        style:
-                            Theme.of(context).textTheme.titleMedium?.copyWith(
-                                  color: AppTheme.primaryColor,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                        maxLines: 1,
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: AutoSizeText(
+                              project.name,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleMedium
+                                  ?.copyWith(
+                                    color: AppTheme.primaryColor,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                              maxLines: 1,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          _PlatformBadges(platforms: project.platforms),
+                        ],
                       ),
                       const SizedBox(height: 6),
                       AutoSizeText(
@@ -288,48 +299,8 @@ class _ProjectCardState extends State<_ProjectCard>
                             .map((tech) => _buildTechChip(context, tech))
                             .toList(),
                       ),
-                      if (project.githubUrl != null ||
-                          project.liveUrl != null) ...[
-                        const SizedBox(height: 16),
-                        // Action buttons
-                        Row(
-                          children: [
-                            if (project.githubUrl != null)
-                              Expanded(
-                                child: ElevatedButton.icon(
-                                  onPressed: () =>
-                                      _launchUrl(project.githubUrl!),
-                                  icon: const Icon(Icons.code, size: 16),
-                                  label: const Text('Code'),
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: AppTheme.primaryColor,
-                                    foregroundColor: Colors.white,
-                                    padding:
-                                        const EdgeInsets.symmetric(vertical: 8),
-                                  ),
-                                ),
-                              ),
-                            if (project.githubUrl != null &&
-                                project.liveUrl != null)
-                              const SizedBox(width: 8),
-                            if (project.liveUrl != null)
-                              Expanded(
-                                child: OutlinedButton.icon(
-                                  onPressed: () => _launchUrl(project.liveUrl!),
-                                  icon: const Icon(Icons.launch, size: 16),
-                                  label: const Text('Live'),
-                                  style: OutlinedButton.styleFrom(
-                                    foregroundColor: AppTheme.primaryColor,
-                                    side: const BorderSide(
-                                        color: AppTheme.primaryColor),
-                                    padding:
-                                        const EdgeInsets.symmetric(vertical: 8),
-                                  ),
-                                ),
-                              ),
-                          ],
-                        ),
-                      ],
+                      const SizedBox(height: 16),
+                      _ProjectLinkActions(project: project),
                     ],
                   ),
                 ),
@@ -420,12 +391,243 @@ class _ProjectCardState extends State<_ProjectCard>
       ),
     );
   }
+}
 
-  Future<void> _launchUrl(String url) async {
-    final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri);
+Future<void> _launchUrl(String url) async {
+  final uri = Uri.parse(url);
+  if (await canLaunchUrl(uri)) {
+    await launchUrl(uri, mode: LaunchMode.externalApplication);
+  }
+}
+
+// Platform-type badges shown next to a project's name — pure identity
+// signal (what kind of product this is), never tappable. All four platforms
+// share one chip treatment (same size, same cyan tint, same Material icon
+// family already used throughout the app for contact rows and nav) so the
+// row reads as one coherent set instead of a mismatched brand-color lineup.
+class _PlatformBadges extends StatelessWidget {
+  final List<ProjectPlatform> platforms;
+
+  const _PlatformBadges({required this.platforms});
+
+  @override
+  Widget build(BuildContext context) {
+    if (platforms.isEmpty) return const SizedBox.shrink();
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: platforms
+          .map((platform) => Padding(
+                padding: const EdgeInsets.only(left: 6),
+                child: Tooltip(
+                  message: _label(platform),
+                  child: Container(
+                    width: 24,
+                    height: 24,
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppTheme.accentColor.withValues(alpha: 0.12),
+                      border: Border.all(
+                        color: AppTheme.accentColor.withValues(alpha: 0.3),
+                      ),
+                    ),
+                    child: Icon(
+                      _iconData(platform),
+                      size: 14,
+                      color: AppTheme.accentColor,
+                    ),
+                  ),
+                ),
+              ))
+          .toList(),
+    );
+  }
+
+  String _label(ProjectPlatform platform) {
+    switch (platform) {
+      case ProjectPlatform.ios:
+        return 'iOS';
+      case ProjectPlatform.android:
+        return 'Android';
+      case ProjectPlatform.web:
+        return 'Web App';
+      case ProjectPlatform.aiAgent:
+        return 'AI Agent';
     }
+  }
+
+  IconData _iconData(ProjectPlatform platform) {
+    switch (platform) {
+      case ProjectPlatform.ios:
+        return Icons.apple;
+      case ProjectPlatform.android:
+        return Icons.android;
+      case ProjectPlatform.web:
+        return Icons.public;
+      case ProjectPlatform.aiAgent:
+        return Icons.smart_toy_outlined;
+    }
+  }
+}
+
+// Per-project link action(s): store buttons, a site link, or — for anything
+// with no shareable link — a confidential indicator. Compact, naturally-sized
+// pills wrapped left (never a stretched full-width button) — the same
+// left-flush, intrinsic-width rhythm as the tech chips directly above them.
+class _ProjectLinkActions extends StatelessWidget {
+  final Project project;
+
+  const _ProjectLinkActions({required this.project});
+
+  @override
+  Widget build(BuildContext context) {
+    final hasStoreLink =
+        project.appStoreUrl != null || project.playStoreUrl != null;
+
+    if (hasStoreLink) {
+      return Wrap(
+        spacing: 8,
+        runSpacing: 8,
+        children: [
+          if (project.appStoreUrl != null)
+            _LinkButton(
+              icon: Icons.apple,
+              label: 'App Store',
+              onPressed: () => _launchUrl(project.appStoreUrl!),
+            ),
+          if (project.playStoreUrl != null)
+            _LinkButton(
+              icon: Icons.play_circle_outline_rounded,
+              label: 'Google Play',
+              onPressed: () => _launchUrl(project.playStoreUrl!),
+            ),
+        ],
+      );
+    }
+
+    if (project.siteUrl != null) {
+      return _LinkButton(
+        icon: Icons.public,
+        label: 'Visit Site',
+        onPressed: () => _launchUrl(project.siteUrl!),
+      );
+    }
+
+    return const _ConfidentialChip();
+  }
+}
+
+// A compact glass pill — the system's resting-glow/amplify-on-hover
+// vocabulary (see DESIGN.md Elevation & Depth, and _ContactItemButton /
+// _AlphaBoldCredit for the same treatment) instead of a generic Material
+// OutlinedButton, which reads flat and dated next to the rest of the page.
+class _LinkButton extends StatefulWidget {
+  final IconData icon;
+  final String label;
+  final VoidCallback onPressed;
+
+  const _LinkButton({
+    required this.icon,
+    required this.label,
+    required this.onPressed,
+  });
+
+  @override
+  State<_LinkButton> createState() => _LinkButtonState();
+}
+
+class _LinkButtonState extends State<_LinkButton> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: GestureDetector(
+        onTap: widget.onPressed,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 200),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          decoration: BoxDecoration(
+            color: AppTheme.primaryColor
+                .withValues(alpha: _isHovered ? 0.16 : 0.08),
+            borderRadius: BorderRadius.circular(999),
+            border: Border.all(
+              color: AppTheme.primaryColor
+                  .withValues(alpha: _isHovered ? 0.6 : 0.25),
+            ),
+            boxShadow: _isHovered
+                ? [
+                    BoxShadow(
+                      color: AppTheme.primaryColor.withValues(alpha: 0.3),
+                      blurRadius: 16,
+                      spreadRadius: 1,
+                    ),
+                  ]
+                : const [],
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(widget.icon, size: 15, color: AppTheme.primaryColor),
+              const SizedBox(width: 6),
+              Text(
+                widget.label,
+                style: const TextStyle(
+                  color: AppTheme.primaryColor,
+                  fontWeight: FontWeight.w600,
+                  fontSize: 12.5,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// Deliberately NOT a disabled button — a plain button that looks disabled
+// still signals "you could try this," which is the wrong message for a
+// link that will never work. This reads instead as a quiet inline status
+// indicator: same compact pill shape as _LinkButton for family consistency,
+// but static and muted-lavender (DESIGN.md's own "quietest text tier") —
+// never gains a hover glow, since it isn't interactive-relevant.
+class _ConfidentialChip extends StatelessWidget {
+  const _ConfidentialChip();
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: 'Confidential — link cannot be shared',
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+        decoration: BoxDecoration(
+          color: AppTheme.textMutedColor.withValues(alpha: 0.08),
+          borderRadius: BorderRadius.circular(999),
+          border: Border.all(
+            color: AppTheme.textMutedColor.withValues(alpha: 0.25),
+          ),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(Icons.lock_rounded, size: 15, color: AppTheme.textMutedColor),
+            const SizedBox(width: 6),
+            Text(
+              'Confidential',
+              style: TextStyle(
+                color: AppTheme.textMutedColor,
+                fontWeight: FontWeight.w600,
+                fontSize: 12.5,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
 

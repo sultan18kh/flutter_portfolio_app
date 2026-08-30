@@ -14,11 +14,11 @@ class PortfolioService {
       profile:
           'Senior AI Solutions Developer specializing in Flutter, Azure AI, and agentic AI systems. Six-time Microsoft certified, currently extending depth in Azure AI Foundry, Model Context Protocol (MCP) tooling, and Claude Code agent workflows. Production track record across BLE/IoT mobile (SOBRsure, \$10M seed), AI-powered enterprise SaaS, and healthcare-compliance automation.',
       aboutBio:
-          'I\'m a Senior AI Solutions Developer based in Lahore, building production Flutter and Azure AI systems for clients ranging from a \$10M-seed IoT safety platform to enterprise HR and CRM tooling. My recent focus has shifted deeper into agentic AI — Azure AI Foundry, the Model Context Protocol, and Claude Code workflows — while staying hands-on with Flutter across mobile and web. Six-time Microsoft certified, I write about agentic AI and Spec-Driven Development on LinkedIn and contribute to open source in my spare time.',
+          'I\'m a Senior AI Solutions Developer building production Flutter and Azure AI systems for clients ranging from a \$10M-seed IoT safety platform to enterprise HR and CRM tooling. My recent focus has shifted deeper into agentic AI — Azure AI Foundry, the Model Context Protocol, and Claude Code workflows — while staying hands-on with Flutter across mobile and web. Six-time Microsoft certified, I write about agentic AI and Spec-Driven Development on LinkedIn and contribute to open source in my spare time.',
       email: 'sultan512@gmail.com',
       linkedin: 'linkedin.com/in/sultan-khan-278014121',
       github: 'https://github.com/sultan18kh',
-      home: 'Lahore, Pakistan',
+      home: 'AlphaBOLD, Carlsbad, CA',
       phoneNumbers: [
         '+92 323 8788300',
       ],
@@ -134,9 +134,9 @@ class PortfolioService {
   static Future<List<Project>> getProjects() async {
     return const [
       Project(
-        name: 'NCCN Healthcare Compliance Automation',
+        name: 'Healthcare Trademark Compliance Automation Agent',
         description:
-            'End-to-end NCCN medical guideline automation for a confidential healthcare client',
+            'AI agent that checks submitted research papers for a confidential healthcare client against trademark-usage rules that vary by submission type',
         technologies: [
           'Python',
           'Azure Functions',
@@ -144,10 +144,11 @@ class PortfolioService {
           'OpenAI API'
         ],
         features: [
-          'PDF highlights and annotation extraction feeding an LLM preprocessing pipeline',
-          'Deterministic rule-based comment lookup across 30+ verbatim NCCN entries, zero runtime LLM cost',
-          'Metadata threading and webhook-gated rule enforcement',
+          'PDF text and annotation extraction feeds an LLM preprocessing pass that classifies each submission type (abstract, poster, manuscript, etc.)',
+          'Deterministic rule-lookup engine matches the classified type against 30+ verbatim trademark-usage entries, so enforcement stays consistent and auditable rather than left to LLM judgment alone',
+          'Webhook-gated enforcement blocks non-compliant submissions before publication, with zero runtime LLM cost on the rule-check path',
         ],
+        platforms: [ProjectPlatform.aiAgent],
         imageUrl: 'assets/projects/nccn-01.webp',
       ),
       Project(
@@ -159,7 +160,9 @@ class PortfolioService {
           'Map integration with Google Maps API',
           'Real-time safety monitoring',
         ],
+        platforms: [ProjectPlatform.ios, ProjectPlatform.android],
         imageUrl: 'assets/projects/sobrsafe-01.webp',
+        siteUrl: 'https://sobrsafe.com/pages/sobrsure',
       ),
       Project(
         name: 'BOLDHR',
@@ -177,29 +180,8 @@ class PortfolioService {
           'Implemented Beamer for nested routing',
           'BE powered by Node.js Express APIs',
         ],
+        platforms: [ProjectPlatform.web],
         imageUrl: 'assets/projects/boldhr-01.webp',
-      ),
-      Project(
-        name: 'BOLDAgimble',
-        description: 'Time tracking and productivity management application',
-        technologies: ['Flutter', 'Bloc/Cubit', 'Google Cloud Services'],
-        features: [
-          'Bar charts for data visualization',
-          'Time entry forms and calendar views',
-          'Real-time tracking and analytics',
-        ],
-        imageUrl: 'assets/projects/boldagimble-01.webp',
-      ),
-      Project(
-        name: 'BOLDRewards',
-        description: 'Employee rewards and recognition platform',
-        technologies: ['Flutter', 'Bloc/Cubit', 'Google Cloud Services'],
-        features: [
-          'Reward points system',
-          'Redemption options and transaction history',
-          'Gamified employee engagement',
-        ],
-        imageUrl: 'assets/projects/boldrewards-01.webp',
       ),
       Project(
         name: 'BOLDVelocity',
@@ -210,7 +192,36 @@ class PortfolioService {
           'Read-only stdlib Python API serving pre-aggregated SQLite metrics to a Vue 3 dashboard',
           'Idempotent natural-key upserts, safe for a 3x/day cron pipeline; zero LLM calls by design',
         ],
+        platforms: [ProjectPlatform.web],
         imageUrl: 'assets/projects/boldvelocity-01.webp',
+      ),
+      Project(
+        name: 'BOLDAgimble',
+        description: 'Time tracking and productivity management application',
+        technologies: ['Flutter', 'Bloc/Cubit', 'Google Cloud Services'],
+        features: [
+          'Bar charts for data visualization',
+          'Time entry forms and calendar views',
+          'Real-time tracking and analytics',
+        ],
+        platforms: [ProjectPlatform.ios, ProjectPlatform.android],
+        imageUrl: 'assets/projects/boldagimble-01.webp',
+        appStoreUrl: 'https://apps.apple.com/us/app/boldagimble/id1590827447',
+        playStoreUrl:
+            'https://play.google.com/store/apps/details?id=com.alphabold.boldagimble&hl=en',
+      ),
+      Project(
+        name: 'BOLDRewards',
+        description: 'Employee rewards and recognition platform',
+        technologies: ['Flutter', 'Bloc/Cubit', 'Google Cloud Services'],
+        features: [
+          'Reward points system',
+          'Redemption options and transaction history',
+          'Gamified employee engagement',
+        ],
+        platforms: [ProjectPlatform.ios, ProjectPlatform.android],
+        imageUrl: 'assets/projects/boldrewards-01.webp',
+        appStoreUrl: 'https://apps.apple.com/us/app/boldreward/id1529437438',
       ),
     ];
   }
