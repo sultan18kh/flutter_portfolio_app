@@ -79,6 +79,12 @@ class SpotifyTopTracksCard extends StatelessWidget {
   // → playlist → Share → Copy link, the ID is the last path segment).
   static const String _playlistId = '3R8rXgS463C3WLok9VP0Tq';
 
+  // Spotify's compact playlist embed's own natural content height (title
+  // strip + ~4 tracks + player bar) — beyond this it just pads itself with
+  // blank space rather than showing more, so there's no point sizing the
+  // iframe any taller.
+  static const double _spotifyEmbedHeight = 160;
+
   @override
   Widget build(BuildContext context) {
     return _NowCard(
@@ -108,14 +114,18 @@ class SpotifyTopTracksCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 12),
-          // Spotify's compact embed is 152px; anything taller reveals more
-          // of the actual tracklist rather than leaving dead space, so this
-          // fills whatever room the matched card height leaves rather than
-          // staying pinned at 152.
+          // Spotify's own embed content tops out well short of the taller
+          // height this card gets matched to (mirroring the Education
+          // column) — stretching the iframe to fill it just leaves dead
+          // space *inside* the iframe, below the player. Expanded + Center,
+          // same fix as ReadingRightNowCard below: give the embed its
+          // natural height and center that within the extra room instead.
           const Expanded(
-            child: SpotifyEmbed(
-              playlistId: _playlistId,
-              height: double.infinity,
+            child: Center(
+              child: SpotifyEmbed(
+                playlistId: _playlistId,
+                height: _spotifyEmbedHeight,
+              ),
             ),
           ),
         ],

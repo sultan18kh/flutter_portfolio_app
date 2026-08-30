@@ -88,9 +88,11 @@ class _ProjectCardState extends State<_ProjectCard>
   bool _isHovered = false;
   late final AnimationController _pulseController;
 
-  // Hover-intent preview (desktop): a short delay before the centered
-  // enlarged-image preview appears, so a mouse merely passing over the
-  // card on its way elsewhere doesn't pop it open.
+  // Hover-intent preview (desktop): a deliberate delay before the centered
+  // enlarged-image preview appears, so it reads as "I'm actually looking at
+  // this one" rather than firing on every pass-through hover on the way to
+  // somewhere else on the page.
+  static const _hoverIntentDelay = Duration(seconds: 3);
   final _previewController = OverlayPortalController();
   Timer? _hoverIntentTimer;
 
@@ -122,7 +124,7 @@ class _ProjectCardState extends State<_ProjectCard>
 
   void _scheduleImagePreview() {
     _hoverIntentTimer?.cancel();
-    _hoverIntentTimer = Timer(const Duration(milliseconds: 220), () {
+    _hoverIntentTimer = Timer(_hoverIntentDelay, () {
       if (mounted) _previewController.show();
     });
   }
