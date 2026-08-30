@@ -132,6 +132,33 @@ class _ProjectCardState extends State<_ProjectCard>
     if (_previewController.isShowing) _previewController.hide();
   }
 
+  void _openDetails(BuildContext context, Color accent) {
+    _cancelImagePreview();
+    final reduceMotion = MediaQuery.of(context).disableAnimations;
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: true,
+      barrierLabel: 'Close',
+      barrierColor: Colors.black.withValues(alpha: 0.75),
+      transitionDuration:
+          reduceMotion ? Duration.zero : const Duration(milliseconds: 220),
+      pageBuilder: (context, _, __) => _ProjectDetailsDialog(
+        project: widget.project,
+        accentColor: accent,
+        techIcons: widget.techIcons,
+      ),
+      transitionBuilder: (context, animation, _, child) => FadeTransition(
+        opacity: animation,
+        child: ScaleTransition(
+          scale: Tween(begin: 0.94, end: 1.0).animate(
+            CurvedAnimation(parent: animation, curve: Curves.easeOutCubic),
+          ),
+          child: child,
+        ),
+      ),
+    );
+  }
+
   void _openLightbox(BuildContext context, String imagePath, Color accent) {
     // The hover-intent preview (desktop) and the tap target overlap on
     // hybrid mouse+touch input — always clear it before going full-screen
@@ -279,6 +306,12 @@ class _ProjectCardState extends State<_ProjectCard>
                           ),
                           const SizedBox(width: 8),
                           _PlatformBadges(platforms: project.platforms),
+                          if (project.features.isNotEmpty) ...[
+                            const SizedBox(width: 6),
+                            _InfoButton(
+                              onTap: () => _openDetails(context, accentColor),
+                            ),
+                          ],
                         ],
                       ),
                       const SizedBox(height: 6),
@@ -296,7 +329,11 @@ class _ProjectCardState extends State<_ProjectCard>
                         runSpacing: 6,
                         children: project.technologies
                             .take(3)
-                            .map((tech) => _buildTechChip(context, tech))
+                            .map((tech) => _TechChip(
+                                  tech: tech,
+                                  iconPath:
+                                      widget.techIcons[tech.toLowerCase()],
+                                ))
                             .toList(),
                       ),
                       const SizedBox(height: 16),
@@ -365,32 +402,6 @@ class _ProjectCardState extends State<_ProjectCard>
     );
   }
 
-  Widget _buildTechChip(BuildContext context, String tech) {
-    final iconPath = widget.techIcons[tech.toLowerCase()];
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-      decoration: BoxDecoration(
-        color: AppTheme.primaryColor.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          if (iconPath != null) ...[
-            SvgPicture.asset(iconPath, width: 12, height: 12),
-            const SizedBox(width: 4),
-          ],
-          AutoSizeText(
-            tech,
-            style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  color: AppTheme.primaryColor,
-                  fontSize: 10,
-                ),
-          ),
-        ],
-      ),
-    );
-  }
 }
 
 Future<void> _launchUrl(String url) async {
@@ -467,6 +478,60 @@ class _PlatformBadges extends StatelessWidget {
       case ProjectPlatform.aiAgent:
         return Icons.smart_toy_outlined;
     }
+  }
+}
+
+// Opens the full technical write-up (project.features) that the compact
+// card has no room for — same circular-chip footprint as the platform
+// badges next to it. Always the brand pink, not the card's own (hash-derived,
+// so it varies project to project) accent — a consistent color here reads as
+// "this control always does the same thing," where an accent tint would
+// wrongly imply it means something different per card.
+class _InfoButton extends StatefulWidget {
+  final VoidCallback onTap;
+
+  const _InfoButton({required this.onTap});
+
+  @override
+  State<_InfoButton> createState() => _InfoButtonState();
+}
+
+class _InfoButtonState extends State<_InfoButton> {
+  bool _isHovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: 'View technical details',
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        onEnter: (_) => setState(() => _isHovered = true),
+        onExit: (_) => setState(() => _isHovered = false),
+        child: GestureDetector(
+          onTap: widget.onTap,
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 150),
+            width: 24,
+            height: 24,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppTheme.primaryColor
+                  .withValues(alpha: _isHovered ? 0.24 : 0.12),
+              border: Border.all(
+                color: AppTheme.primaryColor
+                    .withValues(alpha: _isHovered ? 0.7 : 0.3),
+              ),
+            ),
+            child: const Icon(
+              Icons.info_outline_rounded,
+              size: 14,
+              color: AppTheme.primaryColor,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -696,6 +761,222 @@ class _ImageLightbox extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+// The full technical write-up for one project — everything the compact
+// card's 2-line description and 3-chip tech row can't fit: the untruncated
+// description, every technology, and the full `features` bullet list. Same
+// glass/accent-glow dialog language as `_ImageLightbox`.
+class _ProjectDetailsDialog extends StatelessWidget {
+  final Project project;
+  final Color accentColor;
+  final Map<String, String> techIcons;
+
+  const _ProjectDetailsDialog({
+    required this.project,
+    required this.accentColor,
+    required this.techIcons,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.sizeOf(context);
+    return GestureDetector(
+      onTap: () => Navigator.of(context).pop(),
+      child: Material(
+        type: MaterialType.transparency,
+        child: SizedBox.expand(
+          child: Center(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                maxWidth: math.min(640, size.width - 48),
+                maxHeight: size.height * 0.85,
+              ),
+              child: GestureDetector(
+                onTap: () {}, // absorb taps on the panel itself
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: AppTheme.surfaceColor,
+                    borderRadius: BorderRadius.circular(20),
+                    border: Border.all(
+                      color: accentColor.withValues(alpha: 0.4),
+                      width: 1.5,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: accentColor.withValues(alpha: 0.3),
+                        blurRadius: 40,
+                        offset: const Offset(0, 16),
+                      ),
+                    ],
+                  ),
+                  clipBehavior: Clip.antiAlias,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(24, 20, 16, 0),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                project.name,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge
+                                    ?.copyWith(
+                                      color: accentColor,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                              ),
+                            ),
+                            _PlatformBadges(platforms: project.platforms),
+                            IconButton(
+                              onPressed: () => Navigator.of(context).pop(),
+                              icon: const Icon(Icons.close),
+                              color: AppTheme.textSecondaryColor,
+                              visualDensity: VisualDensity.compact,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Flexible(
+                        child: SingleChildScrollView(
+                          padding: const EdgeInsets.fromLTRB(24, 8, 24, 24),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                project.description,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyMedium
+                                    ?.copyWith(
+                                      color: AppTheme.textSecondaryColor,
+                                      height: 1.5,
+                                    ),
+                              ),
+                              const SizedBox(height: 16),
+                              Wrap(
+                                spacing: 6,
+                                runSpacing: 6,
+                                children: project.technologies
+                                    .map((tech) => _TechChip(
+                                          tech: tech,
+                                          iconPath:
+                                              techIcons[tech.toLowerCase()],
+                                        ))
+                                    .toList(),
+                              ),
+                              if (project.features.isNotEmpty) ...[
+                                const SizedBox(height: 20),
+                                Text(
+                                  'Under the hood',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelLarge
+                                      ?.copyWith(
+                                        color: accentColor,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                ),
+                                const SizedBox(height: 10),
+                                ...project.features.map(
+                                  (feature) => Padding(
+                                    padding:
+                                        const EdgeInsets.only(bottom: 10),
+                                    child: Row(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 6),
+                                          child: Container(
+                                            width: 5,
+                                            height: 5,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
+                                              color: accentColor,
+                                            ),
+                                          ),
+                                        ),
+                                        const SizedBox(width: 10),
+                                        Expanded(
+                                          child: Text(
+                                            feature,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium
+                                                ?.copyWith(
+                                                  color: AppTheme
+                                                      .textPrimaryColor
+                                                      .withValues(alpha: 0.85),
+                                                  height: 1.5,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                              const SizedBox(height: 16),
+                              _ProjectLinkActions(project: project),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+// Standalone tech chip (not tied to a hoverable card) used in the details
+// dialog's full technology list — same look as `_ProjectCard`'s chip, minus
+// the card-state dependency.
+class _TechChip extends StatelessWidget {
+  final String tech;
+  final String? iconPath;
+
+  const _TechChip({required this.tech, required this.iconPath});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      decoration: BoxDecoration(
+        color: AppTheme.primaryColor.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (iconPath != null) ...[
+            SvgPicture.asset(iconPath!, width: 12, height: 12),
+            const SizedBox(width: 4),
+          ],
+          Text(
+            tech,
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                  color: AppTheme.primaryColor,
+                  fontSize: 10,
+                ),
+          ),
+        ],
       ),
     );
   }
